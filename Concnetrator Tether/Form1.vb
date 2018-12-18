@@ -7,7 +7,7 @@ Public Class Form1
 
 
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
-    Public WithEvents mycom As SerialPort
+    Public WithEvents Mycom As SerialPort
 
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
 
@@ -17,21 +17,37 @@ Public Class Form1
 
 
         newcommport()
+        RetrieveSettings()
+
+        With Chart1
+            .Series(0).Points.Clear()
+            .Series(1).Points.Clear()
+            .Series(2).Points.Clear()
+            .ChartAreas(0).AxisY.Maximum = 1024
+            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLengh
+
+        End With
+
+    End Sub
+
+    Public Sub RetrieveSettings()
+
 
 
 
     End Sub
-    Private Sub newcommport()
+
+    Private Sub Newcommport()
 
         Dim myportnames() As String
         myportnames = SerialPort.GetPortNames
-        If IsNothing(mycom) Then
-            mycom = New SerialPort
+        If IsNothing(Mycom) Then
+            Mycom = New SerialPort
 
 
-            AddHandler mycom.DataReceived, AddressOf mycom_Datareceived ' handler for data received event
+            AddHandler Mycom.DataReceived, AddressOf Mycom_Datareceived ' handler for data received event
 
-            With mycom
+            With Mycom
                 .PortName = "COM5" ' gets port name from static data set
                 .BaudRate = 115200
                 .Parity = Parity.None
@@ -43,27 +59,44 @@ Public Class Form1
                 .WriteBufferSize = 500
             End With
         End If
-        If (Not mycom.IsOpen) Then
+        If (Not Mycom.IsOpen) Then
 
             Try
-                mycom.Open()
-                mycom.DiscardInBuffer()
+                Mycom.Open()
+                Mycom.DiscardInBuffer()
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
 
         End If
     End Sub
-    Private Sub mycom_Datareceived(ByVal sendor As Object, ByVal e As SerialDataReceivedEventArgs) Handles mycom.DataReceived
+
+    Private Sub Mycom_Datareceived(ByVal sendor As Object, ByVal e As SerialDataReceivedEventArgs) Handles Mycom.DataReceived
         ' Handles data when it comes in on serial port.
         Dim sweight As String
-        sweight = mycom.ReadLine
-        accessformMarshal(sweight)
-
-
+        sweight = Mycom.ReadLine
+        AccessformMarshal(sweight)
     End Sub
 
-    Private Sub accessformMarshal(ByVal texttodisplay As String)
+    Private Sub Portclosing()
+        If IsNothing(Mycom) Then Exit Sub
+        If Mycom.IsOpen = True Then
+            Mycom.ReceivedBytesThreshold = 1500
+            Thread.Sleep(1)
+            Do Until Mycom.BytesToRead < 1
+                'Application.DoEvents()
+                Mycom.DiscardInBuffer()
+            Loop
+            Mycom.DtrEnable = False
+            Mycom.Close()
+            Do Until Mycom.IsOpen = False
+                Application.DoEvents()
+                '   Thread.Sleep(1)
+            Loop
+        End If
+    End Sub
+
+    Private Sub AccessformMarshal(ByVal texttodisplay As String)
         Dim args() As Object = {texttodisplay}
         Dim AccessFormMarshaldelegate1 As New accessformMarshaldelegate(AddressOf AccessForm)
         MyBase.BeginInvoke(AccessFormMarshaldelegate1, args)
@@ -110,7 +143,8 @@ Public Class Form1
 
 
 
-    Private Sub Form1_FOrmCLosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub Form1_FormCLosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Portclosing()
         Interop.GOTOSLEEP()
     End Sub
 End Class
