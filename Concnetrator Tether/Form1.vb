@@ -24,7 +24,7 @@ Public Class Form1
             .Series(1).Points.Clear()
             .Series(2).Points.Clear()
             .ChartAreas(0).AxisY.Maximum = 1024
-            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLengh
+            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
 
         End With
 
@@ -107,7 +107,7 @@ Public Class Form1
 
         length = TextToDisplay.Length
         If (TextToDisplay(0) = "@") Then
-            '   lbl_Returned_Times.Text = TextToDisplay
+            lbl_Returned_Times.Text = TextToDisplay
         Else
 
             ' you want to split this input string
@@ -129,7 +129,7 @@ Public Class Form1
                 .Series(0).Points.AddY(datavalue(0))
                 .Series(1).Points.AddY(datavalue(1))
                 .Series(2).Points.AddY(datavalue(2))
-                If (.Series(0).Points.Count > My.Settings.GraphLengh) Then
+                If (.Series(0).Points.Count > My.Settings.GraphLength) Then
                     .Series(0).Points.RemoveAt(0)
                     .Series(1).Points.RemoveAt(0)
                     .Series(2).Points.RemoveAt(0)
@@ -137,7 +137,7 @@ Public Class Form1
             End With
 
             '' Add points to the chart
-            '  TextBox1.AppendText(TextToDisplay)
+            ' TextBox1.AppendText(TextToDisplay)
         End If
     End Sub
 
@@ -146,5 +146,42 @@ Public Class Form1
     Private Sub Form1_FormCLosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Portclosing()
         Interop.GOTOSLEEP()
+    End Sub
+
+    Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
+        Dim updatedtimes As String
+        Dim builder As New System.Text.StringBuilder
+        Dim cycles As Integer
+
+        cycles = CInt(TB_ProcTime1.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append(":")
+        cycles = CInt(TB_ProcTIme2.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append(":")
+        cycles = CInt(TB_ProcTime3.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append(":")
+        cycles = CInt(TB_ProcTime4.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append(":")
+        cycles = CInt(TB_ProcTime5.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append(":")
+        cycles = CInt(TB_ProcTIme6.Text) / timerperiod
+        builder.Append(cycles)
+        builder.Append("Z")
+
+        updatedtimes = builder.ToString
+        Mycom.Write(updatedtimes)
+    End Sub
+
+    Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs) Handles Btn_Update_Graph.Click
+        Dim newtime As Integer
+        newtime = CInt(TB_GraphDisplay.Text) * 100
+        My.Settings.GraphLength = newtime
+        My.Settings.Save()
+        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+
     End Sub
 End Class

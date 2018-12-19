@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="GraphLengh" Type="System.Int32" Scope="User">
+    <Setting Name="GraphLength" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
   </Settings>

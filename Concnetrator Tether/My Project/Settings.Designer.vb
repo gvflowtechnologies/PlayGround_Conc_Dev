@@ -57,12 +57,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("4000")>  _
-        Public Property GraphLengh() As Integer
+        Public Property GraphLength() As Integer
             Get
-                Return CType(Me("GraphLengh"),Integer)
+                Return CType(Me("GraphLength"),Integer)
             End Get
             Set
-                Me("GraphLengh") = value
+                Me("GraphLength") = value
             End Set
         End Property
     End Class
