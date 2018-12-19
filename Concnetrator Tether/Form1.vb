@@ -107,7 +107,7 @@ Public Class Form1
 
         length = TextToDisplay.Length
         If (TextToDisplay(0) = "@") Then
-            lbl_Returned_Times.Text = TextToDisplay
+            '   lbl_Returned_Times.Text = TextToDisplay
         Else
 
             ' you want to split this input string
