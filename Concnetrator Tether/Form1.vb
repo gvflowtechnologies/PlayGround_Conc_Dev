@@ -25,6 +25,7 @@ Public Class Form1
             .Series(2).Points.Clear()
             .ChartAreas(0).AxisY.Maximum = 1024
             .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
 
         End With
 
@@ -107,6 +108,7 @@ Public Class Form1
 
         length = TextToDisplay.Length
         If (TextToDisplay(0) = "@") Then
+
             lbl_Returned_Times.Text = TextToDisplay
         Else
 
@@ -137,7 +139,7 @@ Public Class Form1
             End With
 
             '' Add points to the chart
-            ' TextBox1.AppendText(TextToDisplay)
+            TextBox1.AppendText(TextToDisplay)
         End If
     End Sub
 
