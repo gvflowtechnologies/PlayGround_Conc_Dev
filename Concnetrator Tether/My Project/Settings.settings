@@ -5,5 +5,41 @@
     <Setting Name="GraphLength" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4000</Value>
     </Setting>
+    <Setting Name="PT1_Raw_Low" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PT1_Raw_High" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
+    <Setting Name="PT2_Raw_Low" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PT2_Raw_High" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
+    <Setting Name="PT3_Raw_Low" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PT3_Raw_High" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
+    <Setting Name="PT1_Eng_Low" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PT1_Eng_High" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
+    <Setting Name="PT2_Eng_Low" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PT2_Eng_High" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
+    <Setting Name="P3_Eng_Low" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="P3_Eng_High" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1023</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -65,6 +65,150 @@ Namespace My
                 Me("GraphLength") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property PT1_Raw_Low() As Integer
+            Get
+                Return CType(Me("PT1_Raw_Low"),Integer)
+            End Get
+            Set
+                Me("PT1_Raw_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property PT1_Raw_High() As Integer
+            Get
+                Return CType(Me("PT1_Raw_High"),Integer)
+            End Get
+            Set
+                Me("PT1_Raw_High") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property PT2_Raw_Low() As Integer
+            Get
+                Return CType(Me("PT2_Raw_Low"),Integer)
+            End Get
+            Set
+                Me("PT2_Raw_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property PT2_Raw_High() As Integer
+            Get
+                Return CType(Me("PT2_Raw_High"),Integer)
+            End Get
+            Set
+                Me("PT2_Raw_High") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property PT3_Raw_Low() As Integer
+            Get
+                Return CType(Me("PT3_Raw_Low"),Integer)
+            End Get
+            Set
+                Me("PT3_Raw_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property PT3_Raw_High() As Integer
+            Get
+                Return CType(Me("PT3_Raw_High"),Integer)
+            End Get
+            Set
+                Me("PT3_Raw_High") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property PT1_Eng_Low() As Single
+            Get
+                Return CType(Me("PT1_Eng_Low"),Single)
+            End Get
+            Set
+                Me("PT1_Eng_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property PT1_Eng_High() As Single
+            Get
+                Return CType(Me("PT1_Eng_High"),Single)
+            End Get
+            Set
+                Me("PT1_Eng_High") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property PT2_Eng_Low() As Single
+            Get
+                Return CType(Me("PT2_Eng_Low"),Single)
+            End Get
+            Set
+                Me("PT2_Eng_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property PT2_Eng_High() As Single
+            Get
+                Return CType(Me("PT2_Eng_High"),Single)
+            End Get
+            Set
+                Me("PT2_Eng_High") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property P3_Eng_Low() As Single
+            Get
+                Return CType(Me("P3_Eng_Low"),Single)
+            End Get
+            Set
+                Me("P3_Eng_Low") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1023")>  _
+        Public Property P3_Eng_High() As Single
+            Get
+                Return CType(Me("P3_Eng_High"),Single)
+            End Get
+            Set
+                Me("P3_Eng_High") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
@@ -76,9 +220,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Concnetrator_Tether.My.MySettings
+        Friend ReadOnly Property Settings() As Global.Concenetrator_Tether.My.MySettings
             Get
-                Return Global.Concnetrator_Tether.My.MySettings.Default
+                Return Global.Concenetrator_Tether.My.MySettings.Default
             End Get
         End Property
     End Module

@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F4E4E788-996F-4D03-9DB7-B1C12B93FB47}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Concnetrator_Tether.My.MyApplication</StartupObject>
-    <RootNamespace>Concnetrator_Tether</RootNamespace>
-    <AssemblyName>Concnetrator Tether</AssemblyName>
+    <StartupObject>Concenetrator_Tether.My.MyApplication</StartupObject>
+    <RootNamespace>Concenetrator_Tether</RootNamespace>
+    <AssemblyName>Concenetrator Tether</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -38,7 +38,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Concnetrator Tether.xml</DocumentationFile>
+    <DocumentationFile>Concenetrator Tether.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -48,7 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Concnetrator Tether.xml</DocumentationFile>
+    <DocumentationFile>Concenetrator Tether.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
