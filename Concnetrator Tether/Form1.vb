@@ -122,27 +122,44 @@ Public Class Form1
             Dim word As String
             Dim datavalue(7) As Integer
             Dim i As Integer = 0
-
             For Each word In words
                 Dim sucessess As Boolean = Int32.TryParse(word, datavalue(i))
                 i = i + 1
             Next
-            With Chart1
-                .Series(0).Points.AddY(datavalue(0))
-                .Series(1).Points.AddY(datavalue(1))
-                .Series(2).Points.AddY(datavalue(2))
-                If (.Series(0).Points.Count > My.Settings.GraphLength) Then
-                    .Series(0).Points.RemoveAt(0)
-                    .Series(1).Points.RemoveAt(0)
-                    .Series(2).Points.RemoveAt(0)
-                End If
-            End With
+            If TP_Calibration.Visible = True Then
+                LBL_RawPT1.Text = datavalue(0)
+            End If
+
+            GraphIncoming(datavalue)
 
             '' Add points to the chart
             TextBox1.AppendText(TextToDisplay)
         End If
     End Sub
 
+
+
+
+    Private Sub ParseIncoming(ByValIncomingData As String)
+
+
+
+
+    End Sub
+
+    Private Sub GraphIncoming(ByVal datatograph() As Int32)
+        With Chart1
+            .Series(0).Points.AddY(datatograph(0))
+            .Series(1).Points.AddY(datatograph(1))
+            .Series(2).Points.AddY(datatograph(2))
+            If (.Series(0).Points.Count > My.Settings.GraphLength) Then
+                .Series(0).Points.RemoveAt(0)
+                .Series(1).Points.RemoveAt(0)
+                .Series(2).Points.RemoveAt(0)
+            End If
+        End With
+
+    End Sub
 
 
     Private Sub Form1_FormCLosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -184,6 +201,14 @@ Public Class Form1
         My.Settings.GraphLength = newtime
         My.Settings.Save()
         Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+
+    End Sub
+
+    Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
+
+    End Sub
+
+    Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
 
     End Sub
 End Class
