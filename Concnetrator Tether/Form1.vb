@@ -104,19 +104,27 @@ Public Class Form1
 
     End Sub
     Private Sub AccessForm(ByVal TextToDisplay As String)
+
+        ParseIncoming(TextToDisplay)
+
+    End Sub
+
+
+    Private Sub ParseIncoming(ByRef IncomingData As String)
+
         Dim length As Integer
 
-        length = TextToDisplay.Length
-        If (TextToDisplay(0) = "@") Then
+        length = IncomingData.Length
+        If (IncomingData(0) = "@") Then
 
-            lbl_Returned_Times.Text = TextToDisplay
+            lbl_Returned_Times.Text = IncomingData
         Else
 
             ' you want to split this input string
 
 
             ' Split string based on comma
-            Dim words As String() = TextToDisplay.Split(New Char() {","c})
+            Dim words As String() = IncomingData.Split(New Char() {","c})
 
             ' Use For Each loop over words and display them
             Dim word As String
@@ -128,21 +136,14 @@ Public Class Form1
             Next
             If TP_Calibration.Visible = True Then
                 LBL_RawPT1.Text = datavalue(0)
+
             End If
 
             GraphIncoming(datavalue)
 
             '' Add points to the chart
-            TextBox1.AppendText(TextToDisplay)
+            TextBox1.AppendText(IncomingData)
         End If
-    End Sub
-
-
-
-
-    Private Sub ParseIncoming(ByValIncomingData As String)
-
-
 
 
     End Sub
