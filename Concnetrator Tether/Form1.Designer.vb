@@ -22,60 +22,36 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.TP_Calibration = New System.Windows.Forms.TabPage()
+        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Btn_Update_Graph = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbl_Returned_Times = New System.Windows.Forms.Label()
+        Me.Btn_UpdateCycleTime = New System.Windows.Forms.Button()
+        Me.TB_ProcTIme6 = New System.Windows.Forms.TextBox()
+        Me.TB_ProcTime5 = New System.Windows.Forms.TextBox()
+        Me.TB_ProcTime4 = New System.Windows.Forms.TextBox()
+        Me.TB_ProcTime3 = New System.Windows.Forms.TextBox()
+        Me.TB_ProcTIme2 = New System.Windows.Forms.TextBox()
+        Me.TB_ProcTime1 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TB_ProcTime1 = New System.Windows.Forms.TextBox()
-        Me.TB_ProcTIme2 = New System.Windows.Forms.TextBox()
-        Me.TB_ProcTime3 = New System.Windows.Forms.TextBox()
-        Me.TB_ProcTime4 = New System.Windows.Forms.TextBox()
-        Me.TB_ProcTime5 = New System.Windows.Forms.TextBox()
-        Me.TB_ProcTIme6 = New System.Windows.Forms.TextBox()
-        Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
-        Me.Btn_UpdateCycleTime = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Btn_Update_Graph = New System.Windows.Forms.Button()
-        Me.lbl_Returned_Times = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.TP_Calibration = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.LBL_RawPT1 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
@@ -84,16 +60,40 @@ Partial Class Form1
         Me.Label18 = New System.Windows.Forms.Label()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.LBL_RawPT1 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TP_Calibration.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -123,44 +123,49 @@ Partial Class Form1
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'Chart1
+        'CB_GraphEngUnits
         '
-        ChartArea3.AxisY.MajorGrid.Interval = 0R
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend3)
-        Me.Chart1.Location = New System.Drawing.Point(6, 35)
-        Me.Chart1.Name = "Chart1"
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series7.Legend = "Legend1"
-        Series7.Name = "PT1"
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series8.Legend = "Legend1"
-        Series8.Name = "PT2"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series9.Legend = "Legend1"
-        Series9.Name = "PT3"
-        Me.Chart1.Series.Add(Series7)
-        Me.Chart1.Series.Add(Series8)
-        Me.Chart1.Series.Add(Series9)
-        Me.Chart1.Size = New System.Drawing.Size(1192, 173)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
+        Me.CB_GraphEngUnits.AutoSize = True
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(35, 489)
+        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
+        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
+        Me.CB_GraphEngUnits.TabIndex = 6
+        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
+        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
         '
-        'TP_Calibration
+        'TextBox1
         '
-        Me.TP_Calibration.Controls.Add(Me.GroupBox2)
-        Me.TP_Calibration.Location = New System.Drawing.Point(4, 22)
-        Me.TP_Calibration.Name = "TP_Calibration"
-        Me.TP_Calibration.Padding = New System.Windows.Forms.Padding(3)
-        Me.TP_Calibration.Size = New System.Drawing.Size(1241, 687)
-        Me.TP_Calibration.TabIndex = 1
-        Me.TP_Calibration.Text = "TabPage2"
-        Me.TP_Calibration.UseVisualStyleBackColor = True
+        Me.TextBox1.Location = New System.Drawing.Point(874, 609)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(295, 48)
+        Me.TextBox1.TabIndex = 5
+        '
+        'Btn_Update_Graph
+        '
+        Me.Btn_Update_Graph.Location = New System.Drawing.Point(265, 498)
+        Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
+        Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
+        Me.Btn_Update_Graph.TabIndex = 4
+        Me.Btn_Update_Graph.Text = "Update Graph"
+        Me.Btn_Update_Graph.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(214, 466)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(127, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Graph Display (Seconds):"
+        '
+        'TB_GraphDisplay
+        '
+        Me.TB_GraphDisplay.Location = New System.Drawing.Point(347, 462)
+        Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
+        Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
+        Me.TB_GraphDisplay.TabIndex = 2
+        Me.TB_GraphDisplay.Text = "20"
         '
         'GroupBox1
         '
@@ -178,12 +183,78 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Location = New System.Drawing.Point(53, 482)
+        Me.GroupBox1.Location = New System.Drawing.Point(25, 535)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(593, 132)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
+        '
+        'lbl_Returned_Times
+        '
+        Me.lbl_Returned_Times.AutoSize = True
+        Me.lbl_Returned_Times.Location = New System.Drawing.Point(39, 115)
+        Me.lbl_Returned_Times.Name = "lbl_Returned_Times"
+        Me.lbl_Returned_Times.Size = New System.Drawing.Size(79, 13)
+        Me.lbl_Returned_Times.TabIndex = 13
+        Me.lbl_Returned_Times.Text = "Updated Times"
+        '
+        'Btn_UpdateCycleTime
+        '
+        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(479, 95)
+        Me.Btn_UpdateCycleTime.Name = "Btn_UpdateCycleTime"
+        Me.Btn_UpdateCycleTime.Size = New System.Drawing.Size(75, 23)
+        Me.Btn_UpdateCycleTime.TabIndex = 12
+        Me.Btn_UpdateCycleTime.Text = "Update"
+        Me.Btn_UpdateCycleTime.UseVisualStyleBackColor = True
+        '
+        'TB_ProcTIme6
+        '
+        Me.TB_ProcTIme6.Location = New System.Drawing.Point(489, 68)
+        Me.TB_ProcTIme6.Name = "TB_ProcTIme6"
+        Me.TB_ProcTIme6.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTIme6.TabIndex = 11
+        Me.TB_ProcTIme6.Text = "1000"
+        '
+        'TB_ProcTime5
+        '
+        Me.TB_ProcTime5.Location = New System.Drawing.Point(397, 68)
+        Me.TB_ProcTime5.Name = "TB_ProcTime5"
+        Me.TB_ProcTime5.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTime5.TabIndex = 10
+        Me.TB_ProcTime5.Text = "1000"
+        '
+        'TB_ProcTime4
+        '
+        Me.TB_ProcTime4.Location = New System.Drawing.Point(305, 68)
+        Me.TB_ProcTime4.Name = "TB_ProcTime4"
+        Me.TB_ProcTime4.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTime4.TabIndex = 9
+        Me.TB_ProcTime4.Text = "1000"
+        '
+        'TB_ProcTime3
+        '
+        Me.TB_ProcTime3.Location = New System.Drawing.Point(213, 68)
+        Me.TB_ProcTime3.Name = "TB_ProcTime3"
+        Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTime3.TabIndex = 8
+        Me.TB_ProcTime3.Text = "1000"
+        '
+        'TB_ProcTIme2
+        '
+        Me.TB_ProcTIme2.Location = New System.Drawing.Point(121, 68)
+        Me.TB_ProcTIme2.Name = "TB_ProcTIme2"
+        Me.TB_ProcTIme2.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTIme2.TabIndex = 7
+        Me.TB_ProcTIme2.Text = "1000"
+        '
+        'TB_ProcTime1
+        '
+        Me.TB_ProcTime1.Location = New System.Drawing.Point(29, 68)
+        Me.TB_ProcTime1.Name = "TB_ProcTime1"
+        Me.TB_ProcTime1.Size = New System.Drawing.Size(50, 20)
+        Me.TB_ProcTime1.TabIndex = 6
+        Me.TB_ProcTime1.Text = "1000"
         '
         'Label6
         '
@@ -212,15 +283,6 @@ Partial Class Form1
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Step 4"
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(127, 27)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(38, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Step 2"
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -229,6 +291,15 @@ Partial Class Form1
         Me.Label8.Size = New System.Drawing.Size(38, 13)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Step 3"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(127, 27)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(38, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Step 2"
         '
         'Label7
         '
@@ -239,105 +310,44 @@ Partial Class Form1
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Step 1"
         '
-        'TB_ProcTime1
+        'Chart1
         '
-        Me.TB_ProcTime1.Location = New System.Drawing.Point(29, 68)
-        Me.TB_ProcTime1.Name = "TB_ProcTime1"
-        Me.TB_ProcTime1.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTime1.TabIndex = 6
-        Me.TB_ProcTime1.Text = "1000"
+        ChartArea2.AxisY.MajorGrid.Interval = 0R
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
+        Me.Chart1.Location = New System.Drawing.Point(6, 35)
+        Me.Chart1.Name = "Chart1"
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Legend = "Legend1"
+        Series4.Name = "PT1"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Legend = "Legend1"
+        Series5.Name = "PT2"
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Legend = "Legend1"
+        Series6.Name = "PT3"
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Series.Add(Series5)
+        Me.Chart1.Series.Add(Series6)
+        Me.Chart1.Size = New System.Drawing.Size(1192, 409)
+        Me.Chart1.TabIndex = 0
+        Me.Chart1.Text = "Chart1"
         '
-        'TB_ProcTIme2
+        'TP_Calibration
         '
-        Me.TB_ProcTIme2.Location = New System.Drawing.Point(121, 68)
-        Me.TB_ProcTIme2.Name = "TB_ProcTIme2"
-        Me.TB_ProcTIme2.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTIme2.TabIndex = 7
-        Me.TB_ProcTIme2.Text = "1000"
-        '
-        'TB_ProcTime3
-        '
-        Me.TB_ProcTime3.Location = New System.Drawing.Point(213, 68)
-        Me.TB_ProcTime3.Name = "TB_ProcTime3"
-        Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTime3.TabIndex = 8
-        Me.TB_ProcTime3.Text = "1000"
-        '
-        'TB_ProcTime4
-        '
-        Me.TB_ProcTime4.Location = New System.Drawing.Point(305, 68)
-        Me.TB_ProcTime4.Name = "TB_ProcTime4"
-        Me.TB_ProcTime4.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTime4.TabIndex = 9
-        Me.TB_ProcTime4.Text = "1000"
-        '
-        'TB_ProcTime5
-        '
-        Me.TB_ProcTime5.Location = New System.Drawing.Point(397, 68)
-        Me.TB_ProcTime5.Name = "TB_ProcTime5"
-        Me.TB_ProcTime5.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTime5.TabIndex = 10
-        Me.TB_ProcTime5.Text = "1000"
-        '
-        'TB_ProcTIme6
-        '
-        Me.TB_ProcTIme6.Location = New System.Drawing.Point(489, 68)
-        Me.TB_ProcTIme6.Name = "TB_ProcTIme6"
-        Me.TB_ProcTIme6.Size = New System.Drawing.Size(50, 20)
-        Me.TB_ProcTIme6.TabIndex = 11
-        Me.TB_ProcTIme6.Text = "1000"
-        '
-        'TB_GraphDisplay
-        '
-        Me.TB_GraphDisplay.Location = New System.Drawing.Point(183, 381)
-        Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
-        Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
-        Me.TB_GraphDisplay.TabIndex = 2
-        Me.TB_GraphDisplay.Text = "20"
-        '
-        'Btn_UpdateCycleTime
-        '
-        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(479, 95)
-        Me.Btn_UpdateCycleTime.Name = "Btn_UpdateCycleTime"
-        Me.Btn_UpdateCycleTime.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_UpdateCycleTime.TabIndex = 12
-        Me.Btn_UpdateCycleTime.Text = "Update"
-        Me.Btn_UpdateCycleTime.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(50, 385)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 13)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Graph Display (Seconds):"
-        '
-        'Btn_Update_Graph
-        '
-        Me.Btn_Update_Graph.Location = New System.Drawing.Point(101, 417)
-        Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
-        Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
-        Me.Btn_Update_Graph.TabIndex = 4
-        Me.Btn_Update_Graph.Text = "Update Graph"
-        Me.Btn_Update_Graph.UseVisualStyleBackColor = True
-        '
-        'lbl_Returned_Times
-        '
-        Me.lbl_Returned_Times.AutoSize = True
-        Me.lbl_Returned_Times.Location = New System.Drawing.Point(39, 115)
-        Me.lbl_Returned_Times.Name = "lbl_Returned_Times"
-        Me.lbl_Returned_Times.Size = New System.Drawing.Size(79, 13)
-        Me.lbl_Returned_Times.TabIndex = 13
-        Me.lbl_Returned_Times.Text = "Updated Times"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(874, 609)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(295, 48)
-        Me.TextBox1.TabIndex = 5
+        Me.TP_Calibration.Controls.Add(Me.GroupBox2)
+        Me.TP_Calibration.Location = New System.Drawing.Point(4, 22)
+        Me.TP_Calibration.Name = "TP_Calibration"
+        Me.TP_Calibration.Padding = New System.Windows.Forms.Padding(3)
+        Me.TP_Calibration.Size = New System.Drawing.Size(1241, 687)
+        Me.TP_Calibration.TabIndex = 1
+        Me.TP_Calibration.Text = "TabPage2"
+        Me.TP_Calibration.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -351,241 +361,6 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Transducer Calibration"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.LBL_RawPT1)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
-        Me.GroupBox3.Controls.Add(Me.Button1)
-        Me.GroupBox3.Controls.Add(Me.Label12)
-        Me.GroupBox3.Controls.Add(Me.Label3)
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
-        Me.GroupBox3.Controls.Add(Me.Btn_PT1UpdateCalH)
-        Me.GroupBox3.Location = New System.Drawing.Point(16, 34)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(164, 244)
-        Me.GroupBox3.TabIndex = 0
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Pressure Transducer 1"
-        '
-        'Btn_PT1UpdateCalH
-        '
-        Me.Btn_PT1UpdateCalH.Location = New System.Drawing.Point(6, 111)
-        Me.Btn_PT1UpdateCalH.Name = "Btn_PT1UpdateCalH"
-        Me.Btn_PT1UpdateCalH.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_PT1UpdateCalH.TabIndex = 0
-        Me.Btn_PT1UpdateCalH.Text = "Cal High"
-        Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(6, 74)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox2.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 58)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(122, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "High Pressure Eng Units"
-        '
-        'CB_GraphEngUnits
-        '
-        Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(25, 220)
-        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
-        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
-        Me.CB_GraphEngUnits.TabIndex = 6
-        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
-        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(6, 158)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(120, 13)
-        Me.Label12.TabIndex = 3
-        Me.Label12.Text = "Low Pressure Eng Units"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(9, 200)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Cal Low"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(6, 174)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox3.TabIndex = 5
-        '
-        'LBL_RawPT1
-        '
-        Me.LBL_RawPT1.AutoSize = True
-        Me.LBL_RawPT1.Location = New System.Drawing.Point(31, 27)
-        Me.LBL_RawPT1.Name = "LBL_RawPT1"
-        Me.LBL_RawPT1.Size = New System.Drawing.Size(45, 13)
-        Me.LBL_RawPT1.TabIndex = 6
-        Me.LBL_RawPT1.Text = "Label13"
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Label9)
-        Me.GroupBox4.Controls.Add(Me.TextBox4)
-        Me.GroupBox4.Controls.Add(Me.Button2)
-        Me.GroupBox4.Controls.Add(Me.Label10)
-        Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Controls.Add(Me.TextBox5)
-        Me.GroupBox4.Controls.Add(Me.Button3)
-        Me.GroupBox4.Location = New System.Drawing.Point(205, 34)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(164, 244)
-        Me.GroupBox4.TabIndex = 7
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Pressure Transducer 1"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(31, 27)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "Label13"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(6, 174)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox4.TabIndex = 5
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(9, 200)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Cal Low"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(6, 158)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(120, 13)
-        Me.Label10.TabIndex = 3
-        Me.Label10.Text = "Low Pressure Eng Units"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(6, 58)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(122, 13)
-        Me.Label11.TabIndex = 2
-        Me.Label11.Text = "High Pressure Eng Units"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(6, 74)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox5.TabIndex = 1
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(6, 111)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 0
-        Me.Button3.Text = "Cal High"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.Label13)
-        Me.GroupBox5.Controls.Add(Me.TextBox6)
-        Me.GroupBox5.Controls.Add(Me.Button4)
-        Me.GroupBox5.Controls.Add(Me.Label14)
-        Me.GroupBox5.Controls.Add(Me.Label15)
-        Me.GroupBox5.Controls.Add(Me.TextBox7)
-        Me.GroupBox5.Controls.Add(Me.Button5)
-        Me.GroupBox5.Location = New System.Drawing.Point(394, 34)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(164, 244)
-        Me.GroupBox5.TabIndex = 7
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Pressure Transducer 1"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(31, 27)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(45, 13)
-        Me.Label13.TabIndex = 6
-        Me.Label13.Text = "Label13"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(6, 174)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox6.TabIndex = 5
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(9, 200)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Cal Low"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 158)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(120, 13)
-        Me.Label14.TabIndex = 3
-        Me.Label14.Text = "Low Pressure Eng Units"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 58)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(122, 13)
-        Me.Label15.TabIndex = 2
-        Me.Label15.Text = "High Pressure Eng Units"
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(6, 74)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox7.TabIndex = 1
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(6, 111)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 0
-        Me.Button5.Text = "Cal High"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'GroupBox6
         '
@@ -662,6 +437,231 @@ Partial Class Form1
         Me.Button7.Text = "Cal High"
         Me.Button7.UseVisualStyleBackColor = True
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label13)
+        Me.GroupBox5.Controls.Add(Me.TextBox6)
+        Me.GroupBox5.Controls.Add(Me.Button4)
+        Me.GroupBox5.Controls.Add(Me.Label14)
+        Me.GroupBox5.Controls.Add(Me.Label15)
+        Me.GroupBox5.Controls.Add(Me.TextBox7)
+        Me.GroupBox5.Controls.Add(Me.Button5)
+        Me.GroupBox5.Location = New System.Drawing.Point(394, 34)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(164, 244)
+        Me.GroupBox5.TabIndex = 7
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Pressure Transducer 1"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(31, 27)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(45, 13)
+        Me.Label13.TabIndex = 6
+        Me.Label13.Text = "Label13"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(6, 174)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox6.TabIndex = 5
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(9, 200)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Cal Low"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 158)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(120, 13)
+        Me.Label14.TabIndex = 3
+        Me.Label14.Text = "Low Pressure Eng Units"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(6, 58)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(122, 13)
+        Me.Label15.TabIndex = 2
+        Me.Label15.Text = "High Pressure Eng Units"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(6, 74)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox7.TabIndex = 1
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(6, 111)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 0
+        Me.Button5.Text = "Cal High"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Label9)
+        Me.GroupBox4.Controls.Add(Me.TextBox4)
+        Me.GroupBox4.Controls.Add(Me.Button2)
+        Me.GroupBox4.Controls.Add(Me.Label10)
+        Me.GroupBox4.Controls.Add(Me.Label11)
+        Me.GroupBox4.Controls.Add(Me.TextBox5)
+        Me.GroupBox4.Controls.Add(Me.Button3)
+        Me.GroupBox4.Location = New System.Drawing.Point(205, 34)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(164, 244)
+        Me.GroupBox4.TabIndex = 7
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Pressure Transducer 1"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(31, 27)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(45, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Label13"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(6, 174)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox4.TabIndex = 5
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(9, 200)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 4
+        Me.Button2.Text = "Cal Low"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(6, 158)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(120, 13)
+        Me.Label10.TabIndex = 3
+        Me.Label10.Text = "Low Pressure Eng Units"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(6, 58)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(122, 13)
+        Me.Label11.TabIndex = 2
+        Me.Label11.Text = "High Pressure Eng Units"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(6, 74)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox5.TabIndex = 1
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(6, 111)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 0
+        Me.Button3.Text = "Cal High"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.LBL_RawPT1)
+        Me.GroupBox3.Controls.Add(Me.TextBox3)
+        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.Label12)
+        Me.GroupBox3.Controls.Add(Me.Label3)
+        Me.GroupBox3.Controls.Add(Me.TextBox2)
+        Me.GroupBox3.Controls.Add(Me.Btn_PT1UpdateCalH)
+        Me.GroupBox3.Location = New System.Drawing.Point(16, 34)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(164, 244)
+        Me.GroupBox3.TabIndex = 0
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Pressure Transducer 1"
+        '
+        'LBL_RawPT1
+        '
+        Me.LBL_RawPT1.AutoSize = True
+        Me.LBL_RawPT1.Location = New System.Drawing.Point(31, 27)
+        Me.LBL_RawPT1.Name = "LBL_RawPT1"
+        Me.LBL_RawPT1.Size = New System.Drawing.Size(45, 13)
+        Me.LBL_RawPT1.TabIndex = 6
+        Me.LBL_RawPT1.Text = "Label13"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(6, 174)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox3.TabIndex = 5
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(9, 200)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Cal Low"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(6, 158)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(120, 13)
+        Me.Label12.TabIndex = 3
+        Me.Label12.Text = "Low Pressure Eng Units"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 58)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(122, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "High Pressure Eng Units"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(6, 74)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox2.TabIndex = 1
+        '
+        'Btn_PT1UpdateCalH
+        '
+        Me.Btn_PT1UpdateCalH.Location = New System.Drawing.Point(6, 111)
+        Me.Btn_PT1UpdateCalH.Name = "Btn_PT1UpdateCalH"
+        Me.Btn_PT1UpdateCalH.Size = New System.Drawing.Size(75, 23)
+        Me.Btn_PT1UpdateCalH.TabIndex = 0
+        Me.Btn_PT1UpdateCalH.Text = "Cal High"
+        Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -674,19 +674,19 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TP_Calibration.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TP_Calibration.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
