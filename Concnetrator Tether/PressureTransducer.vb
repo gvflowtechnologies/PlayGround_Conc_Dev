@@ -5,13 +5,13 @@
 
     End Sub
 
-    Public Function(ByVal RawReading As Int32)
+    '   Public Function(ByVal RawReading As Int32)
 
 
-        Return
+    'Return
 
 
-    End Function
+    'End Function
 
 
 
