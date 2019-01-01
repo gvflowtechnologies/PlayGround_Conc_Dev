@@ -128,7 +128,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(7) As Integer
+            Dim datavalue(8) As Integer
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Int32.TryParse(word, datavalue(i))
@@ -173,6 +173,7 @@ Public Class Form1
         Dim builder As New System.Text.StringBuilder
         Dim cycles As Integer
 
+        builder.Append("#")
         cycles = CInt(TB_ProcTime1.Text) / timerperiod
         builder.Append(cycles)
         builder.Append(":")
@@ -210,6 +211,10 @@ Public Class Form1
     End Sub
 
     Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
+
+    End Sub
+
+    Private Sub Chart1_Click(sender As Object, e As EventArgs) Handles Chart1.Click
 
     End Sub
 End Class
