@@ -84,6 +84,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -340,6 +341,7 @@ Partial Class Form1
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.Button8)
         Me.TP_Calibration.Controls.Add(Me.GroupBox2)
         Me.TP_Calibration.Location = New System.Drawing.Point(4, 22)
         Me.TP_Calibration.Name = "TP_Calibration"
@@ -662,6 +664,15 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH.Text = "Cal High"
         Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
         '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(228, 529)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 1
+        Me.Button8.Text = "Button8"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -748,4 +759,5 @@ Partial Class Form1
     Friend WithEvents Label11 As Label
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Button3 As Button
+    Friend WithEvents Button8 As Button
 End Class

@@ -217,4 +217,21 @@ Public Class Form1
     Private Sub Chart1_Click(sender As Object, e As EventArgs) Handles Chart1.Click
 
     End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+
+        Dim updatedtimes As String
+        Dim builder As New System.Text.StringBuilder
+        Dim cycles As Integer
+
+        builder.Append("#")
+        builder.Append("PT0")
+        builder.Append("2")
+        cycles = CInt(TB_ProcTime4.Text) / timerperiod
+        builder.Append("$")
+        '#PT000000023465$
+        updatedtimes = builder.ToString
+        Mycom.Write(updatedtimes)
+
+    End Sub
 End Class
