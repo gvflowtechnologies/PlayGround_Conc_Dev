@@ -29,6 +29,14 @@ Public Class Form1
 
         End With
 
+        Dim v As String
+        If System.Diagnostics.Debugger.IsAttached = False Then
+            v = My.Application.Deployment.CurrentVersion.ToString
+        Else
+            v = "Unable to Determine Current Version"
+        End If
+        LblVersion.Text = "Version:" & v
+
     End Sub
 
     Public Sub RetrieveSettings()
