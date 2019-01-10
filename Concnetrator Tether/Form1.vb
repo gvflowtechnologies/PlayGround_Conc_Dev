@@ -4,19 +4,25 @@ Imports System.Threading
 
 Public Class Form1
 
+    Enum commstatus
+        Ready = 0
+        Pending = 1
+        Resend = 2
+    End Enum
 
-
+    Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
 
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
-
+    Dim cycles(5) As Integer
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
 
+        DataSent = commstatus.Ready
 
-        newcommport()
+        Newcommport()
         RetrieveSettings()
 
         With Chart1
@@ -63,8 +69,9 @@ Public Class Form1
                 .StopBits = StopBits.One
                 .Handshake = Handshake.None  ' Need to think here
                 .DataBits = 8
-                .ReceivedBytesThreshold = 14 ' one byte short of a complete messsage string of 16 asci characters   
+                .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
                 .WriteTimeout = 500
+                .ReadTimeout = 100
                 .WriteBufferSize = 500
             End With
         End If
@@ -126,6 +133,7 @@ Public Class Form1
         If (IncomingData(0) = "@") Then
 
             lbl_Returned_Times.Text = IncomingData
+            TextBox10.Text = IncomingData
         Else
 
             ' you want to split this input string
@@ -143,7 +151,7 @@ Public Class Form1
                 i = i + 1
             Next
             If TP_Calibration.Visible = True Then
-                LBL_RawPT1.Text = datavalue(0)
+                '   LBL_RawPT1.Text = datavalue(0)
 
             End If
 
@@ -179,27 +187,25 @@ Public Class Form1
     Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
         Dim updatedtimes As String
         Dim builder As New System.Text.StringBuilder
-        Dim cycles As Integer
+        'Dim cycles As Integer
 
         builder.Append("#")
-        cycles = CInt(TB_ProcTime1.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append(":")
-        cycles = CInt(TB_ProcTIme2.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append(":")
-        cycles = CInt(TB_ProcTime3.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append(":")
-        cycles = CInt(TB_ProcTime4.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append(":")
-        cycles = CInt(TB_ProcTime5.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append(":")
-        cycles = CInt(TB_ProcTIme6.Text) / timerperiod
-        builder.Append(cycles)
-        builder.Append("Z")
+        cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
+        cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
+        cycles(2) = CInt(TB_ProcTime3.Text) / timerperiod
+        cycles(3) = CInt(TB_ProcTime4.Text) / timerperiod
+        cycles(4) = CInt(TB_ProcTime5.Text) / timerperiod
+        cycles(5) = CInt(TB_ProcTIme6.Text) / timerperiod
+
+        For Each cycletime In cycles
+
+
+
+
+
+
+
+        Next
 
         updatedtimes = builder.ToString
         Mycom.Write(updatedtimes)
@@ -231,15 +237,49 @@ Public Class Form1
         Dim updatedtimes As String
         Dim builder As New System.Text.StringBuilder
         Dim cycles As Integer
+        Dim checksum As Char
+        cycles = CInt(TB_ProcTime4.Text) / timerperiod
+        Dim length As Int16
+        length = 0
+
+        checksum = Chcksum(cycles, length)
 
         builder.Append("#")
         builder.Append("PT0")
-        builder.Append("2")
-        cycles = CInt(TB_ProcTime4.Text) / timerperiod
+        builder.Append(length)
+
+        builder.Append(cycles.ToString)
+        builder.Append(checksum)
         builder.Append("$")
-        '#PT000000023465$
+        '#PT03200k$
         updatedtimes = builder.ToString
         Mycom.Write(updatedtimes)
 
     End Sub
+    Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
+        Dim Stemp As String
+
+        ' convert number to a string
+        Stemp = outgoingdata.ToString()
+        Dim sum As Byte = 0
+        Dim Bmodule As Byte
+        Dim diff As Byte
+        ' convert each character in string to a byte asci
+        Dim calcaray() As Char = Stemp.ToCharArray
+        ' calculate checksum
+        ' convert each character into asci value
+        Larray = Stemp.Length
+        For Each Character In calcaray
+            sum = (sum + Convert.ToByte(Character)) And &HFF
+        Next
+        Bmodule = sum Mod 256
+        diff = 253 - Bmodule
+        'Convert check sum into character to send
+        Dim Creturn As Char = Chr(diff) ' System.Text.Encoding.ASCII.GetChars(diff)
+        Return Creturn
+
+
+
+
+    End Function
 End Class

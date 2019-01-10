@@ -29,6 +29,7 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.LblVersion = New System.Windows.Forms.Label()
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Btn_Update_Graph = New System.Windows.Forms.Button()
@@ -51,6 +52,7 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TP_Calibration = New System.Windows.Forms.TabPage()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
@@ -85,7 +87,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
-        Me.LblVersion = New System.Windows.Forms.Label()
+        Me.Lbl_PTime1 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -126,10 +128,19 @@ Partial Class Form1
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'LblVersion
+        '
+        Me.LblVersion.AutoSize = True
+        Me.LblVersion.Location = New System.Drawing.Point(1103, 654)
+        Me.LblVersion.Name = "LblVersion"
+        Me.LblVersion.Size = New System.Drawing.Size(42, 13)
+        Me.LblVersion.TabIndex = 7
+        Me.LblVersion.Text = "Version"
+        '
         'CB_GraphEngUnits
         '
         Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(35, 489)
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(25, 440)
         Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
         Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
         Me.CB_GraphEngUnits.TabIndex = 6
@@ -146,7 +157,7 @@ Partial Class Form1
         '
         'Btn_Update_Graph
         '
-        Me.Btn_Update_Graph.Location = New System.Drawing.Point(265, 498)
+        Me.Btn_Update_Graph.Location = New System.Drawing.Point(225, 471)
         Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
         Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
         Me.Btn_Update_Graph.TabIndex = 4
@@ -156,7 +167,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(214, 466)
+        Me.Label1.Location = New System.Drawing.Point(174, 439)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(127, 13)
         Me.Label1.TabIndex = 3
@@ -164,7 +175,7 @@ Partial Class Form1
         '
         'TB_GraphDisplay
         '
-        Me.TB_GraphDisplay.Location = New System.Drawing.Point(347, 462)
+        Me.TB_GraphDisplay.Location = New System.Drawing.Point(307, 435)
         Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
         Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
         Me.TB_GraphDisplay.TabIndex = 2
@@ -172,6 +183,7 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime1)
         Me.GroupBox1.Controls.Add(Me.lbl_Returned_Times)
         Me.GroupBox1.Controls.Add(Me.Btn_UpdateCycleTime)
         Me.GroupBox1.Controls.Add(Me.TB_ProcTIme6)
@@ -186,9 +198,9 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Location = New System.Drawing.Point(25, 535)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 535)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(593, 132)
+        Me.GroupBox1.Size = New System.Drawing.Size(612, 146)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
@@ -204,7 +216,7 @@ Partial Class Form1
         '
         'Btn_UpdateCycleTime
         '
-        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(479, 95)
+        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(531, 119)
         Me.Btn_UpdateCycleTime.Name = "Btn_UpdateCycleTime"
         Me.Btn_UpdateCycleTime.Size = New System.Drawing.Size(75, 23)
         Me.Btn_UpdateCycleTime.TabIndex = 12
@@ -213,7 +225,7 @@ Partial Class Form1
         '
         'TB_ProcTIme6
         '
-        Me.TB_ProcTIme6.Location = New System.Drawing.Point(489, 68)
+        Me.TB_ProcTIme6.Location = New System.Drawing.Point(498, 43)
         Me.TB_ProcTIme6.Name = "TB_ProcTIme6"
         Me.TB_ProcTIme6.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTIme6.TabIndex = 11
@@ -221,7 +233,7 @@ Partial Class Form1
         '
         'TB_ProcTime5
         '
-        Me.TB_ProcTime5.Location = New System.Drawing.Point(397, 68)
+        Me.TB_ProcTime5.Location = New System.Drawing.Point(406, 43)
         Me.TB_ProcTime5.Name = "TB_ProcTime5"
         Me.TB_ProcTime5.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime5.TabIndex = 10
@@ -229,7 +241,7 @@ Partial Class Form1
         '
         'TB_ProcTime4
         '
-        Me.TB_ProcTime4.Location = New System.Drawing.Point(305, 68)
+        Me.TB_ProcTime4.Location = New System.Drawing.Point(314, 43)
         Me.TB_ProcTime4.Name = "TB_ProcTime4"
         Me.TB_ProcTime4.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime4.TabIndex = 9
@@ -237,7 +249,7 @@ Partial Class Form1
         '
         'TB_ProcTime3
         '
-        Me.TB_ProcTime3.Location = New System.Drawing.Point(213, 68)
+        Me.TB_ProcTime3.Location = New System.Drawing.Point(222, 43)
         Me.TB_ProcTime3.Name = "TB_ProcTime3"
         Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime3.TabIndex = 8
@@ -245,7 +257,7 @@ Partial Class Form1
         '
         'TB_ProcTIme2
         '
-        Me.TB_ProcTIme2.Location = New System.Drawing.Point(121, 68)
+        Me.TB_ProcTIme2.Location = New System.Drawing.Point(130, 43)
         Me.TB_ProcTIme2.Name = "TB_ProcTIme2"
         Me.TB_ProcTIme2.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTIme2.TabIndex = 7
@@ -253,7 +265,7 @@ Partial Class Form1
         '
         'TB_ProcTime1
         '
-        Me.TB_ProcTime1.Location = New System.Drawing.Point(29, 68)
+        Me.TB_ProcTime1.Location = New System.Drawing.Point(38, 43)
         Me.TB_ProcTime1.Name = "TB_ProcTime1"
         Me.TB_ProcTime1.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime1.TabIndex = 6
@@ -343,6 +355,7 @@ Partial Class Form1
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.TextBox10)
         Me.TP_Calibration.Controls.Add(Me.Button8)
         Me.TP_Calibration.Controls.Add(Me.GroupBox2)
         Me.TP_Calibration.Location = New System.Drawing.Point(4, 22)
@@ -352,6 +365,14 @@ Partial Class Form1
         Me.TP_Calibration.TabIndex = 1
         Me.TP_Calibration.Text = "TabPage2"
         Me.TP_Calibration.UseVisualStyleBackColor = True
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(195, 378)
+        Me.TextBox10.Multiline = True
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(158, 145)
+        Me.TextBox10.TabIndex = 2
         '
         'Button8
         '
@@ -675,14 +696,14 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH.Text = "Cal High"
         Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
         '
-        'LblVersion
+        'Lbl_PTime1
         '
-        Me.LblVersion.AutoSize = True
-        Me.LblVersion.Location = New System.Drawing.Point(1103, 654)
-        Me.LblVersion.Name = "LblVersion"
-        Me.LblVersion.Size = New System.Drawing.Size(42, 13)
-        Me.LblVersion.TabIndex = 7
-        Me.LblVersion.Text = "Version"
+        Me.Lbl_PTime1.AutoSize = True
+        Me.Lbl_PTime1.Location = New System.Drawing.Point(35, 79)
+        Me.Lbl_PTime1.Name = "Lbl_PTime1"
+        Me.Lbl_PTime1.Size = New System.Drawing.Size(31, 13)
+        Me.Lbl_PTime1.TabIndex = 14
+        Me.Lbl_PTime1.Text = "1000"
         '
         'Form1
         '
@@ -700,6 +721,7 @@ Partial Class Form1
         Me.GroupBox1.PerformLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TP_Calibration.ResumeLayout(False)
+        Me.TP_Calibration.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
@@ -772,4 +794,6 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents LblVersion As Label
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents Lbl_PTime1 As Label
 End Class
