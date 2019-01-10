@@ -71,7 +71,8 @@ Public Class Form1
 
                     Exit Do
                 End If
-                Thread.Sleep(5)
+                Thread.Sleep(1)
+                Application.DoEvents()
             Loop
             Thread.Sleep(1)
         Loop
@@ -307,12 +308,13 @@ Public Class Form1
         builder.Append(cycles.ToString)
         builder.Append(checksum)
         builder.Append("$")
-        '#PT03200k$
-
         updatedtimes = builder.ToString
 
 
-        SendData(updatedtimes)
+        receivedstatus = SendData(updatedtimes)
+        ' transfer procedure
+
+
         Thread.Sleep(5)
         If DataSent = commstatus.Ready Then
             Button8.Text = "Success"
