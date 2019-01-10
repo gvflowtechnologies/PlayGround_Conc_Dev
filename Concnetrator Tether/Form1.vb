@@ -57,9 +57,9 @@ Public Class Form1
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
             packetsendtries = packetsendtries + 1
-            sendtimeout.Start()
+            sendtimeout.Restart()
 
-            Do While (sendtimeout.ElapsedMilliseconds < 1500)
+            Do While sendtimeout.ElapsedMilliseconds < 1000
 
                 If DataSent = commstatus.Ready Then
                     transfersucess = True
@@ -71,9 +71,9 @@ Public Class Form1
 
                     Exit Do
                 End If
-                Thread.Sleep(1)
+                Thread.Sleep(5)
             Loop
-
+            Thread.Sleep(1)
         Loop
 
         transfersucess = False
@@ -107,7 +107,7 @@ Public Class Form1
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
                 .WriteTimeout = 500
-                .ReadTimeout = 100
+                .ReadTimeout = 500
                 .WriteBufferSize = 500
             End With
         End If
@@ -166,10 +166,21 @@ Public Class Form1
         Dim length As Integer
 
         length = IncomingData.Length
-        If (IncomingData(0) = "@") Then
+        If (IncomingData(0) = "#") Then
 
             lbl_Returned_Times.Text = IncomingData
             TextBox10.Text = IncomingData
+            Select Case IncomingData(1)
+                Case "P"
+                    Label19.Text = "Yes"
+                    DataSent = commstatus.Ready
+                Case "R"
+                    DataSent = commstatus.Resend
+                    Label19.Text = "Resend"
+                Case Else
+                    Label19.Text = "No Command"
+            End Select
+
         Else
 
             ' you want to split this input string
@@ -194,7 +205,7 @@ Public Class Form1
             GraphIncoming(datavalue)
 
             '' Add points to the chart
-            TextBox1.AppendText(IncomingData)
+            'TextBox1.AppendText(IncomingData)
         End If
 
 
@@ -285,8 +296,9 @@ Public Class Form1
         Dim length As Int16
         Dim receivedstatus As Boolean
         length = 0
-
+        TextBox10.Text = ""
         checksum = Chcksum(cycles, length)
+        Button8.Text = "SET"
 
         builder.Append("#")
         builder.Append("PT0")
@@ -298,9 +310,16 @@ Public Class Form1
         '#PT03200k$
 
         updatedtimes = builder.ToString
-        receivedstatus = SendData(updatedtimes)
-        If (receivedstatus = False) Then
-            Button8.BackColor = SystemColors.ControlLight
+
+
+        SendData(updatedtimes)
+        Thread.Sleep(5)
+        If DataSent = commstatus.Ready Then
+            Button8.Text = "Success"
+
+        Else
+            Button8.Text = "Fail"
+
 
         End If
 

@@ -22,11 +22,11 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.LblVersion = New System.Windows.Forms.Label()
@@ -36,6 +36,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Lbl_PTime1 = New System.Windows.Forms.Label()
         Me.lbl_Returned_Times = New System.Windows.Forms.Label()
         Me.Btn_UpdateCycleTime = New System.Windows.Forms.Button()
         Me.TB_ProcTIme6 = New System.Windows.Forms.TextBox()
@@ -87,7 +88,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
-        Me.Lbl_PTime1 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -204,6 +205,15 @@ Partial Class Form1
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
+        '
+        'Lbl_PTime1
+        '
+        Me.Lbl_PTime1.AutoSize = True
+        Me.Lbl_PTime1.Location = New System.Drawing.Point(35, 79)
+        Me.Lbl_PTime1.Name = "Lbl_PTime1"
+        Me.Lbl_PTime1.Size = New System.Drawing.Size(31, 13)
+        Me.Lbl_PTime1.TabIndex = 14
+        Me.Lbl_PTime1.Text = "1000"
         '
         'lbl_Returned_Times
         '
@@ -327,34 +337,35 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.AxisY.MajorGrid.Interval = 0R
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea3.AxisY.MajorGrid.Interval = 0R
+        ChartArea3.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend3)
         Me.Chart1.Location = New System.Drawing.Point(6, 35)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "PT1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "PT2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "PT3"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Series.Add(Series3)
+        Series7.ChartArea = "ChartArea1"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Legend = "Legend1"
+        Series7.Name = "PT1"
+        Series8.ChartArea = "ChartArea1"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Legend = "Legend1"
+        Series8.Name = "PT2"
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Legend = "Legend1"
+        Series9.Name = "PT3"
+        Me.Chart1.Series.Add(Series7)
+        Me.Chart1.Series.Add(Series8)
+        Me.Chart1.Series.Add(Series9)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.Label19)
         Me.TP_Calibration.Controls.Add(Me.TextBox10)
         Me.TP_Calibration.Controls.Add(Me.Button8)
         Me.TP_Calibration.Controls.Add(Me.GroupBox2)
@@ -368,7 +379,7 @@ Partial Class Form1
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(195, 378)
+        Me.TextBox10.Location = New System.Drawing.Point(196, 388)
         Me.TextBox10.Multiline = True
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.Size = New System.Drawing.Size(158, 145)
@@ -376,7 +387,7 @@ Partial Class Form1
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(228, 529)
+        Me.Button8.Location = New System.Drawing.Point(228, 550)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 23)
         Me.Button8.TabIndex = 1
@@ -696,14 +707,14 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH.Text = "Cal High"
         Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
         '
-        'Lbl_PTime1
+        'Label19
         '
-        Me.Lbl_PTime1.AutoSize = True
-        Me.Lbl_PTime1.Location = New System.Drawing.Point(35, 79)
-        Me.Lbl_PTime1.Name = "Lbl_PTime1"
-        Me.Lbl_PTime1.Size = New System.Drawing.Size(31, 13)
-        Me.Lbl_PTime1.TabIndex = 14
-        Me.Lbl_PTime1.Text = "1000"
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(228, 603)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(45, 13)
+        Me.Label19.TabIndex = 3
+        Me.Label19.Text = "Label19"
         '
         'Form1
         '
@@ -796,4 +807,5 @@ Partial Class Form1
     Friend WithEvents LblVersion As Label
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents Lbl_PTime1 As Label
+    Friend WithEvents Label19 As Label
 End Class
