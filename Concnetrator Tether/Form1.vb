@@ -45,6 +45,42 @@ Public Class Form1
 
     End Sub
 
+    Public Function SendData(ByVal Packet As String) As Boolean
+        ' Function flow chart in lucid
+
+        Dim packetsendtries As Integer = 0
+        Dim sendtimeout As Stopwatch
+        sendtimeout = New Stopwatch
+        Dim transfersucess As Boolean = False
+        Do While packetsendtries < 3
+
+            Mycom.Write(Packet)
+            DataSent = commstatus.Pending
+            packetsendtries = packetsendtries + 1
+            sendtimeout.Start()
+
+            Do While (sendtimeout.ElapsedMilliseconds < 1500)
+
+                If DataSent = commstatus.Ready Then
+                    transfersucess = True
+                    Return transfersucess
+                    Exit Function
+                End If
+
+                If (DataSent = commstatus.Resend) Then
+
+                    Exit Do
+                End If
+                Thread.Sleep(1)
+            Loop
+
+        Loop
+
+        transfersucess = False
+        Return transfersucess
+
+    End Function
+
     Public Sub RetrieveSettings()
 
 
@@ -187,7 +223,10 @@ Public Class Form1
     Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
         Dim updatedtimes As String
         Dim builder As New System.Text.StringBuilder
+        Dim datapacket As String
+        Dim receivedstatus As Boolean
         'Dim cycles As Integer
+        receivedstatus = False
 
         builder.Append("#")
         cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
@@ -206,6 +245,10 @@ Public Class Form1
 
 
         Next
+
+
+        'receivedstatus = SendData(datapacket)
+
 
         updatedtimes = builder.ToString
         Mycom.Write(updatedtimes)
@@ -240,6 +283,7 @@ Public Class Form1
         Dim checksum As Char
         cycles = CInt(TB_ProcTime4.Text) / timerperiod
         Dim length As Int16
+        Dim receivedstatus As Boolean
         length = 0
 
         checksum = Chcksum(cycles, length)
@@ -252,8 +296,13 @@ Public Class Form1
         builder.Append(checksum)
         builder.Append("$")
         '#PT03200k$
+
         updatedtimes = builder.ToString
-        Mycom.Write(updatedtimes)
+        receivedstatus = SendData(updatedtimes)
+        If (receivedstatus = False) Then
+            Button8.BackColor = SystemColors.ControlLight
+
+        End If
 
     End Sub
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
