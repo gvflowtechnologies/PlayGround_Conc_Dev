@@ -49,7 +49,6 @@ Public Class Form1
 
         Dim Spacket As String
         Dim builder As New System.Text.StringBuilder
-        Dim cycles As Integer
         Dim checksum As Char
 
         Dim length As Int16
@@ -79,12 +78,14 @@ Public Class Form1
         Dim transfersucess As Boolean = False
         Do While packetsendtries < 4
 
+            Packet = "$" & Packet
+
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
             packetsendtries = packetsendtries + 1
             sendtimeout.Restart()
 
-            Do While sendtimeout.ElapsedMilliseconds < 1000
+            Do While sendtimeout.ElapsedMilliseconds < 2000
 
                 If DataSent = commstatus.Ready Then
                     transfersucess = True
@@ -96,7 +97,7 @@ Public Class Form1
 
                     Exit Do
                 End If
-                Thread.Sleep(1)
+                Thread.Sleep(2)
                 Application.DoEvents()
             Loop
             Thread.Sleep(1)
@@ -263,9 +264,12 @@ Public Class Form1
         Dim builder As New System.Text.StringBuilder
         Dim datapacket As String
         Dim receivedstatus As Boolean
+
         Dim cyclescount As Integer
         receivedstatus = False
         TextBox1.Text = " "
+        Btn_UpdateCycleTime.Enabled = False
+        Btn_UpdateCycleTime.BackColor = SystemColors.ButtonFace
 
         cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
         cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
@@ -276,15 +280,27 @@ Public Class Form1
         cyclescount = 0
         command = ""
 
-
         For Each cycletime In cycles
-
             command = "PT" & cyclescount.ToString    ' Create Command code
             datapacket = Createpacket(command, cycletime)
             receivedstatus = SendData(datapacket) 'Send String
             cyclescount = cyclescount + 1
             If receivedstatus = False Then Exit For ' If transfer failed alert
         Next
+
+        If receivedstatus Then
+            command = "ACC"
+            datapacket = Createpacket(command, 1000)
+            receivedstatus = SendData(datapacket)
+
+
+        End If
+
+        If Not receivedstatus Then
+            Btn_UpdateCycleTime.BackColor = Color.Red
+        End If
+
+        Btn_UpdateCycleTime.Enabled = True
 
 
 
