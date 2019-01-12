@@ -52,7 +52,7 @@ Public Class Form1
         Dim sendtimeout As Stopwatch
         sendtimeout = New Stopwatch
         Dim transfersucess As Boolean = False
-        Do While packetsendtries < 3
+        Do While packetsendtries < 4
 
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
