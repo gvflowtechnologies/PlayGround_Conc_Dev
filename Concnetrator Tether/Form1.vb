@@ -45,6 +45,31 @@ Public Class Form1
 
     End Sub
 
+    Public Function Createpacket(ByRef command As String, ByRef datavalue As Int16) As String
+
+        Dim Spacket As String
+        Dim builder As New System.Text.StringBuilder
+        Dim cycles As Integer
+        Dim checksum As Char
+
+        Dim length As Int16
+
+        length = 0
+
+        checksum = Chcksum(datavalue, length)
+
+        builder.Append("#")
+        builder.Append(command)
+        builder.Append(length)
+        builder.Append(datavalue.ToString)
+        builder.Append(checksum)
+        builder.Append("$")
+        Spacket = builder.ToString
+        Return Spacket
+
+    End Function
+
+
     Public Function SendData(ByVal Packet As String) As Boolean
         ' Function flow chart in lucid
 
@@ -108,7 +133,7 @@ Public Class Form1
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
                 .WriteTimeout = 500
-                .ReadTimeout = 500
+                .ReadTimeout = 5000
                 .WriteBufferSize = 500
             End With
         End If
@@ -170,7 +195,8 @@ Public Class Form1
         If (IncomingData(0) = "#") Then
 
             lbl_Returned_Times.Text = IncomingData
-            TextBox10.Text = IncomingData
+            TextBox10.Text += IncomingData
+            TextBox1.Text += IncomingData
             Select Case IncomingData(1)
                 Case "P"
                     Label19.Text = "Yes"
@@ -233,37 +259,35 @@ Public Class Form1
     End Sub
 
     Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
-        Dim updatedtimes As String
+        Dim command As String
         Dim builder As New System.Text.StringBuilder
         Dim datapacket As String
         Dim receivedstatus As Boolean
-        'Dim cycles As Integer
+        Dim cyclescount As Integer
         receivedstatus = False
+        TextBox1.Text = " "
 
-        builder.Append("#")
         cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
         cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
         cycles(2) = CInt(TB_ProcTime3.Text) / timerperiod
         cycles(3) = CInt(TB_ProcTime4.Text) / timerperiod
         cycles(4) = CInt(TB_ProcTime5.Text) / timerperiod
         cycles(5) = CInt(TB_ProcTIme6.Text) / timerperiod
+        cyclescount = 0
+        command = ""
+
 
         For Each cycletime In cycles
 
-
-
-
-
-
-
+            command = "PT" & cyclescount.ToString    ' Create Command code
+            datapacket = Createpacket(command, cycletime)
+            receivedstatus = SendData(datapacket) 'Send String
+            cyclescount = cyclescount + 1
+            If receivedstatus = False Then Exit For ' If transfer failed alert
         Next
 
 
-        'receivedstatus = SendData(datapacket)
 
-
-        updatedtimes = builder.ToString
-        Mycom.Write(updatedtimes)
     End Sub
 
     Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs) Handles Btn_Update_Graph.Click
@@ -322,11 +346,13 @@ Public Class Form1
         Else
             Button8.Text = "Fail"
 
-
         End If
 
     End Sub
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
+        ' Function returns an check sum
+        ' Function also updates length by reference.
+
         Dim Stemp As String
 
         ' convert number to a string
