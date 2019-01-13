@@ -89,6 +89,11 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
+        Me.Lbl_PTime2 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime3 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime4 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime5 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime6 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -184,6 +189,11 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime6)
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime5)
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime4)
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime3)
+        Me.GroupBox1.Controls.Add(Me.Lbl_PTime2)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime1)
         Me.GroupBox1.Controls.Add(Me.lbl_Returned_Times)
         Me.GroupBox1.Controls.Add(Me.Btn_UpdateCycleTime)
@@ -209,16 +219,16 @@ Partial Class Form1
         'Lbl_PTime1
         '
         Me.Lbl_PTime1.AutoSize = True
-        Me.Lbl_PTime1.Location = New System.Drawing.Point(35, 79)
+        Me.Lbl_PTime1.Location = New System.Drawing.Point(38, 79)
         Me.Lbl_PTime1.Name = "Lbl_PTime1"
-        Me.Lbl_PTime1.Size = New System.Drawing.Size(31, 13)
+        Me.Lbl_PTime1.Size = New System.Drawing.Size(25, 13)
         Me.Lbl_PTime1.TabIndex = 14
-        Me.Lbl_PTime1.Text = "1000"
+        Me.Lbl_PTime1.Text = "100"
         '
         'lbl_Returned_Times
         '
         Me.lbl_Returned_Times.AutoSize = True
-        Me.lbl_Returned_Times.Location = New System.Drawing.Point(39, 115)
+        Me.lbl_Returned_Times.Location = New System.Drawing.Point(26, 119)
         Me.lbl_Returned_Times.Name = "lbl_Returned_Times"
         Me.lbl_Returned_Times.Size = New System.Drawing.Size(79, 13)
         Me.lbl_Returned_Times.TabIndex = 13
@@ -716,6 +726,51 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH.Text = "Cal High"
         Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
         '
+        'Lbl_PTime2
+        '
+        Me.Lbl_PTime2.AutoSize = True
+        Me.Lbl_PTime2.Location = New System.Drawing.Point(130, 79)
+        Me.Lbl_PTime2.Name = "Lbl_PTime2"
+        Me.Lbl_PTime2.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime2.TabIndex = 15
+        Me.Lbl_PTime2.Text = "100"
+        '
+        'Lbl_PTime3
+        '
+        Me.Lbl_PTime3.AutoSize = True
+        Me.Lbl_PTime3.Location = New System.Drawing.Point(222, 79)
+        Me.Lbl_PTime3.Name = "Lbl_PTime3"
+        Me.Lbl_PTime3.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime3.TabIndex = 16
+        Me.Lbl_PTime3.Text = "100"
+        '
+        'Lbl_PTime4
+        '
+        Me.Lbl_PTime4.AutoSize = True
+        Me.Lbl_PTime4.Location = New System.Drawing.Point(314, 79)
+        Me.Lbl_PTime4.Name = "Lbl_PTime4"
+        Me.Lbl_PTime4.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime4.TabIndex = 17
+        Me.Lbl_PTime4.Text = "100"
+        '
+        'Lbl_PTime5
+        '
+        Me.Lbl_PTime5.AutoSize = True
+        Me.Lbl_PTime5.Location = New System.Drawing.Point(406, 79)
+        Me.Lbl_PTime5.Name = "Lbl_PTime5"
+        Me.Lbl_PTime5.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime5.TabIndex = 18
+        Me.Lbl_PTime5.Text = "100"
+        '
+        'Lbl_PTime6
+        '
+        Me.Lbl_PTime6.AutoSize = True
+        Me.Lbl_PTime6.Location = New System.Drawing.Point(498, 79)
+        Me.Lbl_PTime6.Name = "Lbl_PTime6"
+        Me.Lbl_PTime6.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime6.TabIndex = 19
+        Me.Lbl_PTime6.Text = "100"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -808,4 +863,9 @@ Partial Class Form1
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents Lbl_PTime1 As Label
     Friend WithEvents Label19 As Label
+    Friend WithEvents Lbl_PTime6 As Label
+    Friend WithEvents Lbl_PTime5 As Label
+    Friend WithEvents Lbl_PTime4 As Label
+    Friend WithEvents Lbl_PTime3 As Label
+    Friend WithEvents Lbl_PTime2 As Label
 End Class

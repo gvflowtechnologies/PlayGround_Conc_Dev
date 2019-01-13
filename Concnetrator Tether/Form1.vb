@@ -133,7 +133,7 @@ Public Class Form1
                 .Handshake = Handshake.None  ' Need to think here
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
-                .WriteTimeout = 500
+                .WriteTimeout = 1000
                 .ReadTimeout = 1000
                 .WriteBufferSize = 500
             End With
@@ -284,16 +284,20 @@ Public Class Form1
             command = "PT" & cyclescount.ToString    ' Create Command code
             datapacket = Createpacket(command, cycletime)
             receivedstatus = SendData(datapacket) 'Send String
-            cyclescount = cyclescount + 1
             If receivedstatus = False Then Exit For ' If transfer failed alert
+            cyclescount = cyclescount + 1
+            Dim updatelable() As Control
+            updatelable = Controls.Find("Lbl_PTime" & cyclescount, True)
+            If updatelable.Length > 0 Then
+                updatelable(0).Text = (cycles(cyclescount - 1) * timerperiod)
+            End If
+
         Next
 
         If receivedstatus Then
             command = "ACC"
             datapacket = Createpacket(command, 1000)
             receivedstatus = SendData(datapacket)
-
-
         End If
 
         If Not receivedstatus Then
@@ -323,46 +327,44 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Chart1_Click(sender As Object, e As EventArgs) Handles Chart1.Click
 
-    End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
 
-        Dim updatedtimes As String
-        Dim builder As New System.Text.StringBuilder
-        Dim cycles As Integer
-        Dim checksum As Char
-        cycles = 20 ' CInt(TB_ProcTime4.Text) / timerperiod
-        Dim length As Int16
-        Dim receivedstatus As Boolean
-        length = 0
-        TextBox10.Text = ""
-        checksum = Chcksum(cycles, length)
-        Button8.Text = "SET"
+        'Dim updatedtimes As String
+        'Dim builder As New System.Text.StringBuilder
+        'Dim cycles As Integer
+        'Dim checksum As Char
+        'cycles = 20 ' CInt(TB_ProcTime4.Text) / timerperiod
+        'Dim length As Int16
+        'Dim receivedstatus As Boolean
+        'length = 0
+        'TextBox10.Text = ""
+        'checksum = Chcksum(cycles, length)
+        'Button8.Text = "SET"
 
-        builder.Append("#")
-        builder.Append("PT0")
-        builder.Append(length)
+        'builder.Append("#")
+        'builder.Append("PT0")
+        'builder.Append(length)
 
-        builder.Append(cycles.ToString)
-        builder.Append(checksum)
-        builder.Append("$")
-        updatedtimes = builder.ToString
-
-
-        receivedstatus = SendData(updatedtimes)
-        ' transfer procedure
+        'builder.Append(cycles.ToString)
+        'builder.Append(checksum)
+        'builder.Append("$")
+        'updatedtimes = builder.ToString
 
 
-        Thread.Sleep(5)
-        If DataSent = commstatus.Ready Then
-            Button8.Text = "Success"
+        'receivedstatus = SendData(updatedtimes)
+        'transfer procedure
 
-        Else
-            Button8.Text = "Fail"
 
-        End If
+        'Thread.Sleep(5)
+        'If DataSent = commstatus.Ready Then
+        '    Button8.Text = "Success"
+
+        'Else
+        '    Button8.Text = "Fail"
+
+        'End If
 
     End Sub
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
@@ -375,7 +377,7 @@ Public Class Form1
         Stemp = outgoingdata.ToString()
         Dim sum As Byte = 0
         Dim Bmodule As Byte
-        Dim diff As Byte
+
         ' convert each character in string to a byte asci
         Dim calcaray() As Char = Stemp.ToCharArray
         ' calculate checksum
