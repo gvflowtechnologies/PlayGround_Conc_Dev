@@ -78,14 +78,15 @@ Public Class Form1
         Dim transfersucess As Boolean = False
         Do While packetsendtries < 4
 
-            Packet = "$" & Packet
+            'Packet = "$" & Packet
 
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
             packetsendtries = packetsendtries + 1
             sendtimeout.Restart()
+            lbl_Returned_Times.Text = packetsendtries.ToString
 
-            Do While sendtimeout.ElapsedMilliseconds < 2000
+            Do While sendtimeout.ElapsedMilliseconds < 1000
 
                 If DataSent = commstatus.Ready Then
                     transfersucess = True
@@ -94,7 +95,6 @@ Public Class Form1
                 End If
 
                 If (DataSent = commstatus.Resend) Then
-
                     Exit Do
                 End If
                 Thread.Sleep(2)
@@ -134,7 +134,7 @@ Public Class Form1
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
                 .WriteTimeout = 500
-                .ReadTimeout = 5000
+                .ReadTimeout = 1000
                 .WriteBufferSize = 500
             End With
         End If
@@ -191,13 +191,13 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
-
+        '  TextBox1.Text += IncomingData
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
             lbl_Returned_Times.Text = IncomingData
             TextBox10.Text += IncomingData
-            TextBox1.Text += IncomingData
+            ' TextBox1.Text += IncomingData
             Select Case IncomingData(1)
                 Case "P"
                     Label19.Text = "Yes"
@@ -333,7 +333,7 @@ Public Class Form1
         Dim builder As New System.Text.StringBuilder
         Dim cycles As Integer
         Dim checksum As Char
-        cycles = CInt(TB_ProcTime4.Text) / timerperiod
+        cycles = 20 ' CInt(TB_ProcTime4.Text) / timerperiod
         Dim length As Int16
         Dim receivedstatus As Boolean
         length = 0
@@ -382,12 +382,13 @@ Public Class Form1
         ' convert each character into asci value
         Larray = Stemp.Length
         For Each Character In calcaray
-            sum = (sum + Convert.ToByte(Character)) And &HFF
+            Dim temp As Byte = Convert.ToByte(Character)
+            sum = (sum + temp) And &HFF
         Next
-        Bmodule = sum Mod 256
-        diff = 253 - Bmodule
+        Bmodule = sum Mod 128
+
         'Convert check sum into character to send
-        Dim Creturn As Char = Chr(diff) ' System.Text.Encoding.ASCII.GetChars(diff)
+        Dim Creturn As Char = Chr(Bmodule) ' System.Text.Encoding.ASCII.GetChars(diff)
         Return Creturn
 
 
