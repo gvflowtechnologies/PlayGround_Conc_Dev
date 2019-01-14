@@ -36,6 +36,11 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Lbl_PTime6 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime5 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime4 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime3 = New System.Windows.Forms.Label()
+        Me.Lbl_PTime2 = New System.Windows.Forms.Label()
         Me.Lbl_PTime1 = New System.Windows.Forms.Label()
         Me.lbl_Returned_Times = New System.Windows.Forms.Label()
         Me.Btn_UpdateCycleTime = New System.Windows.Forms.Button()
@@ -89,11 +94,6 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
-        Me.Lbl_PTime2 = New System.Windows.Forms.Label()
-        Me.Lbl_PTime3 = New System.Windows.Forms.Label()
-        Me.Lbl_PTime4 = New System.Windows.Forms.Label()
-        Me.Lbl_PTime5 = New System.Windows.Forms.Label()
-        Me.Lbl_PTime6 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -216,6 +216,51 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
         '
+        'Lbl_PTime6
+        '
+        Me.Lbl_PTime6.AutoSize = True
+        Me.Lbl_PTime6.Location = New System.Drawing.Point(498, 79)
+        Me.Lbl_PTime6.Name = "Lbl_PTime6"
+        Me.Lbl_PTime6.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime6.TabIndex = 19
+        Me.Lbl_PTime6.Text = "100"
+        '
+        'Lbl_PTime5
+        '
+        Me.Lbl_PTime5.AutoSize = True
+        Me.Lbl_PTime5.Location = New System.Drawing.Point(406, 79)
+        Me.Lbl_PTime5.Name = "Lbl_PTime5"
+        Me.Lbl_PTime5.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime5.TabIndex = 18
+        Me.Lbl_PTime5.Text = "100"
+        '
+        'Lbl_PTime4
+        '
+        Me.Lbl_PTime4.AutoSize = True
+        Me.Lbl_PTime4.Location = New System.Drawing.Point(314, 79)
+        Me.Lbl_PTime4.Name = "Lbl_PTime4"
+        Me.Lbl_PTime4.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime4.TabIndex = 17
+        Me.Lbl_PTime4.Text = "100"
+        '
+        'Lbl_PTime3
+        '
+        Me.Lbl_PTime3.AutoSize = True
+        Me.Lbl_PTime3.Location = New System.Drawing.Point(222, 79)
+        Me.Lbl_PTime3.Name = "Lbl_PTime3"
+        Me.Lbl_PTime3.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime3.TabIndex = 16
+        Me.Lbl_PTime3.Text = "100"
+        '
+        'Lbl_PTime2
+        '
+        Me.Lbl_PTime2.AutoSize = True
+        Me.Lbl_PTime2.Location = New System.Drawing.Point(130, 79)
+        Me.Lbl_PTime2.Name = "Lbl_PTime2"
+        Me.Lbl_PTime2.Size = New System.Drawing.Size(25, 13)
+        Me.Lbl_PTime2.TabIndex = 15
+        Me.Lbl_PTime2.Text = "100"
+        '
         'Lbl_PTime1
         '
         Me.Lbl_PTime1.AutoSize = True
@@ -249,7 +294,7 @@ Partial Class Form1
         Me.TB_ProcTIme6.Name = "TB_ProcTIme6"
         Me.TB_ProcTIme6.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTIme6.TabIndex = 11
-        Me.TB_ProcTIme6.Text = "1000"
+        Me.TB_ProcTIme6.Text = "320"
         '
         'TB_ProcTime5
         '
@@ -257,7 +302,7 @@ Partial Class Form1
         Me.TB_ProcTime5.Name = "TB_ProcTime5"
         Me.TB_ProcTime5.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime5.TabIndex = 10
-        Me.TB_ProcTime5.Text = "1000"
+        Me.TB_ProcTime5.Text = "480"
         '
         'TB_ProcTime4
         '
@@ -265,7 +310,7 @@ Partial Class Form1
         Me.TB_ProcTime4.Name = "TB_ProcTime4"
         Me.TB_ProcTime4.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime4.TabIndex = 9
-        Me.TB_ProcTime4.Text = "1000"
+        Me.TB_ProcTime4.Text = "5000"
         '
         'TB_ProcTime3
         '
@@ -273,7 +318,7 @@ Partial Class Form1
         Me.TB_ProcTime3.Name = "TB_ProcTime3"
         Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime3.TabIndex = 8
-        Me.TB_ProcTime3.Text = "1000"
+        Me.TB_ProcTime3.Text = "320"
         '
         'TB_ProcTIme2
         '
@@ -281,7 +326,7 @@ Partial Class Form1
         Me.TB_ProcTIme2.Name = "TB_ProcTIme2"
         Me.TB_ProcTIme2.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTIme2.TabIndex = 7
-        Me.TB_ProcTIme2.Text = "1000"
+        Me.TB_ProcTIme2.Text = "480"
         '
         'TB_ProcTime1
         '
@@ -289,7 +334,7 @@ Partial Class Form1
         Me.TB_ProcTime1.Name = "TB_ProcTime1"
         Me.TB_ProcTime1.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime1.TabIndex = 6
-        Me.TB_ProcTime1.Text = "1000"
+        Me.TB_ProcTime1.Text = "5000"
         '
         'Label6
         '
@@ -725,51 +770,6 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH.TabIndex = 0
         Me.Btn_PT1UpdateCalH.Text = "Cal High"
         Me.Btn_PT1UpdateCalH.UseVisualStyleBackColor = True
-        '
-        'Lbl_PTime2
-        '
-        Me.Lbl_PTime2.AutoSize = True
-        Me.Lbl_PTime2.Location = New System.Drawing.Point(130, 79)
-        Me.Lbl_PTime2.Name = "Lbl_PTime2"
-        Me.Lbl_PTime2.Size = New System.Drawing.Size(25, 13)
-        Me.Lbl_PTime2.TabIndex = 15
-        Me.Lbl_PTime2.Text = "100"
-        '
-        'Lbl_PTime3
-        '
-        Me.Lbl_PTime3.AutoSize = True
-        Me.Lbl_PTime3.Location = New System.Drawing.Point(222, 79)
-        Me.Lbl_PTime3.Name = "Lbl_PTime3"
-        Me.Lbl_PTime3.Size = New System.Drawing.Size(25, 13)
-        Me.Lbl_PTime3.TabIndex = 16
-        Me.Lbl_PTime3.Text = "100"
-        '
-        'Lbl_PTime4
-        '
-        Me.Lbl_PTime4.AutoSize = True
-        Me.Lbl_PTime4.Location = New System.Drawing.Point(314, 79)
-        Me.Lbl_PTime4.Name = "Lbl_PTime4"
-        Me.Lbl_PTime4.Size = New System.Drawing.Size(25, 13)
-        Me.Lbl_PTime4.TabIndex = 17
-        Me.Lbl_PTime4.Text = "100"
-        '
-        'Lbl_PTime5
-        '
-        Me.Lbl_PTime5.AutoSize = True
-        Me.Lbl_PTime5.Location = New System.Drawing.Point(406, 79)
-        Me.Lbl_PTime5.Name = "Lbl_PTime5"
-        Me.Lbl_PTime5.Size = New System.Drawing.Size(25, 13)
-        Me.Lbl_PTime5.TabIndex = 18
-        Me.Lbl_PTime5.Text = "100"
-        '
-        'Lbl_PTime6
-        '
-        Me.Lbl_PTime6.AutoSize = True
-        Me.Lbl_PTime6.Location = New System.Drawing.Point(498, 79)
-        Me.Lbl_PTime6.Name = "Lbl_PTime6"
-        Me.Lbl_PTime6.Size = New System.Drawing.Size(25, 13)
-        Me.Lbl_PTime6.TabIndex = 19
-        Me.Lbl_PTime6.Text = "100"
         '
         'Form1
         '

@@ -76,7 +76,7 @@ Public Class Form1
         Dim sendtimeout As Stopwatch
         sendtimeout = New Stopwatch
         Dim transfersucess As Boolean = False
-        Do While packetsendtries < 4
+        Do While packetsendtries < 3
 
             'Packet = "$" & Packet
 
@@ -97,7 +97,7 @@ Public Class Form1
                 If (DataSent = commstatus.Resend) Then
                     Exit Do
                 End If
-                Thread.Sleep(2)
+                Thread.Sleep(5)
                 Application.DoEvents()
             Loop
             Thread.Sleep(1)
@@ -195,7 +195,7 @@ Public Class Form1
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
-            lbl_Returned_Times.Text = IncomingData
+            lbl_Returned_Times.Text += IncomingData
             TextBox10.Text += IncomingData
             ' TextBox1.Text += IncomingData
             Select Case IncomingData(1)
@@ -230,9 +230,10 @@ Public Class Form1
 
             End If
 
+            '' Add points to the chart
+
             GraphIncoming(datavalue)
 
-            '' Add points to the chart
             'TextBox1.AppendText(IncomingData)
         End If
 
@@ -245,6 +246,10 @@ Public Class Form1
             .Series(1).Points.AddY(datatograph(1))
             .Series(2).Points.AddY(datatograph(2))
             If (.Series(0).Points.Count > My.Settings.GraphLength) Then
+                .Series(0).Points(0).Dispose()
+                .Series(1).Points(0).Dispose()
+                .Series(2).Points(0).Dispose()
+
                 .Series(0).Points.RemoveAt(0)
                 .Series(1).Points.RemoveAt(0)
                 .Series(2).Points.RemoveAt(0)
@@ -268,9 +273,13 @@ Public Class Form1
         Dim cyclescount As Integer
         receivedstatus = False
         TextBox1.Text = " "
-        Btn_UpdateCycleTime.Enabled = False
-        Btn_UpdateCycleTime.BackColor = SystemColors.ButtonFace
+        lbl_Returned_Times.Text = ""
+        With Btn_UpdateCycleTime
+            .Enabled = False
+            .BackColor = SystemColors.ButtonFace
+            .Visible = False
 
+        End With
         cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
         cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
         cycles(2) = CInt(TB_ProcTime3.Text) / timerperiod
@@ -291,22 +300,20 @@ Public Class Form1
             If updatelable.Length > 0 Then
                 updatelable(0).Text = (cycles(cyclescount - 1) * timerperiod)
             End If
-
         Next
 
-        If receivedstatus Then
+        If receivedstatus = True Then
             command = "ACC"
             datapacket = Createpacket(command, 1000)
             receivedstatus = SendData(datapacket)
-        End If
-
-        If Not receivedstatus Then
+        Else
             Btn_UpdateCycleTime.BackColor = Color.Red
         End If
 
-        Btn_UpdateCycleTime.Enabled = True
-
-
+        With Btn_UpdateCycleTime
+            .Enabled = True
+            .Visible = True
+        End With
 
     End Sub
 
@@ -397,4 +404,6 @@ Public Class Form1
 
 
     End Function
+
+
 End Class
