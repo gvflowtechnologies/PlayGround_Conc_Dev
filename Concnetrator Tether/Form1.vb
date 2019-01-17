@@ -45,6 +45,58 @@ Public Class Form1
 
     End Sub
 
+#Region "Input Validation"
+
+
+    Private Sub TB_ProcTime1_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime1.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer
+
+        Testresult = Integer.TryParse(TB_ProcTime1.Text, ProcessTime)
+        Testresult = Validtimes(TB_ProcTime1.Text, errormsg)
+
+        If Not Testresult Then
+
+            errormsg = "Not a valid Integer"
+            e.Cancel = True
+
+            Me.ErrorProvider1.SetError(TB_BagCapacity, errormsg)
+
+
+        End If
+    End Sub
+
+    Private Sub TB_ProcTime1_Validated(sender As Object, e As EventArgs) Handles TB_ProcTime1.Validated
+        ErrorProvider1.SetError(TB_BagCapacity, "")
+        My.Settings.Bag_Limit = Integer.Parse(TB_BagCapacity.Text)
+        My.Settings.Save()
+    End Sub
+
+    Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String) As Boolean
+        ' Function to check the serial number entered is 10 charaters long
+
+        Testresult = Integer.TryParse(TB_ProcTime1.Text, ProcessTime)
+
+        If SerialNumber.Length = 0 Then
+            errorMessage = "No Serial Number Entered"
+            Return False
+        End If
+
+
+        If SerialNumber.Length = 10 Then
+            errorMessage = ""
+            Return True
+        End If
+
+        errorMessage = "Serial Number is not the Correct Length"
+        Return False
+
+    End Function
+
+#End Region
+
+
     Public Function Createpacket(ByRef command As String, ByRef datavalue As Int16) As String
 
         Dim Spacket As String
@@ -191,13 +243,13 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
-        '  TextBox1.Text += IncomingData
+        ' TextBox1.Text += IncomingData
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
             lbl_Returned_Times.Text += IncomingData
             TextBox10.Text += IncomingData
-            ' TextBox1.Text += IncomingData
+            TextBox1.Text += IncomingData
             Select Case IncomingData(1)
                 Case "P"
                     Label19.Text = "Yes"
@@ -290,6 +342,7 @@ Public Class Form1
         command = ""
 
         For Each cycletime In cycles
+
             command = "PT" & cyclescount.ToString    ' Create Command code
             datapacket = Createpacket(command, cycletime)
             receivedstatus = SendData(datapacket) 'Send String
@@ -404,6 +457,5 @@ Public Class Form1
 
 
     End Function
-
 
 End Class
