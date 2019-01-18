@@ -51,46 +51,58 @@ Public Class Form1
     Private Sub TB_ProcTime1_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime1.Validating
         Dim errormsg As String = ""
         Dim Testresult As Boolean
-        Dim ProcessTime As Integer
+        Dim ProcessTime As Integer = 0
 
-        Testresult = Integer.TryParse(TB_ProcTime1.Text, ProcessTime)
-        Testresult = Validtimes(TB_ProcTime1.Text, errormsg)
+        Testresult = Validtimes(TB_ProcTime1.Text, errormsg, ProcessTime)
 
         If Not Testresult Then
 
-            errormsg = "Not a valid Integer"
             e.Cancel = True
-
-            Me.ErrorProvider1.SetError(TB_BagCapacity, errormsg)
-
+            Me.ErrorProvider1.SetError(TB_ProcTime1, errormsg)
 
         End If
     End Sub
 
     Private Sub TB_ProcTime1_Validated(sender As Object, e As EventArgs) Handles TB_ProcTime1.Validated
-        ErrorProvider1.SetError(TB_BagCapacity, "")
-        My.Settings.Bag_Limit = Integer.Parse(TB_BagCapacity.Text)
-        My.Settings.Save()
+        ErrorProvider1.SetError(TB_ProcTime1, "")
+        cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
     End Sub
 
-    Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String) As Boolean
+
+
+    Private Sub TB_ProcTIme2_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTIme2.Validating
+
+    End Sub
+
+    Private Sub TB_ProcTIme2_Validated(sender As Object, e As EventArgs) Handles TB_ProcTIme2.Validated
+
+    End Sub
+
+
+    Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String, ByRef ITime As Integer) As Boolean
         ' Function to check the serial number entered is 10 charaters long
+        Dim Pass As Boolean
 
-        Testresult = Integer.TryParse(TB_ProcTime1.Text, ProcessTime)
+        Pass = Integer.TryParse(ProcessTime, ITime)
 
-        If SerialNumber.Length = 0 Then
-            errorMessage = "No Serial Number Entered"
+        If Not Pass Then
+            errorMessage = "Not a valid Ineger"
+            Return False
+        End If
+
+        If ITime < 100 Then
+            errorMessage = "Process Time less than 100mSec"
             Return False
         End If
 
 
-        If SerialNumber.Length = 10 Then
-            errorMessage = ""
-            Return True
+        If ITime > 15000 Then
+            errorMessage = "Process Time greater than 15 Sec"
+            Return False
         End If
 
-        errorMessage = "Serial Number is not the Correct Length"
-        Return False
+
+        Return True
 
     End Function
 
@@ -457,5 +469,6 @@ Public Class Form1
 
 
     End Function
+
 
 End Class
