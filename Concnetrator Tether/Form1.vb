@@ -71,14 +71,105 @@ Public Class Form1
 
 
     Private Sub TB_ProcTIme2_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTIme2.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer = 0
+
+        Testresult = Validtimes(TB_ProcTIme2.Text, errormsg, ProcessTime)
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ProcTIme2, errormsg)
+
+        End If
+
 
     End Sub
 
     Private Sub TB_ProcTIme2_Validated(sender As Object, e As EventArgs) Handles TB_ProcTIme2.Validated
-
+        ErrorProvider1.SetError(TB_ProcTIme2, "")
+        cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
     End Sub
 
+    Private Sub TB_ProcTime3_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime3.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer = 0
 
+        Testresult = Validtimes(TB_ProcTime3.Text, errormsg, ProcessTime)
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ProcTime3, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_ProcTime3_Validated(sender As Object, e As EventArgs) Handles TB_ProcTime3.Validated
+        ErrorProvider1.SetError(TB_ProcTime3, "")
+        cycles(2) = CInt(TB_ProcTime3.Text) / timerperiod
+    End Sub
+    Private Sub TB_ProcTime4_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime4.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer = 0
+
+        Testresult = Validtimes(TB_ProcTime4.Text, errormsg, ProcessTime)
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ProcTime4, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_ProcTime4_Validated(sender As Object, e As EventArgs) Handles TB_ProcTime4.Validated
+        ErrorProvider1.SetError(TB_ProcTime4, "")
+        cycles(3) = CInt(TB_ProcTime4.Text) / timerperiod
+    End Sub
+
+    Private Sub TB_ProcTime5_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime5.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer = 0
+
+        Testresult = Validtimes(TB_ProcTime5.Text, errormsg, ProcessTime)
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ProcTime5, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_ProcTime5_Validated(sender As Object, e As EventArgs) Handles TB_ProcTime5.Validated
+        ErrorProvider1.SetError(TB_ProcTime5, "")
+        cycles(4) = CInt(TB_ProcTime5.Text) / timerperiod
+    End Sub
+
+    Private Sub TB_ProcTIme6_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTIme6.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim ProcessTime As Integer = 0
+
+        Testresult = Validtimes(TB_ProcTIme6.Text, errormsg, ProcessTime)
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ProcTIme6, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_ProcTIme6_Validated(sender As Object, e As EventArgs) Handles TB_ProcTIme6.Validated
+        ErrorProvider1.SetError(TB_ProcTIme6, "")
+        cycles(5) = CInt(TB_ProcTIme6.Text) / timerperiod
+    End Sub
     Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String, ByRef ITime As Integer) As Boolean
         ' Function to check the serial number entered is 10 charaters long
         Dim Pass As Boolean
@@ -178,7 +269,7 @@ Public Class Form1
 
 
     End Sub
-
+#Region "Communication"
     Private Sub Newcommport()
 
         Dim myportnames() As String
@@ -251,6 +342,7 @@ Public Class Form1
 
     End Sub
 
+#End Region
 
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
