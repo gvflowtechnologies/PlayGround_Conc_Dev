@@ -220,9 +220,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Concenetrator_Tether.My.MySettings
+        Friend ReadOnly Property Settings() As Global.Concentrator_Tether.My.MySettings
             Get
-                Return Global.Concenetrator_Tether.My.MySettings.Default
+                Return Global.Concentrator_Tether.My.MySettings.Default
             End Get
         End Property
     End Module

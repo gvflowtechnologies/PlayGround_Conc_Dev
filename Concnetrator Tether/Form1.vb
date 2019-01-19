@@ -391,8 +391,10 @@ Public Class Form1
                 currentcycle = datavalue(8)
 
                 Lbl_CycleStage.Text = currentcycle
-                GraphIncoming(datavalue)
+
+
             End If
+            GraphIncoming(datavalue)
             'TextBox1.AppendText(IncomingData)
         End If
 
