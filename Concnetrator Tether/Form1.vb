@@ -13,7 +13,7 @@ Public Class Form1
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
-
+    Dim currentcycle As Int32
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Dim cycles(5) As Integer
 
@@ -21,7 +21,7 @@ Public Class Form1
         Interop.No_Sleep()
 
         DataSent = commstatus.Ready
-
+        currentcycle = 1
         Newcommport()
         RetrieveSettings()
 
@@ -231,9 +231,7 @@ Public Class Form1
         Dim sendtimeout As Stopwatch
         sendtimeout = New Stopwatch
         Dim transfersucess As Boolean = False
-        Do While packetsendtries < 3
-
-            'Packet = "$" & Packet
+        Do While packetsendtries < 4
 
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
@@ -269,7 +267,9 @@ Public Class Form1
 
 
     End Sub
+
 #Region "Communication"
+
     Private Sub Newcommport()
 
         Dim myportnames() As String
@@ -387,9 +387,12 @@ Public Class Form1
             End If
 
             '' Add points to the chart
+            If datavalue(8) <> currentcycle Then ' Only update when needed
+                currentcycle = datavalue(8)
 
-            GraphIncoming(datavalue)
-
+                Lbl_CycleStage.Text = currentcycle
+                GraphIncoming(datavalue)
+            End If
             'TextBox1.AppendText(IncomingData)
         End If
 
