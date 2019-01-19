@@ -72,51 +72,43 @@ Public Class Form1
 
         Select Case LoggingStatus ' Finite State machine for logging data
             Case LOGSTATUS.Wating
-                If Not Logging Then
+                If Logging Then
+
+
+
+                    F_Logging = ""
+                    ' Create a file name based on current times
+                    Dim sbname As New StringBuilder()
+
+                    sbname.Append("DataLog M")
+                    sbname.Append(DateTime.Now.Month).Append("_D")
+                    sbname.Append(DateTime.Now.Day).Append("_h")
+                    sbname.Append(DateTime.Now.Hour).Append("_m")
+                    sbname.Append(DateTime.Now.Minute)
+
+                    F_Logging = sbname.ToString & ".csv"
+
+                    F_Logging = My.Settings.File_Directory & "\" & F_Logging
+                    ' Open a file
+                    ' Write Header for File
+                    If Not File.Exists(F_Logging) Then
+                        Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, False)
+
+                            With SW_Logging
+                                .WriteLine("Concentrator DataStream,")
+                                .Write("File Start Date,")
+                                .WriteLine(DateTime.Now.ToShortDateString)
+                                .Write("File Start Time, ")
+                                .WriteLine(DateTime.Now.ToShortTimeString)
+                                .WriteLine("P1, P2, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#")
+
+                            End With
+                        End Using
+                    End If
+
+                    LoggingStatus = LOGSTATUS.Logging
                     Exit Select
                 End If
-
-                Dim dt As DateTime
-                F_Logging = ""
-                ' Create a file name based on current times
-                Dim sbname As New StringBuilder()
-
-                sbname.Append("DataLog")
-                sbname.Append(DateTime.Now.Month).Append("_")
-                sbname.Append(DateTime.Now.Day).Append("_")
-
-
-
-                dt = DateTime.Now
-                dt = dt.AddSeconds(-dt.Second)
-
-                sbname.Append(dt)
-
-                F_Logging = sbname.ToString & ".csv"
-
-
-
-
-
-
-                F_Logging = My.Settings.File_Directory & "\" & F_Logging
-                ' Open a file
-                ' Write Header for File
-                If Not File.Exists(F_Logging) Then
-                    Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, False)
-
-
-
-
-                    End Using
-                End If
-
-
-
-                LoggingStatus = LOGSTATUS.Logging
-                Exit Select
-
-
             Case LOGSTATUS.Logging
                 ' Write to log file
                 ' close when flag set
