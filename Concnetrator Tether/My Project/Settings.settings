@@ -41,5 +41,11 @@
     <Setting Name="P3_Eng_High" Type="System.Single" Scope="User">
       <Value Profile="(Default)">1023</Value>
     </Setting>
+    <Setting Name="File_Directory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Log_Time_Step" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

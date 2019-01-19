@@ -209,6 +209,30 @@ Namespace My
                 Me("P3_Eng_High") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property File_Directory() As String
+            Get
+                Return CType(Me("File_Directory"),String)
+            End Get
+            Set
+                Me("File_Directory") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("100")>  _
+        Public Property Log_Time_Step() As Integer
+            Get
+                Return CType(Me("Log_Time_Step"),Integer)
+            End Get
+            Set
+                Me("Log_Time_Step") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

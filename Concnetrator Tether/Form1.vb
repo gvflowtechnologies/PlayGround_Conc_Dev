@@ -1,5 +1,7 @@
-﻿Imports System.IO.Ports
+﻿Imports System.IO
+Imports System.IO.Ports
 Imports System.Threading
+Imports System.Text
 
 
 Public Class Form1
@@ -9,21 +11,42 @@ Public Class Form1
         Pending = 1
         Resend = 2
     End Enum
+    Enum LOGSTATUS
+        Wating
+
+        Logging
+        Closing
+
+
+    End Enum
+
 
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
     Dim currentcycle As Int32
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
+    Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
     Dim cycles(5) As Integer
+
+
+    ' Logging Tracking Variables
+    Dim Logging As Boolean ' True if logging is turned on
+    Dim LoggingStatus As LOGSTATUS
+    Dim I_CLogging As Integer ' Counter to track number of data receive events between last logging event
+    Dim F_Logging As String
+    Dim SW_Logging As StreamWriter
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
 
         DataSent = commstatus.Ready
+        LoggingStatus = LOGSTATUS.Wating
         currentcycle = 1
+        Logging = False
         Newcommport()
         RetrieveSettings()
+        Lbl_FileLocation.Text = My.Settings.File_Directory
 
         With Chart1
             .Series(0).Points.Clear()
@@ -42,6 +65,66 @@ Public Class Form1
             v = "Unable to Determine Current Version"
         End If
         LblVersion.Text = "Version:" & v
+
+    End Sub
+
+    Private Sub DataLogging() ' Call this procudure every nth cycle
+
+        Select Case LoggingStatus ' Finite State machine for logging data
+            Case LOGSTATUS.Wating
+                If Not Logging Then
+                    Exit Select
+                End If
+
+                Dim dt As DateTime
+                F_Logging = ""
+                ' Create a file name based on current times
+                Dim sbname As New StringBuilder()
+
+                sbname.Append("DataLog")
+                sbname.Append(DateTime.Now.Month).Append("_")
+                sbname.Append(DateTime.Now.Day).Append("_")
+
+
+
+                dt = DateTime.Now
+                dt = dt.AddSeconds(-dt.Second)
+
+                sbname.Append(dt)
+
+                F_Logging = sbname.ToString & ".csv"
+
+
+
+
+
+
+                F_Logging = My.Settings.File_Directory & "\" & F_Logging
+                ' Open a file
+                ' Write Header for File
+                If Not File.Exists(F_Logging) Then
+                    Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, False)
+
+
+
+
+                    End Using
+                End If
+
+
+
+                LoggingStatus = LOGSTATUS.Logging
+                Exit Select
+
+
+            Case LOGSTATUS.Logging
+                ' Write to log file
+                ' close when flag set
+
+            Case LOGSTATUS.Closing
+                ' Get rid of filename
+
+        End Select
 
     End Sub
 
@@ -170,6 +253,55 @@ Public Class Form1
         ErrorProvider1.SetError(TB_ProcTIme6, "")
         cycles(5) = CInt(TB_ProcTIme6.Text) / timerperiod
     End Sub
+
+
+    Private Sub TB_LogTimeStep_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_LogTimeStep.Validating
+
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim LogTime As Integer = 0
+        Testresult = True
+
+        Testresult = Integer.TryParse(TB_LogTimeStep.Text, LogTime)
+
+        If Not Testresult Then
+            errormsg = "Not a valid Ineger"
+            Testresult = False
+        End If
+
+        If LogTime < 0.01 Then
+            errormsg = "Logging Time less than 10mSec"
+            Testresult = False
+        End If
+
+
+        If LogTime > 10 Then
+            errormsg = "Logging Time greater than 10 Sec"
+            Testresult = False
+        End If
+
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_LogTimeStep, errormsg)
+
+        End If
+
+
+    End Sub
+    Private Sub TB_LogTimeStep_Validated(sender As Object, e As EventArgs) Handles TB_LogTimeStep.Validated
+        Dim Logtime As Integer
+
+        ' Log Time Step 
+        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
+
+        ErrorProvider1.SetError(TB_LogTimeStep, "")
+        Logtime = CInt(TB_LogTimeStep.Text) * 100
+        My.Settings.Log_Time_Step = Logtime
+        My.Settings.Save()
+
+    End Sub
     Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String, ByRef ITime As Integer) As Boolean
         ' Function to check the serial number entered is 10 charaters long
         Dim Pass As Boolean
@@ -231,7 +363,7 @@ Public Class Form1
         Dim sendtimeout As Stopwatch
         sendtimeout = New Stopwatch
         Dim transfersucess As Boolean = False
-        Do While packetsendtries < 4
+        Do While packetsendtries < 6
 
             Mycom.Write(Packet)
             DataSent = commstatus.Pending
@@ -288,7 +420,7 @@ Public Class Form1
                 .Handshake = Handshake.None  ' Need to think here
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
-                .WriteTimeout = 1000
+                .WriteTimeout = 100
                 .ReadTimeout = 1000
                 .WriteBufferSize = 500
             End With
@@ -368,7 +500,7 @@ Public Class Form1
         Else
 
             ' you want to split this input string
-
+            I_CLogging += 1
 
             ' Split string based on comma
             Dim words As String() = IncomingData.Split(New Char() {","c})
@@ -386,16 +518,20 @@ Public Class Form1
 
             End If
 
-            '' Add points to the chart
+
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
-
                 Lbl_CycleStage.Text = currentcycle
-
-
             End If
-            GraphIncoming(datavalue)
+            GraphIncoming(datavalue)             '' Add points to the chart
             'TextBox1.AppendText(IncomingData)
+
+            If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
+                DataLogging()
+                I_CLogging = 0
+            End If
+
+
         End If
 
 
@@ -481,8 +617,13 @@ Public Class Form1
 
     Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs) Handles Btn_Update_Graph.Click
         Dim newtime As Integer
+        Dim Logtime As Integer
         newtime = CInt(TB_GraphDisplay.Text) * 100
+        ' Log Time Step 
+        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
+
         My.Settings.GraphLength = newtime
+        My.Settings.Log_Time_Step = Logtime
         My.Settings.Save()
         Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
 
@@ -566,6 +707,28 @@ Public Class Form1
 
 
     End Function
+
+    Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
+        caldata.SelectDataFolder()
+        Lbl_FileLocation.Text = My.Settings.File_Directory
+    End Sub
+
+    Private Sub Btn_Loging_Toggle_Click(sender As Object, e As EventArgs) Handles Btn_Loging_Toggle.Click
+        ' Toggle between logging and not logging
+        If Not Logging Then ' Begin logging
+            Logging = True
+            I_CLogging = 0
+            Btn_Loging_Toggle.Text = "Stop Logging"
+        Else ' Now not logging
+            Logging = False
+
+            Btn_Loging_Toggle.Text = "Start Logging"
+        End If
+
+
+
+
+    End Sub
 
 
 End Class
