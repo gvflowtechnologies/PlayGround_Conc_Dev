@@ -630,13 +630,12 @@ Public Class Form1
 
     Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs) Handles Btn_Update_Graph.Click
         Dim newtime As Integer
-        Dim Logtime As Integer
+
         newtime = CInt(TB_GraphDisplay.Text) * 100
         ' Log Time Step 
         ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
 
         My.Settings.GraphLength = newtime
-        My.Settings.Log_Time_Step = Logtime
         My.Settings.Save()
         Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
 
