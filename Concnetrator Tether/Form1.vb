@@ -68,13 +68,11 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DataLogging() ' Call this procudure every nth cycle
+    Private Sub DataLogging(ByVal loggingdata() As Integer) ' Call this procudure every nth cycle
 
         Select Case LoggingStatus ' Finite State machine for logging data
             Case LOGSTATUS.Wating
                 If Logging Then
-
-
 
                     F_Logging = ""
                     ' Create a file name based on current times
@@ -110,11 +108,32 @@ Public Class Form1
                     Exit Select
                 End If
             Case LOGSTATUS.Logging
+
+
+                Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, True)
+
+                    With SW_Logging
+                        Dim Iloggingvalue As Integer
+                        For Each Iloggingvalue In loggingdata
+                            .Write(Iloggingvalue.ToString)
+                            .Write(", ")
+
+                        Next
+                        .WriteLine(" ")
+                    End With
+                End Using
+
                 ' Write to log file
+
                 ' close when flag set
+                If Not Logging Then
+                    LoggingStatus = LOGSTATUS.Closing
+                    Exit Select
+                End If
 
             Case LOGSTATUS.Closing
                 ' Get rid of filename
+                LoggingStatus = LOGSTATUS.Wating
 
         End Select
 
@@ -251,17 +270,17 @@ Public Class Form1
 
         Dim errormsg As String = ""
         Dim Testresult As Boolean
-        Dim LogTime As Integer = 0
+        Dim LogTime As Single = 0
         Testresult = True
 
-        Testresult = Integer.TryParse(TB_LogTimeStep.Text, LogTime)
+        Testresult = Single.TryParse(TB_LogTimeStep.Text, LogTime)
 
         If Not Testresult Then
-            errormsg = "Not a valid Ineger"
+            errormsg = "Not a Number"
             Testresult = False
         End If
 
-        If LogTime < 0.01 Then
+        If LogTime < 0.0099 Then
             errormsg = "Logging Time less than 10mSec"
             Testresult = False
         End If
@@ -289,7 +308,9 @@ Public Class Form1
         ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
 
         ErrorProvider1.SetError(TB_LogTimeStep, "")
-        Logtime = CInt(TB_LogTimeStep.Text) * 100
+
+        Logtime = CInt(TB_LogTimeStep.Text * 100)
+        If Logtime = 0 Then Logtime = 1
         My.Settings.Log_Time_Step = Logtime
         My.Settings.Save()
 
@@ -519,7 +540,7 @@ Public Class Form1
             'TextBox1.AppendText(IncomingData)
 
             If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
-                DataLogging()
+                DataLogging(datavalue)
                 I_CLogging = 0
             End If
 
