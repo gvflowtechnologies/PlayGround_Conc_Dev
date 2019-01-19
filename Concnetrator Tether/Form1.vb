@@ -10,6 +10,12 @@ Public Class Form1
         Resend = 2
     End Enum
 
+    Enum decay
+        Searching
+        Validating
+        Recording
+
+    End Enum
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort

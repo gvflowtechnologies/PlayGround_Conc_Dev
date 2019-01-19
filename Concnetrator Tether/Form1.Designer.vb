@@ -30,6 +30,8 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lbl_CycleStage = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -96,8 +98,12 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Lbl_CycleStage = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -123,6 +129,12 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label26)
+        Me.TabPage1.Controls.Add(Me.Label25)
+        Me.TabPage1.Controls.Add(Me.Label24)
+        Me.TabPage1.Controls.Add(Me.Label23)
+        Me.TabPage1.Controls.Add(Me.Label22)
+        Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
         Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.LblVersion)
@@ -140,6 +152,24 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Lbl_CycleStage
+        '
+        Me.Lbl_CycleStage.AutoSize = True
+        Me.Lbl_CycleStage.Location = New System.Drawing.Point(1176, 169)
+        Me.Lbl_CycleStage.Name = "Lbl_CycleStage"
+        Me.Lbl_CycleStage.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_CycleStage.TabIndex = 8
+        Me.Lbl_CycleStage.Text = "Label20"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(1106, 169)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(64, 13)
+        Me.Label21.TabIndex = 9
+        Me.Label21.Text = "Cycle Stage"
         '
         'LblVersion
         '
@@ -782,23 +812,59 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Lbl_CycleStage
+        'Label20
         '
-        Me.Lbl_CycleStage.AutoSize = True
-        Me.Lbl_CycleStage.Location = New System.Drawing.Point(1176, 169)
-        Me.Lbl_CycleStage.Name = "Lbl_CycleStage"
-        Me.Lbl_CycleStage.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_CycleStage.TabIndex = 8
-        Me.Lbl_CycleStage.Text = "Label20"
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(942, 444)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(112, 13)
+        Me.Label20.TabIndex = 10
+        Me.Label20.Text = "Stage1 Decay C/Sec "
         '
-        'Label21
+        'Label22
         '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(1106, 169)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(64, 13)
-        Me.Label21.TabIndex = 9
-        Me.Label21.Text = "Cycle Stage"
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(942, 471)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(112, 13)
+        Me.Label22.TabIndex = 11
+        Me.Label22.Text = "Stage 4 Decay C/Sec"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(1079, 444)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(45, 13)
+        Me.Label23.TabIndex = 12
+        Me.Label23.Text = "Label23"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(1108, 471)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(45, 13)
+        Me.Label24.TabIndex = 13
+        Me.Label24.Text = "Label24"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1152, 444)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 14
+        Me.Label25.Text = "Label25"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(1179, 471)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(45, 13)
+        Me.Label26.TabIndex = 15
+        Me.Label26.Text = "Label26"
         '
         'Form1
         '
@@ -901,4 +967,10 @@ Partial Class Form1
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents Lbl_CycleStage As Label
     Friend WithEvents Label21 As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label20 As Label
 End Class
