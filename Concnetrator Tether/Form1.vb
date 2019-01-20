@@ -376,9 +376,9 @@ Public Class Form1
 
         My.Settings.GraphLength = newtime
         My.Settings.Save()
-        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+        ' Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
 
-
+        ResetGraph()
 
     End Sub
 
