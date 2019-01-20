@@ -30,8 +30,10 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Lb_DeacayAve4 = New System.Windows.Forms.Label()
-        Me.Lbl_DecayAvg1 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
         Me.Lb_DecayMax4 = New System.Windows.Forms.Label()
         Me.Lb_DecayMax1 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -111,8 +113,6 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
@@ -142,8 +142,8 @@ Partial Class Form1
         '
         Me.TabPage1.Controls.Add(Me.Label25)
         Me.TabPage1.Controls.Add(Me.Label24)
-        Me.TabPage1.Controls.Add(Me.Lb_DeacayAve4)
-        Me.TabPage1.Controls.Add(Me.Lbl_DecayAvg1)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayAve4)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg1)
         Me.TabPage1.Controls.Add(Me.Lb_DecayMax4)
         Me.TabPage1.Controls.Add(Me.Lb_DecayMax1)
         Me.TabPage1.Controls.Add(Me.Label23)
@@ -163,25 +163,43 @@ Partial Class Form1
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'Lb_DeacayAve4
+        'Label25
         '
-        Me.Lb_DeacayAve4.AutoSize = True
-        Me.Lb_DeacayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DeacayAve4.Location = New System.Drawing.Point(1106, 519)
-        Me.Lb_DeacayAve4.Name = "Lb_DeacayAve4"
-        Me.Lb_DeacayAve4.Size = New System.Drawing.Size(39, 15)
-        Me.Lb_DeacayAve4.TabIndex = 18
-        Me.Lb_DeacayAve4.Text = "xxxxxx"
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1112, 457)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(26, 13)
+        Me.Label25.TabIndex = 20
+        Me.Label25.Text = "Avg"
         '
-        'Lbl_DecayAvg1
+        'Label24
         '
-        Me.Lbl_DecayAvg1.AutoSize = True
-        Me.Lbl_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lbl_DecayAvg1.Location = New System.Drawing.Point(1106, 483)
-        Me.Lbl_DecayAvg1.Name = "Lbl_DecayAvg1"
-        Me.Lbl_DecayAvg1.Size = New System.Drawing.Size(39, 15)
-        Me.Lbl_DecayAvg1.TabIndex = 17
-        Me.Lbl_DecayAvg1.Text = "xxxxxx"
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(1063, 457)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(27, 13)
+        Me.Label24.TabIndex = 19
+        Me.Label24.Text = "Max"
+        '
+        'Lb_DecayAve4
+        '
+        Me.Lb_DecayAve4.AutoSize = True
+        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1106, 519)
+        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
+        Me.Lb_DecayAve4.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayAve4.TabIndex = 18
+        Me.Lb_DecayAve4.Text = "xxxxxx"
+        '
+        'Lb_DecayAvg1
+        '
+        Me.Lb_DecayAvg1.AutoSize = True
+        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1106, 483)
+        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
+        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayAvg1.TabIndex = 17
+        Me.Lb_DecayAvg1.Text = "xxxxxx"
         '
         'Lb_DecayMax4
         '
@@ -942,24 +960,6 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(1063, 457)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(27, 13)
-        Me.Label24.TabIndex = 19
-        Me.Label24.Text = "Max"
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(1112, 457)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(26, 13)
-        Me.Label25.TabIndex = 20
-        Me.Label25.Text = "Avg"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1072,8 +1072,8 @@ Partial Class Form1
     Friend WithEvents Label20 As Label
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents Btn_Loging_Toggle As Button
-    Friend WithEvents Lb_DeacayAve4 As Label
-    Friend WithEvents Lbl_DecayAvg1 As Label
+    Friend WithEvents Lb_DecayAve4 As Label
+    Friend WithEvents Lb_DecayAvg1 As Label
     Friend WithEvents Lb_DecayMax4 As Label
     Friend WithEvents Lb_DecayMax1 As Label
     Friend WithEvents Label23 As Label

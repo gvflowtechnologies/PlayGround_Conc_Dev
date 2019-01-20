@@ -128,7 +128,6 @@
     </Compile>
     <Compile Include="PressureDecay.vb" />
     <Compile Include="PressureTransducer.vb" />
-    <Compile Include="SlopeDetection.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

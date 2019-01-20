@@ -600,23 +600,21 @@ Public Class Form1
 
                     enteringcycle = False
 
-                Else
+                Else ' In cycle
 
                     If datavalue(8) = 1 Then
                         State1decay.Detect(datavalue(1))
-
+                        Lb_DecayMax1.Text = State1decay.PMaxSlope.ToString
+                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString
                     End If
 
                     If datavalue(8) = 4 Then
                         State4decay.Detect(datavalue(1))
-
+                        Lb_DecayMax4.Text = State4decay.PMaxSlope.ToString
+                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
                     End If
-
-
-
-
-
                 End If
+
             End If
 
 
@@ -625,6 +623,7 @@ Public Class Form1
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
                 enteringcycle = True
+
             End If
             GraphIncoming(datavalue)             '' Add points to the chart
             'TextBox1.AppendText(IncomingData)
