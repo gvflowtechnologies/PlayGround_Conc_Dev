@@ -46,7 +46,7 @@ Public Class Form1
         Logging = False
         Newcommport()
         RetrieveSettings()
-        Lbl_FileLocation.Text = My.Settings.File_Directory
+
 
         With Chart1
             .Series(0).Points.Clear()
@@ -115,6 +115,7 @@ Public Class Form1
                     With SW_Logging
                         Dim Iloggingvalue As Integer
                         For Each Iloggingvalue In loggingdata
+
                             .Write(Iloggingvalue.ToString)
                             .Write(", ")
 
@@ -286,8 +287,8 @@ Public Class Form1
         End If
 
 
-        If LogTime > 10 Then
-            errormsg = "Logging Time greater than 10 Sec"
+        If LogTime > 60 Then
+            errormsg = "Logging Time greater than 60 Sec"
             Testresult = False
         End If
 
@@ -341,6 +342,55 @@ Public Class Form1
         Return True
 
     End Function
+    Private Sub TB_GraphDisplay_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_GraphDisplay.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim LogTime As Single = 0
+        Testresult = True
+
+        Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
+
+        If Not Testresult Then
+            errormsg = "Not a Number"
+            Testresult = False
+        End If
+
+        If LogTime < 2 Then
+            errormsg = "Logging Time less than 2 Sec"
+            Testresult = False
+        End If
+
+
+        If LogTime > 3000 Then
+            errormsg = "Logging Time greater than 3000 Sec"
+            Testresult = False
+        End If
+
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_GraphDisplay, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_GraphDisplay_Validated(sender As Object, e As EventArgs) Handles TB_GraphDisplay.Validated
+        Dim newtime As Integer
+
+        ErrorProvider1.SetError(TB_LogTimeStep, "")
+
+        newtime = CInt(TB_GraphDisplay.Text) * 100
+        ' Log Time Step 
+        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
+
+        My.Settings.GraphLength = newtime
+        My.Settings.Save()
+        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+
+
+
+    End Sub
 
 #End Region
 
@@ -407,9 +457,9 @@ Public Class Form1
     End Function
 
     Public Sub RetrieveSettings()
-
-
-
+        Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
+        TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
+        TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
 
     End Sub
 
@@ -628,7 +678,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs) Handles Btn_Update_Graph.Click
+    Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs)
         Dim newtime As Integer
 
         newtime = CInt(TB_GraphDisplay.Text) * 100
