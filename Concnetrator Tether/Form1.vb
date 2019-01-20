@@ -13,14 +13,16 @@ Public Class Form1
     End Enum
     Enum LOGSTATUS
         Wating
-
         Logging
         Closing
-
-
+    End Enum
+    Enum Sstate
+        peakdection
+        inslope
+        CompleteSlope
     End Enum
 
-
+    Dim Decay As Sstate
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
@@ -28,6 +30,9 @@ Public Class Form1
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
     Dim cycles(5) As Integer
+    Dim State1decay As PressureDecay
+    Dim State4decay As PressureDecay
+    Dim enteringcycle As Boolean ' Entering Cycle
 
 
     ' Logging Tracking Variables
@@ -46,7 +51,7 @@ Public Class Form1
         Logging = False
         Newcommport()
         RetrieveSettings()
-
+        enteringcycle = True
 
         With Chart1
             .Series(0).Points.Clear()
@@ -580,11 +585,46 @@ Public Class Form1
                 '   LBL_RawPT1.Text = datavalue(0)
 
             End If
+            ' Start Peak Detection
+            If datavalue(8) = 1 Or datavalue(8) = 4 Then
+                ' Using Datavalue(1) for slope detection
+                If enteringcycle Then
+                    Decay = Sstate.peakdection
+                    If datavalue(8) = 1 Then
+                        State1decay = New PressureDecay
+                    End If
+
+                    If datavalue(8) = 4 Then
+                        State4decay = New PressureDecay
+                    End If
+
+                    enteringcycle = False
+
+                Else
+
+                    If datavalue(8) = 1 Then
+                        State1decay.Detect(datavalue(1))
+
+                    End If
+
+                    If datavalue(8) = 4 Then
+                        State4decay.Detect(datavalue(1))
+
+                    End If
+
+
+
+
+
+                End If
+            End If
+
 
 
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
+                enteringcycle = True
             End If
             GraphIncoming(datavalue)             '' Add points to the chart
             'TextBox1.AppendText(IncomingData)
@@ -791,6 +831,23 @@ Public Class Form1
 
 
     End Sub
+    Public Sub Detectslope(ByVal pressure As Integer)
 
+        Select Case Decay
+            Case Sstate.peakdection
+
+            Case Sstate.inslope
+
+            Case Sstate.CompleteSlope
+
+
+
+
+        End Select
+
+
+
+
+    End Sub
 
 End Class
