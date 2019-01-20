@@ -12,11 +12,10 @@ Public Class Form1
         Resend = 2
     End Enum
     Enum LOGSTATUS
-        Wating
 
+        Wating
         Logging
         Closing
-
 
     End Enum
 
@@ -48,15 +47,6 @@ Public Class Form1
         RetrieveSettings()
 
 
-        With Chart1
-            .Series(0).Points.Clear()
-            .Series(1).Points.Clear()
-            .Series(2).Points.Clear()
-            .ChartAreas(0).AxisY.Maximum = 1024
-            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
-
-        End With
 
         Dim v As String
         If System.Diagnostics.Debugger.IsAttached = False Then
@@ -460,6 +450,20 @@ Public Class Form1
         Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
         TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
         TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
+        ResetGraph()
+
+    End Sub
+
+    Public Sub ResetGraph()
+        With Chart1
+            .Series(0).Points.Clear()
+            .Series(1).Points.Clear()
+            .Series(2).Points.Clear()
+            .ChartAreas(0).AxisY.Maximum = 1024
+            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
+
+        End With
 
     End Sub
 
@@ -562,9 +566,9 @@ Public Class Form1
 
         Else
 
-            ' you want to split this input string
-            I_CLogging += 1
 
+            I_CLogging += 1 ' Update count on logging interval
+            ' you want to split this input string
             ' Split string based on comma
             Dim words As String() = IncomingData.Split(New Char() {","c})
 
@@ -586,7 +590,12 @@ Public Class Form1
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
             End If
-            GraphIncoming(datavalue)             '' Add points to the chart
+            If DataSent <> commstatus.Pending Then
+                GraphIncoming(datavalue)             '' Add points to the chart
+            Else
+                ResetGraph()
+            End If
+
             'TextBox1.AppendText(IncomingData)
 
             If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
@@ -678,18 +687,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs)
-        Dim newtime As Integer
 
-        newtime = CInt(TB_GraphDisplay.Text) * 100
-        ' Log Time Step 
-        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
-
-        My.Settings.GraphLength = newtime
-        My.Settings.Save()
-        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-
-    End Sub
 
     Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
 
