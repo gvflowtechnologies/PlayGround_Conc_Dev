@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
@@ -37,7 +37,6 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
-        Me.Btn_Update_Graph = New System.Windows.Forms.Button()
         Me.Lbl_CycleStage = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
@@ -168,7 +167,6 @@ Partial Class Form1
         Me.GroupBox8.Controls.Add(Me.Label1)
         Me.GroupBox8.Controls.Add(Me.TB_GraphDisplay)
         Me.GroupBox8.Controls.Add(Me.CB_GraphEngUnits)
-        Me.GroupBox8.Controls.Add(Me.Btn_Update_Graph)
         Me.GroupBox8.Location = New System.Drawing.Point(6, 442)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(508, 85)
@@ -228,15 +226,6 @@ Partial Class Form1
         Me.CB_GraphEngUnits.TabIndex = 6
         Me.CB_GraphEngUnits.Text = "Use Engineering Units"
         Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
-        '
-        'Btn_Update_Graph
-        '
-        Me.Btn_Update_Graph.Location = New System.Drawing.Point(207, 21)
-        Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
-        Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
-        Me.Btn_Update_Graph.TabIndex = 4
-        Me.Btn_Update_Graph.Text = "Update  Graph"
-        Me.Btn_Update_Graph.UseVisualStyleBackColor = True
         '
         'Lbl_CycleStage
         '
@@ -478,28 +467,28 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.AxisY.MajorGrid.Interval = 0R
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea3.AxisY.MajorGrid.Interval = 0R
+        ChartArea3.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend3)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "PT1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "PT2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "PT3"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Series.Add(Series3)
+        Series7.ChartArea = "ChartArea1"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Legend = "Legend1"
+        Series7.Name = "PT1"
+        Series8.ChartArea = "ChartArea1"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Legend = "Legend1"
+        Series8.Name = "PT2"
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Legend = "Legend1"
+        Series9.Name = "PT3"
+        Me.Chart1.Series.Add(Series7)
+        Me.Chart1.Series.Add(Series8)
+        Me.Chart1.Series.Add(Series9)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -999,7 +988,6 @@ Partial Class Form1
     Friend WithEvents Label7 As Label
     Friend WithEvents TB_GraphDisplay As TextBox
     Friend WithEvents Btn_UpdateCycleTime As Button
-    Friend WithEvents Btn_Update_Graph As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lbl_Returned_Times As Label
