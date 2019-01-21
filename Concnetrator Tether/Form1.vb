@@ -699,44 +699,7 @@ Public Class Form1
 
 
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
 
-        'Dim updatedtimes As String
-        'Dim builder As New System.Text.StringBuilder
-        'Dim cycles As Integer
-        'Dim checksum As Char
-        'cycles = 20 ' CInt(TB_ProcTime4.Text) / timerperiod
-        'Dim length As Int16
-        'Dim receivedstatus As Boolean
-        'length = 0
-        'TextBox10.Text = ""
-        'checksum = Chcksum(cycles, length)
-        'Button8.Text = "SET"
-
-        'builder.Append("#")
-        'builder.Append("PT0")
-        'builder.Append(length)
-
-        'builder.Append(cycles.ToString)
-        'builder.Append(checksum)
-        'builder.Append("$")
-        'updatedtimes = builder.ToString
-
-
-        'receivedstatus = SendData(updatedtimes)
-        'transfer procedure
-
-
-        'Thread.Sleep(5)
-        'If DataSent = commstatus.Ready Then
-        '    Button8.Text = "Success"
-
-        'Else
-        '    Button8.Text = "Fail"
-
-        'End If
-
-    End Sub
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
         ' Function returns an check sum
         ' Function also updates length by reference.
