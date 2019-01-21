@@ -31,6 +31,8 @@ Partial Class Form1
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
+        Me.TB_LogTimeStep = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -99,8 +101,8 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.TB_LogTimeStep = New System.Windows.Forms.TextBox()
-        Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
+        Me.Lbl_FileLocation = New System.Windows.Forms.Label()
+        Me.Btn_LogFiles = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -156,6 +158,22 @@ Partial Class Form1
         Me.GroupBox7.TabIndex = 10
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Graph and Logging Setup"
+        '
+        'Btn_Loging_Toggle
+        '
+        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(266, 59)
+        Me.Btn_Loging_Toggle.Name = "Btn_Loging_Toggle"
+        Me.Btn_Loging_Toggle.Size = New System.Drawing.Size(126, 23)
+        Me.Btn_Loging_Toggle.TabIndex = 13
+        Me.Btn_Loging_Toggle.Text = "Start Logging"
+        Me.Btn_Loging_Toggle.UseVisualStyleBackColor = True
+        '
+        'TB_LogTimeStep
+        '
+        Me.TB_LogTimeStep.Location = New System.Drawing.Point(178, 55)
+        Me.TB_LogTimeStep.Name = "TB_LogTimeStep"
+        Me.TB_LogTimeStep.Size = New System.Drawing.Size(51, 20)
+        Me.TB_LogTimeStep.TabIndex = 12
         '
         'Label20
         '
@@ -222,10 +240,10 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(788, 535)
+        Me.TextBox1.Location = New System.Drawing.Point(926, 578)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(295, 109)
+        Me.TextBox1.Size = New System.Drawing.Size(295, 52)
         Me.TextBox1.TabIndex = 5
         '
         'GroupBox1
@@ -461,6 +479,8 @@ Partial Class Form1
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.Btn_LogFiles)
+        Me.TP_Calibration.Controls.Add(Me.Lbl_FileLocation)
         Me.TP_Calibration.Controls.Add(Me.Label19)
         Me.TP_Calibration.Controls.Add(Me.TextBox10)
         Me.TP_Calibration.Controls.Add(Me.Button8)
@@ -816,21 +836,24 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'TB_LogTimeStep
+        'Lbl_FileLocation
         '
-        Me.TB_LogTimeStep.Location = New System.Drawing.Point(178, 55)
-        Me.TB_LogTimeStep.Name = "TB_LogTimeStep"
-        Me.TB_LogTimeStep.Size = New System.Drawing.Size(51, 20)
-        Me.TB_LogTimeStep.TabIndex = 12
+        Me.Lbl_FileLocation.AutoSize = True
+        Me.Lbl_FileLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lbl_FileLocation.Location = New System.Drawing.Point(1007, 106)
+        Me.Lbl_FileLocation.Name = "Lbl_FileLocation"
+        Me.Lbl_FileLocation.Size = New System.Drawing.Size(86, 15)
+        Me.Lbl_FileLocation.TabIndex = 4
+        Me.Lbl_FileLocation.Text = "Lbl_FileLocation"
         '
-        'Btn_Loging_Toggle
+        'Btn_LogFiles
         '
-        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(266, 59)
-        Me.Btn_Loging_Toggle.Name = "Btn_Loging_Toggle"
-        Me.Btn_Loging_Toggle.Size = New System.Drawing.Size(126, 23)
-        Me.Btn_Loging_Toggle.TabIndex = 13
-        Me.Btn_Loging_Toggle.Text = "Start Logging"
-        Me.Btn_Loging_Toggle.UseVisualStyleBackColor = True
+        Me.Btn_LogFiles.Location = New System.Drawing.Point(899, 101)
+        Me.Btn_LogFiles.Name = "Btn_LogFiles"
+        Me.Btn_LogFiles.Size = New System.Drawing.Size(75, 23)
+        Me.Btn_LogFiles.TabIndex = 5
+        Me.Btn_LogFiles.Text = "Data Folder"
+        Me.Btn_LogFiles.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -938,4 +961,6 @@ Partial Class Form1
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents TB_LogTimeStep As TextBox
     Friend WithEvents Btn_Loging_Toggle As Button
+    Friend WithEvents Lbl_FileLocation As Label
+    Friend WithEvents Btn_LogFiles As Button
 End Class
