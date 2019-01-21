@@ -30,25 +30,14 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
-        Me.Lb_DecayMax4 = New System.Windows.Forms.Label()
-        Me.Lb_DecayMax1 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.TB_LogTimeStep = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
-        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.Lbl_CycleStage = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
+        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Btn_Update_Graph = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Lbl_PTime6 = New System.Windows.Forms.Label()
         Me.Lbl_PTime5 = New System.Windows.Forms.Label()
@@ -72,9 +61,6 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TP_Calibration = New System.Windows.Forms.TabPage()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Lbl_FileLocation = New System.Windows.Forms.Label()
-        Me.Btn_LogFiles = New System.Windows.Forms.Button()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -112,14 +98,17 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        Me.GroupBox8.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TP_Calibration.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -140,19 +129,20 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label26)
         Me.TabPage1.Controls.Add(Me.Label25)
         Me.TabPage1.Controls.Add(Me.Label24)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayAve4)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg1)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayMax4)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayMax1)
         Me.TabPage1.Controls.Add(Me.Label23)
         Me.TabPage1.Controls.Add(Me.Label22)
-        Me.TabPage1.Controls.Add(Me.GroupBox8)
+        Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
         Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.LblVersion)
+        Me.TabPage1.Controls.Add(Me.CB_GraphEngUnits)
         Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.Btn_Update_Graph)
+        Me.TabPage1.Controls.Add(Me.Label1)
+        Me.TabPage1.Controls.Add(Me.TB_GraphDisplay)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
@@ -162,150 +152,6 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(1112, 457)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(26, 13)
-        Me.Label25.TabIndex = 20
-        Me.Label25.Text = "Avg"
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(1063, 457)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(27, 13)
-        Me.Label24.TabIndex = 19
-        Me.Label24.Text = "Max"
-        '
-        'Lb_DecayAve4
-        '
-        Me.Lb_DecayAve4.AutoSize = True
-        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1106, 519)
-        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
-        Me.Lb_DecayAve4.Size = New System.Drawing.Size(39, 15)
-        Me.Lb_DecayAve4.TabIndex = 18
-        Me.Lb_DecayAve4.Text = "xxxxxx"
-        '
-        'Lb_DecayAvg1
-        '
-        Me.Lb_DecayAvg1.AutoSize = True
-        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1106, 483)
-        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
-        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(39, 15)
-        Me.Lb_DecayAvg1.TabIndex = 17
-        Me.Lb_DecayAvg1.Text = "xxxxxx"
-        '
-        'Lb_DecayMax4
-        '
-        Me.Lb_DecayMax4.AutoSize = True
-        Me.Lb_DecayMax4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayMax4.Location = New System.Drawing.Point(1057, 519)
-        Me.Lb_DecayMax4.Name = "Lb_DecayMax4"
-        Me.Lb_DecayMax4.Size = New System.Drawing.Size(39, 15)
-        Me.Lb_DecayMax4.TabIndex = 16
-        Me.Lb_DecayMax4.Text = "xxxxxx"
-        '
-        'Lb_DecayMax1
-        '
-        Me.Lb_DecayMax1.AutoSize = True
-        Me.Lb_DecayMax1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayMax1.Location = New System.Drawing.Point(1057, 483)
-        Me.Lb_DecayMax1.Name = "Lb_DecayMax1"
-        Me.Lb_DecayMax1.Size = New System.Drawing.Size(39, 15)
-        Me.Lb_DecayMax1.TabIndex = 15
-        Me.Lb_DecayMax1.Text = "xxxxxx"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(918, 521)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(121, 13)
-        Me.Label23.TabIndex = 14
-        Me.Label23.Text = "Stage 4 Decay Count/S"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(918, 485)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(121, 13)
-        Me.Label22.TabIndex = 13
-        Me.Label22.Text = "Stage 1 Decay Count/S"
-        '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.Btn_Loging_Toggle)
-        Me.GroupBox8.Controls.Add(Me.Label20)
-        Me.GroupBox8.Controls.Add(Me.TB_LogTimeStep)
-        Me.GroupBox8.Controls.Add(Me.Label1)
-        Me.GroupBox8.Controls.Add(Me.TB_GraphDisplay)
-        Me.GroupBox8.Controls.Add(Me.CB_GraphEngUnits)
-        Me.GroupBox8.Location = New System.Drawing.Point(6, 442)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(405, 85)
-        Me.GroupBox8.TabIndex = 12
-        Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "Graph and Logging Setup"
-        '
-        'Btn_Loging_Toggle
-        '
-        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(235, 55)
-        Me.Btn_Loging_Toggle.Name = "Btn_Loging_Toggle"
-        Me.Btn_Loging_Toggle.Size = New System.Drawing.Size(89, 23)
-        Me.Btn_Loging_Toggle.TabIndex = 13
-        Me.Btn_Loging_Toggle.Text = "Start Logging"
-        Me.Btn_Loging_Toggle.UseVisualStyleBackColor = True
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(6, 58)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(152, 13)
-        Me.Label20.TabIndex = 10
-        Me.Label20.Text = "Log Data Increment (Seconds)"
-        '
-        'TB_LogTimeStep
-        '
-        Me.TB_LogTimeStep.Location = New System.Drawing.Point(164, 55)
-        Me.TB_LogTimeStep.Name = "TB_LogTimeStep"
-        Me.TB_LogTimeStep.Size = New System.Drawing.Size(39, 20)
-        Me.TB_LogTimeStep.TabIndex = 11
-        Me.TB_LogTimeStep.Text = "1"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 31)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 13)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Graph Display (Seconds):"
-        '
-        'TB_GraphDisplay
-        '
-        Me.TB_GraphDisplay.Location = New System.Drawing.Point(139, 27)
-        Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
-        Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
-        Me.TB_GraphDisplay.TabIndex = 2
-        Me.TB_GraphDisplay.Text = "20"
-        '
-        'CB_GraphEngUnits
-        '
-        Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(272, 21)
-        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
-        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
-        Me.CB_GraphEngUnits.TabIndex = 6
-        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
-        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
         '
         'Lbl_CycleStage
         '
@@ -334,13 +180,49 @@ Partial Class Form1
         Me.LblVersion.TabIndex = 7
         Me.LblVersion.Text = "Version"
         '
+        'CB_GraphEngUnits
+        '
+        Me.CB_GraphEngUnits.AutoSize = True
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(25, 440)
+        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
+        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
+        Me.CB_GraphEngUnits.TabIndex = 6
+        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
+        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
+        '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(940, 578)
+        Me.TextBox1.Location = New System.Drawing.Point(788, 535)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(295, 53)
+        Me.TextBox1.Size = New System.Drawing.Size(295, 109)
         Me.TextBox1.TabIndex = 5
+        '
+        'Btn_Update_Graph
+        '
+        Me.Btn_Update_Graph.Location = New System.Drawing.Point(225, 471)
+        Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
+        Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
+        Me.Btn_Update_Graph.TabIndex = 4
+        Me.Btn_Update_Graph.Text = "Update Graph"
+        Me.Btn_Update_Graph.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(174, 439)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(127, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Graph Display (Seconds):"
+        '
+        'TB_GraphDisplay
+        '
+        Me.TB_GraphDisplay.Location = New System.Drawing.Point(307, 435)
+        Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
+        Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
+        Me.TB_GraphDisplay.TabIndex = 2
+        Me.TB_GraphDisplay.Text = "20"
         '
         'GroupBox1
         '
@@ -369,7 +251,7 @@ Partial Class Form1
         Me.GroupBox1.Size = New System.Drawing.Size(612, 146)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Process Times (mSeconds)"
+        Me.GroupBox1.Text = "Process Times"
         '
         'Lbl_PTime6
         '
@@ -575,7 +457,6 @@ Partial Class Form1
         '
         'TP_Calibration
         '
-        Me.TP_Calibration.Controls.Add(Me.GroupBox7)
         Me.TP_Calibration.Controls.Add(Me.Label19)
         Me.TP_Calibration.Controls.Add(Me.TextBox10)
         Me.TP_Calibration.Controls.Add(Me.Button8)
@@ -588,39 +469,10 @@ Partial Class Form1
         Me.TP_Calibration.Text = "TabPage2"
         Me.TP_Calibration.UseVisualStyleBackColor = True
         '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.Lbl_FileLocation)
-        Me.GroupBox7.Controls.Add(Me.Btn_LogFiles)
-        Me.GroupBox7.Location = New System.Drawing.Point(827, 34)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(393, 373)
-        Me.GroupBox7.TabIndex = 4
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "GroupBox7"
-        '
-        'Lbl_FileLocation
-        '
-        Me.Lbl_FileLocation.AutoSize = True
-        Me.Lbl_FileLocation.Location = New System.Drawing.Point(153, 56)
-        Me.Lbl_FileLocation.Name = "Lbl_FileLocation"
-        Me.Lbl_FileLocation.Size = New System.Drawing.Size(72, 13)
-        Me.Lbl_FileLocation.TabIndex = 1
-        Me.Lbl_FileLocation.Text = "File Locations"
-        '
-        'Btn_LogFiles
-        '
-        Me.Btn_LogFiles.Location = New System.Drawing.Point(19, 51)
-        Me.Btn_LogFiles.Name = "Btn_LogFiles"
-        Me.Btn_LogFiles.Size = New System.Drawing.Size(119, 23)
-        Me.Btn_LogFiles.TabIndex = 0
-        Me.Btn_LogFiles.Text = "Update File Location"
-        Me.Btn_LogFiles.UseVisualStyleBackColor = True
-        '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(146, 652)
+        Me.Label19.Location = New System.Drawing.Point(228, 603)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(45, 13)
         Me.Label19.TabIndex = 3
@@ -628,7 +480,7 @@ Partial Class Form1
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(114, 437)
+        Me.TextBox10.Location = New System.Drawing.Point(196, 388)
         Me.TextBox10.Multiline = True
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.Size = New System.Drawing.Size(158, 145)
@@ -636,7 +488,7 @@ Partial Class Form1
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(146, 599)
+        Me.Button8.Location = New System.Drawing.Point(228, 550)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 23)
         Me.Button8.TabIndex = 1
@@ -649,7 +501,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.GroupBox5)
         Me.GroupBox2.Controls.Add(Me.GroupBox4)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
-        Me.GroupBox2.Location = New System.Drawing.Point(17, 35)
+        Me.GroupBox2.Location = New System.Drawing.Point(23, 34)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(775, 373)
         Me.GroupBox2.TabIndex = 0
@@ -960,27 +812,77 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(942, 444)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(112, 13)
+        Me.Label20.TabIndex = 10
+        Me.Label20.Text = "Stage1 Decay C/Sec "
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(942, 471)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(112, 13)
+        Me.Label22.TabIndex = 11
+        Me.Label22.Text = "Stage 4 Decay C/Sec"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(1079, 444)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(45, 13)
+        Me.Label23.TabIndex = 12
+        Me.Label23.Text = "Label23"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(1108, 471)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(45, 13)
+        Me.Label24.TabIndex = 13
+        Me.Label24.Text = "Label24"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1152, 444)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 14
+        Me.Label25.Text = "Label25"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(1179, 471)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(45, 13)
+        Me.Label26.TabIndex = 15
+        Me.Label26.Text = "Label26"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1261, 729)
+        Me.ClientSize = New System.Drawing.Size(1264, 729)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TP_Calibration.ResumeLayout(False)
         Me.TP_Calibration.PerformLayout()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
@@ -1014,6 +916,7 @@ Partial Class Form1
     Friend WithEvents Label7 As Label
     Friend WithEvents TB_GraphDisplay As TextBox
     Friend WithEvents Btn_UpdateCycleTime As Button
+    Friend WithEvents Btn_Update_Graph As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lbl_Returned_Times As Label
@@ -1064,20 +967,10 @@ Partial Class Form1
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents Lbl_CycleStage As Label
     Friend WithEvents Label21 As Label
-    Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents Btn_LogFiles As Button
-    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
-    Friend WithEvents Lbl_FileLocation As Label
-    Friend WithEvents TB_LogTimeStep As TextBox
-    Friend WithEvents Label20 As Label
-    Friend WithEvents GroupBox8 As GroupBox
-    Friend WithEvents Btn_Loging_Toggle As Button
-    Friend WithEvents Lb_DecayAve4 As Label
-    Friend WithEvents Lb_DecayAvg1 As Label
-    Friend WithEvents Lb_DecayMax4 As Label
-    Friend WithEvents Lb_DecayMax1 As Label
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label22 As Label
+    Friend WithEvents Label26 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Label24 As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label20 As Label
 End Class
