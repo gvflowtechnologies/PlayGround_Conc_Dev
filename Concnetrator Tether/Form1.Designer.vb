@@ -30,12 +30,13 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.Lbl_CycleStage = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
-        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Btn_Update_Graph = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -98,10 +99,9 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Label20 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TP_Calibration.SuspendLayout()
@@ -111,7 +111,6 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -126,15 +125,11 @@ Partial Class Form1
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Label20)
         Me.TabPage1.Controls.Add(Me.GroupBox7)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
         Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.LblVersion)
         Me.TabPage1.Controls.Add(Me.TextBox1)
-        Me.TabPage1.Controls.Add(Me.Btn_Update_Graph)
-        Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Controls.Add(Me.TB_GraphDisplay)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
@@ -144,6 +139,38 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(16, 59)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(45, 13)
+        Me.Label20.TabIndex = 11
+        Me.Label20.Text = "Label20"
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Label20)
+        Me.GroupBox7.Controls.Add(Me.CB_GraphEngUnits)
+        Me.GroupBox7.Controls.Add(Me.Label1)
+        Me.GroupBox7.Controls.Add(Me.TB_GraphDisplay)
+        Me.GroupBox7.Location = New System.Drawing.Point(6, 429)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(403, 100)
+        Me.GroupBox7.TabIndex = 10
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Graph and Logging Setup"
+        '
+        'CB_GraphEngUnits
+        '
+        Me.CB_GraphEngUnits.AutoSize = True
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(266, 19)
+        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
+        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
+        Me.CB_GraphEngUnits.TabIndex = 6
+        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
+        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
         '
         'Lbl_CycleStage
         '
@@ -172,16 +199,6 @@ Partial Class Form1
         Me.LblVersion.TabIndex = 7
         Me.LblVersion.Text = "Version"
         '
-        'CB_GraphEngUnits
-        '
-        Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(47, 29)
-        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
-        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
-        Me.CB_GraphEngUnits.TabIndex = 6
-        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
-        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
-        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(788, 535)
@@ -190,19 +207,10 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(295, 109)
         Me.TextBox1.TabIndex = 5
         '
-        'Btn_Update_Graph
-        '
-        Me.Btn_Update_Graph.Location = New System.Drawing.Point(225, 471)
-        Me.Btn_Update_Graph.Name = "Btn_Update_Graph"
-        Me.Btn_Update_Graph.Size = New System.Drawing.Size(132, 23)
-        Me.Btn_Update_Graph.TabIndex = 4
-        Me.Btn_Update_Graph.Text = "Update Graph"
-        Me.Btn_Update_Graph.UseVisualStyleBackColor = True
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(174, 439)
+        Me.Label1.Location = New System.Drawing.Point(16, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(127, 13)
         Me.Label1.TabIndex = 3
@@ -210,7 +218,7 @@ Partial Class Form1
         '
         'TB_GraphDisplay
         '
-        Me.TB_GraphDisplay.Location = New System.Drawing.Point(307, 435)
+        Me.TB_GraphDisplay.Location = New System.Drawing.Point(149, 19)
         Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
         Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
         Me.TB_GraphDisplay.TabIndex = 2
@@ -804,25 +812,6 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.CB_GraphEngUnits)
-        Me.GroupBox7.Location = New System.Drawing.Point(537, 429)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(200, 100)
-        Me.GroupBox7.TabIndex = 10
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "GroupBox7"
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(63, 472)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(45, 13)
-        Me.Label20.TabIndex = 11
-        Me.Label20.Text = "Label20"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -835,6 +824,8 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -850,8 +841,6 @@ Partial Class Form1
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -875,7 +864,6 @@ Partial Class Form1
     Friend WithEvents Label7 As Label
     Friend WithEvents TB_GraphDisplay As TextBox
     Friend WithEvents Btn_UpdateCycleTime As Button
-    Friend WithEvents Btn_Update_Graph As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lbl_Returned_Times As Label
