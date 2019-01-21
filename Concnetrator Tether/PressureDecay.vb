@@ -13,6 +13,8 @@
     Dim SlopeAvg As Integer
     Dim Pressuremin As Integer
     Dim ICount As Integer 'number of times count has come
+    Dim runningpressure(3) As Integer
+    Dim Imincount As Integer ' minnimum detector
 
     Public Sub New()
 
@@ -21,6 +23,7 @@
         SlopeMax = 0
         SlopeAvg = 0
         ICount = 0
+        Imincount = 0
 
     End Sub
 
@@ -30,6 +33,7 @@
 
         Current = pressure
         ICount += 1
+        Imincount += 1
         time = ICount * IcPeriod
         Select Case Slopestate
             Case Sstate.peakdection
@@ -41,6 +45,7 @@
                 If ICount > 10 Then
                     Slopestate = Sstate.inslope
                     Pressuremin = PressureMax
+                    Imincount = 0
                 End If
 
             Case Sstate.inslope
@@ -51,7 +56,15 @@
                     SlopeMax = tempslope
                 End If
 
+                'Min detector
+                If Current < Pressuremin Then
+                    Pressuremin = Current
+                    Imincount = 0
+                End If
+                If Imincount > 5 Then
+                    Slopestate = Sstate.CompleteSlope
 
+                End If
 
 
             Case Sstate.CompleteSlope
@@ -72,7 +85,7 @@
         Get
             Dim Slopereturn As Single
 
-            If Slopestate = Sstate.inslope Then
+            If Slopestate <> Sstate.peakdection Then
                 Slopereturn = SlopeAvg
             Else
                 Slopereturn = 0
@@ -86,7 +99,7 @@
         Get
             Dim Slopereturn As Single
 
-            If Slopestate = Sstate.inslope Then
+            If Slopestate <> Sstate.peakdection Then
                 Slopereturn = SlopeMax
             Else
                 Slopereturn = 0

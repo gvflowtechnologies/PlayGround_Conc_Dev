@@ -965,7 +965,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1264, 729)
+        Me.ClientSize = New System.Drawing.Size(1261, 729)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Form1"
         Me.Text = "Form1"

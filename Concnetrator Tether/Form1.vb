@@ -622,10 +622,20 @@ Public Class Form1
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
-                enteringcycle = True
 
+                If currentcycle = 2 Then
+                    If Not State1decay Is Nothing Then
+                        State1decay.Dispose()
+                    End If
+                End If
+                    If currentcycle = 5 Then
+                    If Not State4decay Is Nothing Then
+                        State4decay.Dispose()
+                    End If
+                End If
+                enteringcycle = True
             End If
-            GraphIncoming(datavalue)             '' Add points to the chart
+                GraphIncoming(datavalue)             '' Add points to the chart
             'TextBox1.AppendText(IncomingData)
 
             If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
