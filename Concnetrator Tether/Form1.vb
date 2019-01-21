@@ -636,7 +636,13 @@ Public Class Form1
                 End If
                 enteringcycle = True
             End If
-            GraphIncoming(datavalue)
+            If DataSent <> commstatus.Pending Then
+                GraphIncoming(datavalue)             '' Add points to the chart
+            Else
+                ResetGraph()
+            End If
+
+
         End If
 
 

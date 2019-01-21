@@ -61,6 +61,7 @@
                     Pressuremin = Current
                     Imincount = 0
                 End If
+
                 If Imincount > 5 Then
                     Slopestate = Sstate.CompleteSlope
 
