@@ -62,7 +62,7 @@
                     Imincount = 0
                 End If
 
-                If Imincount > 5 Then
+                If Imincount > 5 And time > 0.5 Then
                     Slopestate = Sstate.CompleteSlope
 
                 End If
