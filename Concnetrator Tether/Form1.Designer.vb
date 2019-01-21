@@ -98,6 +98,8 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -109,6 +111,7 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -123,10 +126,11 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label20)
+        Me.TabPage1.Controls.Add(Me.GroupBox7)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
         Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.LblVersion)
-        Me.TabPage1.Controls.Add(Me.CB_GraphEngUnits)
         Me.TabPage1.Controls.Add(Me.TextBox1)
         Me.TabPage1.Controls.Add(Me.Btn_Update_Graph)
         Me.TabPage1.Controls.Add(Me.Label1)
@@ -171,7 +175,7 @@ Partial Class Form1
         'CB_GraphEngUnits
         '
         Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(25, 440)
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(47, 29)
         Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
         Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
         Me.CB_GraphEngUnits.TabIndex = 6
@@ -800,6 +804,25 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.CB_GraphEngUnits)
+        Me.GroupBox7.Location = New System.Drawing.Point(537, 429)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(200, 100)
+        Me.GroupBox7.TabIndex = 10
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "GroupBox7"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(63, 472)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(45, 13)
+        Me.Label20.TabIndex = 11
+        Me.Label20.Text = "Label20"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -827,6 +850,8 @@ Partial Class Form1
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -901,4 +926,6 @@ Partial Class Form1
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents Lbl_CycleStage As Label
     Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents GroupBox7 As GroupBox
 End Class
