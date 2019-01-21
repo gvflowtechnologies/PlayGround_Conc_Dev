@@ -30,6 +30,8 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lbl_CycleStage = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -96,8 +98,6 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Lbl_CycleStage = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -140,6 +140,24 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Lbl_CycleStage
+        '
+        Me.Lbl_CycleStage.AutoSize = True
+        Me.Lbl_CycleStage.Location = New System.Drawing.Point(1176, 169)
+        Me.Lbl_CycleStage.Name = "Lbl_CycleStage"
+        Me.Lbl_CycleStage.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_CycleStage.TabIndex = 8
+        Me.Lbl_CycleStage.Text = "Label20"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(1106, 169)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(64, 13)
+        Me.Label21.TabIndex = 9
+        Me.Label21.Text = "Cycle Stage"
         '
         'LblVersion
         '
@@ -781,24 +799,6 @@ Partial Class Form1
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
-        '
-        'Lbl_CycleStage
-        '
-        Me.Lbl_CycleStage.AutoSize = True
-        Me.Lbl_CycleStage.Location = New System.Drawing.Point(1176, 169)
-        Me.Lbl_CycleStage.Name = "Lbl_CycleStage"
-        Me.Lbl_CycleStage.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_CycleStage.TabIndex = 8
-        Me.Lbl_CycleStage.Text = "Label20"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(1106, 169)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(64, 13)
-        Me.Label21.TabIndex = 9
-        Me.Label21.Text = "Cycle Stage"
         '
         'Form1
         '
