@@ -19,7 +19,7 @@ Public Class Form1
 
     End Enum
 
-
+    Dim enteringcycle As Boolean
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
@@ -27,6 +27,9 @@ Public Class Form1
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
     Dim cycles(5) As Integer
+
+    Dim State1decay As PressureDecay
+    Dim State4decay As PressureDecay
 
 
     ' Logging Tracking Variables
@@ -45,7 +48,7 @@ Public Class Form1
         Logging = False
         Newcommport()
         RetrieveSettings()
-
+        enteringcycle = True
 
 
         Dim v As String
@@ -586,26 +589,38 @@ Public Class Form1
             End If
 
 
-            If datavalue(8) <> currentcycle Then ' Only update when needed
-                currentcycle = datavalue(8)
-                Lbl_CycleStage.Text = currentcycle
+            If datavalue(8) = 1 Or datavalue(8) = 4 Then
+                ' Using Datavalue(1) for slope detection
+                If enteringcycle Then
+
+                    If datavalue(8) = 1 Then
+                        State1decay = New PressureDecay
+                    End If
+
+                    If datavalue(8) = 4 Then
+                        State4decay = New PressureDecay
+                    End If
+
+                    enteringcycle = False
+
+                Else ' In cycle
+
+                    If datavalue(8) = 1 Then
+                        State1decay.Detect(datavalue(1))
+                        Lb_DecayMax1.Text = State1decay.PMaxSlope.ToString
+                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString
+                    End If
+
+                    If datavalue(8) = 4 Then
+                        State4decay.Detect(datavalue(1))
+                        Lb_DecayMax4.Text = State4decay.PMaxSlope.ToString
+                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
+                    End If
+                End If
+
+
             End If
-            If DataSent <> commstatus.Pending Then
-                GraphIncoming(datavalue)             '' Add points to the chart
-            Else
-                ResetGraph()
-            End If
-
-            'TextBox1.AppendText(IncomingData)
-
-            If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
-                DataLogging(datavalue)
-                I_CLogging = 0
-            End If
-
-
         End If
-
 
     End Sub
 
@@ -699,44 +714,7 @@ Public Class Form1
 
 
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
 
-        'Dim updatedtimes As String
-        'Dim builder As New System.Text.StringBuilder
-        'Dim cycles As Integer
-        'Dim checksum As Char
-        'cycles = 20 ' CInt(TB_ProcTime4.Text) / timerperiod
-        'Dim length As Int16
-        'Dim receivedstatus As Boolean
-        'length = 0
-        'TextBox10.Text = ""
-        'checksum = Chcksum(cycles, length)
-        'Button8.Text = "SET"
-
-        'builder.Append("#")
-        'builder.Append("PT0")
-        'builder.Append(length)
-
-        'builder.Append(cycles.ToString)
-        'builder.Append(checksum)
-        'builder.Append("$")
-        'updatedtimes = builder.ToString
-
-
-        'receivedstatus = SendData(updatedtimes)
-        'transfer procedure
-
-
-        'Thread.Sleep(5)
-        'If DataSent = commstatus.Ready Then
-        '    Button8.Text = "Success"
-
-        'Else
-        '    Button8.Text = "Fail"
-
-        'End If
-
-    End Sub
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
         ' Function returns an check sum
         ' Function also updates length by reference.
