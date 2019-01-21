@@ -641,7 +641,10 @@ Public Class Form1
             Else
                 ResetGraph()
             End If
-
+            If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
+                DataLogging(datavalue)
+                I_CLogging = 0
+            End If
 
         End If
 
