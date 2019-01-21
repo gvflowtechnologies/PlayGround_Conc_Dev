@@ -30,6 +30,14 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
+        Me.Lb_DecayMax4 = New System.Windows.Forms.Label()
+        Me.Lb_DecayMax1 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -132,6 +140,14 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label25)
+        Me.TabPage1.Controls.Add(Me.Label24)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayAve4)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg1)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayMax4)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayMax1)
+        Me.TabPage1.Controls.Add(Me.Label23)
+        Me.TabPage1.Controls.Add(Me.Label22)
         Me.TabPage1.Controls.Add(Me.GroupBox8)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
         Me.TabPage1.Controls.Add(Me.Label21)
@@ -147,6 +163,82 @@ Partial Class Form1
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1112, 457)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(26, 13)
+        Me.Label25.TabIndex = 20
+        Me.Label25.Text = "Avg"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(1063, 457)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(27, 13)
+        Me.Label24.TabIndex = 19
+        Me.Label24.Text = "Max"
+        '
+        'Lb_DecayAve4
+        '
+        Me.Lb_DecayAve4.AutoSize = True
+        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1106, 519)
+        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
+        Me.Lb_DecayAve4.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayAve4.TabIndex = 18
+        Me.Lb_DecayAve4.Text = "xxxxxx"
+        '
+        'Lb_DecayAvg1
+        '
+        Me.Lb_DecayAvg1.AutoSize = True
+        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1106, 483)
+        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
+        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayAvg1.TabIndex = 17
+        Me.Lb_DecayAvg1.Text = "xxxxxx"
+        '
+        'Lb_DecayMax4
+        '
+        Me.Lb_DecayMax4.AutoSize = True
+        Me.Lb_DecayMax4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayMax4.Location = New System.Drawing.Point(1057, 519)
+        Me.Lb_DecayMax4.Name = "Lb_DecayMax4"
+        Me.Lb_DecayMax4.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayMax4.TabIndex = 16
+        Me.Lb_DecayMax4.Text = "xxxxxx"
+        '
+        'Lb_DecayMax1
+        '
+        Me.Lb_DecayMax1.AutoSize = True
+        Me.Lb_DecayMax1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayMax1.Location = New System.Drawing.Point(1057, 483)
+        Me.Lb_DecayMax1.Name = "Lb_DecayMax1"
+        Me.Lb_DecayMax1.Size = New System.Drawing.Size(39, 15)
+        Me.Lb_DecayMax1.TabIndex = 15
+        Me.Lb_DecayMax1.Text = "xxxxxx"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(918, 521)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(121, 13)
+        Me.Label23.TabIndex = 14
+        Me.Label23.Text = "Stage 4 Decay Count/S"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(918, 485)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(121, 13)
+        Me.Label22.TabIndex = 13
+        Me.Label22.Text = "Stage 1 Decay Count/S"
+        '
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.Btn_Loging_Toggle)
@@ -157,14 +249,14 @@ Partial Class Form1
         Me.GroupBox8.Controls.Add(Me.CB_GraphEngUnits)
         Me.GroupBox8.Location = New System.Drawing.Point(6, 442)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(508, 85)
+        Me.GroupBox8.Size = New System.Drawing.Size(405, 85)
         Me.GroupBox8.TabIndex = 12
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Graph and Logging Setup"
         '
         'Btn_Loging_Toggle
         '
-        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(387, 55)
+        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(235, 55)
         Me.Btn_Loging_Toggle.Name = "Btn_Loging_Toggle"
         Me.Btn_Loging_Toggle.Size = New System.Drawing.Size(89, 23)
         Me.Btn_Loging_Toggle.TabIndex = 13
@@ -208,7 +300,7 @@ Partial Class Form1
         'CB_GraphEngUnits
         '
         Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(368, 31)
+        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(272, 21)
         Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
         Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
         Me.CB_GraphEngUnits.TabIndex = 6
@@ -277,7 +369,7 @@ Partial Class Form1
         Me.GroupBox1.Size = New System.Drawing.Size(612, 146)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Process Times"
+        Me.GroupBox1.Text = "Process Times (mSeconds)"
         '
         'Lbl_PTime6
         '
@@ -873,7 +965,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1264, 729)
+        Me.ClientSize = New System.Drawing.Size(1261, 729)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -980,4 +1072,12 @@ Partial Class Form1
     Friend WithEvents Label20 As Label
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents Btn_Loging_Toggle As Button
+    Friend WithEvents Lb_DecayAve4 As Label
+    Friend WithEvents Lb_DecayAvg1 As Label
+    Friend WithEvents Lb_DecayMax4 As Label
+    Friend WithEvents Lb_DecayMax1 As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
 End Class
