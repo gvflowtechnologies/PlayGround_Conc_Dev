@@ -12,17 +12,14 @@ Public Class Form1
         Resend = 2
     End Enum
     Enum LOGSTATUS
+
         Wating
         Logging
         Closing
-    End Enum
-    Enum Sstate
-        peakdection
-        inslope
-        CompleteSlope
+
     End Enum
 
-    Dim Decay As Sstate
+
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
     Public WithEvents Mycom As SerialPort
@@ -30,9 +27,6 @@ Public Class Form1
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
     Dim cycles(5) As Integer
-    Dim State1decay As PressureDecay
-    Dim State4decay As PressureDecay
-    Dim enteringcycle As Boolean ' Entering Cycle
 
 
     ' Logging Tracking Variables
@@ -51,17 +45,8 @@ Public Class Form1
         Logging = False
         Newcommport()
         RetrieveSettings()
-        enteringcycle = True
 
-        With Chart1
-            .Series(0).Points.Clear()
-            .Series(1).Points.Clear()
-            .Series(2).Points.Clear()
-            .ChartAreas(0).AxisY.Maximum = 1024
-            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
 
-        End With
 
         Dim v As String
         If System.Diagnostics.Debugger.IsAttached = False Then
@@ -391,9 +376,9 @@ Public Class Form1
 
         My.Settings.GraphLength = newtime
         My.Settings.Save()
-        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+        ' Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
 
-
+        ResetGraph()
 
     End Sub
 
@@ -465,6 +450,20 @@ Public Class Form1
         Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
         TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
         TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
+        ResetGraph()
+
+    End Sub
+
+    Public Sub ResetGraph()
+        With Chart1
+            .Series(0).Points.Clear()
+            .Series(1).Points.Clear()
+            .Series(2).Points.Clear()
+            .ChartAreas(0).AxisY.Maximum = 1024
+            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
+            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
+
+        End With
 
     End Sub
 
@@ -567,9 +566,9 @@ Public Class Form1
 
         Else
 
-            ' you want to split this input string
-            I_CLogging += 1
 
+            I_CLogging += 1 ' Update count on logging interval
+            ' you want to split this input string
             ' Split string based on comma
             Dim words As String() = IncomingData.Split(New Char() {","c})
 
@@ -585,57 +584,18 @@ Public Class Form1
                 '   LBL_RawPT1.Text = datavalue(0)
 
             End If
-            ' Start Peak Detection
-            If datavalue(8) = 1 Or datavalue(8) = 4 Then
-                ' Using Datavalue(1) for slope detection
-                If enteringcycle Then
-                    Decay = Sstate.peakdection
-                    If datavalue(8) = 1 Then
-                        State1decay = New PressureDecay
-                    End If
-
-                    If datavalue(8) = 4 Then
-                        State4decay = New PressureDecay
-                    End If
-
-                    enteringcycle = False
-
-                Else ' In cycle
-
-                    If datavalue(8) = 1 Then
-                        State1decay.Detect(datavalue(1))
-                        Lb_DecayMax1.Text = State1decay.PMaxSlope.ToString
-                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString
-                    End If
-
-                    If datavalue(8) = 4 Then
-                        State4decay.Detect(datavalue(1))
-                        Lb_DecayMax4.Text = State4decay.PMaxSlope.ToString
-                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
-                    End If
-                End If
-
-            End If
-
 
 
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
-
-                If currentcycle = 2 Then
-                    If Not State1decay Is Nothing Then
-                        State1decay.Dispose()
-                    End If
-                End If
-                    If currentcycle = 5 Then
-                    If Not State4decay Is Nothing Then
-                        State4decay.Dispose()
-                    End If
-                End If
-                enteringcycle = True
             End If
+            If DataSent <> commstatus.Pending Then
                 GraphIncoming(datavalue)             '' Add points to the chart
+            Else
+                ResetGraph()
+            End If
+
             'TextBox1.AppendText(IncomingData)
 
             If I_CLogging >= My.Settings.Log_Time_Step Then ' Test to see if we should call the logging routine
@@ -727,18 +687,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Btn_Update_Graph_Click(sender As Object, e As EventArgs)
-        Dim newtime As Integer
 
-        newtime = CInt(TB_GraphDisplay.Text) * 100
-        ' Log Time Step 
-        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
-
-        My.Settings.GraphLength = newtime
-        My.Settings.Save()
-        Chart1.ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-
-    End Sub
 
     Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
 
@@ -840,23 +789,6 @@ Public Class Form1
 
 
     End Sub
-    Public Sub Detectslope(ByVal pressure As Integer)
 
-        Select Case Decay
-            Case Sstate.peakdection
-
-            Case Sstate.inslope
-
-            Case Sstate.CompleteSlope
-
-
-
-
-        End Select
-
-
-
-
-    End Sub
 
 End Class

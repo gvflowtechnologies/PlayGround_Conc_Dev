@@ -620,7 +620,7 @@ Partial Class Form1
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(228, 603)
+        Me.Label19.Location = New System.Drawing.Point(146, 652)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(45, 13)
         Me.Label19.TabIndex = 3
@@ -628,7 +628,7 @@ Partial Class Form1
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(196, 388)
+        Me.TextBox10.Location = New System.Drawing.Point(114, 437)
         Me.TextBox10.Multiline = True
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.Size = New System.Drawing.Size(158, 145)
@@ -636,7 +636,7 @@ Partial Class Form1
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(228, 550)
+        Me.Button8.Location = New System.Drawing.Point(146, 599)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(75, 23)
         Me.Button8.TabIndex = 1
@@ -649,7 +649,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.GroupBox5)
         Me.GroupBox2.Controls.Add(Me.GroupBox4)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
-        Me.GroupBox2.Location = New System.Drawing.Point(23, 34)
+        Me.GroupBox2.Location = New System.Drawing.Point(17, 35)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(775, 373)
         Me.GroupBox2.TabIndex = 0
