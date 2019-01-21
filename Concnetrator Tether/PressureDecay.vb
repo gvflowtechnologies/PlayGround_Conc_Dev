@@ -66,13 +66,7 @@
 
                 End If
 
-
             Case Sstate.CompleteSlope
-
-
-
-
-
 
         End Select
 
