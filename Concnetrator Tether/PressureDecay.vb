@@ -63,6 +63,9 @@
                 End If
 
                 If Imincount > 5 And time > 0.5 Then
+
+                    tempslope = (PressureMax - Current) / (time - (Imincount * IcPeriod))
+                    SlopeAvg = tempslope
                     Slopestate = Sstate.CompleteSlope
 
                 End If
