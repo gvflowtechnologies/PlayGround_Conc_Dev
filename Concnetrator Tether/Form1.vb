@@ -581,7 +581,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(8) As Integer
+            Dim datavalue(9) As Integer
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Int32.TryParse(word, datavalue(i))
@@ -619,6 +619,7 @@ Public Class Form1
                         State4decay.Detect(datavalue(1))
                         Lb_DecayMax4.Text = State4decay.PMvgAvgSlope.ToString("F1")
                         Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
+                        Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString
                     End If
                 End If
 
@@ -627,6 +628,7 @@ Public Class Form1
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
+
 
                 'If currentcycle = 2 Then
                 '    If Not State1decay Is Nothing Then
