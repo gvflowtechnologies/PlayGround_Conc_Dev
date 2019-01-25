@@ -23,13 +23,17 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
         Me.Lb_DecayMax4 = New System.Windows.Forms.Label()
         Me.LB_DecayMax1 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -107,10 +111,6 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -159,6 +159,44 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(989, 442)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(71, 13)
+        Me.Label29.TabIndex = 18
+        Me.Label29.Text = "Current Slope"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(906, 442)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(71, 13)
+        Me.Label28.TabIndex = 17
+        Me.Label28.Text = "Filtered Slope"
+        '
+        'Lb_DecayAve4
+        '
+        Me.Lb_DecayAve4.AutoSize = True
+        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1004, 491)
+        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
+        Me.Lb_DecayAve4.Size = New System.Drawing.Size(19, 15)
+        Me.Lb_DecayAve4.TabIndex = 16
+        Me.Lb_DecayAve4.Text = "xx"
+        '
+        'Lb_DecayAvg1
+        '
+        Me.Lb_DecayAvg1.AutoSize = True
+        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1004, 468)
+        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
+        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(19, 15)
+        Me.Lb_DecayAvg1.TabIndex = 15
+        Me.Lb_DecayAvg1.Text = "xx"
         '
         'Lb_DecayMax4
         '
@@ -505,28 +543,28 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.AxisY.MajorGrid.Interval = 0R
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Legend = "Legend1"
-        Series4.Name = "PT1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Legend = "Legend1"
-        Series5.Name = "PT2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Legend = "Legend1"
-        Series6.Name = "PT3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -908,44 +946,6 @@ Partial Class Form1
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
-        '
-        'Lb_DecayAvg1
-        '
-        Me.Lb_DecayAvg1.AutoSize = True
-        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1004, 468)
-        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
-        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayAvg1.TabIndex = 15
-        Me.Lb_DecayAvg1.Text = "xx"
-        '
-        'Lb_DecayAve4
-        '
-        Me.Lb_DecayAve4.AutoSize = True
-        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1004, 491)
-        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
-        Me.Lb_DecayAve4.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayAve4.TabIndex = 16
-        Me.Lb_DecayAve4.Text = "xx"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(906, 442)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(57, 13)
-        Me.Label28.TabIndex = 17
-        Me.Label28.Text = "Max Slope"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(989, 442)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(77, 13)
-        Me.Label29.TabIndex = 18
-        Me.Label29.Text = "Average Slope"
         '
         'Form1
         '

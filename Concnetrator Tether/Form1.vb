@@ -32,6 +32,7 @@ Public Class Form1
     Dim State4decay As PressureDecay
 
 
+
     ' Logging Tracking Variables
     Dim Logging As Boolean ' True if logging is turned on
     Dim LoggingStatus As LOGSTATUS
@@ -50,6 +51,9 @@ Public Class Form1
         RetrieveSettings()
         enteringcycle = True
 
+        'Load Variables for Decay pressure monitoring
+        State1decay = New PressureDecay
+        State4decay = New PressureDecay
 
         Dim v As String
         If System.Diagnostics.Debugger.IsAttached = False Then
@@ -491,7 +495,7 @@ Public Class Form1
                 .DataBits = 8
                 .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
                 .WriteTimeout = 100
-                .ReadTimeout = 1000
+                .ReadTimeout = 10000
                 .WriteBufferSize = 500
             End With
         End If
@@ -594,11 +598,11 @@ Public Class Form1
                 If enteringcycle Then
 
                     If datavalue(8) = 1 Then
-                        State1decay = New PressureDecay
+                        State1decay.Reset()
                     End If
 
                     If datavalue(8) = 4 Then
-                        State4decay = New PressureDecay
+                        State4decay.Reset()
                     End If
 
                     enteringcycle = False
@@ -607,13 +611,13 @@ Public Class Form1
 
                     If datavalue(8) = 1 Then
                         State1decay.Detect(datavalue(1))
-                        Lb_DecayMax1.Text = State1decay.PMaxSlope.ToString
+                        LB_DecayMax1.Text = State1decay.PMvgAvgSlope.ToString("F1")
                         Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString
                     End If
 
                     If datavalue(8) = 4 Then
                         State4decay.Detect(datavalue(1))
-                        Lb_DecayMax4.Text = State4decay.PMaxSlope.ToString
+                        Lb_DecayMax4.Text = State4decay.PMvgAvgSlope.ToString("F1")
                         Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
                     End If
                 End If
@@ -624,16 +628,16 @@ Public Class Form1
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
 
-                If currentcycle = 2 Then
-                    If Not State1decay Is Nothing Then
-                        State1decay.Dispose()
-                    End If
-                End If
-                If currentcycle = 5 Then
-                    If Not State4decay Is Nothing Then
-                        State4decay.Dispose()
-                    End If
-                End If
+                'If currentcycle = 2 Then
+                '    If Not State1decay Is Nothing Then
+                '        State1decay.Dispose()
+                '    End If
+                'End If
+                'If currentcycle = 5 Then
+                '    If Not State4decay Is Nothing Then
+                '        State4decay.Dispose()
+                '    End If
+                'End If
                 enteringcycle = True
             End If
             If DataSent <> commstatus.Pending Then
