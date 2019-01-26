@@ -10,7 +10,7 @@
     Dim PressureMax As Integer
     Dim BStateEnter As Boolean
     Dim SlopeMax As Integer
-    Dim SlopeAvg As Integer
+    Dim SlopeAvg As Single
     Dim Pressuremin As Integer
     Dim ICount As Integer 'number of times count has come
     Dim runningpressure(3) As Integer
@@ -25,12 +25,7 @@
             Islope = 0
         Next
         Reset()
-        'Slopestate = Sstate.peakdection
-        'PressureMax = 0
-        'SlopeMax = 0
-        'SlopeAvg = 0
-        'ICount = 0
-        'Imincount = 0
+
 
     End Sub
 
@@ -65,7 +60,7 @@
 
                 End If
                 Dim tempslope As Single
-                tempslope = (PressureMax - Current) / time
+                tempslope = CSng(PressureMax - Current) / time
                 SlopeAvg = tempslope
                 If tempslope > SlopeMax Then
                     SlopeMax = tempslope

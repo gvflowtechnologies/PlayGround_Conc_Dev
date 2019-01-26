@@ -586,6 +586,8 @@ Public Class Form1
             For Each word In words
                 Dim sucessess As Boolean = Int32.TryParse(word, datavalue(i))
                 i = i + 1
+                If i = 8 Then datavalue(i) += 1
+
             Next
             If TP_Calibration.Visible = True Then
                 '   LBL_RawPT1.Text = datavalue(0)
@@ -612,13 +614,13 @@ Public Class Form1
                     If datavalue(8) = 1 Then
                         State1decay.Detect(datavalue(1))
                         LB_DecayMax1.Text = State1decay.PMvgAvgSlope.ToString("F1")
-                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString
+                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString("F1")
                     End If
 
                     If datavalue(8) = 4 Then
                         State4decay.Detect(datavalue(1))
                         Lb_DecayMax4.Text = State4decay.PMvgAvgSlope.ToString("F1")
-                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString
+                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString("F1")
                         Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString
                     End If
                 End If
