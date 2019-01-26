@@ -15,7 +15,7 @@
     Dim ICount As Integer 'number of times count has come
     Dim runningpressure(3) As Integer
     Dim Imincount As Integer ' minnimum detector
-    Private LastSlopes(2) As Integer
+    Private LastSlopes(2) As Single
     Private MvgAvgSlope As Single
     Private slopecount As Integer
 
@@ -74,7 +74,7 @@
 
                 If Imincount > 5 And time > 0.5 Then
 
-                    tempslope = (PressureMax - Current) / (time - (Imincount * IcPeriod))
+                    tempslope = CSng(PressureMax - Current) / (time - (CSng(Imincount) * IcPeriod))
                     SlopeAvg = tempslope
                     Slopestate = Sstate.CompleteSlope
                     BStateEnter = True
