@@ -1,13 +1,13 @@
 ﻿Public Class PressureDecay
     Enum Sstate
-        peakdection
+        PeakDetection
         inslope
         CompleteSlope
     End Enum
 
     Private Slopestate As Sstate
     Private Const IcPeriod As Single = 0.01 ' Timeperiod between Samples
-    Dim PressureMax As Integer
+    Dim PressureMax As Integer  ' Maximum pressure achieved during the start of the stage.
     Dim BStateEnter As Boolean
     Dim SlopeMax As Integer
     Dim SlopeAvg As Single
@@ -38,7 +38,7 @@
         Imincount += 1
         time = ICount * IcPeriod
         Select Case Slopestate
-            Case Sstate.peakdection
+            Case Sstate.PeakDetection
                 If BStateEnter Then
                     BStateEnter = False
 
@@ -112,7 +112,7 @@
     End Sub
 
     Public Sub Reset()
-        Slopestate = Sstate.peakdection
+        Slopestate = Sstate.PeakDetection
         PressureMax = 0
         SlopeMax = 0
         SlopeAvg = 0
@@ -125,7 +125,7 @@
         Get
             Dim Slopereturn As Single
 
-            If Slopestate <> Sstate.peakdection Then
+            If Slopestate <> Sstate.PeakDetection Then
                 Slopereturn = SlopeAvg
             Else
                 Slopereturn = 0
@@ -139,7 +139,7 @@
         Get
             Dim Slopereturn As Single
 
-            If Slopestate <> Sstate.peakdection Then
+            If Slopestate <> Sstate.PeakDetection Then
                 Slopereturn = MvgAvgSlope
             Else
                 Slopereturn = 0
