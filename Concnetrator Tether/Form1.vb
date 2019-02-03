@@ -622,6 +622,7 @@ Public Class Form1
                         Lb_DecayMax4.Text = State4decay.PMvgAvgSlope.ToString("F1")
                         Lb_DecayAve4.Text = State4decay.PAvGslope.ToString("F1")
                         Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString
+                        Lbl_PeakPressure.Text = datavalue(1).ToString  ' Need to check wich pressure we are doing the decay on.
                     End If
                 End If
 

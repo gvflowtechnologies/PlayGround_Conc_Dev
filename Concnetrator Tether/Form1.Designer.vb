@@ -23,13 +23,15 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Lbl_CycleTime = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
@@ -111,8 +113,8 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Lbl_CycleTime = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Lbl_PeakPressure = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -139,6 +141,8 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Lbl_PeakPressure)
+        Me.TabPage1.Controls.Add(Me.Label25)
         Me.TabPage1.Controls.Add(Me.Label24)
         Me.TabPage1.Controls.Add(Me.Lbl_CycleTime)
         Me.TabPage1.Controls.Add(Me.Label29)
@@ -163,6 +167,24 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(1072, 195)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(101, 13)
+        Me.Label24.TabIndex = 19
+        Me.Label24.Text = "Cycle 4 Time mSec:"
+        '
+        'Lbl_CycleTime
+        '
+        Me.Lbl_CycleTime.AutoSize = True
+        Me.Lbl_CycleTime.Location = New System.Drawing.Point(1176, 195)
+        Me.Lbl_CycleTime.Name = "Lbl_CycleTime"
+        Me.Lbl_CycleTime.Size = New System.Drawing.Size(30, 13)
+        Me.Lbl_CycleTime.TabIndex = 20
+        Me.Lbl_CycleTime.Text = "Time"
         '
         'Label29
         '
@@ -547,28 +569,28 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.AxisY.MajorGrid.Interval = 0R
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Legend = "Legend1"
-        Series4.Name = "PT1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Legend = "Legend1"
-        Series5.Name = "PT2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Legend = "Legend1"
-        Series6.Name = "PT3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -951,23 +973,23 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Label24
+        'Label25
         '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(1072, 195)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(101, 13)
-        Me.Label24.TabIndex = 19
-        Me.Label24.Text = "Cycle 4 Time mSec:"
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1042, 219)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(131, 13)
+        Me.Label25.TabIndex = 21
+        Me.Label25.Text = "Cycle 4 Pressure (Counts):"
         '
-        'Lbl_CycleTime
+        'Lbl_PeakPressure
         '
-        Me.Lbl_CycleTime.AutoSize = True
-        Me.Lbl_CycleTime.Location = New System.Drawing.Point(1176, 195)
-        Me.Lbl_CycleTime.Name = "Lbl_CycleTime"
-        Me.Lbl_CycleTime.Size = New System.Drawing.Size(30, 13)
-        Me.Lbl_CycleTime.TabIndex = 20
-        Me.Lbl_CycleTime.Text = "Time"
+        Me.Lbl_PeakPressure.AutoSize = True
+        Me.Lbl_PeakPressure.Location = New System.Drawing.Point(1176, 219)
+        Me.Lbl_PeakPressure.Name = "Lbl_PeakPressure"
+        Me.Lbl_PeakPressure.Size = New System.Drawing.Size(17, 13)
+        Me.Lbl_PeakPressure.TabIndex = 22
+        Me.Lbl_PeakPressure.Text = "xx"
         '
         'Form1
         '
@@ -1087,4 +1109,6 @@ Partial Class Form1
     Friend WithEvents Lb_DecayAvg1 As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents Lbl_CycleTime As Label
+    Friend WithEvents Lbl_PeakPressure As Label
+    Friend WithEvents Label25 As Label
 End Class
