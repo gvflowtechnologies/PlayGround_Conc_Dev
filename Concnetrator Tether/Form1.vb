@@ -65,7 +65,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DataLogging(ByVal loggingdata() As Integer) ' Call this procudure every nth cycle
+    Private Sub DataLogging(ByVal loggingdata() As Single) ' Call this procudure every nth cycle
 
         Select Case LoggingStatus ' Finite State machine for logging data
             Case LOGSTATUS.Wating
@@ -505,7 +505,7 @@ Public Class Form1
                 Mycom.Open()
                 Mycom.DiscardInBuffer()
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                'MessageBox.Show(ex.Message)
             End Try
 
         End If
@@ -581,10 +581,10 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(9) As Integer
+            Dim datavalue(9) As Single
             Dim i As Integer = 0
             For Each word In words
-                Dim sucessess As Boolean = Int32.TryParse(word, datavalue(i))
+                Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
                 i = i + 1
                 If i = 8 Then datavalue(i) += 1
 
@@ -660,7 +660,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub GraphIncoming(ByVal datatograph() As Int32)
+    Private Sub GraphIncoming(ByVal datatograph() As Single)
         With Chart1
             .Series(0).Points.AddY(datatograph(0))
             .Series(1).Points.AddY(datatograph(1))
