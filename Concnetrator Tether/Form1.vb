@@ -614,6 +614,7 @@ Public Class Form1
                         State1decay.Detect(datavalue(1))
                         datavalue(12) = State1decay.PMvgAvgSlope
                         LB_DecayAvg1.Text = datavalue(12).ToString("F1")
+                        Lb_Mi1Slope.Text = datavalue(10).ToString("F1")
                         Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
                     End If
 
@@ -621,6 +622,7 @@ Public Class Form1
                         State4decay.Detect(datavalue(1))
                         datavalue(13) = State4decay.PMvgAvgSlope
                         Lb_DecayAvg4.Text = datavalue(13).ToString("F1")
+                        Lb_Mic4slope.Text = datavalue(11).ToString("F1")
                         Lb_DecayCurr4.Text = State4decay.PAvGslope.ToString("F1")
                         Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString ' Showing cycle time for mapping.
                         Lbl_PeakPressure.Text = datavalue(1).ToString  ' Showing peak pressure for mapping.

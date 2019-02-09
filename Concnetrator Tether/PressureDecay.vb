@@ -42,7 +42,7 @@
                     BStateEnter = False
 
                 End If
-                If Current > PressureMax Then
+                If Current >= PressureMax Then
                     PressureMax = Current
                     ICount = 0
                 End If
@@ -73,8 +73,7 @@
 
                 If Imincount > 5 And time > 0.5 Then
 
-                    tempslope = CSng(PressureMax - Pressuremin) / (time - (CSng(Imincount) * IcPeriod))
-                    SlopeAvg = tempslope
+                    SlopeAvg = CSng(PressureMax - Pressuremin) / (time - (CSng(Imincount) * IcPeriod))
                     Slopestate = Sstate.CompleteSlope
                     BStateEnter = True
 
@@ -91,11 +90,11 @@
                     For Each islope In LastSlopes
                         MvgAvgSlope += CSng(islope)
                     Next
-                    MvgAvgSlope = MvgAvgSlope / CSng(LastSlopes.Length)
+                    MvgAvgSlope = MvgAvgSlope / CSng(LastSlopes.Length + 1)
 
                     'Increment count
 
-                    If slopecount < 2 Then
+                    If slopecount < LastSlopes.Length Then
                         slopecount += 1
                     Else
                         slopecount = 0

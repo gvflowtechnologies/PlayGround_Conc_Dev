@@ -30,6 +30,7 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lb_Mi1Slope = New System.Windows.Forms.Label()
         Me.Lbl_PeakPressure = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -115,6 +116,8 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Lb_Mic4slope = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -141,6 +144,9 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Lb_Mic4slope)
+        Me.TabPage1.Controls.Add(Me.Label26)
+        Me.TabPage1.Controls.Add(Me.Lb_Mi1Slope)
         Me.TabPage1.Controls.Add(Me.Lbl_PeakPressure)
         Me.TabPage1.Controls.Add(Me.Label25)
         Me.TabPage1.Controls.Add(Me.Label24)
@@ -167,6 +173,15 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Lb_Mi1Slope
+        '
+        Me.Lb_Mi1Slope.AutoSize = True
+        Me.Lb_Mi1Slope.Location = New System.Drawing.Point(992, 468)
+        Me.Lb_Mi1Slope.Name = "Lb_Mi1Slope"
+        Me.Lb_Mi1Slope.Size = New System.Drawing.Size(33, 13)
+        Me.Lb_Mi1Slope.TabIndex = 23
+        Me.Lb_Mi1Slope.Text = "Micro"
         '
         'Lbl_PeakPressure
         '
@@ -207,7 +222,7 @@ Partial Class Form1
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(989, 442)
+        Me.Label29.Location = New System.Drawing.Point(1074, 439)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(71, 13)
         Me.Label29.TabIndex = 18
@@ -226,7 +241,7 @@ Partial Class Form1
         '
         Me.Lb_DecayCurr4.AutoSize = True
         Me.Lb_DecayCurr4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1004, 491)
+        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1089, 488)
         Me.Lb_DecayCurr4.Name = "Lb_DecayCurr4"
         Me.Lb_DecayCurr4.Size = New System.Drawing.Size(19, 15)
         Me.Lb_DecayCurr4.TabIndex = 16
@@ -236,7 +251,7 @@ Partial Class Form1
         '
         Me.Lb_DecayCurr1.AutoSize = True
         Me.Lb_DecayCurr1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1004, 468)
+        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1089, 465)
         Me.Lb_DecayCurr1.Name = "Lb_DecayCurr1"
         Me.Lb_DecayCurr1.Size = New System.Drawing.Size(19, 15)
         Me.Lb_DecayCurr1.TabIndex = 15
@@ -991,6 +1006,24 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(974, 442)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(70, 13)
+        Me.Label26.TabIndex = 24
+        Me.Label26.Text = "Filtered Micro"
+        '
+        'Lb_Mic4slope
+        '
+        Me.Lb_Mic4slope.AutoSize = True
+        Me.Lb_Mic4slope.Location = New System.Drawing.Point(995, 493)
+        Me.Lb_Mic4slope.Name = "Lb_Mic4slope"
+        Me.Lb_Mic4slope.Size = New System.Drawing.Size(45, 13)
+        Me.Lb_Mic4slope.TabIndex = 25
+        Me.Lb_Mic4slope.Text = "Label27"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1111,4 +1144,7 @@ Partial Class Form1
     Friend WithEvents Lbl_CycleTime As Label
     Friend WithEvents Lbl_PeakPressure As Label
     Friend WithEvents Label25 As Label
+    Friend WithEvents Lb_Mi1Slope As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Lb_Mic4slope As Label
 End Class
