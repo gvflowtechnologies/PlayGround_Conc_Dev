@@ -26,7 +26,6 @@
         Next
         Reset()
 
-
     End Sub
 
     Public Sub Detect(ByVal pressure As Integer)
@@ -74,7 +73,7 @@
 
                 If Imincount > 5 And time > 0.5 Then
 
-                    tempslope = CSng(PressureMax - Current) / (time - (CSng(Imincount) * IcPeriod))
+                    tempslope = CSng(PressureMax - Pressuremin) / (time - (CSng(Imincount) * IcPeriod))
                     SlopeAvg = tempslope
                     Slopestate = Sstate.CompleteSlope
                     BStateEnter = True

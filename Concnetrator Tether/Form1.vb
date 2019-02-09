@@ -95,7 +95,7 @@ Public Class Form1
                                 .WriteLine(DateTime.Now.ToShortDateString)
                                 .Write("File Start Time, ")
                                 .WriteLine(DateTime.Now.ToShortTimeString)
-                                .WriteLine("P1, P2, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4")
+                                .WriteLine("P1, P ProdTank, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4")
 
                             End With
                         End Using
