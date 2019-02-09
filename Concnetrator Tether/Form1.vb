@@ -634,16 +634,6 @@ Public Class Form1
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
-                'If currentcycle = 2 Then
-                '    If Not State1decay Is Nothing Then
-                '        State1decay.Dispose()
-                '    End If
-                'End If
-                'If currentcycle = 5 Then
-                '    If Not State4decay Is Nothing Then
-                '        State4decay.Dispose()
-                '    End If
-                'End If
                 enteringcycle = True
             End If
             If DataSent <> commstatus.Pending Then

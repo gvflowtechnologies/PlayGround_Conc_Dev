@@ -90,11 +90,11 @@
                     For Each islope In LastSlopes
                         MvgAvgSlope += CSng(islope)
                     Next
-                    MvgAvgSlope = MvgAvgSlope / CSng(LastSlopes.Length + 1)
+                    MvgAvgSlope = MvgAvgSlope / CSng(LastSlopes.Length)
 
                     'Increment count
 
-                    If slopecount < LastSlopes.Length Then
+                    If slopecount < LastSlopes.Length - 1 Then
                         slopecount += 1
                     Else
                         slopecount = 0
