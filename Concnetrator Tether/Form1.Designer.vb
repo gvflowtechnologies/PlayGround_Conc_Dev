@@ -30,14 +30,16 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lbl_PeakPressure = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Lbl_CycleTime = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAve4 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAvg1 = New System.Windows.Forms.Label()
-        Me.Lb_DecayMax4 = New System.Windows.Forms.Label()
-        Me.LB_DecayMax1 = New System.Windows.Forms.Label()
+        Me.Lb_DecayCurr4 = New System.Windows.Forms.Label()
+        Me.Lb_DecayCurr1 = New System.Windows.Forms.Label()
+        Me.Lb_DecayAvg4 = New System.Windows.Forms.Label()
+        Me.LB_DecayAvg1 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
@@ -113,8 +115,6 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Lbl_PeakPressure = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -147,10 +147,10 @@ Partial Class Form1
         Me.TabPage1.Controls.Add(Me.Lbl_CycleTime)
         Me.TabPage1.Controls.Add(Me.Label29)
         Me.TabPage1.Controls.Add(Me.Label28)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayAve4)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg1)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayMax4)
-        Me.TabPage1.Controls.Add(Me.LB_DecayMax1)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayCurr4)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayCurr1)
+        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg4)
+        Me.TabPage1.Controls.Add(Me.LB_DecayAvg1)
         Me.TabPage1.Controls.Add(Me.Label23)
         Me.TabPage1.Controls.Add(Me.Label22)
         Me.TabPage1.Controls.Add(Me.GroupBox7)
@@ -167,6 +167,24 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Lbl_PeakPressure
+        '
+        Me.Lbl_PeakPressure.AutoSize = True
+        Me.Lbl_PeakPressure.Location = New System.Drawing.Point(1176, 219)
+        Me.Lbl_PeakPressure.Name = "Lbl_PeakPressure"
+        Me.Lbl_PeakPressure.Size = New System.Drawing.Size(17, 13)
+        Me.Lbl_PeakPressure.TabIndex = 22
+        Me.Lbl_PeakPressure.Text = "xx"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1042, 219)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(131, 13)
+        Me.Label25.TabIndex = 21
+        Me.Label25.Text = "Cycle 4 Pressure (Counts):"
         '
         'Label24
         '
@@ -204,45 +222,45 @@ Partial Class Form1
         Me.Label28.TabIndex = 17
         Me.Label28.Text = "Filtered Slope"
         '
-        'Lb_DecayAve4
+        'Lb_DecayCurr4
         '
-        Me.Lb_DecayAve4.AutoSize = True
-        Me.Lb_DecayAve4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAve4.Location = New System.Drawing.Point(1004, 491)
-        Me.Lb_DecayAve4.Name = "Lb_DecayAve4"
-        Me.Lb_DecayAve4.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayAve4.TabIndex = 16
-        Me.Lb_DecayAve4.Text = "xx"
+        Me.Lb_DecayCurr4.AutoSize = True
+        Me.Lb_DecayCurr4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1004, 491)
+        Me.Lb_DecayCurr4.Name = "Lb_DecayCurr4"
+        Me.Lb_DecayCurr4.Size = New System.Drawing.Size(19, 15)
+        Me.Lb_DecayCurr4.TabIndex = 16
+        Me.Lb_DecayCurr4.Text = "xx"
         '
-        'Lb_DecayAvg1
+        'Lb_DecayCurr1
         '
-        Me.Lb_DecayAvg1.AutoSize = True
-        Me.Lb_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAvg1.Location = New System.Drawing.Point(1004, 468)
-        Me.Lb_DecayAvg1.Name = "Lb_DecayAvg1"
-        Me.Lb_DecayAvg1.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayAvg1.TabIndex = 15
-        Me.Lb_DecayAvg1.Text = "xx"
+        Me.Lb_DecayCurr1.AutoSize = True
+        Me.Lb_DecayCurr1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1004, 468)
+        Me.Lb_DecayCurr1.Name = "Lb_DecayCurr1"
+        Me.Lb_DecayCurr1.Size = New System.Drawing.Size(19, 15)
+        Me.Lb_DecayCurr1.TabIndex = 15
+        Me.Lb_DecayCurr1.Text = "xx"
         '
-        'Lb_DecayMax4
+        'Lb_DecayAvg4
         '
-        Me.Lb_DecayMax4.AutoSize = True
-        Me.Lb_DecayMax4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayMax4.Location = New System.Drawing.Point(911, 490)
-        Me.Lb_DecayMax4.Name = "Lb_DecayMax4"
-        Me.Lb_DecayMax4.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayMax4.TabIndex = 14
-        Me.Lb_DecayMax4.Text = "xx"
+        Me.Lb_DecayAvg4.AutoSize = True
+        Me.Lb_DecayAvg4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lb_DecayAvg4.Location = New System.Drawing.Point(911, 490)
+        Me.Lb_DecayAvg4.Name = "Lb_DecayAvg4"
+        Me.Lb_DecayAvg4.Size = New System.Drawing.Size(19, 15)
+        Me.Lb_DecayAvg4.TabIndex = 14
+        Me.Lb_DecayAvg4.Text = "xx"
         '
-        'LB_DecayMax1
+        'LB_DecayAvg1
         '
-        Me.LB_DecayMax1.AutoSize = True
-        Me.LB_DecayMax1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LB_DecayMax1.Location = New System.Drawing.Point(911, 467)
-        Me.LB_DecayMax1.Name = "LB_DecayMax1"
-        Me.LB_DecayMax1.Size = New System.Drawing.Size(19, 15)
-        Me.LB_DecayMax1.TabIndex = 13
-        Me.LB_DecayMax1.Text = "xx"
+        Me.LB_DecayAvg1.AutoSize = True
+        Me.LB_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LB_DecayAvg1.Location = New System.Drawing.Point(911, 467)
+        Me.LB_DecayAvg1.Name = "LB_DecayAvg1"
+        Me.LB_DecayAvg1.Size = New System.Drawing.Size(19, 15)
+        Me.LB_DecayAvg1.TabIndex = 13
+        Me.LB_DecayAvg1.Text = "xx"
         '
         'Label23
         '
@@ -973,24 +991,6 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(1042, 219)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(131, 13)
-        Me.Label25.TabIndex = 21
-        Me.Label25.Text = "Cycle 4 Pressure (Counts):"
-        '
-        'Lbl_PeakPressure
-        '
-        Me.Lbl_PeakPressure.AutoSize = True
-        Me.Lbl_PeakPressure.Location = New System.Drawing.Point(1176, 219)
-        Me.Lbl_PeakPressure.Name = "Lbl_PeakPressure"
-        Me.Lbl_PeakPressure.Size = New System.Drawing.Size(17, 13)
-        Me.Lbl_PeakPressure.TabIndex = 22
-        Me.Lbl_PeakPressure.Text = "xx"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1099,14 +1099,14 @@ Partial Class Form1
     Friend WithEvents Btn_Loging_Toggle As Button
     Friend WithEvents Lbl_FileLocation As Label
     Friend WithEvents Btn_LogFiles As Button
-    Friend WithEvents Lb_DecayMax4 As Label
-    Friend WithEvents LB_DecayMax1 As Label
+    Friend WithEvents Lb_DecayAvg4 As Label
+    Friend WithEvents LB_DecayAvg1 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Label29 As Label
     Friend WithEvents Label28 As Label
-    Friend WithEvents Lb_DecayAve4 As Label
-    Friend WithEvents Lb_DecayAvg1 As Label
+    Friend WithEvents Lb_DecayCurr4 As Label
+    Friend WithEvents Lb_DecayCurr1 As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents Lbl_CycleTime As Label
     Friend WithEvents Lbl_PeakPressure As Label

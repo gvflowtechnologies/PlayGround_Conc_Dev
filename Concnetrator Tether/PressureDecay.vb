@@ -57,8 +57,8 @@
             Case Sstate.inslope
                 If BStateEnter Then
                     BStateEnter = False
-
                 End If
+
                 Dim tempslope As Single
                 tempslope = CSng(PressureMax - Current) / time
                 SlopeAvg = tempslope
@@ -139,11 +139,11 @@
         Get
             Dim Slopereturn As Single
 
-            If Slopestate <> Sstate.PeakDetection Then
-                Slopereturn = MvgAvgSlope
-            Else
-                Slopereturn = 0
-            End If
+            ' If Slopestate <> Sstate.PeakDetection Then
+            Slopereturn = MvgAvgSlope
+            'Else
+            'Slopereturn = 0
+            'End If
 
             Return Slopereturn
         End Get

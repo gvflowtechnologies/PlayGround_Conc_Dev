@@ -95,7 +95,7 @@ Public Class Form1
                                 .WriteLine(DateTime.Now.ToShortDateString)
                                 .Write("File Start Time, ")
                                 .WriteLine(DateTime.Now.ToShortTimeString)
-                                .WriteLine("P1, P2, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#")
+                                .WriteLine("P1, P2, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4")
 
                             End With
                         End Using
@@ -573,7 +573,6 @@ Public Class Form1
 
         Else
 
-
             I_CLogging += 1 ' Update count on logging interval
             ' you want to split this input string
             ' Split string based on comma
@@ -581,7 +580,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(9) As Single
+            Dim datavalue(13) As Single
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
@@ -613,16 +612,18 @@ Public Class Form1
 
                     If datavalue(8) = 1 Then
                         State1decay.Detect(datavalue(1))
-                        LB_DecayMax1.Text = State1decay.PMvgAvgSlope.ToString("F1")
-                        Lb_DecayAvg1.Text = State1decay.PAvGslope.ToString("F1")
+                        datavalue(12) = State1decay.PMvgAvgSlope
+                        LB_DecayAvg1.Text = datavalue(12).ToString("F1")
+                        Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
                     End If
 
                     If datavalue(8) = 4 Then
                         State4decay.Detect(datavalue(1))
-                        Lb_DecayMax4.Text = State4decay.PMvgAvgSlope.ToString("F1")
-                        Lb_DecayAve4.Text = State4decay.PAvGslope.ToString("F1")
-                        Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString
-                        Lbl_PeakPressure.Text = datavalue(1).ToString  ' Need to check wich pressure we are doing the decay on.
+                        datavalue(13) = State4decay.PMvgAvgSlope
+                        Lb_DecayAvg4.Text = datavalue(13).ToString("F1")
+                        Lb_DecayCurr4.Text = State4decay.PAvGslope.ToString("F1")
+                        Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString ' Showing cycle time for mapping.
+                        Lbl_PeakPressure.Text = datavalue(1).ToString  ' Showing peak pressure for mapping.
                     End If
                 End If
 
@@ -631,8 +632,6 @@ Public Class Form1
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
                 Lbl_CycleStage.Text = currentcycle
-
-
                 'If currentcycle = 2 Then
                 '    If Not State1decay Is Nothing Then
                 '        State1decay.Dispose()
