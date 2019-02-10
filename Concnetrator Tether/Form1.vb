@@ -580,7 +580,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(13) As Single
+            Dim datavalue(14) As Single
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
@@ -613,6 +613,7 @@ Public Class Form1
                     If datavalue(8) = 1 Then
                         State1decay.Detect(datavalue(1))
                         datavalue(12) = State1decay.PMvgAvgSlope
+                        ' datavalue(14) = State1decay.PAvGslope
                         LB_DecayAvg1.Text = datavalue(12).ToString("F1")
                         Lb_Mi1Slope.Text = datavalue(10).ToString("F1")
                         Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
