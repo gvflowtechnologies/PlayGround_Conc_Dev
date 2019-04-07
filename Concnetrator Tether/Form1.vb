@@ -734,14 +734,14 @@ Public Class Form1
 
     Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
 
+
     End Sub
 
     Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
 
+
+
     End Sub
-
-
-
 
     Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
         ' Function returns an check sum
@@ -796,6 +796,38 @@ Public Class Form1
 
     End Sub
 
+    Private Sub RB_PressBal_CheckedChanged(sender As Object, e As EventArgs) Handles RB_PressBal.CheckedChanged
+
+        Dim receivedstatus As Boolean
+        Dim datapacket As String
+        receivedstatus = False
+        datapacket = "#PMC00000$"  ' Create Command code
+
+        receivedstatus = SendData(datapacket) 'Send String
+        If receivedstatus = False Then
+            RB_PressBal.ForeColor = SystemColors.HotTrack
+        Else
+            RB_PressBal.ForeColor = SystemColors.ControlText
+        End If
 
 
+    End Sub
+
+    Private Sub RB_TimeCycle_CheckedChanged(sender As Object, e As EventArgs) Handles RB_TimeCycle.CheckedChanged
+
+        Dim receivedstatus As Boolean
+        Dim datapacket As String
+
+
+        datapacket = "#TMC00000$"  ' Create Command code
+        receivedstatus = SendData(datapacket) 'Send String
+
+        If receivedstatus = False Then
+            RB_PressBal.ForeColor = SystemColors.HotTrack
+        Else
+            RB_PressBal.ForeColor = SystemColors.ControlText
+        End If
+
+
+    End Sub
 End Class
