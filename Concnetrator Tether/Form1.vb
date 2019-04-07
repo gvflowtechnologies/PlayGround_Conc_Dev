@@ -806,7 +806,7 @@ Public Class Form1
 
             receivedstatus = SendData(datapacket) 'Send String
             If receivedstatus = False Then
-                RB_PressBal.ForeColor = SystemColors.HotTrack
+                RB_PressBal.ForeColor = Color.Red
             Else
                 RB_PressBal.ForeColor = SystemColors.ControlText
             End If
@@ -824,7 +824,7 @@ Public Class Form1
             receivedstatus = SendData(datapacket) 'Send String
 
             If receivedstatus = False Then
-                RB_PressBal.ForeColor = SystemColors.HotTrack
+                RB_PressBal.ForeColor = Color.Red
             Else
                 RB_PressBal.ForeColor = SystemColors.ControlText
             End If
