@@ -797,37 +797,38 @@ Public Class Form1
     End Sub
 
     Private Sub RB_PressBal_CheckedChanged(sender As Object, e As EventArgs) Handles RB_PressBal.CheckedChanged
+        If RB_PressBal.Checked Then
 
-        Dim receivedstatus As Boolean
-        Dim datapacket As String
-        receivedstatus = False
-        datapacket = "#PMC00000$"  ' Create Command code
+            Dim receivedstatus As Boolean
+            Dim datapacket As String
+            receivedstatus = False
+            datapacket = "#PMC00000$"  ' Create Command code
 
-        receivedstatus = SendData(datapacket) 'Send String
-        If receivedstatus = False Then
-            RB_PressBal.ForeColor = SystemColors.HotTrack
-        Else
-            RB_PressBal.ForeColor = SystemColors.ControlText
+            receivedstatus = SendData(datapacket) 'Send String
+            If receivedstatus = False Then
+                RB_PressBal.ForeColor = SystemColors.HotTrack
+            Else
+                RB_PressBal.ForeColor = SystemColors.ControlText
+            End If
+
         End If
-
-
     End Sub
 
     Private Sub RB_TimeCycle_CheckedChanged(sender As Object, e As EventArgs) Handles RB_TimeCycle.CheckedChanged
+        If RB_TimeCycle.Checked Then
+            Dim receivedstatus As Boolean
+            Dim datapacket As String
 
-        Dim receivedstatus As Boolean
-        Dim datapacket As String
 
+            datapacket = "#TMC00000$"  ' Create Command code
+            receivedstatus = SendData(datapacket) 'Send String
 
-        datapacket = "#TMC00000$"  ' Create Command code
-        receivedstatus = SendData(datapacket) 'Send String
+            If receivedstatus = False Then
+                RB_PressBal.ForeColor = SystemColors.HotTrack
+            Else
+                RB_PressBal.ForeColor = SystemColors.ControlText
+            End If
 
-        If receivedstatus = False Then
-            RB_PressBal.ForeColor = SystemColors.HotTrack
-        Else
-            RB_PressBal.ForeColor = SystemColors.ControlText
         End If
-
-
     End Sub
 End Class
