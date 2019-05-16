@@ -487,7 +487,7 @@ Public Class Form1
             AddHandler Mycom.DataReceived, AddressOf Mycom_Datareceived ' handler for data received event
 
             With Mycom
-                .PortName = "COM5" ' gets port name from static data set
+                .PortName = "COM7" ' gets port name from static data set
                 .BaudRate = 115200
                 .Parity = Parity.None
                 .StopBits = StopBits.One
