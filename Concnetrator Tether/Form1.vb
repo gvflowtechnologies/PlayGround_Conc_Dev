@@ -19,6 +19,29 @@ Public Class Form1
 
     End Enum
 
+    'Enum Cycles
+    '    Step1 = 0
+    '    Step2 = 1
+    '    Step3 = 2
+    '    Step4 = 3
+    '    Step5 = 4
+    '    Step6 = 5
+    'End Enum
+
+    Enum SerialCommands
+        ProcessStep1 = 0
+        ProcessStep2 = 1
+        ProcessStep3 = 2
+        ProcessStep4 = 3
+        ProcessStep5 = 4
+        ProcessStep6 = 5
+        Accept = 6
+
+
+    End Enum
+
+
+
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
@@ -27,6 +50,15 @@ Public Class Form1
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
     Dim cycles(5) As Integer
+
+    Const FrameStart As Byte = &H7E
+    Const packetesc As Byte = &H7E
+    Const packetesc1 As Byte = &H7D
+    Const DataEsc As Byte = &H5E
+    Const DataEsc1 As Byte = &H5D
+    Const ZeroOut As Byte = &H0
+
+
 
     Dim State1decay As PressureDecay
     Dim State4decay As PressureDecay
@@ -413,6 +445,45 @@ Public Class Form1
         Spacket = builder.ToString
         Return Spacket
 
+
+
+
+    End Function
+
+    Public Function Send_Binary_Data(ByVal Packet() As Byte)
+        Dim packetsendtries As Integer = 0
+        Dim sendtimeout As Stopwatch
+        sendtimeout = New Stopwatch
+        Dim transfersucess As Boolean = False
+        Do While packetsendtries < 6
+
+            Mycom.Write(Packet, 0, Packet.Length)
+            DataSent = commstatus.Pending
+            packetsendtries = packetsendtries + 1
+            sendtimeout.Restart()
+            lbl_Returned_Times.Text = packetsendtries.ToString
+
+            Do While sendtimeout.ElapsedMilliseconds < 1000
+
+                If DataSent = commstatus.Ready Then
+                    transfersucess = True
+                    Return transfersucess
+                    Exit Function
+                End If
+
+                If (DataSent = commstatus.Resend) Then
+                    Exit Do
+                End If
+                Thread.Sleep(5)
+                Application.DoEvents()
+            Loop
+            Thread.Sleep(1)
+        Loop
+
+        transfersucess = False
+        Return transfersucess
+
+
     End Function
 
 
@@ -487,7 +558,7 @@ Public Class Form1
             AddHandler Mycom.DataReceived, AddressOf Mycom_Datareceived ' handler for data received event
 
             With Mycom
-                .PortName = "COM7" ' gets port name from static data set
+                .PortName = "COM5" ' gets port name from static data set
                 .BaudRate = 115200
                 .Parity = Parity.None
                 .StopBits = StopBits.One
@@ -692,20 +763,167 @@ Public Class Form1
             .Visible = False
 
         End With
-        cycles(0) = CInt(TB_ProcTime1.Text) / timerperiod
-        cycles(1) = CInt(TB_ProcTIme2.Text) / timerperiod
-        cycles(2) = CInt(TB_ProcTime3.Text) / timerperiod
-        cycles(3) = CInt(TB_ProcTime4.Text) / timerperiod
-        cycles(4) = CInt(TB_ProcTime5.Text) / timerperiod
-        cycles(5) = CInt(TB_ProcTIme6.Text) / timerperiod
+        cycles(0) = UInt16.Parse(TB_ProcTime1.Text) / timerperiod
+        cycles(1) = UInt16.Parse(TB_ProcTIme2.Text) / timerperiod
+        cycles(2) = UInt16.Parse(TB_ProcTime3.Text) / timerperiod
+        cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
+        cycles(4) = UInt16.Parse(TB_ProcTime5.Text) / timerperiod
+        cycles(5) = UInt16.Parse(TB_ProcTIme6.Text) / timerperiod
         cyclescount = 0
         command = ""
 
+
+
+
         For Each cycletime In cycles
 
-            command = "PT" & cyclescount.ToString    ' Create Command code
-            datapacket = Createpacket(command, cycletime)
-            receivedstatus = SendData(datapacket) 'Send String
+            'Break message value into two bytes and check for ESC key
+            Dim Param_Value(2) As Byte
+            Dim asize As Int16
+            Dim Parameter As Byte
+            Dim CRCValue As Byte
+            Dim arraycounter As Int16 ' Counter for the test packet
+
+            asize = 4 ' Size of the array with no esc characters. 3 without CRC.  4 with 8 bit crc 
+
+
+            ' High BYTE is 0 Low Byte is 1 in the array for the parameter value
+            Param_Value(1) = cycles(cyclescount) And &HFF& ' low byte
+            asize = CheckforEsc(asize, Param_Value(1))
+
+            Param_Value(0) = (cycles(cyclescount) >> 8)  ' High Byte
+            asize = CheckforEsc(asize, Param_Value(1))
+
+            Parameter = Convert.ToByte(cyclescount)
+
+            'Create a packet to get a CRC Value with
+
+            Dim datapack(asize - 2) As Byte ' Sized without CRC.
+            arraycounter = 0 ' Initialize counter to the beginning of the array
+            'Command Parameter
+            datapack(arraycounter) = (Parameter)
+            arraycounter += 1
+
+
+            'Command Value
+            Select Case Param_Value(0) ' Sending High Byte First
+                Case packetesc1
+                    datapack(arraycounter) = packetesc1
+                    arraycounter += 1
+                    datapack(arraycounter) = DataEsc1
+
+                Case packetesc
+                    datapack(arraycounter) = packetesc1
+                    arraycounter += 1
+                    datapack(arraycounter) = DataEsc
+
+                Case Else
+                    datapack(arraycounter) = Param_Value(0) ' Sending high byte first.
+
+            End Select
+
+            arraycounter += 1
+
+            Select Case Param_Value(1) ' Sending High Byte First
+                Case packetesc1
+                    datapack(arraycounter) = packetesc1
+                    arraycounter += 1
+                    datapack(arraycounter) = DataEsc1
+
+                Case packetesc
+                    datapack(arraycounter) = packetesc1
+                    arraycounter += 1
+                    datapack(arraycounter) = DataEsc
+
+                Case Else
+                    datapack(arraycounter) = Param_Value(1) ' Sending high byte first.fullbytecommand(arraycounter) = testcommand(1) ' Sending high byte first.
+
+            End Select
+
+            'Calculate CRC Value
+            CRCValue = CRC_8Bit.CRC_8(datapack)
+            'Determine if the CRC Value is an escape key.
+            asize = CheckforEsc(asize, CRCValue)
+            '*****************************************************************
+            '*****************************************************************
+            ' Dimension the full datacommand array and zero out the arrays.
+            '*****************************************************************
+            '*****************************************************************
+
+            Dim fullbytecommand(asize) As Byte
+            arraycounter = 0
+
+            For Each bytevalues In fullbytecommand
+                bytevalues = ZeroOut
+            Next
+
+
+            'Start Frame
+            arraycounter = 0 ' Initialize counter to the beginning of the array
+            fullbytecommand(arraycounter) = FrameStart
+
+            'Command
+            arraycounter += 1
+            fullbytecommand(arraycounter) = Parameter
+
+            'Data
+            arraycounter += 1
+
+            Select Case Param_Value(0) ' Sending High Byte First
+                Case packetesc1
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc1
+
+                Case packetesc
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc
+
+                Case Else
+                    fullbytecommand(arraycounter) = Param_Value(0) ' Sending high byte first.
+
+            End Select
+
+            arraycounter += 1
+
+            Select Case Param_Value(1) ' Sending High Byte First
+                Case packetesc1
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc1
+
+                Case packetesc
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc
+
+                Case Else
+                    fullbytecommand(arraycounter) = Param_Value(1) ' Sending high byte first.fullbytecommand(arraycounter) = testcommand(1) ' Sending high byte first.
+
+            End Select
+
+            'crcbyte
+            arraycounter += 1
+
+            Select Case CRCValue ' Sending High Byte First
+                Case packetesc1
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc1
+
+                Case packetesc
+                    fullbytecommand(arraycounter) = packetesc1
+                    arraycounter += 1
+                    fullbytecommand(arraycounter) = DataEsc
+
+                Case Else
+                    fullbytecommand(arraycounter) = CRCValue ' Sending high byte first.fullbytecommand(arraycounter) = testcommand(1) ' Sending high byte first.
+
+            End Select
+
+            receivedstatus = Send_Binary_Data(fullbytecommand)
+
             If receivedstatus = False Then Exit For ' If transfer failed alert
             cyclescount = cyclescount + 1
             Dim updatelable() As Control
@@ -719,6 +937,12 @@ Public Class Form1
             command = "ACC"
             datapacket = Createpacket(command, 1000)
             receivedstatus = SendData(datapacket)
+            Dim CommandArray As Byte(4)
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.Accept
+            CommandArray(2) = 24
+
+            receivedstatus = Send_Binary_Data()
         Else
             Btn_UpdateCycleTime.BackColor = Color.Red
         End If
@@ -773,6 +997,7 @@ Public Class Form1
 
 
     End Function
+
 
     Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
         caldata.SelectDataFolder()
@@ -831,4 +1056,15 @@ Public Class Form1
 
         End If
     End Sub
+
+    Public Function CheckforEsc(ByVal size As Int16, ByVal testchar As Byte) As Int16
+
+        Dim isize As Int16
+        isize = size
+        If testchar = packetesc Or testchar = packetesc1 Then
+            isize += 1
+        End If
+        Return isize
+
+    End Function
 End Class

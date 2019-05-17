@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="caldata.vb" />
+    <Compile Include="CRC_8Bit.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
