@@ -36,6 +36,8 @@ Public Class Form1
         ProcessStep5 = 4
         ProcessStep6 = 5
         Accept = 6
+        PressureMatchCycle = 7
+        TimeMatchCycle = 8
 
 
     End Enum
@@ -487,42 +489,7 @@ Public Class Form1
     End Function
 
 
-    Public Function SendData(ByVal Packet As String) As Boolean
-        ' Function flow chart in lucid
 
-        Dim packetsendtries As Integer = 0
-        Dim sendtimeout As Stopwatch
-        sendtimeout = New Stopwatch
-        Dim transfersucess As Boolean = False
-        Do While packetsendtries < 6
-
-            Mycom.Write(Packet)
-            DataSent = commstatus.Pending
-            packetsendtries = packetsendtries + 1
-            sendtimeout.Restart()
-            lbl_Returned_Times.Text = packetsendtries.ToString
-
-            Do While sendtimeout.ElapsedMilliseconds < 1000
-
-                If DataSent = commstatus.Ready Then
-                    transfersucess = True
-                    Return transfersucess
-                    Exit Function
-                End If
-
-                If (DataSent = commstatus.Resend) Then
-                    Exit Do
-                End If
-                Thread.Sleep(5)
-                Application.DoEvents()
-            Loop
-            Thread.Sleep(1)
-        Loop
-
-        transfersucess = False
-        Return transfersucess
-
-    End Function
 
     Public Sub RetrieveSettings()
         Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
@@ -934,15 +901,16 @@ Public Class Form1
         Next
 
         If receivedstatus = True Then
-            command = "ACC"
-            datapacket = Createpacket(command, 1000)
-            receivedstatus = SendData(datapacket)
-            Dim CommandArray As Byte(4)
+
+            ' Send an Accept Data Command
+
+            Dim CommandArray(4) As Byte
             CommandArray(0) = FrameStart
             CommandArray(1) = SerialCommands.Accept
             CommandArray(2) = 24
+            CommandArray(3) = 56
 
-            receivedstatus = Send_Binary_Data()
+            receivedstatus = Send_Binary_Data(CommandArray)
         Else
             Btn_UpdateCycleTime.BackColor = Color.Red
         End If
@@ -1025,11 +993,15 @@ Public Class Form1
         If RB_PressBal.Checked Then
 
             Dim receivedstatus As Boolean
-            Dim datapacket As String
-            receivedstatus = False
-            datapacket = "#PMC00000$"  ' Create Command code
+            Dim CommandArray(4) As Byte
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.PressureMatchCycle
+            CommandArray(2) = 24
+            CommandArray(3) = 56
 
-            receivedstatus = SendData(datapacket) 'Send String
+            receivedstatus = Send_Binary_Data(CommandArray)
+
+
             If receivedstatus = False Then
                 RB_PressBal.ForeColor = Color.Red
             Else
@@ -1042,11 +1014,15 @@ Public Class Form1
     Private Sub RB_TimeCycle_CheckedChanged(sender As Object, e As EventArgs) Handles RB_TimeCycle.CheckedChanged
         If RB_TimeCycle.Checked Then
             Dim receivedstatus As Boolean
-            Dim datapacket As String
 
 
-            datapacket = "#TMC00000$"  ' Create Command code
-            receivedstatus = SendData(datapacket) 'Send String
+            Dim CommandArray(4) As Byte
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.TimeMatchCycle
+            CommandArray(2) = 24
+            CommandArray(3) = 56
+
+            receivedstatus = Send_Binary_Data(CommandArray)
 
             If receivedstatus = False Then
                 RB_PressBal.ForeColor = Color.Red
