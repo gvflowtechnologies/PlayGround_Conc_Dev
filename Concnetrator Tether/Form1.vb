@@ -426,31 +426,7 @@ Public Class Form1
 #End Region
 
 
-    Public Function Createpacket(ByRef command As String, ByRef datavalue As Int16) As String
 
-        Dim Spacket As String
-        Dim builder As New System.Text.StringBuilder
-        Dim checksum As Char
-
-        Dim length As Int16
-
-        length = 0
-
-        checksum = Chcksum(datavalue, length)
-
-        builder.Append("#")
-        builder.Append(command)
-        builder.Append(length)
-        builder.Append(datavalue.ToString)
-        builder.Append(checksum)
-        builder.Append("$")
-        Spacket = builder.ToString
-        Return Spacket
-
-
-
-
-    End Function
 
     Public Function Send_Binary_Data(ByVal Packet() As Byte)
         Dim packetsendtries As Integer = 0
@@ -525,7 +501,7 @@ Public Class Form1
             AddHandler Mycom.DataReceived, AddressOf Mycom_Datareceived ' handler for data received event
 
             With Mycom
-                .PortName = "COM5" ' gets port name from static data set
+                .PortName = "COM7" ' gets port name from static data set
                 .BaudRate = 115200
                 .Parity = Parity.None
                 .StopBits = StopBits.One
@@ -717,7 +693,6 @@ Public Class Form1
     Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
         Dim command As String
         Dim builder As New System.Text.StringBuilder
-        Dim datapacket As String
         Dim receivedstatus As Boolean
 
         Dim cyclescount As Integer
@@ -935,36 +910,7 @@ Public Class Form1
 
     End Sub
 
-    Function Chcksum(ByVal outgoingdata As Int32, ByRef Larray As Int16)
-        ' Function returns an check sum
-        ' Function also updates length by reference.
 
-        Dim Stemp As String
-
-        ' convert number to a string
-        Stemp = outgoingdata.ToString()
-        Dim sum As Byte = 0
-        Dim Bmodule As Byte
-
-        ' convert each character in string to a byte asci
-        Dim calcaray() As Char = Stemp.ToCharArray
-        ' calculate checksum
-        ' convert each character into asci value
-        Larray = Stemp.Length
-        For Each Character In calcaray
-            Dim temp As Byte = Convert.ToByte(Character)
-            sum = (sum + temp) And &HFF
-        Next
-        Bmodule = sum Mod 128
-
-        'Convert check sum into character to send
-        Dim Creturn As Char = Chr(Bmodule) ' System.Text.Encoding.ASCII.GetChars(diff)
-        Return Creturn
-
-
-
-
-    End Function
 
 
     Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
