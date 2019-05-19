@@ -433,7 +433,7 @@ Public Class Form1
         Dim sendtimeout As Stopwatch
         sendtimeout = New Stopwatch
         Dim transfersucess As Boolean = False
-        Do While packetsendtries < 6
+        Do While packetsendtries < 10
 
             Mycom.Write(Packet, 0, Packet.Length)
             DataSent = commstatus.Pending
@@ -740,7 +740,7 @@ Public Class Form1
 
             'Create a packet to get a CRC Value with
 
-            Dim datapack(asize - 2) As Byte ' Sized without CRC.
+            Dim datapack(asize - 1) As Byte ' Sized without CRC.
             arraycounter = 0 ' Initialize counter to the beginning of the array
             'Command Parameter
             datapack(arraycounter) = (Parameter)
@@ -781,6 +781,7 @@ Public Class Form1
                     datapack(arraycounter) = Param_Value(1) ' Sending high byte first.fullbytecommand(arraycounter) = testcommand(1) ' Sending high byte first.
 
             End Select
+            datapack(asize - 1) = 0 ' 
 
             'Calculate CRC Value
             CRCValue = CRC_8Bit.CRC_8(datapack)
@@ -879,11 +880,12 @@ Public Class Form1
 
             ' Send an Accept Data Command
 
-            Dim CommandArray(4) As Byte
+            Dim CommandArray(5) As Byte
             CommandArray(0) = FrameStart
             CommandArray(1) = SerialCommands.Accept
             CommandArray(2) = 24
             CommandArray(3) = 56
+            CommandArray(4) = 254
 
             receivedstatus = Send_Binary_Data(CommandArray)
         Else

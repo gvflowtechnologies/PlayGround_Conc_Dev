@@ -11,15 +11,12 @@
 
                     CRC <<= 1
 
-
                 Else
 
                     CRC = (CRC << 1)
                     CRC = (CRC Xor Generator)
 
-
                 End If
-
             Next
         Next
 

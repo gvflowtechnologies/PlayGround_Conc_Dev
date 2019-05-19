@@ -23,13 +23,16 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
+        Me.RB_PressBal = New System.Windows.Forms.RadioButton()
         Me.Lb_Mic4slope = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Lb_Mi1Slope = New System.Windows.Forms.Label()
@@ -118,11 +121,9 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.RB_PressBal = New System.Windows.Forms.RadioButton()
-        Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,7 +134,6 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox8.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -178,6 +178,39 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.RB_TimeCycle)
+        Me.GroupBox8.Controls.Add(Me.RB_PressBal)
+        Me.GroupBox8.Location = New System.Drawing.Point(430, 429)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(124, 100)
+        Me.GroupBox8.TabIndex = 26
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Cycle Control"
+        '
+        'RB_TimeCycle
+        '
+        Me.RB_TimeCycle.AutoSize = True
+        Me.RB_TimeCycle.Location = New System.Drawing.Point(9, 62)
+        Me.RB_TimeCycle.Name = "RB_TimeCycle"
+        Me.RB_TimeCycle.Size = New System.Drawing.Size(83, 17)
+        Me.RB_TimeCycle.TabIndex = 1
+        Me.RB_TimeCycle.TabStop = True
+        Me.RB_TimeCycle.Text = "Time Cycled"
+        Me.RB_TimeCycle.UseVisualStyleBackColor = True
+        '
+        'RB_PressBal
+        '
+        Me.RB_PressBal.AutoSize = True
+        Me.RB_PressBal.Location = New System.Drawing.Point(9, 34)
+        Me.RB_PressBal.Name = "RB_PressBal"
+        Me.RB_PressBal.Size = New System.Drawing.Size(108, 17)
+        Me.RB_PressBal.TabIndex = 0
+        Me.RB_PressBal.TabStop = True
+        Me.RB_PressBal.Text = "Pressure Balance"
+        Me.RB_PressBal.UseVisualStyleBackColor = True
         '
         'Lb_Mic4slope
         '
@@ -414,10 +447,10 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(926, 578)
+        Me.TextBox1.Location = New System.Drawing.Point(926, 527)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(295, 52)
+        Me.TextBox1.Size = New System.Drawing.Size(295, 103)
         Me.TextBox1.TabIndex = 5
         '
         'GroupBox1
@@ -625,28 +658,28 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.AxisY.MajorGrid.Interval = 0R
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Legend = "Legend1"
-        Series4.Name = "PT1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Legend = "Legend1"
-        Series5.Name = "PT2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Legend = "Legend1"
-        Series6.Name = "PT3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -1029,39 +1062,6 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.RB_TimeCycle)
-        Me.GroupBox8.Controls.Add(Me.RB_PressBal)
-        Me.GroupBox8.Location = New System.Drawing.Point(430, 429)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(124, 100)
-        Me.GroupBox8.TabIndex = 26
-        Me.GroupBox8.TabStop = False
-        Me.GroupBox8.Text = "Cycle Control"
-        '
-        'RB_PressBal
-        '
-        Me.RB_PressBal.AutoSize = True
-        Me.RB_PressBal.Location = New System.Drawing.Point(9, 34)
-        Me.RB_PressBal.Name = "RB_PressBal"
-        Me.RB_PressBal.Size = New System.Drawing.Size(108, 17)
-        Me.RB_PressBal.TabIndex = 0
-        Me.RB_PressBal.TabStop = True
-        Me.RB_PressBal.Text = "Pressure Balance"
-        Me.RB_PressBal.UseVisualStyleBackColor = True
-        '
-        'RB_TimeCycle
-        '
-        Me.RB_TimeCycle.AutoSize = True
-        Me.RB_TimeCycle.Location = New System.Drawing.Point(9, 62)
-        Me.RB_TimeCycle.Name = "RB_TimeCycle"
-        Me.RB_TimeCycle.Size = New System.Drawing.Size(83, 17)
-        Me.RB_TimeCycle.TabIndex = 1
-        Me.RB_TimeCycle.TabStop = True
-        Me.RB_TimeCycle.Text = "Time Cycled"
-        Me.RB_TimeCycle.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1074,6 +1074,8 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -1091,8 +1093,6 @@ Partial Class Form1
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
