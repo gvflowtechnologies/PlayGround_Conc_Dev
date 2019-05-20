@@ -886,7 +886,6 @@ Public Class Form1
             CommandArray(2) = 24
             CommandArray(3) = 56
             CommandArray(4) = 254
-
             receivedstatus = Send_Binary_Data(CommandArray)
         Else
             Btn_UpdateCycleTime.BackColor = Color.Red
