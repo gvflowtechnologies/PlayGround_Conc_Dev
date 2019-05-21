@@ -23,11 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
@@ -82,8 +82,12 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TP_Calibration = New System.Windows.Forms.TabPage()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.Btn_LogFiles = New System.Windows.Forms.Button()
         Me.Lbl_FileLocation = New System.Windows.Forms.Label()
+        Me.TB_RotaryDelay = New System.Windows.Forms.TextBox()
+        Me.Btn_RotaryStepDelay = New System.Windows.Forms.Button()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.Button8 = New System.Windows.Forms.Button()
@@ -128,6 +132,7 @@ Partial Class Form1
         Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TP_Calibration.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -658,36 +663,35 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.AxisY.MajorGrid.Interval = 0R
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea4.AxisY.MajorGrid.Interval = 0R
+        ChartArea4.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend4)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "PT1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "PT2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "PT3"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Series.Add(Series3)
+        Series10.ChartArea = "ChartArea1"
+        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series10.Legend = "Legend1"
+        Series10.Name = "PT1"
+        Series11.ChartArea = "ChartArea1"
+        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series11.Legend = "Legend1"
+        Series11.Name = "PT2"
+        Series12.ChartArea = "ChartArea1"
+        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series12.Legend = "Legend1"
+        Series12.Name = "PT3"
+        Me.Chart1.Series.Add(Series10)
+        Me.Chart1.Series.Add(Series11)
+        Me.Chart1.Series.Add(Series12)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
         'TP_Calibration
         '
-        Me.TP_Calibration.Controls.Add(Me.Btn_LogFiles)
-        Me.TP_Calibration.Controls.Add(Me.Lbl_FileLocation)
+        Me.TP_Calibration.Controls.Add(Me.GroupBox9)
         Me.TP_Calibration.Controls.Add(Me.Label19)
         Me.TP_Calibration.Controls.Add(Me.TextBox10)
         Me.TP_Calibration.Controls.Add(Me.Button8)
@@ -700,9 +704,32 @@ Partial Class Form1
         Me.TP_Calibration.Text = "TabPage2"
         Me.TP_Calibration.UseVisualStyleBackColor = True
         '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.Label27)
+        Me.GroupBox9.Controls.Add(Me.Btn_LogFiles)
+        Me.GroupBox9.Controls.Add(Me.Lbl_FileLocation)
+        Me.GroupBox9.Controls.Add(Me.TB_RotaryDelay)
+        Me.GroupBox9.Controls.Add(Me.Btn_RotaryStepDelay)
+        Me.GroupBox9.Location = New System.Drawing.Point(873, 34)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(353, 647)
+        Me.GroupBox9.TabIndex = 6
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Miscellaneous Controls"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(54, 37)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(104, 13)
+        Me.Label27.TabIndex = 2
+        Me.Label27.Text = "Rotary Delay (mSec)"
+        '
         'Btn_LogFiles
         '
-        Me.Btn_LogFiles.Location = New System.Drawing.Point(899, 101)
+        Me.Btn_LogFiles.Location = New System.Drawing.Point(83, 130)
         Me.Btn_LogFiles.Name = "Btn_LogFiles"
         Me.Btn_LogFiles.Size = New System.Drawing.Size(75, 23)
         Me.Btn_LogFiles.TabIndex = 5
@@ -713,11 +740,28 @@ Partial Class Form1
         '
         Me.Lbl_FileLocation.AutoSize = True
         Me.Lbl_FileLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lbl_FileLocation.Location = New System.Drawing.Point(1007, 106)
+        Me.Lbl_FileLocation.Location = New System.Drawing.Point(191, 135)
         Me.Lbl_FileLocation.Name = "Lbl_FileLocation"
         Me.Lbl_FileLocation.Size = New System.Drawing.Size(86, 15)
         Me.Lbl_FileLocation.TabIndex = 4
         Me.Lbl_FileLocation.Text = "Lbl_FileLocation"
+        '
+        'TB_RotaryDelay
+        '
+        Me.TB_RotaryDelay.Location = New System.Drawing.Point(174, 34)
+        Me.TB_RotaryDelay.Name = "TB_RotaryDelay"
+        Me.TB_RotaryDelay.Size = New System.Drawing.Size(50, 20)
+        Me.TB_RotaryDelay.TabIndex = 1
+        Me.TB_RotaryDelay.Text = "2"
+        '
+        'Btn_RotaryStepDelay
+        '
+        Me.Btn_RotaryStepDelay.Location = New System.Drawing.Point(230, 32)
+        Me.Btn_RotaryStepDelay.Name = "Btn_RotaryStepDelay"
+        Me.Btn_RotaryStepDelay.Size = New System.Drawing.Size(110, 23)
+        Me.Btn_RotaryStepDelay.TabIndex = 0
+        Me.Btn_RotaryStepDelay.Text = "Update Rotary"
+        Me.Btn_RotaryStepDelay.UseVisualStyleBackColor = True
         '
         'Label19
         '
@@ -1083,6 +1127,8 @@ Partial Class Form1
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TP_Calibration.ResumeLayout(False)
         Me.TP_Calibration.PerformLayout()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
@@ -1190,4 +1236,8 @@ Partial Class Form1
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents RB_TimeCycle As RadioButton
     Friend WithEvents RB_PressBal As RadioButton
+    Friend WithEvents GroupBox9 As GroupBox
+    Friend WithEvents Label27 As Label
+    Friend WithEvents TB_RotaryDelay As TextBox
+    Friend WithEvents Btn_RotaryStepDelay As Button
 End Class

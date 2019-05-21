@@ -38,6 +38,7 @@ Public Class Form1
         Accept = 6
         PressureMatchCycle = 7
         TimeMatchCycle = 8
+        RotaryTImeMaxSpeed = 9
 
 
     End Enum
@@ -61,7 +62,7 @@ Public Class Form1
     Const ZeroOut As Byte = &H0
 
 
-
+    Dim RotaryDelay As Integer
     Dim State1decay As PressureDecay
     Dim State4decay As PressureDecay
 
@@ -175,7 +176,6 @@ Public Class Form1
     End Sub
 
 #Region "Input Validation"
-
 
     Private Sub TB_ProcTime1_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ProcTime1.Validating
         Dim errormsg As String = ""
@@ -426,13 +426,46 @@ Public Class Form1
 
     End Sub
 
+    Private Sub TB_RotaryDelay_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_RotaryDelay.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean
+        Dim DelayTime As Single = 0
+        Testresult = True
+
+        Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
+
+        If Not Testresult Then
+            errormsg = "Not a Number"
+            Testresult = False
+        End If
+
+        If elayTime < 2 Then
+            errormsg = "Time delay less than 2 mSec"
+            Testresult = False
+        End If
+
+
+        If elayTime > 500 Then
+            errormsg = "Time delay greater than 500 mSec"
+            Testresult = False
+        End If
+
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_GraphDisplay, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_RotaryDelay_Validate(sender As Object, e As EventArgs) Handles TB_RotaryDelay.Validated
+
+        ErrorProvider1.SetError(TB_LogTimeStep, "")
+        RotaryDelay = CInt(TB_RotaryDelay.Text) * 1000
+
+    End Sub
 #End Region
-
-
-
-
-
-
 
 
 
@@ -541,7 +574,7 @@ Public Class Form1
             sendtimeout.Restart()
             lbl_Returned_Times.Text = packetsendtries.ToString
 
-            Do While sendtimeout.ElapsedMilliseconds < 100
+            Do While sendtimeout.ElapsedMilliseconds < 250
 
                 If DataSent = commstatus.Ready Then
                     transfersucess = True
@@ -992,4 +1025,26 @@ Public Class Form1
         Return isize
 
     End Function
+
+    Private Sub Btn_RotaryStepDelay_Click(sender As Object, e As EventArgs) Handles Btn_RotaryStepDelay.Click
+
+
+        Dim receivedstatus As Boolean
+            Dim CommandArray(4) As Byte
+        CommandArray(0) = FrameStart
+        CommandArray(1) = SerialCommands.RotaryTImeMaxSpeed
+        CommandArray(2) = 24
+        CommandArray(3) = 56
+
+            receivedstatus = Send_Binary_Data(CommandArray)
+
+
+            If receivedstatus = False Then
+                RB_PressBal.ForeColor = Color.Red
+            Else
+                RB_PressBal.ForeColor = SystemColors.ControlText
+            End If
+
+
+    End Sub
 End Class
