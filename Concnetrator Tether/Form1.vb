@@ -527,6 +527,7 @@ Public Class Form1
         ParseIncoming(TextToDisplay)
 
     End Sub
+
     Public Function Send_Binary_Data(ByVal Packet() As Byte)
         Dim packetsendtries As Integer = 0
         Dim sendtimeout As Stopwatch
@@ -540,7 +541,7 @@ Public Class Form1
             sendtimeout.Restart()
             lbl_Returned_Times.Text = packetsendtries.ToString
 
-            Do While sendtimeout.ElapsedMilliseconds < 1000
+            Do While sendtimeout.ElapsedMilliseconds < 100
 
                 If DataSent = commstatus.Ready Then
                     transfersucess = True
