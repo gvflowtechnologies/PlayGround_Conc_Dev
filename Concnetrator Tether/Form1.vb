@@ -431,41 +431,7 @@ Public Class Form1
 
 
 
-    Public Function Send_Binary_Data(ByVal Packet() As Byte)
-        Dim packetsendtries As Integer = 0
-        Dim sendtimeout As Stopwatch
-        sendtimeout = New Stopwatch
-        Dim transfersucess As Boolean = False
-        Do While packetsendtries < 10
 
-            Mycom.Write(Packet, 0, Packet.Length)
-            DataSent = commstatus.Pending
-            packetsendtries = packetsendtries + 1
-            sendtimeout.Restart()
-            lbl_Returned_Times.Text = packetsendtries.ToString
-
-            Do While sendtimeout.ElapsedMilliseconds < 1000
-
-                If DataSent = commstatus.Ready Then
-                    transfersucess = True
-                    Return transfersucess
-                    Exit Function
-                End If
-
-                If (DataSent = commstatus.Resend) Then
-                    Exit Do
-                End If
-                Thread.Sleep(5)
-                Application.DoEvents()
-            Loop
-            Thread.Sleep(1)
-        Loop
-
-        transfersucess = False
-        Return transfersucess
-
-
-    End Function
 
 
 
@@ -535,8 +501,6 @@ Public Class Form1
         Me.BeginInvoke(AccessFormMarshaldelegate1, Mycom.ReadLine)
 
 
-
-
     End Sub
 
     Private Sub Portclosing()
@@ -557,17 +521,47 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub AccessformMarshal(ByVal texttodisplay As String)
-        Dim args() As Object = {texttodisplay}
-        Dim AccessFormMarshaldelegate1 As New accessformMarshaldelegate(AddressOf AccessForm)
-        MyBase.BeginInvoke(AccessFormMarshaldelegate1, args)
 
-    End Sub
     Private Sub AccessForm(ByVal TextToDisplay As String)
 
         ParseIncoming(TextToDisplay)
 
     End Sub
+    Public Function Send_Binary_Data(ByVal Packet() As Byte)
+        Dim packetsendtries As Integer = 0
+        Dim sendtimeout As Stopwatch
+        sendtimeout = New Stopwatch
+        Dim transfersucess As Boolean = False
+        Do While packetsendtries < 10
+
+            Mycom.Write(Packet, 0, Packet.Length)
+            DataSent = commstatus.Pending
+            packetsendtries = packetsendtries + 1
+            sendtimeout.Restart()
+            lbl_Returned_Times.Text = packetsendtries.ToString
+
+            Do While sendtimeout.ElapsedMilliseconds < 1000
+
+                If DataSent = commstatus.Ready Then
+                    transfersucess = True
+                    Return transfersucess
+                    Exit Function
+                End If
+
+                If (DataSent = commstatus.Resend) Then
+                    Exit Do
+                End If
+                Thread.Sleep(5)
+                Application.DoEvents()
+            Loop
+            Thread.Sleep(1)
+        Loop
+
+        transfersucess = False
+        Return transfersucess
+
+
+    End Function
 
 #End Region
 
