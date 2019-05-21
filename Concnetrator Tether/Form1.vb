@@ -46,7 +46,7 @@ Public Class Form1
 
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
-    Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
+
     Public WithEvents Mycom As SerialPort
     Dim currentcycle As Int32
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
@@ -73,6 +73,9 @@ Public Class Form1
     Dim I_CLogging As Integer ' Counter to track number of data receive events between last logging event
     Dim F_Logging As String
     Dim SW_Logging As StreamWriter
+
+    Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
@@ -507,7 +510,7 @@ Public Class Form1
                 .StopBits = StopBits.One
                 .Handshake = Handshake.None  ' Need to think here
                 .DataBits = 8
-                .ReceivedBytesThreshold = 2 ' one byte short of a complete messsage string of 16 asci characters   
+                .ReceivedBytesThreshold = 2 ' one byte short o
                 .WriteTimeout = 100
                 .ReadTimeout = 10000
                 .WriteBufferSize = 500
@@ -527,9 +530,13 @@ Public Class Form1
 
     Private Sub Mycom_Datareceived(ByVal sendor As Object, ByVal e As SerialDataReceivedEventArgs) Handles Mycom.DataReceived
         ' Handles data when it comes in on serial port.
-        Dim sweight As String
-        sweight = Mycom.ReadLine
-        AccessformMarshal(sweight)
+
+        Dim AccessFormMarshaldelegate1 As New accessformMarshaldelegate(AddressOf AccessForm)
+        Me.BeginInvoke(AccessFormMarshaldelegate1, Mycom.ReadLine)
+
+
+
+
     End Sub
 
     Private Sub Portclosing()
