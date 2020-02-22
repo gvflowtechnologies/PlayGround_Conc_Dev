@@ -439,13 +439,13 @@ Public Class Form1
             Testresult = False
         End If
 
-        If elayTime < 2 Then
+        If DelayTime < 2 Then
             errormsg = "Time delay less than 2 mSec"
             Testresult = False
         End If
 
 
-        If elayTime > 500 Then
+        If DelayTime > 500 Then
             errormsg = "Time delay greater than 500 mSec"
             Testresult = False
         End If
