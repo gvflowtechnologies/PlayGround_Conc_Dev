@@ -379,8 +379,9 @@ Public Class Form1
     Private Sub TB_GraphDisplay_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_GraphDisplay.Validating
         Dim errormsg As String = ""
         Dim Testresult As Boolean
-        Dim LogTime As Single = 0
+        Dim LogTime As Single
         Testresult = True
+
 
         Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
 
@@ -428,9 +429,9 @@ Public Class Form1
 
     Private Sub TB_RotaryDelay_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_RotaryDelay.Validating
         Dim errormsg As String = ""
-        Dim Testresult As Boolean
+        Dim Testresult As Boolean = True
+        Dim LogTIme As Single = 0
         Dim DelayTime As Single = 0
-        Testresult = True
 
         Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
 
