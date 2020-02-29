@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Option Explicit On
+Imports System.IO
 Imports System.IO.Ports
 Imports System.Threading
 Imports System.Text
@@ -148,7 +149,7 @@ Public Class Form1
                 Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, True)
 
                     With SW_Logging
-                        Dim Iloggingvalue As Integer
+                        Dim Iloggingvalue As Single
                         For Each Iloggingvalue In loggingdata
 
                             .Write(Iloggingvalue.ToString)
@@ -571,7 +572,7 @@ Public Class Form1
 
             Mycom.Write(Packet, 0, Packet.Length)
             DataSent = commstatus.Pending
-            packetsendtries = packetsendtries + 1
+            packetsendtries += 1
             sendtimeout.Restart()
             lbl_Returned_Times.Text = packetsendtries.ToString
 
@@ -634,7 +635,7 @@ Public Class Form1
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
-                i = i + 1
+                i += 1
                 If i = 8 Then datavalue(i) += 1
 
             Next

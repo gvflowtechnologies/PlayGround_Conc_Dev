@@ -64,16 +64,22 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2DAD29CE426B1E2BBF957FA6FA10A43D5E6A07E0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>420F6B750AA417ADC53840F97BB444AAA4307986</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Concnetrator Tether_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Concnetrator Tether_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Concnetrator Tether_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -142,6 +148,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Concnetrator Tether_1_TemporaryKey.pfx" />
     <None Include="Concnetrator Tether_TemporaryKey.pfx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

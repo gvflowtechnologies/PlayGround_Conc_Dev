@@ -22,7 +22,6 @@
     Public Sub New()
         slopecount = 0
         For Each Islope In LastSlopes
-            Islope = 0
         Next
         Reset()
 
@@ -90,7 +89,7 @@
                     For Each islope In LastSlopes
                         MvgAvgSlope += CSng(islope)
                     Next
-                    MvgAvgSlope = MvgAvgSlope / CSng(LastSlopes.Length)
+                    MvgAvgSlope /= CSng(LastSlopes.Length)
 
                     'Increment count
 
