@@ -152,7 +152,7 @@ Public Class Form1
                         Dim Iloggingvalue As Single
                         For Each Iloggingvalue In loggingdata
 
-                            .Write(Iloggingvalue.ToString)
+                            .Write(Iloggingvalue.ToString("F2"))
                             .Write(", ")
 
                         Next
@@ -381,7 +381,6 @@ Public Class Form1
         Dim errormsg As String = ""
         Dim Testresult As Boolean
         Dim LogTime As Single
-        Testresult = True
 
 
         Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
@@ -434,7 +433,7 @@ Public Class Form1
         Dim LogTIme As Single = 0
         Dim DelayTime As Single = 0
 
-        Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTime)
+        Testresult = Single.TryParse(TB_GraphDisplay.Text, LogTIme)
 
         If Not Testresult Then
             errormsg = "Not a Number"
@@ -484,9 +483,11 @@ Public Class Form1
             .Series(0).Points.Clear()
             .Series(1).Points.Clear()
             .Series(2).Points.Clear()
-            .ChartAreas(0).AxisY.Maximum = 1024
+            .ChartAreas(0).AxisY.Maximum = 20
             .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-            .ChartAreas(0).AxisY.MajorGrid.Interval = 100
+            .ChartAreas(0).AxisY.MajorGrid.Interval = 1
+            .ChartAreas(0).AxisY.Crossing = 0
+            .ChartAreas(0).AxisY.Minimum = 0
 
         End With
 
@@ -604,7 +605,7 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
-        ' TextBox1.Text += IncomingData
+
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
@@ -1032,20 +1033,20 @@ Public Class Form1
 
 
         Dim receivedstatus As Boolean
-            Dim CommandArray(4) As Byte
+        Dim CommandArray(4) As Byte
         CommandArray(0) = FrameStart
         CommandArray(1) = SerialCommands.RotaryTImeMaxSpeed
         CommandArray(2) = 24
         CommandArray(3) = 56
 
-            receivedstatus = Send_Binary_Data(CommandArray)
+        receivedstatus = Send_Binary_Data(CommandArray)
 
 
-            If receivedstatus = False Then
-                RB_PressBal.ForeColor = Color.Red
-            Else
-                RB_PressBal.ForeColor = SystemColors.ControlText
-            End If
+        If receivedstatus = False Then
+            RB_PressBal.ForeColor = Color.Red
+        Else
+            RB_PressBal.ForeColor = SystemColors.ControlText
+        End If
 
 
     End Sub
