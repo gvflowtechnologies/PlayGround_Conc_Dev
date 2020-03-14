@@ -483,12 +483,16 @@ Public Class Form1
             .Series(0).Points.Clear()
             .Series(1).Points.Clear()
             .Series(2).Points.Clear()
-            .ChartAreas(0).AxisY.Maximum = 20
-            .ChartAreas(0).AxisX.Maximum = My.Settings.GraphLength
-            .ChartAreas(0).AxisY.MajorGrid.Interval = 1
-            .ChartAreas(0).AxisY.Crossing = 0
-            .ChartAreas(0).AxisY.Minimum = 0
-
+            With .ChartAreas(0)
+                .AxisY.Maximum = 20
+                .AxisX.Maximum = My.Settings.GraphLength
+                .AxisY.MajorGrid.Interval = 5
+                .AxisY.MinorGrid.Interval = .AxisY.MajorGrid.Interval / 5
+                .AxisY.MinorGrid.Enabled = True
+                .AxisY.MinorGrid.LineDashStyle = DataVisualization.Charting.ChartDashStyle.Dot
+                .AxisY.Crossing = 0
+                .AxisY.Minimum = 0
+            End With
         End With
 
     End Sub
