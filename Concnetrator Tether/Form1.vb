@@ -483,18 +483,23 @@ Public Class Form1
             .Series(0).Points.Clear()
             .Series(1).Points.Clear()
             .Series(2).Points.Clear()
+
             With .ChartAreas(0)
-                .AxisY.Maximum = 20
                 .AxisX.Maximum = My.Settings.GraphLength
-                .AxisY.MajorGrid.Interval = 5
-                .AxisY.MinorGrid.Interval = .AxisY.MajorGrid.Interval / 5
-                .AxisY.MinorGrid.Enabled = True
-                .AxisY.MinorGrid.LineDashStyle = DataVisualization.Charting.ChartDashStyle.Dot
-                .AxisY.Crossing = 0
-                .AxisY.Minimum = 0
+
+                With .AxisY
+                    .Maximum = 20
+                    .MajorTickMark.IntervalOffset = 0
+
+                    .MajorGrid.Interval = 5
+                    .MinorGrid.Interval = .MajorGrid.Interval / 5
+                    .MinorGrid.Enabled = True
+                    .MinorGrid.LineDashStyle = DataVisualization.Charting.ChartDashStyle.Dot
+                    .Crossing = 0
+                    .Minimum = 0
+                End With
             End With
         End With
-
     End Sub
 
 #Region "Communication"
@@ -1054,4 +1059,6 @@ Public Class Form1
 
 
     End Sub
+
+
 End Class
