@@ -713,9 +713,9 @@ Partial Class Form1
         Me.GroupBox9.Controls.Add(Me.Lbl_FileLocation)
         Me.GroupBox9.Controls.Add(Me.TB_RotaryDelay)
         Me.GroupBox9.Controls.Add(Me.Btn_RotaryStepDelay)
-        Me.GroupBox9.Location = New System.Drawing.Point(873, 34)
+        Me.GroupBox9.Location = New System.Drawing.Point(819, 34)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(353, 647)
+        Me.GroupBox9.Size = New System.Drawing.Size(407, 647)
         Me.GroupBox9.TabIndex = 6
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Miscellaneous Controls"
@@ -731,7 +731,7 @@ Partial Class Form1
         '
         'Btn_LogFiles
         '
-        Me.Btn_LogFiles.Location = New System.Drawing.Point(83, 130)
+        Me.Btn_LogFiles.Location = New System.Drawing.Point(19, 130)
         Me.Btn_LogFiles.Name = "Btn_LogFiles"
         Me.Btn_LogFiles.Size = New System.Drawing.Size(75, 23)
         Me.Btn_LogFiles.TabIndex = 5
@@ -742,7 +742,7 @@ Partial Class Form1
         '
         Me.Lbl_FileLocation.AutoSize = True
         Me.Lbl_FileLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lbl_FileLocation.Location = New System.Drawing.Point(191, 135)
+        Me.Lbl_FileLocation.Location = New System.Drawing.Point(110, 135)
         Me.Lbl_FileLocation.Name = "Lbl_FileLocation"
         Me.Lbl_FileLocation.Size = New System.Drawing.Size(86, 15)
         Me.Lbl_FileLocation.TabIndex = 4
@@ -803,6 +803,7 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Transducer Calibration"
+        Me.GroupBox2.Visible = False
         '
         'GroupBox6
         '

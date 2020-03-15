@@ -95,6 +95,7 @@ Public Class Form1
         State4decay = New PressureDecay
 
         Dim v As String
+
         If System.Diagnostics.Debugger.IsAttached = False Then
             v = My.Application.Deployment.CurrentVersion.ToString
         Else
