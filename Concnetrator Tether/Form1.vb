@@ -29,6 +29,11 @@ Public Class Form1
     '    Step6 = 5
     'End Enum
 
+    Enum foldertype
+        LogFile = 1
+        ScriptFile = 2
+    End Enum
+
     Enum SerialCommands
         ProcessStep1 = 0
         ProcessStep2 = 1
@@ -49,11 +54,13 @@ Public Class Form1
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
 
+    ReadOnly FolderbeingSent As foldertype
+
     Public WithEvents Mycom As SerialPort
     Dim currentcycle As Int32
     Const timerperiod As Integer = 5 ' 5 millisecond time ISR period on arduino
     Const receivecycle As Integer = 2 ' Receiving data every 2 cycles
-    Dim cycles(5) As Integer
+    ReadOnly cycles(5) As Integer
 
     Const FrameStart As Byte = &H7E
     Const packetesc As Byte = &H7E
@@ -74,7 +81,7 @@ Public Class Form1
     Dim LoggingStatus As LOGSTATUS
     Dim I_CLogging As Integer ' Counter to track number of data receive events between last logging event
     Dim F_Logging As String
-    Dim SW_Logging As StreamWriter
+    ReadOnly SW_Logging As StreamWriter
 
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
 
@@ -491,7 +498,6 @@ Public Class Form1
                 With .AxisY
                     .Maximum = 20
                     .MajorTickMark.IntervalOffset = 0
-
                     .MajorGrid.Interval = 5
                     .MinorGrid.Interval = .MajorGrid.Interval / 5
                     .MinorGrid.Enabled = True
@@ -970,9 +976,11 @@ Public Class Form1
 
 
     Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
-        caldata.SelectDataFolder()
+
+        caldata.ReturnFolder(foldertype.LogFile)
         Lbl_FileLocation.Text = My.Settings.File_Directory
     End Sub
+
 
     Private Sub Btn_Loging_Toggle_Click(sender As Object, e As EventArgs) Handles Btn_Loging_Toggle.Click
         ' Toggle between logging and not logging
@@ -1069,6 +1077,13 @@ Public Class Form1
     End Sub
 
     Private Sub Btn_Script_Click(sender As Object, e As EventArgs) Handles Btn_Script.Click
+        Dim scriptfilename As String
+        If My.Settings.Dir_Script = "NULL" Then
+            caldata.ReturnFolder(foldertype.ScriptFile)
+        End If
+
+        scriptfilename = ScriptFile()
+
 
     End Sub
 End Class
