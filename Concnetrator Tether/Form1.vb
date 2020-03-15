@@ -739,6 +739,24 @@ Public Class Form1
     End Sub
 
     Private Sub Btn_UpdateCycleTime_Click(sender As Object, e As EventArgs) Handles Btn_UpdateCycleTime.Click
+
+        With Btn_UpdateCycleTime
+            .Enabled = False
+            .BackColor = SystemColors.ButtonFace
+            .Visible = False
+        End With
+
+        Sub_Update_Cycle_Times()
+
+        With Btn_UpdateCycleTime
+            .Enabled = True
+            .Visible = True
+        End With
+
+
+    End Sub
+
+    Private Sub Sub_Update_Cycle_Times()
         Dim command As String
         Dim builder As New System.Text.StringBuilder
         Dim receivedstatus As Boolean
@@ -747,12 +765,7 @@ Public Class Form1
         receivedstatus = False
         TextBox1.Text = " "
         lbl_Returned_Times.Text = ""
-        With Btn_UpdateCycleTime
-            .Enabled = False
-            .BackColor = SystemColors.ButtonFace
-            .Visible = False
 
-        End With
         cycles(0) = UInt16.Parse(TB_ProcTime1.Text) / timerperiod
         cycles(1) = UInt16.Parse(TB_ProcTIme2.Text) / timerperiod
         cycles(2) = UInt16.Parse(TB_ProcTime3.Text) / timerperiod
@@ -761,8 +774,6 @@ Public Class Form1
         cycles(5) = UInt16.Parse(TB_ProcTIme6.Text) / timerperiod
         cyclescount = 0
         command = ""
-
-
 
 
         For Each cycletime In cycles
@@ -916,7 +927,7 @@ Public Class Form1
             receivedstatus = Send_Binary_Data(fullbytecommand)
 
             If receivedstatus = False Then Exit For ' If transfer failed alert
-            cyclescount = cyclescount + 1
+            cyclescount += 1
             Dim updatelable() As Control
             updatelable = Controls.Find("Lbl_PTime" & cyclescount, True)
             If updatelable.Length > 0 Then
@@ -939,14 +950,10 @@ Public Class Form1
             Btn_UpdateCycleTime.BackColor = Color.Red
         End If
 
-        With Btn_UpdateCycleTime
-            .Enabled = True
-            .Visible = True
-        End With
+
+
 
     End Sub
-
-
 
     Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
 
@@ -1061,5 +1068,7 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Btn_Script_Click(sender As Object, e As EventArgs) Handles Btn_Script.Click
 
+    End Sub
 End Class

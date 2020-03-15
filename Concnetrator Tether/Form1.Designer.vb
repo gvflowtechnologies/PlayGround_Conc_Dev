@@ -125,6 +125,7 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Btn_Script = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
@@ -460,6 +461,7 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Btn_Script)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime6)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime5)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime4)
@@ -1109,6 +1111,15 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Btn_Script
+        '
+        Me.Btn_Script.Location = New System.Drawing.Point(392, 119)
+        Me.Btn_Script.Name = "Btn_Script"
+        Me.Btn_Script.Size = New System.Drawing.Size(116, 23)
+        Me.Btn_Script.TabIndex = 20
+        Me.Btn_Script.Text = "Start Scripting"
+        Me.Btn_Script.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1243,4 +1254,5 @@ Partial Class Form1
     Friend WithEvents Label27 As Label
     Friend WithEvents TB_RotaryDelay As TextBox
     Friend WithEvents Btn_RotaryStepDelay As Button
+    Friend WithEvents Btn_Script As Button
 End Class
