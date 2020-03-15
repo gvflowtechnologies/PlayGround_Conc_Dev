@@ -101,6 +101,9 @@ Public Class Form1
         State1decay = New PressureDecay
         State4decay = New PressureDecay
 
+        Tmr_Scripting.Enabled = False
+
+
         Dim v As String
 
         If System.Diagnostics.Debugger.IsAttached = False Then
@@ -474,6 +477,47 @@ Public Class Form1
         RotaryDelay = CInt(TB_RotaryDelay.Text) * 1000
 
     End Sub
+
+    Private Sub TB_ScriptStepLength_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ScriptStepLength.Validating
+        Dim errormsg As String = ""
+        Dim Testresult As Boolean = True
+        Dim LogTime As Integer = 0
+
+
+        Testresult = Integer.TryParse(TB_ScriptStepLength.Text, LogTime)
+
+        If Not Testresult Then
+            errormsg = "Not a Integer Minute"
+            Testresult = False
+
+        End If
+
+        If LogTime < 2 And LogTime > 0 Then
+            errormsg = "Time delay less than 2 Min"
+            Testresult = False
+        End If
+
+
+        If LogTime > 500 Then
+            errormsg = "Time delay greater than 500 Min"
+            Testresult = False
+        End If
+
+
+        If Not Testresult Then
+
+            e.Cancel = True
+            Me.ErrorProvider1.SetError(TB_ScriptStepLength, errormsg)
+
+        End If
+    End Sub
+
+    Private Sub TB_ScriptStepLength_Validated(sender As Object, e As EventArgs) Handles TB_ScriptStepLength.Validated
+        ErrorProvider1.SetError(TB_ScriptStepLength, "")
+        My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
+
+    End Sub
+
 #End Region
 
 
@@ -1077,13 +1121,35 @@ Public Class Form1
     End Sub
 
     Private Sub Btn_Script_Click(sender As Object, e As EventArgs) Handles Btn_Script.Click
+        'Establish file location.  (My.Setting.Dir_Script) 
+        ' Button to start, if no location exists in setting
+
+        'Check to see if file location has been established, if not.  Create one.
+        'Make file location persist (Store as a setting)
+        'Create ability to select file.
+        'Create ability to change time for each run.  (My.Settings.Timer_Script_Step)
+        'Track time.
+
+        'Read in file.
+        'Parse file.
+        ' Send to Arduino using existing routine.  Sub_Update_Cycle_Times()
+
         Dim scriptfilename As String
         If My.Settings.Dir_Script = "NULL" Then
             caldata.ReturnFolder(foldertype.ScriptFile)
         End If
-
+        My.Settings.Timer_Script_Step = TB_ScriptStepLength.Text
         scriptfilename = ScriptFile()
 
 
+        Tmr_Scripting.Enabled = True
+        Tmr_Scripting.Start()
+
     End Sub
+
+    Private Sub Tmr_Scripting_Tick(sender As Object, e As EventArgs) Handles Tmr_Scripting.Tick
+
+    End Sub
+
+
 End Class

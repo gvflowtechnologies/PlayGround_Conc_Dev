@@ -60,6 +60,9 @@ Partial Class Form1
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TB_ScriptStepLength = New System.Windows.Forms.TextBox()
+        Me.Lbl_Script = New System.Windows.Forms.Label()
+        Me.Btn_Script = New System.Windows.Forms.Button()
         Me.Lbl_PTime6 = New System.Windows.Forms.Label()
         Me.Lbl_PTime5 = New System.Windows.Forms.Label()
         Me.Lbl_PTime4 = New System.Windows.Forms.Label()
@@ -125,8 +128,7 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Btn_Script = New System.Windows.Forms.Button()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
@@ -462,6 +464,8 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TB_ScriptStepLength)
+        Me.GroupBox1.Controls.Add(Me.Lbl_Script)
         Me.GroupBox1.Controls.Add(Me.Btn_Script)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime6)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime5)
@@ -489,6 +493,32 @@ Partial Class Form1
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
+        '
+        'TB_ScriptStepLength
+        '
+        Me.TB_ScriptStepLength.Location = New System.Drawing.Point(433, 122)
+        Me.TB_ScriptStepLength.Name = "TB_ScriptStepLength"
+        Me.TB_ScriptStepLength.Size = New System.Drawing.Size(30, 20)
+        Me.TB_ScriptStepLength.TabIndex = 22
+        Me.TB_ScriptStepLength.Text = "30"
+        '
+        'Lbl_Script
+        '
+        Me.Lbl_Script.AutoSize = True
+        Me.Lbl_Script.Location = New System.Drawing.Point(314, 129)
+        Me.Lbl_Script.Name = "Lbl_Script"
+        Me.Lbl_Script.Size = New System.Drawing.Size(98, 13)
+        Me.Lbl_Script.TabIndex = 21
+        Me.Lbl_Script.Text = "Script Step in (min):"
+        '
+        'Btn_Script
+        '
+        Me.Btn_Script.Location = New System.Drawing.Point(156, 119)
+        Me.Btn_Script.Name = "Btn_Script"
+        Me.Btn_Script.Size = New System.Drawing.Size(116, 23)
+        Me.Btn_Script.TabIndex = 20
+        Me.Btn_Script.Text = "Run Script"
+        Me.Btn_Script.UseVisualStyleBackColor = True
         '
         'Lbl_PTime6
         '
@@ -1112,14 +1142,9 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Btn_Script
+        'Tmr_Scripting
         '
-        Me.Btn_Script.Location = New System.Drawing.Point(392, 119)
-        Me.Btn_Script.Name = "Btn_Script"
-        Me.Btn_Script.Size = New System.Drawing.Size(116, 23)
-        Me.Btn_Script.TabIndex = 20
-        Me.Btn_Script.Text = "Start Scripting"
-        Me.Btn_Script.UseVisualStyleBackColor = True
+        Me.Tmr_Scripting.Interval = 1000
         '
         'Form1
         '
@@ -1256,5 +1281,7 @@ Partial Class Form1
     Friend WithEvents TB_RotaryDelay As TextBox
     Friend WithEvents Btn_RotaryStepDelay As Button
     Friend WithEvents Btn_Script As Button
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Tmr_Scripting As Timer
+    Friend WithEvents TB_ScriptStepLength As TextBox
+    Friend WithEvents Lbl_Script As Label
 End Class

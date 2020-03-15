@@ -8,36 +8,7 @@ Module caldata
     Dim swlogcaldata As StreamWriter
 
 
-    Public Sub WritecalfileHeader()
-        'Create File Name
 
-        'Dim Logfile As String
-        'If My.Settings.Caldirectory = "" Then
-        '    My.Settings.Caldirectory = "c:\CalDirectory"
-        '    My.Settings.Save()
-        'End If
-
-        'Logfile = My.Settings.Caldirectory & "\AVCalRecord.csv"
-
-
-        ''Write
-
-        'If Not Directory.Exists(My.Settings.Caldirectory) Then
-        '    Directory.CreateDirectory(My.Settings.Caldirectory)
-        'End If
-
-        'If Not File.Exists(Logfile) Then
-
-        '    swlogcaldata = New StreamWriter(Logfile, False)
-        '    swlogcaldata.WriteLine("Altaviz Calibration Record File")
-        '    swlogcaldata.WriteLine("Last Cal Date, Cal Weight ID Used, Scale Reading as Received, Scale Reading as Returned, Calibration Due Date, Operator ID")
-
-        'Else
-        '    swlogcaldata = New StreamWriter(Logfile, True)
-
-        'End If
-
-    End Sub
 
 
     Sub ReturnFolder(ByRef Foldergettingsetup As Form1.foldertype)
