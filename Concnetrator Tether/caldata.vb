@@ -69,22 +69,46 @@ Module caldata
 
     End Sub
 
-    Function ScriptFile() As String
+    Function ScriptFile(ByVal StartDirectory As String) As String
         Dim fd As OpenFileDialog = New OpenFileDialog()
-        Dim strFileName As String = ""
-
+        Dim strFileName As String
         fd.Title = "Open File Dialog"
-        fd.InitialDirectory = "C:\"
-        fd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*"
+        fd.InitialDirectory = StartDirectory
+        fd.Filter = "CSV Files (*.csv)|*.csv"
         fd.FilterIndex = 2
         fd.RestoreDirectory = True
 
-        If fd.ShowDialog() = DialogResult.OK Then
-            strFileName = fd.FileName
-        End If
+        Do Until fd.ShowDialog() = DialogResult.OK
+
+
+
+            ' If DialogResult = DialogResult.Cancel Then Exit Do
+
+        Loop
+        strFileName = fd.FileName
+        '        If fd.ShowDialog() = DialogResult.OK Then
+
+        'End If
+
 
         Return strFileName
 
     End Function
+
+    Sub ReadFileintoArray(ByRef Myfilename As String)
+
+
+
+        'Using Reader As StreamReader = New StreamReader(Myfilename)
+        '    While Reader.EndOfStream = False
+        '        Form1.Scripts.Add(Reader.ReadLine())
+        '    End While
+
+
+
+        'End Using
+
+
+    End Sub
 
 End Module

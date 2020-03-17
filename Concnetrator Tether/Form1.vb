@@ -73,8 +73,13 @@ Public Class Form1
     Dim RotaryDelay As Integer
     Dim State1decay As PressureDecay
     Dim State4decay As PressureDecay
+    Dim Scripts As List(Of String)
+    Dim S_Scriptlines() As String 'An array of scripts to run.  Each line is a full setup.  all timing values
+    Dim S_ScriptArray(,) As String
 
-
+    'Time tracking for Spripting
+    Dim ScriptStepTimeLimit As TimeSpan
+    Dim ScriptRunTime As Stopwatch
 
     ' Logging Tracking Variables
     Dim Logging As Boolean ' True if logging is turned on
@@ -515,7 +520,7 @@ Public Class Form1
     Private Sub TB_ScriptStepLength_Validated(sender As Object, e As EventArgs) Handles TB_ScriptStepLength.Validated
         ErrorProvider1.SetError(TB_ScriptStepLength, "")
         My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
-
+        My.Settings.Save()
     End Sub
 
 #End Region
@@ -1005,16 +1010,9 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Btn_PT1UpdateCalH_Click(sender As Object, e As EventArgs) Handles Btn_PT1UpdateCalH.Click
-
-
-    End Sub
-
-    Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
 
 
 
-    End Sub
 
 
 
@@ -1135,19 +1133,65 @@ Public Class Form1
         ' Send to Arduino using existing routine.  Sub_Update_Cycle_Times()
 
         Dim scriptfilename As String
+        Dim S_ScriptElements() As String
+
+        Scripts = New List(Of String)
+
+        My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
+        My.Settings.Save()
+        ScriptStepTimeLimit = New TimeSpan(0, My.Settings.Timer_Script_Step, 0) ' Time 
+        ScriptRunTime = New Stopwatch
+
         If My.Settings.Dir_Script = "NULL" Then
             caldata.ReturnFolder(foldertype.ScriptFile)
         End If
-        My.Settings.Timer_Script_Step = TB_ScriptStepLength.Text
-        scriptfilename = ScriptFile()
+
+        scriptfilename = caldata.ScriptFile(My.Settings.Dir_Script)
+        If Not File.Exists(scriptfilename) Then
+
+        Else
+            Using Reader As StreamReader = New StreamReader(scriptfilename)
+                While Reader.EndOfStream = False
+                    Scripts.Add(Reader.ReadLine())
+                End While
+            End Using
+            S_Scriptlines = Scripts.ToArray
+        End If
+
+        S_ScriptArray = New String() {}
+        ' Create an array of scripts to run.  
+        For i = 1 To S_Scriptlines.Length - 1
+            S_ScriptElements = S_Scriptlines(i).Split(",")
 
 
+
+
+        Next
+
+        ScriptRunTime.Start()
         Tmr_Scripting.Enabled = True
         Tmr_Scripting.Start()
 
     End Sub
 
     Private Sub Tmr_Scripting_Tick(sender As Object, e As EventArgs) Handles Tmr_Scripting.Tick
+
+        'Routine runs once a second.
+        If ScriptRunTime.Elapsed >= ScriptStepTimeLimit Then
+            ' run Next step
+
+
+
+
+            If  
+
+                    End If
+
+        End If
+
+
+
+
 
     End Sub
 
