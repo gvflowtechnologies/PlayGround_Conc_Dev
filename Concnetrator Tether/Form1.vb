@@ -53,6 +53,7 @@ Public Class Form1
 
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
+    Dim RunScript As Boolean
 
     ReadOnly FolderbeingSent As foldertype
 
@@ -73,8 +74,7 @@ Public Class Form1
     Dim RotaryDelay As Integer
     Dim State1decay As PressureDecay
     Dim State4decay As PressureDecay
-    Dim Scripts As List(Of String)
-    Dim S_Scriptlines() As String 'An array of scripts to run.  Each line is a full setup.  all timing values
+
     Dim S_ScriptArray(,) As String
 
     'Time tracking for Spripting
@@ -105,8 +105,12 @@ Public Class Form1
         'Load Variables for Decay pressure monitoring
         State1decay = New PressureDecay
         State4decay = New PressureDecay
+        RunScript = False
 
-        Tmr_Scripting.Enabled = False
+        ScriptRunTime = New Stopwatch
+        ScriptRunTime.Stop()
+        Tmr_Scripting.Enabled = True
+        Tmr_Scripting.Start()
 
 
         Dim v As String
@@ -670,7 +674,7 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
-
+        CheckTime()
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
@@ -1134,13 +1138,14 @@ Public Class Form1
 
         Dim scriptfilename As String
         Dim S_ScriptElements() As String
+        Dim Scripts As New List(Of String)
+        Dim S_Scriptlines() As String 'An array of scripts to run.  Each line is a full setup.  all timing values
 
-        Scripts = New List(Of String)
 
         My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
         My.Settings.Save()
         ScriptStepTimeLimit = New TimeSpan(0, My.Settings.Timer_Script_Step, 0) ' Time 
-        ScriptRunTime = New Stopwatch
+
 
         If My.Settings.Dir_Script = "NULL" Then
             caldata.ReturnFolder(foldertype.ScriptFile)
@@ -1148,6 +1153,7 @@ Public Class Form1
 
         scriptfilename = caldata.ScriptFile(My.Settings.Dir_Script)
         If Not File.Exists(scriptfilename) Then
+            Return
 
         Else
             Using Reader As StreamReader = New StreamReader(scriptfilename)
@@ -1157,43 +1163,89 @@ Public Class Form1
             End Using
             S_Scriptlines = Scripts.ToArray
         End If
+        S_ScriptElements = S_Scriptlines(0).Split(",")
 
-        S_ScriptArray = New String() {}
+        ReDim S_ScriptArray(S_Scriptlines.Length - 2, S_ScriptElements.Length - 1)
         ' Create an array of scripts to run.  
         For i = 1 To S_Scriptlines.Length - 1
             S_ScriptElements = S_Scriptlines(i).Split(",")
+            For J = 0 To S_ScriptElements.Length - 1
+                ' Create an array of scripts to run.  
+                S_ScriptArray(i - 1, J) = S_ScriptElements(J)
 
+            Next
 
+        Next
+        Dim ParseOK As Boolean
+        Dim Sample As Integer
+        For i = 1 To S_Scriptlines.Length - 2
+            S_ScriptElements = S_Scriptlines(i).Split(",")
+            For J = 0 To S_ScriptElements.Length - 1
+                ' Create an array of scripts to run.  
+                ParseOK = UInt16.TryParse(S_ScriptArray(i, J), Sample)
 
+            Next
 
         Next
 
-        ScriptRunTime.Start()
-        Tmr_Scripting.Enabled = True
-        Tmr_Scripting.Start()
+        If ParseOK Then
+
+            PopulateWindow(0)
+            Sub_Update_Cycle_Times()
+            ScriptRunTime.Start()
+            RunScript = True
+
+        End If
+
+
+    End Sub
+
+    Private Sub CheckTime()
+
+        Static iCounter As Integer = 0
+        'Routine runs once a second.
+        If RunScript Then
+            If ScriptRunTime.Elapsed > ScriptStepTimeLimit Then
+                ' run Next step
+                iCounter += 1
+                ScriptRunTime.Reset()
+
+
+                'If All files have run then quit
+                If iCounter > S_ScriptArray.GetLength(0) - 1 Then
+
+
+                    Exit Sub
+                End If
+
+
+                ' Else keep running
+                PopulateWindow(iCounter)
+                Sub_Update_Cycle_Times()
+                ScriptRunTime.Start()
+
+
+            End If
+        End If
 
     End Sub
 
     Private Sub Tmr_Scripting_Tick(sender As Object, e As EventArgs) Handles Tmr_Scripting.Tick
 
-        'Routine runs once a second.
-        If ScriptRunTime.Elapsed >= ScriptStepTimeLimit Then
-            ' run Next step
-
-
-
-
-            If  
-
-                    End If
-
-        End If
-
-
+        CheckTime()
 
 
 
     End Sub
+    Private Sub PopulateWindow(ByVal ScriptStep As Integer)
 
+        TB_ProcTime1.Text = S_ScriptArray(ScriptStep, 0)
+        TB_ProcTIme2.Text = S_ScriptArray(ScriptStep, 1)
+        TB_ProcTime3.Text = S_ScriptArray(ScriptStep, 2)
+        TB_ProcTime4.Text = S_ScriptArray(ScriptStep, 3)
+        TB_ProcTime5.Text = S_ScriptArray(ScriptStep, 4)
+        TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
+
+    End Sub
 
 End Class
