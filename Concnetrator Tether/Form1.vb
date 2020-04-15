@@ -549,10 +549,10 @@ Public Class Form1
                 .AxisX.Maximum = My.Settings.GraphLength
 
                 With .AxisY
-                    .Maximum = 20
+                    .Maximum = 100
                     .MajorTickMark.IntervalOffset = 0
-                    .MajorGrid.Interval = 5
-                    .MinorGrid.Interval = .MajorGrid.Interval / 5
+                    .MajorGrid.Interval = 10
+                    .MinorGrid.Interval = .MajorGrid.Interval / 10
                     .MinorGrid.Enabled = True
                     .MinorGrid.LineDashStyle = DataVisualization.Charting.ChartDashStyle.Dot
                     .Crossing = 0
