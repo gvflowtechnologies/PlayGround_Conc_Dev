@@ -382,13 +382,13 @@ Public Class Form1
             Return False
         End If
 
-        If ITime < 100 Then
+        If ITime < 3 Then
             errorMessage = "Process Time less than 100mSec"
             Return False
         End If
 
 
-        If ITime > 15000 Then
+        If ITime > 150000 Then
             errorMessage = "Process Time greater than 15 Sec"
             Return False
         End If
@@ -552,7 +552,7 @@ Public Class Form1
                     .Maximum = 100
                     .MajorTickMark.IntervalOffset = 0
                     .MajorGrid.Interval = 10
-                    .MinorGrid.Interval = .MajorGrid.Interval / 10
+                    .MinorGrid.Interval = .MajorGrid.Interval / 2
                     .MinorGrid.Enabled = True
                     .MinorGrid.LineDashStyle = DataVisualization.Charting.ChartDashStyle.Dot
                     .Crossing = 0
