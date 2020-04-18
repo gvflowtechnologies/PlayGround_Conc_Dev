@@ -827,8 +827,8 @@ Public Class Form1
 
         cycles(0) = UInt16.Parse(TB_ProcTime1.Text) / timerperiod
         cycles(1) = UInt16.Parse(TB_ProcTIme2.Text) / timerperiod
-        cycles(2) = UInt16.Parse(TB_ProcTime3.Text) / timerperiod
-        cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
+        cycles(2) = UInt16.Parse(TB_ProcTime3.Text) '/ timerperiod
+        cycles(3) = UInt16.Parse(TB_ProcTime4.Text) '/ timerperiod
         cycles(4) = UInt16.Parse(TB_ProcTime5.Text) / timerperiod
         cycles(5) = UInt16.Parse(TB_ProcTIme6.Text) / timerperiod
         cyclescount = 0
