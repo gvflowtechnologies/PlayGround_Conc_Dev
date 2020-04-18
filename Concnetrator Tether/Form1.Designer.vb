@@ -616,7 +616,7 @@ Partial Class Form1
         Me.TB_ProcTime4.Name = "TB_ProcTime4"
         Me.TB_ProcTime4.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime4.TabIndex = 9
-        Me.TB_ProcTime4.Text = "5000"
+        Me.TB_ProcTime4.Text = "5"
         '
         'TB_ProcTime3
         '
@@ -624,7 +624,7 @@ Partial Class Form1
         Me.TB_ProcTime3.Name = "TB_ProcTime3"
         Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime3.TabIndex = 8
-        Me.TB_ProcTime3.Text = "320"
+        Me.TB_ProcTime3.Text = "40"
         '
         'TB_ProcTIme2
         '
