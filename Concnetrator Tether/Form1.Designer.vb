@@ -620,11 +620,11 @@ Partial Class Form1
         '
         'TB_ProcTime3
         '
-        Me.TB_ProcTime3.Location = New System.Drawing.Point(222, 43)
+        Me.TB_ProcTime3.Location = New System.Drawing.Point(225, 43)
         Me.TB_ProcTime3.Name = "TB_ProcTime3"
         Me.TB_ProcTime3.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime3.TabIndex = 8
-        Me.TB_ProcTime3.Text = "40"
+        Me.TB_ProcTime3.Text = "51"
         '
         'TB_ProcTIme2
         '
@@ -632,7 +632,7 @@ Partial Class Form1
         Me.TB_ProcTIme2.Name = "TB_ProcTIme2"
         Me.TB_ProcTIme2.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTIme2.TabIndex = 7
-        Me.TB_ProcTIme2.Text = "480"
+        Me.TB_ProcTIme2.Text = "1600"
         '
         'TB_ProcTime1
         '
@@ -640,7 +640,7 @@ Partial Class Form1
         Me.TB_ProcTime1.Name = "TB_ProcTime1"
         Me.TB_ProcTime1.Size = New System.Drawing.Size(50, 20)
         Me.TB_ProcTime1.TabIndex = 6
-        Me.TB_ProcTime1.Text = "5000"
+        Me.TB_ProcTime1.Text = "800"
         '
         'Label6
         '

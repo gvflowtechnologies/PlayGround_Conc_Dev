@@ -1015,12 +1015,6 @@ Public Class Form1
     End Sub
 
 
-
-
-
-
-
-
     Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
 
         caldata.ReturnFolder(foldertype.LogFile)
