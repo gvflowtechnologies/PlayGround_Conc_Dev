@@ -6,7 +6,7 @@ Imports System.Text
 
 
 Public Class Form1
-
+#Region "Declarations"
     Enum commstatus
         Ready = 0
         Pending = 1
@@ -90,6 +90,7 @@ Public Class Form1
 
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
 
+#End Region
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
@@ -791,7 +792,7 @@ Public Class Form1
 
     End Sub
 
-
+#Region "Screen Inputs"
     Private Sub Form1_FormCLosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Portclosing()
         Interop.GOTOSLEEP()
@@ -1083,17 +1084,6 @@ Public Class Form1
         End If
     End Sub
 
-    Public Function CheckforEsc(ByVal size As Int16, ByVal testchar As Byte) As Int16
-
-        Dim isize As Int16
-        isize = size
-        If testchar = packetesc Or testchar = packetesc1 Then
-            isize += 1
-        End If
-        Return isize
-
-    End Function
-
     Private Sub Btn_RotaryStepDelay_Click(sender As Object, e As EventArgs) Handles Btn_RotaryStepDelay.Click
 
 
@@ -1115,7 +1105,18 @@ Public Class Form1
 
 
     End Sub
+#End Region
+    Public Function CheckforEsc(ByVal size As Int16, ByVal testchar As Byte) As Int16
 
+        Dim isize As Int16
+        isize = size
+        If testchar = packetesc Or testchar = packetesc1 Then
+            isize += 1
+        End If
+        Return isize
+
+    End Function
+#Region "Scripting"
     Private Sub Btn_Script_Click(sender As Object, e As EventArgs) Handles Btn_Script.Click
         'Establish file location.  (My.Setting.Dir_Script) 
         ' Button to start, if no location exists in setting
@@ -1241,5 +1242,6 @@ Public Class Form1
         TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
 
     End Sub
+#End Region
 
 End Class
