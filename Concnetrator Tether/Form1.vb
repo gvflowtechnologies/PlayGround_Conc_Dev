@@ -112,6 +112,8 @@ Public Class Form1
         ScriptRunTime.Stop()
         Tmr_Scripting.Enabled = True
         Tmr_Scripting.Start()
+        TP_Calibration.Enabled = False
+        TabControl1.TabPages.Remove(TP_Calibration)
 
 
         Dim v As String
