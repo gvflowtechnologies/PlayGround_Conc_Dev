@@ -675,7 +675,7 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
-        CheckTime()
+
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
 
@@ -1117,131 +1117,11 @@ Public Class Form1
 
     End Function
 #Region "Scripting"
-    Private Sub Btn_Script_Click(sender As Object, e As EventArgs) Handles Btn_Script.Click
-        'Establish file location.  (My.Setting.Dir_Script) 
-        ' Button to start, if no location exists in setting
-
-        'Check to see if file location has been established, if not.  Create one.
-        'Make file location persist (Store as a setting)
-        'Create ability to select file.
-        'Create ability to change time for each run.  (My.Settings.Timer_Script_Step)
-        'Track time.
-
-        'Read in file.
-        'Parse file.
-        ' Send to Arduino using existing routine.  Sub_Update_Cycle_Times()
-
-        Dim scriptfilename As String
-        Dim S_ScriptElements() As String
-        Dim Scripts As New List(Of String)
-        Dim S_Scriptlines() As String 'An array of scripts to run.  Each line is a full setup.  all timing values
-
-
-        My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
-        My.Settings.Save()
-        ScriptStepTimeLimit = New TimeSpan(0, My.Settings.Timer_Script_Step, 0) ' Time 
-
-
-        If My.Settings.Dir_Script = "NULL" Then
-            caldata.ReturnFolder(foldertype.ScriptFile)
-        End If
-
-        scriptfilename = caldata.ScriptFile(My.Settings.Dir_Script)
-        If Not File.Exists(scriptfilename) Then
-            Return
-
-        Else
-            Using Reader As StreamReader = New StreamReader(scriptfilename)
-                While Reader.EndOfStream = False
-                    Scripts.Add(Reader.ReadLine())
-                End While
-            End Using
-            S_Scriptlines = Scripts.ToArray
-        End If
-        S_ScriptElements = S_Scriptlines(0).Split(",")
-
-        ReDim S_ScriptArray(S_Scriptlines.Length - 2, S_ScriptElements.Length - 1)
-        ' Create an array of scripts to run.  
-        For i = 1 To S_Scriptlines.Length - 1
-            S_ScriptElements = S_Scriptlines(i).Split(",")
-            For J = 0 To S_ScriptElements.Length - 1
-                ' Create an array of scripts to run.  
-                S_ScriptArray(i - 1, J) = S_ScriptElements(J)
-
-            Next
-
-        Next
-        Dim ParseOK As Boolean
-        Dim Sample As Integer
-        For i = 1 To S_Scriptlines.Length - 2
-            S_ScriptElements = S_Scriptlines(i).Split(",")
-            For J = 0 To S_ScriptElements.Length - 1
-                ' Create an array of scripts to run.  
-                ParseOK = UInt16.TryParse(S_ScriptArray(i, J), Sample)
-
-            Next
-
-        Next
-
-        If ParseOK Then
-
-            PopulateWindow(0)
-            Sub_Update_Cycle_Times()
-            ScriptRunTime.Start()
-            RunScript = True
-
-        End If
-
-
-    End Sub
-
-    Private Sub CheckTime()
-
-        Static iCounter As Integer = 0
-        'Routine runs once a second.
-        If RunScript Then
-            If ScriptRunTime.Elapsed > ScriptStepTimeLimit Then
-                ' run Next step
-                iCounter += 1
-                ScriptRunTime.Reset()
-
-
-                'If All files have run then quit
-                If iCounter > S_ScriptArray.GetLength(0) - 1 Then
-
-
-                    Exit Sub
-                End If
-
-
-                ' Else keep running
-                PopulateWindow(iCounter)
-                Sub_Update_Cycle_Times()
-                ScriptRunTime.Start()
-
-
-            End If
-        End If
-
-    End Sub
-
-    Private Sub Tmr_Scripting_Tick(sender As Object, e As EventArgs) Handles Tmr_Scripting.Tick
-
-        CheckTime()
 
 
 
-    End Sub
-    Private Sub PopulateWindow(ByVal ScriptStep As Integer)
 
-        TB_ProcTime1.Text = S_ScriptArray(ScriptStep, 0)
-        TB_ProcTIme2.Text = S_ScriptArray(ScriptStep, 1)
-        TB_ProcTime3.Text = S_ScriptArray(ScriptStep, 2)
-        TB_ProcTime4.Text = S_ScriptArray(ScriptStep, 3)
-        TB_ProcTime5.Text = S_ScriptArray(ScriptStep, 4)
-        TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
 
-    End Sub
 #End Region
 
 End Class
