@@ -23,31 +23,16 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
         Me.RB_PressBal = New System.Windows.Forms.RadioButton()
-        Me.Lb_Mic4slope = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Lb_Mi1Slope = New System.Windows.Forms.Label()
-        Me.Lbl_PeakPressure = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Lbl_CycleTime = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Lb_DecayCurr4 = New System.Windows.Forms.Label()
-        Me.Lb_DecayCurr1 = New System.Windows.Forms.Label()
-        Me.Lb_DecayAvg4 = New System.Windows.Forms.Label()
-        Me.LB_DecayAvg1 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
         Me.TB_LogTimeStep = New System.Windows.Forms.TextBox()
@@ -55,8 +40,6 @@ Partial Class Form1
         Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
-        Me.Lbl_CycleStage = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -157,24 +140,7 @@ Partial Class Form1
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.GroupBox8)
-        Me.TabPage1.Controls.Add(Me.Lb_Mic4slope)
-        Me.TabPage1.Controls.Add(Me.Label26)
-        Me.TabPage1.Controls.Add(Me.Lb_Mi1Slope)
-        Me.TabPage1.Controls.Add(Me.Lbl_PeakPressure)
-        Me.TabPage1.Controls.Add(Me.Label25)
-        Me.TabPage1.Controls.Add(Me.Label24)
-        Me.TabPage1.Controls.Add(Me.Lbl_CycleTime)
-        Me.TabPage1.Controls.Add(Me.Label29)
-        Me.TabPage1.Controls.Add(Me.Label28)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayCurr4)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayCurr1)
-        Me.TabPage1.Controls.Add(Me.Lb_DecayAvg4)
-        Me.TabPage1.Controls.Add(Me.LB_DecayAvg1)
-        Me.TabPage1.Controls.Add(Me.Label23)
-        Me.TabPage1.Controls.Add(Me.Label22)
         Me.TabPage1.Controls.Add(Me.GroupBox7)
-        Me.TabPage1.Controls.Add(Me.Lbl_CycleStage)
-        Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.LblVersion)
         Me.TabPage1.Controls.Add(Me.TextBox1)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
@@ -219,145 +185,6 @@ Partial Class Form1
         Me.RB_PressBal.TabStop = True
         Me.RB_PressBal.Text = "Pressure Balance"
         Me.RB_PressBal.UseVisualStyleBackColor = True
-        '
-        'Lb_Mic4slope
-        '
-        Me.Lb_Mic4slope.AutoSize = True
-        Me.Lb_Mic4slope.Location = New System.Drawing.Point(995, 493)
-        Me.Lb_Mic4slope.Name = "Lb_Mic4slope"
-        Me.Lb_Mic4slope.Size = New System.Drawing.Size(45, 13)
-        Me.Lb_Mic4slope.TabIndex = 25
-        Me.Lb_Mic4slope.Text = "Label27"
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(974, 442)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(70, 13)
-        Me.Label26.TabIndex = 24
-        Me.Label26.Text = "Filtered Micro"
-        '
-        'Lb_Mi1Slope
-        '
-        Me.Lb_Mi1Slope.AutoSize = True
-        Me.Lb_Mi1Slope.Location = New System.Drawing.Point(992, 468)
-        Me.Lb_Mi1Slope.Name = "Lb_Mi1Slope"
-        Me.Lb_Mi1Slope.Size = New System.Drawing.Size(33, 13)
-        Me.Lb_Mi1Slope.TabIndex = 23
-        Me.Lb_Mi1Slope.Text = "Micro"
-        '
-        'Lbl_PeakPressure
-        '
-        Me.Lbl_PeakPressure.AutoSize = True
-        Me.Lbl_PeakPressure.Location = New System.Drawing.Point(1176, 219)
-        Me.Lbl_PeakPressure.Name = "Lbl_PeakPressure"
-        Me.Lbl_PeakPressure.Size = New System.Drawing.Size(17, 13)
-        Me.Lbl_PeakPressure.TabIndex = 22
-        Me.Lbl_PeakPressure.Text = "xx"
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(1042, 219)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(131, 13)
-        Me.Label25.TabIndex = 21
-        Me.Label25.Text = "Cycle 4 Pressure (Counts):"
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(1072, 195)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(101, 13)
-        Me.Label24.TabIndex = 19
-        Me.Label24.Text = "Cycle 4 Time mSec:"
-        '
-        'Lbl_CycleTime
-        '
-        Me.Lbl_CycleTime.AutoSize = True
-        Me.Lbl_CycleTime.Location = New System.Drawing.Point(1176, 195)
-        Me.Lbl_CycleTime.Name = "Lbl_CycleTime"
-        Me.Lbl_CycleTime.Size = New System.Drawing.Size(30, 13)
-        Me.Lbl_CycleTime.TabIndex = 20
-        Me.Lbl_CycleTime.Text = "Time"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(1074, 439)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(71, 13)
-        Me.Label29.TabIndex = 18
-        Me.Label29.Text = "Current Slope"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(906, 442)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(71, 13)
-        Me.Label28.TabIndex = 17
-        Me.Label28.Text = "Filtered Slope"
-        '
-        'Lb_DecayCurr4
-        '
-        Me.Lb_DecayCurr4.AutoSize = True
-        Me.Lb_DecayCurr4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1089, 488)
-        Me.Lb_DecayCurr4.Name = "Lb_DecayCurr4"
-        Me.Lb_DecayCurr4.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayCurr4.TabIndex = 16
-        Me.Lb_DecayCurr4.Text = "xx"
-        '
-        'Lb_DecayCurr1
-        '
-        Me.Lb_DecayCurr1.AutoSize = True
-        Me.Lb_DecayCurr1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1089, 465)
-        Me.Lb_DecayCurr1.Name = "Lb_DecayCurr1"
-        Me.Lb_DecayCurr1.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayCurr1.TabIndex = 15
-        Me.Lb_DecayCurr1.Text = "xx"
-        '
-        'Lb_DecayAvg4
-        '
-        Me.Lb_DecayAvg4.AutoSize = True
-        Me.Lb_DecayAvg4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAvg4.Location = New System.Drawing.Point(911, 490)
-        Me.Lb_DecayAvg4.Name = "Lb_DecayAvg4"
-        Me.Lb_DecayAvg4.Size = New System.Drawing.Size(19, 15)
-        Me.Lb_DecayAvg4.TabIndex = 14
-        Me.Lb_DecayAvg4.Text = "xx"
-        '
-        'LB_DecayAvg1
-        '
-        Me.LB_DecayAvg1.AutoSize = True
-        Me.LB_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LB_DecayAvg1.Location = New System.Drawing.Point(911, 467)
-        Me.LB_DecayAvg1.Name = "LB_DecayAvg1"
-        Me.LB_DecayAvg1.Size = New System.Drawing.Size(19, 15)
-        Me.LB_DecayAvg1.TabIndex = 13
-        Me.LB_DecayAvg1.Text = "xx"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(808, 493)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(81, 13)
-        Me.Label23.TabIndex = 12
-        Me.Label23.Text = "Stage 4 Decay:"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(808, 468)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(78, 13)
-        Me.Label22.TabIndex = 11
-        Me.Label22.Text = "Stage1 Decay:"
         '
         'GroupBox7
         '
@@ -425,24 +252,6 @@ Partial Class Form1
         Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
         Me.TB_GraphDisplay.TabIndex = 2
         Me.TB_GraphDisplay.Text = "20"
-        '
-        'Lbl_CycleStage
-        '
-        Me.Lbl_CycleStage.AutoSize = True
-        Me.Lbl_CycleStage.Location = New System.Drawing.Point(1176, 169)
-        Me.Lbl_CycleStage.Name = "Lbl_CycleStage"
-        Me.Lbl_CycleStage.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_CycleStage.TabIndex = 8
-        Me.Lbl_CycleStage.Text = "Label20"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(1106, 169)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(67, 13)
-        Me.Label21.TabIndex = 9
-        Me.Label21.Text = "Cycle Stage:"
         '
         'LblVersion
         '
@@ -689,30 +498,31 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea1.AxisY.IsStartedFromZero = False
-        ChartArea1.AxisY.MajorGrid.Interval = 0R
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea2.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea2.AxisY.IsStartedFromZero = False
+        ChartArea2.AxisY.MajorGrid.Interval = 0R
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Enabled = False
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "PT1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "PT2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "PT3"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Series.Add(Series3)
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Legend = "Legend1"
+        Series4.Name = "PT1"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Legend = "Legend1"
+        Series5.Name = "PT2"
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Legend = "Legend1"
+        Series6.Name = "PT3"
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Series.Add(Series5)
+        Me.Chart1.Series.Add(Series6)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -1243,29 +1053,12 @@ Partial Class Form1
     Friend WithEvents Lbl_PTime3 As Label
     Friend WithEvents Lbl_PTime2 As Label
     Friend WithEvents ErrorProvider1 As ErrorProvider
-    Friend WithEvents Lbl_CycleStage As Label
-    Friend WithEvents Label21 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents TB_LogTimeStep As TextBox
     Friend WithEvents Btn_Loging_Toggle As Button
     Friend WithEvents Lbl_FileLocation As Label
     Friend WithEvents Btn_LogFiles As Button
-    Friend WithEvents Lb_DecayAvg4 As Label
-    Friend WithEvents LB_DecayAvg1 As Label
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label22 As Label
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Label28 As Label
-    Friend WithEvents Lb_DecayCurr4 As Label
-    Friend WithEvents Lb_DecayCurr1 As Label
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Lbl_CycleTime As Label
-    Friend WithEvents Lbl_PeakPressure As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents Lb_Mi1Slope As Label
-    Friend WithEvents Label26 As Label
-    Friend WithEvents Lb_Mic4slope As Label
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents RB_TimeCycle As RadioButton
     Friend WithEvents RB_PressBal As RadioButton

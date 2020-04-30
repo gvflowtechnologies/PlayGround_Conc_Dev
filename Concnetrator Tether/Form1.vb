@@ -738,19 +738,12 @@ Public Class Form1
                         State1decay.Detect(datavalue(1))
                         datavalue(12) = State1decay.PMvgAvgSlope
                         ' datavalue(14) = State1decay.PAvGslope
-                        LB_DecayAvg1.Text = datavalue(12).ToString("F1")
-                        Lb_Mi1Slope.Text = datavalue(10).ToString("F1")
-                        Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
+
                     End If
 
                     If datavalue(8) = 4 Then
                         State4decay.Detect(datavalue(1))
                         datavalue(13) = State4decay.PMvgAvgSlope
-                        Lb_DecayAvg4.Text = datavalue(13).ToString("F1")
-                        Lb_Mic4slope.Text = datavalue(11).ToString("F1")
-                        Lb_DecayCurr4.Text = State4decay.PAvGslope.ToString("F1")
-                        Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString ' Showing cycle time for mapping.
-                        Lbl_PeakPressure.Text = datavalue(1).ToString  ' Showing peak pressure for mapping.
                     End If
                 End If
 
@@ -758,7 +751,7 @@ Public Class Form1
             End If
             If datavalue(8) <> currentcycle Then ' Only update when needed
                 currentcycle = datavalue(8)
-                Lbl_CycleStage.Text = currentcycle
+
                 enteringcycle = True
             End If
             If DataSent <> commstatus.Pending Then
