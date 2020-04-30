@@ -110,8 +110,7 @@ Public Class Form1
 
         ScriptRunTime = New Stopwatch
         ScriptRunTime.Stop()
-        Tmr_Scripting.Enabled = True
-        Tmr_Scripting.Start()
+
         TP_Calibration.Enabled = False
         TabControl1.TabPages.Remove(TP_Calibration)
 
@@ -325,55 +324,8 @@ Public Class Form1
     End Sub
 
 
-    Private Sub TB_LogTimeStep_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_LogTimeStep.Validating
-
-        Dim errormsg As String = ""
-        Dim Testresult As Boolean
-        Dim LogTime As Single = 0
-        Testresult = True
-
-        Testresult = Single.TryParse(TB_LogTimeStep.Text, LogTime)
-
-        If Not Testresult Then
-            errormsg = "Not a Number"
-            Testresult = False
-        End If
-
-        If LogTime < 0.0099 Then
-            errormsg = "Logging Time less than 10mSec"
-            Testresult = False
-        End If
 
 
-        If LogTime > 60 Then
-            errormsg = "Logging Time greater than 60 Sec"
-            Testresult = False
-        End If
-
-
-        If Not Testresult Then
-
-            e.Cancel = True
-            Me.ErrorProvider1.SetError(TB_LogTimeStep, errormsg)
-
-        End If
-
-
-    End Sub
-    Private Sub TB_LogTimeStep_Validated(sender As Object, e As EventArgs) Handles TB_LogTimeStep.Validated
-        Dim Logtime As Integer
-
-        ' Log Time Step 
-        ' Sample if we put in every 2 seconds.  Means that we are logging every 200th datapoint
-
-        ErrorProvider1.SetError(TB_LogTimeStep, "")
-
-        Logtime = CInt(TB_LogTimeStep.Text * 100)
-        If Logtime = 0 Then Logtime = 1
-        My.Settings.Log_Time_Step = Logtime
-        My.Settings.Save()
-
-    End Sub
     Private Function Validtimes(ByVal ProcessTime As String, ByRef errorMessage As String, ByRef ITime As Integer) As Boolean
         ' Function to check the serial number entered is 10 charaters long
         Dim Pass As Boolean
@@ -432,11 +384,18 @@ Public Class Form1
 
         End If
     End Sub
+    Private Sub TB_GraphDisplayKeydown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TB_GraphDisplay.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            TextBox1.Focus()
+        End If
 
+
+
+    End Sub
     Private Sub TB_GraphDisplay_Validated(sender As Object, e As EventArgs) Handles TB_GraphDisplay.Validated
         Dim newtime As Integer
 
-        ErrorProvider1.SetError(TB_LogTimeStep, "")
+        ErrorProvider1.SetError(TB_GraphDisplay, "")
 
         newtime = CInt(TB_GraphDisplay.Text) * 100
         ' Log Time Step 
@@ -483,20 +442,15 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub TB_RotaryDelay_Validate(sender As Object, e As EventArgs) Handles TB_RotaryDelay.Validated
 
-        ErrorProvider1.SetError(TB_LogTimeStep, "")
-        RotaryDelay = CInt(TB_RotaryDelay.Text) * 1000
 
-    End Sub
-
-    Private Sub TB_ScriptStepLength_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_ScriptStepLength.Validating
+    Private Sub TB_ScriptStepLength_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
         Dim errormsg As String = ""
         Dim Testresult As Boolean = True
         Dim LogTime As Integer = 0
 
 
-        Testresult = Integer.TryParse(TB_ScriptStepLength.Text, LogTime)
+
 
         If Not Testresult Then
             errormsg = "Not a Integer Minute"
@@ -519,14 +473,13 @@ Public Class Form1
         If Not Testresult Then
 
             e.Cancel = True
-            Me.ErrorProvider1.SetError(TB_ScriptStepLength, errormsg)
+
 
         End If
     End Sub
 
-    Private Sub TB_ScriptStepLength_Validated(sender As Object, e As EventArgs) Handles TB_ScriptStepLength.Validated
-        ErrorProvider1.SetError(TB_ScriptStepLength, "")
-        My.Settings.Timer_Script_Step = CInt(TB_ScriptStepLength.Text)
+    Private Sub TB_ScriptStepLength_Validated(sender As Object, e As EventArgs)
+
         My.Settings.Save()
     End Sub
 
@@ -536,7 +489,7 @@ Public Class Form1
 
     Public Sub RetrieveSettings()
         Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
-        TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
+
         TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
         ResetGraph()
 
@@ -1017,23 +970,6 @@ Public Class Form1
         Lbl_FileLocation.Text = My.Settings.File_Directory
     End Sub
 
-
-    Private Sub Btn_Loging_Toggle_Click(sender As Object, e As EventArgs) Handles Btn_Loging_Toggle.Click
-        ' Toggle between logging and not logging
-        If Not Logging Then ' Begin logging
-            Logging = True
-            I_CLogging = 0
-            Btn_Loging_Toggle.Text = "Stop Logging"
-        Else ' Now not logging
-            Logging = False
-
-            Btn_Loging_Toggle.Text = "Start Logging"
-        End If
-
-
-
-
-    End Sub
 
     Private Sub RB_PressBal_CheckedChanged(sender As Object, e As EventArgs) Handles RB_PressBal.CheckedChanged
         If RB_PressBal.Checked Then

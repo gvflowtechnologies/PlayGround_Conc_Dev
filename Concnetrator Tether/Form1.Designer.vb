@@ -23,28 +23,22 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
         Me.RB_PressBal = New System.Windows.Forms.RadioButton()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Btn_Loging_Toggle = New System.Windows.Forms.Button()
-        Me.TB_LogTimeStep = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.CB_GraphEngUnits = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TB_GraphDisplay = New System.Windows.Forms.TextBox()
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TB_ScriptStepLength = New System.Windows.Forms.TextBox()
-        Me.Lbl_Script = New System.Windows.Forms.Label()
         Me.Lbl_PTime6 = New System.Windows.Forms.Label()
         Me.Lbl_PTime5 = New System.Windows.Forms.Label()
         Me.Lbl_PTime4 = New System.Windows.Forms.Label()
@@ -110,7 +104,6 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
@@ -163,6 +156,7 @@ Partial Class Form1
         Me.GroupBox8.TabIndex = 26
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Cycle Control"
+        Me.GroupBox8.Visible = False
         '
         'RB_TimeCycle
         '
@@ -188,53 +182,14 @@ Partial Class Form1
         '
         'GroupBox7
         '
-        Me.GroupBox7.Controls.Add(Me.Btn_Loging_Toggle)
-        Me.GroupBox7.Controls.Add(Me.TB_LogTimeStep)
-        Me.GroupBox7.Controls.Add(Me.Label20)
-        Me.GroupBox7.Controls.Add(Me.CB_GraphEngUnits)
         Me.GroupBox7.Controls.Add(Me.Label1)
         Me.GroupBox7.Controls.Add(Me.TB_GraphDisplay)
         Me.GroupBox7.Location = New System.Drawing.Point(6, 429)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(403, 100)
+        Me.GroupBox7.Size = New System.Drawing.Size(219, 51)
         Me.GroupBox7.TabIndex = 10
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Graph and Logging Setup"
-        '
-        'Btn_Loging_Toggle
-        '
-        Me.Btn_Loging_Toggle.Location = New System.Drawing.Point(266, 59)
-        Me.Btn_Loging_Toggle.Name = "Btn_Loging_Toggle"
-        Me.Btn_Loging_Toggle.Size = New System.Drawing.Size(126, 23)
-        Me.Btn_Loging_Toggle.TabIndex = 13
-        Me.Btn_Loging_Toggle.Text = "Start Logging"
-        Me.Btn_Loging_Toggle.UseVisualStyleBackColor = True
-        '
-        'TB_LogTimeStep
-        '
-        Me.TB_LogTimeStep.Location = New System.Drawing.Point(178, 55)
-        Me.TB_LogTimeStep.Name = "TB_LogTimeStep"
-        Me.TB_LogTimeStep.Size = New System.Drawing.Size(51, 20)
-        Me.TB_LogTimeStep.TabIndex = 12
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(16, 59)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(155, 13)
-        Me.Label20.TabIndex = 11
-        Me.Label20.Text = "Log Data Increment (Seconds):"
-        '
-        'CB_GraphEngUnits
-        '
-        Me.CB_GraphEngUnits.AutoSize = True
-        Me.CB_GraphEngUnits.Location = New System.Drawing.Point(266, 19)
-        Me.CB_GraphEngUnits.Name = "CB_GraphEngUnits"
-        Me.CB_GraphEngUnits.Size = New System.Drawing.Size(131, 17)
-        Me.CB_GraphEngUnits.TabIndex = 6
-        Me.CB_GraphEngUnits.Text = "Use Engineering Units"
-        Me.CB_GraphEngUnits.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -247,6 +202,7 @@ Partial Class Form1
         '
         'TB_GraphDisplay
         '
+        Me.TB_GraphDisplay.AcceptsReturn = True
         Me.TB_GraphDisplay.Location = New System.Drawing.Point(149, 19)
         Me.TB_GraphDisplay.Name = "TB_GraphDisplay"
         Me.TB_GraphDisplay.Size = New System.Drawing.Size(50, 20)
@@ -272,8 +228,6 @@ Partial Class Form1
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TB_ScriptStepLength)
-        Me.GroupBox1.Controls.Add(Me.Lbl_Script)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime6)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime5)
         Me.GroupBox1.Controls.Add(Me.Lbl_PTime4)
@@ -296,27 +250,10 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 535)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(612, 146)
+        Me.GroupBox1.Size = New System.Drawing.Size(386, 146)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Process Times"
-        '
-        'TB_ScriptStepLength
-        '
-        Me.TB_ScriptStepLength.Location = New System.Drawing.Point(433, 122)
-        Me.TB_ScriptStepLength.Name = "TB_ScriptStepLength"
-        Me.TB_ScriptStepLength.Size = New System.Drawing.Size(30, 20)
-        Me.TB_ScriptStepLength.TabIndex = 22
-        Me.TB_ScriptStepLength.Text = "30"
-        '
-        'Lbl_Script
-        '
-        Me.Lbl_Script.AutoSize = True
-        Me.Lbl_Script.Location = New System.Drawing.Point(314, 129)
-        Me.Lbl_Script.Name = "Lbl_Script"
-        Me.Lbl_Script.Size = New System.Drawing.Size(98, 13)
-        Me.Lbl_Script.TabIndex = 21
-        Me.Lbl_Script.Text = "Script Step in (min):"
         '
         'Lbl_PTime6
         '
@@ -326,6 +263,7 @@ Partial Class Form1
         Me.Lbl_PTime6.Size = New System.Drawing.Size(25, 13)
         Me.Lbl_PTime6.TabIndex = 19
         Me.Lbl_PTime6.Text = "100"
+        Me.Lbl_PTime6.Visible = False
         '
         'Lbl_PTime5
         '
@@ -335,6 +273,7 @@ Partial Class Form1
         Me.Lbl_PTime5.Size = New System.Drawing.Size(25, 13)
         Me.Lbl_PTime5.TabIndex = 18
         Me.Lbl_PTime5.Text = "100"
+        Me.Lbl_PTime5.Visible = False
         '
         'Lbl_PTime4
         '
@@ -383,7 +322,7 @@ Partial Class Form1
         '
         'Btn_UpdateCycleTime
         '
-        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(531, 119)
+        Me.Btn_UpdateCycleTime.Location = New System.Drawing.Point(289, 109)
         Me.Btn_UpdateCycleTime.Name = "Btn_UpdateCycleTime"
         Me.Btn_UpdateCycleTime.Size = New System.Drawing.Size(75, 23)
         Me.Btn_UpdateCycleTime.TabIndex = 12
@@ -498,31 +437,31 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea2.AxisY.IsStartedFromZero = False
-        ChartArea2.AxisY.MajorGrid.Interval = 0R
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Enabled = False
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea1.AxisY.IsStartedFromZero = False
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Enabled = False
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Legend = "Legend1"
-        Series4.Name = "PT1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Legend = "Legend1"
-        Series5.Name = "PT2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Legend = "Legend1"
-        Series6.Name = "PT3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(1192, 409)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -945,10 +884,6 @@ Partial Class Form1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'Tmr_Scripting
-        '
-        Me.Tmr_Scripting.Interval = 1000
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1008,7 +943,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents lbl_Returned_Times As Label
-    Friend WithEvents CB_GraphEngUnits As CheckBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label3 As Label
@@ -1053,10 +987,7 @@ Partial Class Form1
     Friend WithEvents Lbl_PTime3 As Label
     Friend WithEvents Lbl_PTime2 As Label
     Friend WithEvents ErrorProvider1 As ErrorProvider
-    Friend WithEvents Label20 As Label
     Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents TB_LogTimeStep As TextBox
-    Friend WithEvents Btn_Loging_Toggle As Button
     Friend WithEvents Lbl_FileLocation As Label
     Friend WithEvents Btn_LogFiles As Button
     Friend WithEvents GroupBox8 As GroupBox
@@ -1066,7 +997,4 @@ Partial Class Form1
     Friend WithEvents Label27 As Label
     Friend WithEvents TB_RotaryDelay As TextBox
     Friend WithEvents Btn_RotaryStepDelay As Button
-    Friend WithEvents Tmr_Scripting As Timer
-    Friend WithEvents TB_ScriptStepLength As TextBox
-    Friend WithEvents Lbl_Script As Label
 End Class
