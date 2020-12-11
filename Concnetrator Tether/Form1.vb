@@ -45,6 +45,8 @@ Public Class Form1
         PressureMatchCycle = 7
         TimeMatchCycle = 8
         RotaryTImeMaxSpeed = 9
+        StopSerial = 10
+        StartSerial = 11
 
 
     End Enum
