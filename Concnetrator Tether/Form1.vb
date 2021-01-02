@@ -45,12 +45,10 @@ Public Class Form1
         PressureMatchCycle = 7
         TimeMatchCycle = 8
         RotaryTImeMaxSpeed = 9
-        StopSerial = 10
-        StartSerial = 11
-
+        StartSerial = 10
+        StopSerial = 11
 
     End Enum
-
 
 
     Dim enteringcycle As Boolean
@@ -93,7 +91,7 @@ Public Class Form1
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
 
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    rPrivate Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
 
         DataSent = commstatus.Ready
@@ -1090,7 +1088,47 @@ Public Class Form1
 
         End If
     End Sub
+    Private Sub RB_SerialOn_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SerialOn.CheckedChanged
+        If RB_SerialOn.Checked Then
+            Dim receivedstatus As Boolean
 
+            Dim CommandArray(4) As Byte
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.StartSerial
+            CommandArray(2) = 24
+            CommandArray(3) = 56
+
+            receivedstatus = Send_Binary_Data(CommandArray)
+
+            If receivedstatus = False Then
+                RB_SerialOn.ForeColor = Color.Red
+            Else
+                RB_SerialOn.ForeColor = SystemColors.ControlText
+            End If
+
+        End If
+    End Sub
+
+    Private Sub RB_SerialOff_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SerialOff.CheckedChanged
+        If RB_SerialOff.Checked Then
+            Dim receivedstatus As Boolean
+
+            Dim CommandArray(4) As Byte
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.StopSerial
+            CommandArray(2) = 24
+            CommandArray(3) = 56
+
+            receivedstatus = Send_Binary_Data(CommandArray)
+
+            If receivedstatus = False Then
+                RB_SerialOff.ForeColor = Color.Red
+            Else
+                RB_SerialOff.ForeColor = SystemColors.ControlText
+            End If
+
+        End If
+    End Sub
     Public Function CheckforEsc(ByVal size As Int16, ByVal testchar As Byte) As Int16
 
         Dim isize As Int16
@@ -1249,5 +1287,6 @@ Public Class Form1
         TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
 
     End Sub
+
 
 End Class

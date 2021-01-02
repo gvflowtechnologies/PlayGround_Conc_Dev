@@ -30,6 +30,9 @@ Partial Class Form1
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.RB_SerialOff = New System.Windows.Forms.RadioButton()
+        Me.RB_SerialOn = New System.Windows.Forms.RadioButton()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
         Me.RB_PressBal = New System.Windows.Forms.RadioButton()
@@ -129,11 +132,9 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
-        Me.RB_ = New System.Windows.Forms.RadioButton()
-        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox10.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -146,7 +147,6 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox10.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -192,6 +192,39 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.RB_SerialOff)
+        Me.GroupBox10.Controls.Add(Me.RB_SerialOn)
+        Me.GroupBox10.Location = New System.Drawing.Point(582, 429)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(134, 100)
+        Me.GroupBox10.TabIndex = 28
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "GroupBox10"
+        '
+        'RB_SerialOff
+        '
+        Me.RB_SerialOff.AutoSize = True
+        Me.RB_SerialOff.Location = New System.Drawing.Point(19, 62)
+        Me.RB_SerialOff.Name = "RB_SerialOff"
+        Me.RB_SerialOff.Size = New System.Drawing.Size(93, 17)
+        Me.RB_SerialOff.TabIndex = 28
+        Me.RB_SerialOff.TabStop = True
+        Me.RB_SerialOff.Text = "Turn Serial Off"
+        Me.RB_SerialOff.UseVisualStyleBackColor = True
+        '
+        'RB_SerialOn
+        '
+        Me.RB_SerialOn.AutoSize = True
+        Me.RB_SerialOn.Location = New System.Drawing.Point(19, 34)
+        Me.RB_SerialOn.Name = "RB_SerialOn"
+        Me.RB_SerialOn.Size = New System.Drawing.Size(93, 17)
+        Me.RB_SerialOn.TabIndex = 27
+        Me.RB_SerialOn.TabStop = True
+        Me.RB_SerialOn.Text = "Turn Serial On"
+        Me.RB_SerialOn.UseVisualStyleBackColor = True
         '
         'GroupBox8
         '
@@ -1151,39 +1184,6 @@ Partial Class Form1
         '
         Me.Tmr_Scripting.Interval = 1000
         '
-        'RB_
-        '
-        Me.RB_.AutoSize = True
-        Me.RB_.Location = New System.Drawing.Point(19, 34)
-        Me.RB_.Name = "RB_"
-        Me.RB_.Size = New System.Drawing.Size(90, 17)
-        Me.RB_.TabIndex = 27
-        Me.RB_.TabStop = True
-        Me.RB_.Text = "RadioButton1"
-        Me.RB_.UseVisualStyleBackColor = True
-        '
-        'GroupBox10
-        '
-        Me.GroupBox10.Controls.Add(Me.RadioButton2)
-        Me.GroupBox10.Controls.Add(Me.RB_)
-        Me.GroupBox10.Location = New System.Drawing.Point(582, 429)
-        Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(134, 100)
-        Me.GroupBox10.TabIndex = 28
-        Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "GroupBox10"
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(19, 62)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton2.TabIndex = 28
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "RadioButton2"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1196,6 +1196,8 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
@@ -1217,8 +1219,6 @@ Partial Class Form1
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1325,6 +1325,6 @@ Partial Class Form1
     Friend WithEvents TB_ScriptStepLength As TextBox
     Friend WithEvents Lbl_Script As Label
     Friend WithEvents GroupBox10 As GroupBox
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RB_ As RadioButton
+    Friend WithEvents RB_SerialOff As RadioButton
+    Friend WithEvents RB_SerialOn As RadioButton
 End Class
