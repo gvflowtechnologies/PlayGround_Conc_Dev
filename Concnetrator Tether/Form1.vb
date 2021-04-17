@@ -91,7 +91,7 @@ Public Class Form1
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
 
 
-    rPrivate Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Interop.No_Sleep()
 
         DataSent = commstatus.Ready
@@ -701,7 +701,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(14) As Single
+            Dim datavalue(9) As Single 'was 14
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
@@ -715,15 +715,15 @@ Public Class Form1
             End If
 
 
-            If datavalue(8) = 1 Or datavalue(8) = 4 Then
+            If datavalue(3) = 1 Or datavalue(3) = 4 Then
                 ' Using Datavalue(1) for slope detection
                 If enteringcycle Then
 
-                    If datavalue(8) = 1 Then
+                    If datavalue(3) = 1 Then
                         State1decay.Reset()
                     End If
 
-                    If datavalue(8) = 4 Then
+                    If datavalue(3) = 4 Then
                         State4decay.Reset()
                     End If
 
@@ -731,30 +731,30 @@ Public Class Form1
 
                 Else ' In cycle
 
-                    If datavalue(8) = 1 Then
+                    If datavalue(3) = 1 Then
                         State1decay.Detect(datavalue(1))
-                        datavalue(12) = State1decay.PMvgAvgSlope
+                        datavalue(7) = State1decay.PMvgAvgSlope
                         ' datavalue(14) = State1decay.PAvGslope
-                        LB_DecayAvg1.Text = datavalue(12).ToString("F1")
-                        Lb_Mi1Slope.Text = datavalue(10).ToString("F1")
+                        LB_DecayAvg1.Text = datavalue(7).ToString("F1")
+                        Lb_Mi1Slope.Text = datavalue(5).ToString("F1")
                         Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
                     End If
 
-                    If datavalue(8) = 4 Then
+                    If datavalue(3) = 4 Then
                         State4decay.Detect(datavalue(1))
-                        datavalue(13) = State4decay.PMvgAvgSlope
-                        Lb_DecayAvg4.Text = datavalue(13).ToString("F1")
-                        Lb_Mic4slope.Text = datavalue(11).ToString("F1")
+                        datavalue(8) = State4decay.PMvgAvgSlope
+                        Lb_DecayAvg4.Text = datavalue(8).ToString("F1")
+                        Lb_Mic4slope.Text = datavalue(6).ToString("F1")
                         Lb_DecayCurr4.Text = State4decay.PAvGslope.ToString("F1")
-                        Lbl_CycleTime.Text = (datavalue(9) * timerperiod).ToString ' Showing cycle time for mapping.
+                        Lbl_CycleTime.Text = (datavalue(4) * timerperiod).ToString ' Showing cycle time for mapping.
                         Lbl_PeakPressure.Text = datavalue(1).ToString  ' Showing peak pressure for mapping.
                     End If
                 End If
 
 
             End If
-            If datavalue(8) <> currentcycle Then ' Only update when needed
-                currentcycle = datavalue(8)
+            If datavalue(3) <> currentcycle Then ' Only update when needed
+                currentcycle = datavalue(3)
                 Lbl_CycleStage.Text = currentcycle
                 enteringcycle = True
             End If
