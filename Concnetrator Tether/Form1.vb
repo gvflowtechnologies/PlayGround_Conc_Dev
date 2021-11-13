@@ -1288,5 +1288,26 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CB_O2sens_Enabled_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2sens_Enabled.CheckedChanged
 
+        ' Establish connection to an Oxygen Sensor and puts in calibration values.
+
+        If CB_O2sens_Enabled.Checked Then
+
+        Else
+
+        End If
+    End Sub
+
+    Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
+
+    End Sub
+
+    Private Sub Btn_Update_O2_Calibration_Click(sender As Object, e As EventArgs) Handles Btn_Update_O2_Calibration.Click
+        My.MySettings.
+
+
+
+
+    End Sub
 End Class

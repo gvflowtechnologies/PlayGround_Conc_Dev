@@ -67,7 +67,7 @@ Public Class TimeOfFlightCalculator
 
     Public Sub New(ByVal CalTimeUP As Single, ByVal CalTimeDif As Single, ByVal CalTemp As Single, ByVal Cal_o2percent As Single)
         NewO2Comm()
-        Interop.No_Sleep()
+        ' Interop.No_Sleep()
         ReceivingData = Receiving_State.R_Received
         Cal_Temp = CalTemp
         Cal_Tup = CalTimeUP
@@ -78,6 +78,7 @@ Public Class TimeOfFlightCalculator
 
     Public Sub dispose()
         Portclosing()
+
     End Sub
 
 

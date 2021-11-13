@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="Settings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
     <Setting Name="GraphLength" Type="System.Int32" Scope="User">
@@ -52,6 +52,30 @@
     </Setting>
     <Setting Name="Timer_Script_Step" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="Oxygen_CalUP" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">365.8</Value>
+    </Setting>
+    <Setting Name="Oxygen_CalDn" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Oxygen_CalTemperature" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">22</Value>
+    </Setting>
+    <Setting Name="Oxygen_CalO2Percent" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Oxygen_CalFLow" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Oxygen_IsCalibrated" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Oxygen_IsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Oxygen_IsRunning" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

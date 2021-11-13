@@ -23,18 +23,19 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.RB_SerialOff = New System.Windows.Forms.RadioButton()
         Me.RB_SerialOn = New System.Windows.Forms.RadioButton()
@@ -93,6 +94,21 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.TP_Calibration = New System.Windows.Forms.TabPage()
+        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.TB_O2_Cal_TimeUP = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.CC_O2Sens_Calibrated = New System.Windows.Forms.CheckBox()
+        Me.CB_O2Sens_isRunning = New System.Windows.Forms.CheckBox()
+        Me.CB_O2sens_Enabled = New System.Windows.Forms.CheckBox()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Btn_LogFiles = New System.Windows.Forms.Button()
@@ -137,15 +153,17 @@ Partial Class Form1
         Me.Btn_PT1UpdateCalH = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
-        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Btn_Update_O2_Calibration = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TP_Calibration.SuspendLayout()
+        Me.GroupBox11.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -153,7 +171,6 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -200,6 +217,36 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Chart2
+        '
+        ChartArea1.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea1.AxisY.IsStartedFromZero = False
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart2.Legends.Add(Legend1)
+        Me.Chart2.Location = New System.Drawing.Point(13, 307)
+        Me.Chart2.Name = "Chart2"
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart2.Series.Add(Series1)
+        Me.Chart2.Series.Add(Series2)
+        Me.Chart2.Series.Add(Series3)
+        Me.Chart2.Size = New System.Drawing.Size(1215, 116)
+        Me.Chart2.TabIndex = 29
+        Me.Chart2.Text = "Chart2"
         '
         'GroupBox10
         '
@@ -773,6 +820,7 @@ Partial Class Form1
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.GroupBox11)
         Me.TP_Calibration.Controls.Add(Me.GroupBox9)
         Me.TP_Calibration.Controls.Add(Me.Label19)
         Me.TP_Calibration.Controls.Add(Me.TextBox10)
@@ -786,6 +834,152 @@ Partial Class Form1
         Me.TP_Calibration.Text = "TabPage2"
         Me.TP_Calibration.UseVisualStyleBackColor = True
         '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.Btn_Update_O2_Calibration)
+        Me.GroupBox11.Controls.Add(Me.Label36)
+        Me.GroupBox11.Controls.Add(Me.TextBox14)
+        Me.GroupBox11.Controls.Add(Me.TextBox13)
+        Me.GroupBox11.Controls.Add(Me.TextBox12)
+        Me.GroupBox11.Controls.Add(Me.TB_O2_Cal_TimeUP)
+        Me.GroupBox11.Controls.Add(Me.Label33)
+        Me.GroupBox11.Controls.Add(Me.Label35)
+        Me.GroupBox11.Controls.Add(Me.Label34)
+        Me.GroupBox11.Controls.Add(Me.Label32)
+        Me.GroupBox11.Controls.Add(Me.Label31)
+        Me.GroupBox11.Controls.Add(Me.Label30)
+        Me.GroupBox11.Controls.Add(Me.CC_O2Sens_Calibrated)
+        Me.GroupBox11.Controls.Add(Me.CB_O2Sens_isRunning)
+        Me.GroupBox11.Controls.Add(Me.CB_O2sens_Enabled)
+        Me.GroupBox11.Location = New System.Drawing.Point(824, 345)
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.Size = New System.Drawing.Size(401, 333)
+        Me.GroupBox11.TabIndex = 7
+        Me.GroupBox11.TabStop = False
+        Me.GroupBox11.Text = "Oxygen Sensor Setup"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.ForeColor = System.Drawing.Color.DarkRed
+        Me.Label36.Location = New System.Drawing.Point(11, 278)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(169, 13)
+        Me.Label36.TabIndex = 14
+        Me.Label36.Text = "Note: Oxygen Sensor is on Com10"
+        '
+        'TextBox14
+        '
+        Me.TextBox14.Location = New System.Drawing.Point(202, 117)
+        Me.TextBox14.Name = "TextBox14"
+        Me.TextBox14.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox14.TabIndex = 13
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(202, 91)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox13.TabIndex = 12
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(202, 65)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox12.TabIndex = 11
+        '
+        'TB_O2_Cal_TimeUP
+        '
+        Me.TB_O2_Cal_TimeUP.Location = New System.Drawing.Point(202, 34)
+        Me.TB_O2_Cal_TimeUP.Name = "TB_O2_Cal_TimeUP"
+        Me.TB_O2_Cal_TimeUP.Size = New System.Drawing.Size(100, 20)
+        Me.TB_O2_Cal_TimeUP.TabIndex = 10
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(101, 95)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(95, 13)
+        Me.Label33.TabIndex = 9
+        Me.Label33.Text = "O2 Cal Flow (LPM)"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(111, 121)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(85, 13)
+        Me.Label35.TabIndex = 8
+        Me.Label35.Text = "O2 Cal Temp (C)"
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(30, 69)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(166, 13)
+        Me.Label34.TabIndex = 7
+        Me.Label34.Text = "O2 Cal Time Down stream (mSec)"
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(47, 38)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(149, 13)
+        Me.Label32.TabIndex = 5
+        Me.Label32.Text = "O2 Cal Time Upstream (mSec)"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(136, 189)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(161, 13)
+        Me.Label31.TabIndex = 4
+        Me.Label31.Text = "Establish connection with sensor"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(136, 221)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(141, 13)
+        Me.Label30.TabIndex = 3
+        Me.Label30.Text = "Start or stop sensor readings"
+        '
+        'CC_O2Sens_Calibrated
+        '
+        Me.CC_O2Sens_Calibrated.AutoSize = True
+        Me.CC_O2Sens_Calibrated.Location = New System.Drawing.Point(6, 243)
+        Me.CC_O2Sens_Calibrated.Name = "CC_O2Sens_Calibrated"
+        Me.CC_O2Sens_Calibrated.Size = New System.Drawing.Size(81, 17)
+        Me.CC_O2Sens_Calibrated.TabIndex = 2
+        Me.CC_O2Sens_Calibrated.Text = "CheckBox3"
+        Me.CC_O2Sens_Calibrated.UseVisualStyleBackColor = True
+        '
+        'CB_O2Sens_isRunning
+        '
+        Me.CB_O2Sens_isRunning.AutoSize = True
+        Me.CB_O2Sens_isRunning.Location = New System.Drawing.Point(6, 220)
+        Me.CB_O2Sens_isRunning.Name = "CB_O2Sens_isRunning"
+        Me.CB_O2Sens_isRunning.Size = New System.Drawing.Size(124, 17)
+        Me.CB_O2Sens_isRunning.TabIndex = 1
+        Me.CB_O2Sens_isRunning.Text = "O2 Sensor is running"
+        Me.CB_O2Sens_isRunning.UseVisualStyleBackColor = True
+        '
+        'CB_O2sens_Enabled
+        '
+        Me.CB_O2sens_Enabled.AutoSize = True
+        Me.CB_O2sens_Enabled.Location = New System.Drawing.Point(7, 188)
+        Me.CB_O2sens_Enabled.Name = "CB_O2sens_Enabled"
+        Me.CB_O2sens_Enabled.Size = New System.Drawing.Size(118, 17)
+        Me.CB_O2sens_Enabled.TabIndex = 0
+        Me.CB_O2sens_Enabled.Text = "O2 Sensor Enabled"
+        Me.CB_O2sens_Enabled.UseVisualStyleBackColor = True
+        '
         'GroupBox9
         '
         Me.GroupBox9.Controls.Add(Me.Label27)
@@ -795,7 +989,7 @@ Partial Class Form1
         Me.GroupBox9.Controls.Add(Me.Btn_RotaryStepDelay)
         Me.GroupBox9.Location = New System.Drawing.Point(819, 34)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(407, 647)
+        Me.GroupBox9.Size = New System.Drawing.Size(407, 299)
         Me.GroupBox9.TabIndex = 6
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Miscellaneous Controls"
@@ -1193,35 +1387,14 @@ Partial Class Form1
         '
         Me.Tmr_Scripting.Interval = 1000
         '
-        'Chart2
+        'Btn_Update_O2_Calibration
         '
-        ChartArea1.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea1.AxisY.IsStartedFromZero = False
-        ChartArea1.AxisY.MajorGrid.Interval = 0R
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend1)
-        Me.Chart2.Location = New System.Drawing.Point(13, 307)
-        Me.Chart2.Name = "Chart2"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "PT1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "PT2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "PT3"
-        Me.Chart2.Series.Add(Series1)
-        Me.Chart2.Series.Add(Series2)
-        Me.Chart2.Series.Add(Series3)
-        Me.Chart2.Size = New System.Drawing.Size(1215, 116)
-        Me.Chart2.TabIndex = 29
-        Me.Chart2.Text = "Chart2"
+        Me.Btn_Update_O2_Calibration.Location = New System.Drawing.Point(327, 34)
+        Me.Btn_Update_O2_Calibration.Name = "Btn_Update_O2_Calibration"
+        Me.Btn_Update_O2_Calibration.Size = New System.Drawing.Size(75, 103)
+        Me.Btn_Update_O2_Calibration.TabIndex = 15
+        Me.Btn_Update_O2_Calibration.Text = "Set Calibration Values"
+        Me.Btn_Update_O2_Calibration.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -1235,6 +1408,7 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
@@ -1246,6 +1420,8 @@ Partial Class Form1
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TP_Calibration.ResumeLayout(False)
         Me.TP_Calibration.PerformLayout()
+        Me.GroupBox11.ResumeLayout(False)
+        Me.GroupBox11.PerformLayout()
         Me.GroupBox9.ResumeLayout(False)
         Me.GroupBox9.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -1258,7 +1434,6 @@ Partial Class Form1
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Chart2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1368,4 +1543,20 @@ Partial Class Form1
     Friend WithEvents RB_SerialOff As RadioButton
     Friend WithEvents RB_SerialOn As RadioButton
     Friend WithEvents Chart2 As DataVisualization.Charting.Chart
+    Friend WithEvents GroupBox11 As GroupBox
+    Friend WithEvents CC_O2Sens_Calibrated As CheckBox
+    Friend WithEvents CB_O2Sens_isRunning As CheckBox
+    Friend WithEvents CB_O2sens_Enabled As CheckBox
+    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents TextBox12 As TextBox
+    Friend WithEvents TB_O2_Cal_TimeUP As TextBox
+    Friend WithEvents Label33 As Label
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Label34 As Label
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label36 As Label
+    Friend WithEvents Btn_Update_O2_Calibration As Button
 End Class
