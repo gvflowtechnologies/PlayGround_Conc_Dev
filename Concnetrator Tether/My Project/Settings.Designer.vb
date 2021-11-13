@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -255,6 +255,102 @@ Namespace My
             End Get
             Set
                 Me("Timer_Script_Step") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Oxygen_CalDn() As Single
+            Get
+                Return CType(Me("Oxygen_CalDn"),Single)
+            End Get
+            Set
+                Me("Oxygen_CalDn") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("22")>  _
+        Public Property Oxygen_CalTemperature() As Single
+            Get
+                Return CType(Me("Oxygen_CalTemperature"),Single)
+            End Get
+            Set
+                Me("Oxygen_CalTemperature") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("100")>  _
+        Public Property Oxygen_CalO2Percent() As Single
+            Get
+                Return CType(Me("Oxygen_CalO2Percent"),Single)
+            End Get
+            Set
+                Me("Oxygen_CalO2Percent") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2")>  _
+        Public Property Oxygen_CalFLow() As Single
+            Get
+                Return CType(Me("Oxygen_CalFLow"),Single)
+            End Get
+            Set
+                Me("Oxygen_CalFLow") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Oxygen_IsCalibrated() As Boolean
+            Get
+                Return CType(Me("Oxygen_IsCalibrated"),Boolean)
+            End Get
+            Set
+                Me("Oxygen_IsCalibrated") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Oxygen_IsEnabled() As Boolean
+            Get
+                Return CType(Me("Oxygen_IsEnabled"),Boolean)
+            End Get
+            Set
+                Me("Oxygen_IsEnabled") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Oxygen_IsRunning() As Boolean
+            Get
+                Return CType(Me("Oxygen_IsRunning"),Boolean)
+            End Get
+            Set
+                Me("Oxygen_IsRunning") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("365.8")>  _
+        Public Property Oxygen_CalUP() As Single
+            Get
+                Return CType(Me("Oxygen_CalUP"),Single)
+            End Get
+            Set
+                Me("Oxygen_CalUP") = value
             End Set
         End Property
     End Class

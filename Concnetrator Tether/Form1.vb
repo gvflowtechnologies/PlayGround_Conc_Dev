@@ -1304,7 +1304,7 @@ Public Class Form1
     End Sub
 
     Private Sub Btn_Update_O2_Calibration_Click(sender As Object, e As EventArgs) Handles Btn_Update_O2_Calibration.Click
-        My.MySettings.
+        My.MySettings.Ox
 
 
 
