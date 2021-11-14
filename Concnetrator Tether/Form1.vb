@@ -69,6 +69,7 @@ Public Class Form1
     Const DataEsc As Byte = &H5E
     Const DataEsc1 As Byte = &H5D
     Const ZeroOut As Byte = &H0
+    Const CalO2Percent As Single = 100
 
 
     Dim RotaryDelay As Integer
@@ -1302,12 +1303,88 @@ Public Class Form1
     Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
 
     End Sub
-
+#Region "Oxygen Sensor"
     Private Sub Btn_Update_O2_Calibration_Click(sender As Object, e As EventArgs) Handles Btn_Update_O2_Calibration.Click
-        My.MySettings.Ox
 
+        My.Settings.Oxygen_CalUP = CSng(TB_O2_Cal_TimeUP.Text)
+        My.Settings.Oxygen_CalDn = CSng(TB_O2_Cal_Time_Dwn.Text)
+        My.Settings.Oxygen_CalO2Percent = CalO2Percent
+        My.Settings.Oxygen_CalTemperature = CSng(TB_O2_cal_Temp.Text)
+        My.Settings.Oxygen_CalFLow = CSng(TB_O2_Cal_Flow.Text)
+
+        CB_O2sens_Enabled.Enabled = True
+        CB_O2sens_Enabled.Visible = True
+        Lbl_o2_Enabled.Visible = True
+
+        My.Settings.Save()
 
 
 
     End Sub
+
+    Private Sub TB_O2_Cal_TimeUP_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_Cal_TimeUP.Validating
+
+    End Sub
+
+    Private Sub TB_O2_Cal_TimeUP_Validated(sender As Object, e As EventArgs) Handles TB_O2_Cal_TimeUP.Validated
+
+    End Sub
+
+    Private Sub TB_O2_Cal_Time_Dwn_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_Cal_Time_Dwn.Validating
+
+    End Sub
+
+    Private Sub TB_O2_Cal_Time_Dwn_Validated(sender As Object, e As EventArgs) Handles TB_O2_Cal_Time_Dwn.Validated
+
+    End Sub
+
+    Private Sub TB_O2_Cal_Flow_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_Cal_Flow.Validating
+
+    End Sub
+
+    Private Sub TB_O2_Cal_Flow_Validated(sender As Object, e As EventArgs) Handles TB_O2_Cal_Flow.Validated
+
+    End Sub
+
+
+
+    Private Sub TB_O2_cal_Temp_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_cal_Temp.Validating
+
+    End Sub
+
+    Private Sub TB_O2_cal_Temp_Validated(sender As Object, e As EventArgs) Handles TB_O2_cal_Temp.Validated
+
+    End Sub
+
+
+    Private Function Validate_O2Cal(ByVal Value As String, ByRef errorMessage As String, ByRef ITime As Integer) As Boolean
+        ' Function to check the serial number entered is 10 charaters long
+        Dim Pass As Boolean
+
+        Pass = Single.TryParse(Value, ITime)
+
+        If Not Pass Then
+            errorMessage = "Not a valid Ineger"
+            Return False
+        End If
+
+        If ITime < 100 Then
+            errorMessage = "Process Time less than 100mSec"
+            Return False
+        End If
+
+
+        If ITime > 15000 Then
+            errorMessage = "Process Time greater than 15 Sec"
+            Return False
+        End If
+
+
+        Return True
+
+    End Function
+
+
+
+#End Region
 End Class
