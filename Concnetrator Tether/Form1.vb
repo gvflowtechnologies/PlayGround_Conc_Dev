@@ -54,6 +54,9 @@ Public Class Form1
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
     Dim RunScript As Boolean
+    'Oxygen Sensor Variables
+    Dim My_Oxygen_Sensor As TimeOfFlightCalculator
+
 
     ReadOnly FolderbeingSent As foldertype
 
@@ -536,6 +539,7 @@ Public Class Form1
         Lbl_FileLocation.Text = My.Settings.File_Directory.ToString
         TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
         TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
+
         ResetGraph()
 
     End Sub
@@ -1037,7 +1041,6 @@ Public Class Form1
             Btn_Loging_Toggle.Text = "Stop Logging"
         Else ' Now not logging
             Logging = False
-
             Btn_Loging_Toggle.Text = "Start Logging"
         End If
 
@@ -1288,22 +1291,31 @@ Public Class Form1
         TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
 
     End Sub
-
+#Region "Oxygen Sensor"
     Private Sub CB_O2sens_Enabled_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2sens_Enabled.CheckedChanged
 
         ' Establish connection to an Oxygen Sensor and puts in calibration values.
 
+
         If CB_O2sens_Enabled.Checked Then
 
+
+            My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, CalDiff, My.Settings.Oxygen_CalTemperature, My.Settings.Oxygen_CalO2Percent)
+
+
+
         Else
+
+
+            My_Oxygen_Sensor.dispose()
+
+
 
         End If
     End Sub
 
-    Private Sub TP_Calibration_Click(sender As Object, e As EventArgs) Handles TP_Calibration.Click
 
-    End Sub
-#Region "Oxygen Sensor"
+
     Private Sub Btn_Update_O2_Calibration_Click(sender As Object, e As EventArgs) Handles Btn_Update_O2_Calibration.Click
 
         My.Settings.Oxygen_CalUP = CSng(TB_O2_Cal_TimeUP.Text)
@@ -1364,7 +1376,7 @@ Public Class Form1
         Pass = Single.TryParse(Value, ITime)
 
         If Not Pass Then
-            errorMessage = "Not a valid Ineger"
+            errorMessage = "Not a valid Integer"
             Return False
         End If
 
@@ -1383,6 +1395,10 @@ Public Class Form1
         Return True
 
     End Function
+
+    Private Sub CB_O2Sens_isRunning_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2Sens_isRunning.CheckedChanged
+
+    End Sub
 
 
 
