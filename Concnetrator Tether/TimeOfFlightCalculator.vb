@@ -30,6 +30,14 @@ Public Class TimeOfFlightCalculator
     Private _Temperature As Single
     Private _Flow As Single
     Private _Concentration As Single
+    Private _SendReadings As Boolean
+
+    Private _TOF_AVG As Single ' Average time of flight used to calculate oxygen concnetration.
+    Private _TOF_UP_Minus_Down
+    Private _Measurement_Finished As Boolean
+    Private _TimeRequired As Single
+
+
 
     Private Firsttemp As Boolean
     Private DataFLagTD_7200 As TD_7200_Values
@@ -513,6 +521,60 @@ Public Class TimeOfFlightCalculator
             Return _FilteredTemp
         End Get
     End Property
+
+    ReadOnly Property TOF_AVG_TempCorrected As Single
+        Get
+            Return _TOF_AVG
+        End Get
+    End Property
+
+    ReadOnly Property TOF_UP_Minus_Dwn As Single
+        Get
+            Return _TOF_UP_Minus_Down
+        End Get
+    End Property
+
+    ReadOnly Property O2_Percent As Single
+        Get
+            Return _Concentration
+        End Get
+    End Property
+
+    ReadOnly Property Measurement_Complete As Boolean
+        Get
+            Return _Measurement_Finished
+        End Get
+    End Property
+
+    Property SendReadings As Boolean
+        Get
+            Return _SendReadings
+        End Get
+        Set(ByVal active As Boolean)
+            _SendReadings = active
+            If active Then StartMeasurement()
+
+        End Set
+    End Property
+
+    WriteOnly Property CAL_TIME_UP As Single
+        Set(ByVal current As Single)
+            Cal_Tup = current
+        End Set
+    End Property
+
+    WriteOnly Property CAL_TIME_Dn As Single
+        Set(ByVal current As Single)
+            Cal_Tdwn = current
+        End Set
+    End Property
+
+    WriteOnly Property CAL_Temperature As Single
+        Set(ByVal current As Single)
+            Cal_Temp = current
+        End Set
+    End Property
+
 #End Region
 
 End Class

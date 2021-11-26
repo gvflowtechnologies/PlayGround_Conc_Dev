@@ -93,6 +93,8 @@ Public Class Form1
     ReadOnly SW_Logging As StreamWriter
 
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
+    Private Delegate Sub accessformMarshaldelegate1(ByVal Sensed_Temp As String, ByVal Sensed_Concentration As String)
+
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -1298,22 +1300,33 @@ Public Class Form1
 
 
         If CB_O2sens_Enabled.Checked Then
-
+            Dim CalDiff As Single
+            CalDiff = My.Settings.Oxygen_CalUP - My.Settings.Oxygen_CalDn
 
             My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, CalDiff, My.Settings.Oxygen_CalTemperature, My.Settings.Oxygen_CalO2Percent)
-
-
-
+            CB_O2Sens_isRunning.Enabled = True
         Else
 
 
             My_Oxygen_Sensor.dispose()
-
-
+            CB_O2Sens_isRunning.Enabled = False
 
         End If
     End Sub
+    Private Sub CB_O2Sens_isRunning_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2Sens_isRunning.CheckedChanged
+        'Start measuring Oxygen
+        If CB_O2Sens_isRunning.Checked Then
 
+            Tmr_Oxygen_Sensor.Enabled = True
+            My_Oxygen_Sensor.SendReadings = True
+
+        Else
+            Tmr_Oxygen_Sensor.Enabled = False
+            My_Oxygen_Sensor.SendReadings = False
+
+        End If
+
+    End Sub
 
 
     Private Sub Btn_Update_O2_Calibration_Click(sender As Object, e As EventArgs) Handles Btn_Update_O2_Calibration.Click
@@ -1332,6 +1345,23 @@ Public Class Form1
 
 
 
+    End Sub
+
+    Private Sub Tmr_Oxygen_Sensor_Tick(sender As Object, e As EventArgs) Handles Tmr_Oxygen_Sensor.Tick
+        If My_Oxygen_Sensor.Measurement_Complete Then
+
+            Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
+            If Not My_Oxygen_Sensor.SendReadings Then My_Oxygen_Sensor.PerformMeasurement()
+
+            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
+
+        End If
+
+    End Sub
+
+    Private Sub O2Concentration_Update(ByVal SensorTemp As String, ByVal Sensor_O2 As String)
+        Lbl_Sensed_Temp.Text = SensorTemp
+        Lbl_Sensed_O2.Text = Sensor_O2
     End Sub
 
     Private Sub TB_O2_Cal_TimeUP_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_Cal_TimeUP.Validating
@@ -1396,9 +1426,8 @@ Public Class Form1
 
     End Function
 
-    Private Sub CB_O2Sens_isRunning_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2Sens_isRunning.CheckedChanged
 
-    End Sub
+
 
 
 

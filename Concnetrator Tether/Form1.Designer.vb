@@ -155,6 +155,11 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Tmr_Oxygen_Sensor = New System.Windows.Forms.Timer(Me.components)
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Lbl_Sensed_Temp = New System.Windows.Forms.Label()
+        Me.Lbl_Sensed_O2 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -187,6 +192,10 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Lbl_Sensed_O2)
+        Me.TabPage1.Controls.Add(Me.Lbl_Sensed_Temp)
+        Me.TabPage1.Controls.Add(Me.Label31)
+        Me.TabPage1.Controls.Add(Me.Label30)
         Me.TabPage1.Controls.Add(Me.Chart2)
         Me.TabPage1.Controls.Add(Me.GroupBox10)
         Me.TabPage1.Controls.Add(Me.GroupBox8)
@@ -1408,6 +1417,46 @@ Partial Class Form1
         '
         Me.ErrorProvider2.ContainerControl = Me
         '
+        'Tmr_Oxygen_Sensor
+        '
+        Me.Tmr_Oxygen_Sensor.Interval = 250
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(1071, 562)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(70, 13)
+        Me.Label30.TabIndex = 30
+        Me.Label30.Text = "Temperature:"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(1048, 590)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(93, 13)
+        Me.Label31.TabIndex = 31
+        Me.Label31.Text = "O2 Concentration:"
+        '
+        'Lbl_Sensed_Temp
+        '
+        Me.Lbl_Sensed_Temp.AutoSize = True
+        Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1147, 562)
+        Me.Lbl_Sensed_Temp.Name = "Lbl_Sensed_Temp"
+        Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Sensed_Temp.TabIndex = 32
+        Me.Lbl_Sensed_Temp.Text = "Label37"
+        '
+        'Lbl_Sensed_O2
+        '
+        Me.Lbl_Sensed_O2.AutoSize = True
+        Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1147, 590)
+        Me.Lbl_Sensed_O2.Name = "Lbl_Sensed_O2"
+        Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Sensed_O2.TabIndex = 33
+        Me.Lbl_Sensed_O2.Text = "Label37"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1573,4 +1622,9 @@ Partial Class Form1
     Friend WithEvents Label36 As Label
     Friend WithEvents Btn_Update_O2_Calibration As Button
     Friend WithEvents ErrorProvider2 As ErrorProvider
+    Friend WithEvents Tmr_Oxygen_Sensor As Timer
+    Friend WithEvents Lbl_Sensed_O2 As Label
+    Friend WithEvents Lbl_Sensed_Temp As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label30 As Label
 End Class
