@@ -542,6 +542,12 @@ Public Class Form1
         TB_LogTimeStep.Text = (My.Settings.Log_Time_Step / 100).ToString
         TB_GraphDisplay.Text = (My.Settings.GraphLength / 100).ToString
 
+
+        TB_O2_Cal_TimeUP.Text = My.Settings.Oxygen_CalUP
+        TB_O2_Cal_Time_Dwn.Text = My.Settings.Oxygen_CalDn
+        TB_O2_cal_Temp.Text = My.Settings.Oxygen_CalTemperature
+        TB_O2_Cal_Flow.Text = My.Settings.Oxygen_CalFLow
+
         ResetGraph()
 
     End Sub
@@ -1305,12 +1311,13 @@ Public Class Form1
 
             My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, CalDiff, My.Settings.Oxygen_CalTemperature, My.Settings.Oxygen_CalO2Percent)
             CB_O2Sens_isRunning.Enabled = True
+            CB_O2Sens_isRunning.Visible = True
         Else
 
 
             My_Oxygen_Sensor.dispose()
             CB_O2Sens_isRunning.Enabled = False
-
+            CB_O2Sens_isRunning.Visible = False
         End If
     End Sub
     Private Sub CB_O2Sens_isRunning_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2Sens_isRunning.CheckedChanged

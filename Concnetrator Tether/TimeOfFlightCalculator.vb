@@ -465,6 +465,13 @@ Public Class TimeOfFlightCalculator
 
 
     End Sub
+    Private Sub StartMeasurement()
+        Do While (_SendReadings = True)
+            PerformMeasurement()
+            Application.DoEvents()
+            Thread.Sleep(1)
+        Loop
+    End Sub
 
     Private Function Time_of_Flight(ByVal calibration() As Integer, ByVal Time() As Integer, ByVal ClockCount() As Integer, ByRef Period_Num As Integer) As Single
         Dim calCount As Single
@@ -565,7 +572,7 @@ Public Class TimeOfFlightCalculator
 
     WriteOnly Property CAL_TIME_Dn As Single
         Set(ByVal current As Single)
-            Cal_Tdwn = current
+            '  Cal_Tdwn = current
         End Set
     End Property
 
