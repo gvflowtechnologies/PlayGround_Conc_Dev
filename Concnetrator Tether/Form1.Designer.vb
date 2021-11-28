@@ -35,6 +35,10 @@ Partial Class Form1
         Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lbl_Sensed_O2 = New System.Windows.Forms.Label()
+        Me.Lbl_Sensed_Temp = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.RB_SerialOff = New System.Windows.Forms.RadioButton()
@@ -156,10 +160,6 @@ Partial Class Form1
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Oxygen_Sensor = New System.Windows.Forms.Timer(Me.components)
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Lbl_Sensed_Temp = New System.Windows.Forms.Label()
-        Me.Lbl_Sensed_O2 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -228,6 +228,42 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Lbl_Sensed_O2
+        '
+        Me.Lbl_Sensed_O2.AutoSize = True
+        Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1147, 590)
+        Me.Lbl_Sensed_O2.Name = "Lbl_Sensed_O2"
+        Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Sensed_O2.TabIndex = 33
+        Me.Lbl_Sensed_O2.Text = "Label37"
+        '
+        'Lbl_Sensed_Temp
+        '
+        Me.Lbl_Sensed_Temp.AutoSize = True
+        Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1147, 562)
+        Me.Lbl_Sensed_Temp.Name = "Lbl_Sensed_Temp"
+        Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Sensed_Temp.TabIndex = 32
+        Me.Lbl_Sensed_Temp.Text = "Label37"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(1048, 590)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(93, 13)
+        Me.Label31.TabIndex = 31
+        Me.Label31.Text = "O2 Concentration:"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(1071, 562)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(70, 13)
+        Me.Label30.TabIndex = 30
+        Me.Label30.Text = "Temperature:"
         '
         'Chart2
         '
@@ -1419,43 +1455,7 @@ Partial Class Form1
         '
         'Tmr_Oxygen_Sensor
         '
-        Me.Tmr_Oxygen_Sensor.Interval = 250
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(1071, 562)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(70, 13)
-        Me.Label30.TabIndex = 30
-        Me.Label30.Text = "Temperature:"
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(1048, 590)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(93, 13)
-        Me.Label31.TabIndex = 31
-        Me.Label31.Text = "O2 Concentration:"
-        '
-        'Lbl_Sensed_Temp
-        '
-        Me.Lbl_Sensed_Temp.AutoSize = True
-        Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1147, 562)
-        Me.Lbl_Sensed_Temp.Name = "Lbl_Sensed_Temp"
-        Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_Sensed_Temp.TabIndex = 32
-        Me.Lbl_Sensed_Temp.Text = "Label37"
-        '
-        'Lbl_Sensed_O2
-        '
-        Me.Lbl_Sensed_O2.AutoSize = True
-        Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1147, 590)
-        Me.Lbl_Sensed_O2.Name = "Lbl_Sensed_O2"
-        Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_Sensed_O2.TabIndex = 33
-        Me.Lbl_Sensed_O2.Text = "Label37"
+        Me.Tmr_Oxygen_Sensor.Interval = 500
         '
         'Form1
         '
