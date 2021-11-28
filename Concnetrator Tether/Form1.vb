@@ -1307,7 +1307,7 @@ Public Class Form1
 
         If CB_O2sens_Enabled.Checked Then
             Dim CalDiff As Single
-            CalDiff = My.Settings.Oxygen_CalUP - My.Settings.Oxygen_CalDn
+            CalDiff = My.Settings.Oxygen_CalDn - My.Settings.Oxygen_CalUP
 
             My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, CalDiff, My.Settings.Oxygen_CalTemperature, My.Settings.Oxygen_CalO2Percent)
             CB_O2Sens_isRunning.Enabled = True
