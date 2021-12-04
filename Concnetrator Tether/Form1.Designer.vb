@@ -111,7 +111,6 @@ Partial Class Form1
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Lbl_o2_Enabled = New System.Windows.Forms.Label()
         Me.Lbl_O2Running = New System.Windows.Forms.Label()
-        Me.CC_O2Sens_Calibrated = New System.Windows.Forms.CheckBox()
         Me.CB_O2Sens_isRunning = New System.Windows.Forms.CheckBox()
         Me.CB_O2sens_Enabled = New System.Windows.Forms.CheckBox()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
@@ -895,7 +894,6 @@ Partial Class Form1
         Me.GroupBox11.Controls.Add(Me.Label32)
         Me.GroupBox11.Controls.Add(Me.Lbl_o2_Enabled)
         Me.GroupBox11.Controls.Add(Me.Lbl_O2Running)
-        Me.GroupBox11.Controls.Add(Me.CC_O2Sens_Calibrated)
         Me.GroupBox11.Controls.Add(Me.CB_O2Sens_isRunning)
         Me.GroupBox11.Controls.Add(Me.CB_O2sens_Enabled)
         Me.GroupBox11.Location = New System.Drawing.Point(824, 345)
@@ -1007,16 +1005,6 @@ Partial Class Form1
         Me.Lbl_O2Running.TabIndex = 3
         Me.Lbl_O2Running.Text = "Start or stop sensor readings"
         Me.Lbl_O2Running.Visible = False
-        '
-        'CC_O2Sens_Calibrated
-        '
-        Me.CC_O2Sens_Calibrated.AutoSize = True
-        Me.CC_O2Sens_Calibrated.Location = New System.Drawing.Point(6, 243)
-        Me.CC_O2Sens_Calibrated.Name = "CC_O2Sens_Calibrated"
-        Me.CC_O2Sens_Calibrated.Size = New System.Drawing.Size(81, 17)
-        Me.CC_O2Sens_Calibrated.TabIndex = 2
-        Me.CC_O2Sens_Calibrated.Text = "CheckBox3"
-        Me.CC_O2Sens_Calibrated.UseVisualStyleBackColor = True
         '
         'CB_O2Sens_isRunning
         '
@@ -1606,7 +1594,6 @@ Partial Class Form1
     Friend WithEvents RB_SerialOn As RadioButton
     Friend WithEvents Chart2 As DataVisualization.Charting.Chart
     Friend WithEvents GroupBox11 As GroupBox
-    Friend WithEvents CC_O2Sens_Calibrated As CheckBox
     Friend WithEvents CB_O2Sens_isRunning As CheckBox
     Friend WithEvents CB_O2sens_Enabled As CheckBox
     Friend WithEvents TB_O2_cal_Temp As TextBox

@@ -349,11 +349,7 @@ Public Class TimeOfFlightCalculator
 
                 Thread.Sleep(1)
                 ' ReceivingData = Receiving_State.R_Received 'We have received the incomin Temperature Data
-                mystop.Stop()
-                _TimeRequired = mystop.ElapsedMilliseconds()
-                If _TimeRequired > 250 Then
-                    _TimeRequired = _TimeRequired
-                End If
+
 
                 ReceivingData = Receiving_State.R_Received 'We have re
 
@@ -596,7 +592,7 @@ Public Class TimeOfFlightCalculator
 
 
     Public Sub PerformMeasurement()
-        mystop.Restart()
+
         _Measurement_Finished = False
         'Set Receiving to waiting and send string with the initial command for reading.
         ReceivingData = Receiving_State.R_Wating
@@ -648,7 +644,7 @@ Public Class TimeOfFlightCalculator
         Do While (_SendReadings = True)
             PerformMeasurement()
             Application.DoEvents()
-            Thread.Sleep(1)
+            Thread.Sleep(2)
         Loop
     End Sub
 
