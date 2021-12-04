@@ -72,7 +72,7 @@ Public Class Form1
     Const DataEsc As Byte = &H5E
     Const DataEsc1 As Byte = &H5D
     Const ZeroOut As Byte = &H0
-    Const CalO2Percent As Single = 100
+    Const CalO2Percent As Single = 94
 
 
     Dim RotaryDelay As Integer
@@ -622,6 +622,7 @@ Public Class Form1
     End Sub
 
     Private Sub Portclosing()
+        My_Oxygen_Sensor.dispose()
         If IsNothing(Mycom) Then Exit Sub
         If Mycom.IsOpen = True Then
             Mycom.ReceivedBytesThreshold = 1500
@@ -1307,7 +1308,7 @@ Public Class Form1
 
         If CB_O2sens_Enabled.Checked Then
 
-            My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, My.Settings.Oxygen_CalDn, My.Settings.Oxygen_CalTemperature, My.Settings.Oxygen_CalO2Percent)
+            My_Oxygen_Sensor = New TimeOfFlightCalculator(My.Settings.Oxygen_CalUP, My.Settings.Oxygen_CalDn, My.Settings.Oxygen_CalTemperature, CalO2Percent)
             CB_O2Sens_isRunning.Enabled = True
             CB_O2Sens_isRunning.Visible = True
         Else

@@ -165,7 +165,7 @@ Public Class TimeOfFlightCalculator
     Private Sub SP_Internal_Datareceived(ByVal sendor As Object, ByVal e As SerialDataReceivedEventArgs) Handles SP_Internal.DataReceived
         ' Handles data on a backgrouund thread when it comes in on serial port.
 
-        Thread.Sleep(1)
+        Thread.Sleep(2)
         Dim Bte_Incoming() As Byte
         Dim Byt_Count As Integer
         Byt_Count = 3 'SP_Internal.BytesToRead - 1
@@ -188,7 +188,8 @@ Public Class TimeOfFlightCalculator
 
             Catch ex As Exception
 
-                MessageBox.Show(ex.Message)
+                '   MessageBox.Show(ex.Message)
+                MessageBox.Show("No data to receive_ERROR_GREG " & countup.ToString)
 
             End Try
 
