@@ -46,7 +46,7 @@ Public Class TimeOfFlightCalculator
     Const Flow_Window_Max As Single = 10 'Number of microseconds we should be looking up.
     Const Flow_Window_Min As Single = 10 'Number of microseconds we should be looking down.
     Const o2concslope As Single = 5.0 ' was 4.6 Concentration Slope
-    Const o2cono2cal As Single = 100 'Concentration Cal % or should it be 94
+    Const o2cono2cal As Single = 94 'Concentration Cal % or should it be 94
     Const Waves_Delayed As Short = 4 ' Number of waves between theoretical transit time and measured Transit Time. 
 
     'Private Serial_Recieve_Status As Receiving_State
