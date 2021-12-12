@@ -114,7 +114,7 @@ Public Class TimeOfFlightCalculator
                 .DataBits = 8
                 .ReceivedBytesThreshold = 3 ' one byte short o
                 .WriteTimeout = 100
-                .ReadTimeout = 4000
+                .ReadTimeout = 1000
                 .ReadBufferSize = 200
                 .WriteBufferSize = 500
             End With
