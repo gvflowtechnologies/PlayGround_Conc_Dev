@@ -188,6 +188,9 @@ Public Class TimeOfFlightCalculator
 
             Catch ex As Exception
 
+                SP_Internal.DiscardInBuffer()
+                _Measurement_Finished = True
+                Exit Sub
                 '   MessageBox.Show(ex.Message)
                 MessageBox.Show("No data to receive_ERROR_GREG " & countup.ToString)
 
