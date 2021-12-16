@@ -218,8 +218,8 @@ Public Class TimeOfFlightCalculator
         Loop
 
         TOF_ConvertfromBYTE(Bte_Incoming, ValidPacketStart)
-
         _Measurement_Finished = True
+
 
     End Sub
 
@@ -233,11 +233,13 @@ Public Class TimeOfFlightCalculator
 
         If Not ValidPacketStrt Then
             ReceivingData = Receiving_State.R_Received
+            _Measurement_Finished = True
             Exit Sub
         End If
 
         If TextToDisplay.Length < 2 Then
             ReceivingData = Receiving_State.R_Received
+            _Measurement_Finished = True
             Exit Sub
         End If
 
@@ -255,6 +257,7 @@ Public Class TimeOfFlightCalculator
                 DataFLagTD_7200 = TD_7200_Values.S_RTD
             Case Else
                 ReceivingData = Receiving_State.R_Received
+                _Measurement_Finished = True
                 Exit Sub
 
         End Select
@@ -306,6 +309,8 @@ Public Class TimeOfFlightCalculator
                     Next
                 End If
                 ReceivingData = Receiving_State.R_Received 'We have received the inco
+                _Measurement_Finished = True
+
 
             Case TD_7200_Values.S_RTD
                 If TextToDisplay.Length < (38 + (3 * 1)) Then Exit Sub
@@ -359,6 +364,7 @@ Public Class TimeOfFlightCalculator
                 End If
 
                 ReceivingData = Receiving_State.R_Received 'We have re
+                _Measurement_Finished = True
 
         End Select
 
