@@ -1323,11 +1323,11 @@ Public Class Form1
         If CB_O2Sens_isRunning.Checked Then
 
             Tmr_Oxygen_Sensor.Enabled = True
-            My_Oxygen_Sensor.SendReadings = True
+            'My_Oxygen_Sensor.SendReadings = True
 
         Else
             Tmr_Oxygen_Sensor.Enabled = False
-            My_Oxygen_Sensor.SendReadings = False
+            ' My_Oxygen_Sensor.SendReadings = False
 
         End If
 
@@ -1356,7 +1356,7 @@ Public Class Form1
         If My_Oxygen_Sensor.Measurement_Complete Then
 
             Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
-            If Not My_Oxygen_Sensor.SendReadings Then My_Oxygen_Sensor.PerformMeasurement()
+            My_Oxygen_Sensor.PerformMeasurement()
 
             Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
 

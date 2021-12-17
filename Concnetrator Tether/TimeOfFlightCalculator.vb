@@ -747,7 +747,7 @@ Public Class TimeOfFlightCalculator
         End Get
         Set(ByVal active As Boolean)
             _SendReadings = active
-            If active Then StartMeasurement()
+            '  If active Then StartMeasurement()
 
         End Set
     End Property
