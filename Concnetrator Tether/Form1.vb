@@ -107,6 +107,7 @@ Public Class Form1
         Newcommport()
         RetrieveSettings()
         enteringcycle = True
+        CreateTImer()
 
         'Load Variables for Decay pressure monitoring
         State1decay = New PressureDecay
@@ -1321,12 +1322,13 @@ Public Class Form1
     Private Sub CB_O2Sens_isRunning_CheckedChanged(sender As Object, e As EventArgs) Handles CB_O2Sens_isRunning.CheckedChanged
         'Start measuring Oxygen
         If CB_O2Sens_isRunning.Checked Then
-
-            Tmr_Oxygen_Sensor.Enabled = True
+            _TackTImer.Enabled = True
+            'Tmr_Oxygen_Sensor.Enabled = True
             'My_Oxygen_Sensor.SendReadings = True
 
         Else
-            Tmr_Oxygen_Sensor.Enabled = False
+            _TackTImer.Enabled = False
+            'Tmr_Oxygen_Sensor.Enabled = False
             ' My_Oxygen_Sensor.SendReadings = False
 
         End If
