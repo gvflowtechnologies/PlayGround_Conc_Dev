@@ -199,6 +199,7 @@ Public Class TimeOfFlightCalculator
             If Bte_Incoming.Length = 0 Then
                 ValidPacketStart = False
                 Thread.Sleep(5)
+                Application.DoEvents()
                 SP_Internal.DiscardInBuffer()
                 Exit Do
             End If
@@ -206,6 +207,7 @@ Public Class TimeOfFlightCalculator
             If Bte_Incoming(0) <> 6 Then
                 ValidPacketStart = False
                 Thread.Sleep(5)
+                Application.DoEvents()
                 SP_Internal.DiscardInBuffer()
                 Exit Do
             End If
@@ -616,8 +618,9 @@ Public Class TimeOfFlightCalculator
         Send_Binary_Data(datatosend, TD_7200_Values.S_Command)
 
         Do Until ReceivingData = Receiving_State.R_Received
-            Application.DoEvents()
+
             Thread.Sleep(1)
+            Application.DoEvents()
         Loop
         'Read Upstream Buffer
         ReceivingData = Receiving_State.R_Wating
@@ -626,8 +629,9 @@ Public Class TimeOfFlightCalculator
         Send_Binary_Data(datatosend, TD_7200_Values.S_UpStream)
 
         Do Until ReceivingData = Receiving_State.R_Received
-            Application.DoEvents()
+
             Thread.Sleep(1)
+            Application.DoEvents()
         Loop
 
         'Read Downstream Buffer
@@ -647,8 +651,9 @@ Public Class TimeOfFlightCalculator
         Send_Binary_Data(datatosend, TD_7200_Values.S_RTD)
 
         Do Until ReceivingData = Receiving_State.R_Received
-            Application.DoEvents()
             Thread.Sleep(1)
+            Application.DoEvents()
+
         Loop
 
     End Sub
@@ -656,8 +661,9 @@ Public Class TimeOfFlightCalculator
     Private Sub StartMeasurement()
         Do While (_SendReadings = True)
             PerformMeasurement()
-            Application.DoEvents()
+
             Thread.Sleep(1)
+            Application.DoEvents()
         Loop
     End Sub
 

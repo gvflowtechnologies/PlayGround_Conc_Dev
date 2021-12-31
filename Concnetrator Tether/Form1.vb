@@ -56,7 +56,7 @@ Public Class Form1
     Dim RunScript As Boolean
     'Oxygen Sensor Variables
     Dim My_Oxygen_Sensor As TimeOfFlightCalculator
-
+    Public _TackTImer As Timers.Timer
 
     ReadOnly FolderbeingSent As foldertype
 
@@ -1352,13 +1352,29 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CreateTImer()
+        _TackTImer = New Timers.Timer(250) With {
+            .Enabled = False
+        }
+        AddHandler _TackTImer.Elapsed, AddressOf Timer_Elapsed
+    End Sub
+    Private Sub Timer_Elapsed(Sender As Object, e As EventArgs)
+
+        If My_Oxygen_Sensor.Measurement_Complete Then
+            Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
+            My_Oxygen_Sensor.PerformMeasurement()
+
+            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
+
+        End If
+    End Sub
     Private Sub Tmr_Oxygen_Sensor_Tick(sender As Object, e As EventArgs) Handles Tmr_Oxygen_Sensor.Tick
         If My_Oxygen_Sensor.Measurement_Complete Then
 
             Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
             My_Oxygen_Sensor.PerformMeasurement()
 
-            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
+            Me.Invoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
 
         End If
 
@@ -1430,6 +1446,7 @@ Public Class Form1
         Return True
 
     End Function
+
 
 
 
