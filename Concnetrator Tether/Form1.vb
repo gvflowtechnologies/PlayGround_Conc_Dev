@@ -1323,13 +1323,11 @@ Public Class Form1
         'Start measuring Oxygen
         If CB_O2Sens_isRunning.Checked Then
             _TackTImer.Enabled = True
-            'Tmr_Oxygen_Sensor.Enabled = True
-            'My_Oxygen_Sensor.SendReadings = True
+
 
         Else
             _TackTImer.Enabled = False
-            'Tmr_Oxygen_Sensor.Enabled = False
-            ' My_Oxygen_Sensor.SendReadings = False
+
 
         End If
 
@@ -1370,17 +1368,7 @@ Public Class Form1
 
         End If
     End Sub
-    Private Sub Tmr_Oxygen_Sensor_Tick(sender As Object, e As EventArgs) Handles Tmr_Oxygen_Sensor.Tick
-        If My_Oxygen_Sensor.Measurement_Complete Then
 
-            Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
-            My_Oxygen_Sensor.PerformMeasurement()
-
-            Me.Invoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
-
-        End If
-
-    End Sub
 
     Private Sub O2Concentration_Update(ByVal SensorTemp As String, ByVal Sensor_O2 As String)
         Lbl_Sensed_Temp.Text = SensorTemp

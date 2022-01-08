@@ -41,6 +41,8 @@ Public Class TimeOfFlightCalculator
     Const RTempCoef As Single = 3.85
     Const R_Ref As Single = 1000
     Const E_Filter_Constant As Single = 0.022 'At a time step of 0.25 has a 11 sec time constant and -3db frequency response at (1 Min Freq) 0.016 hz
+    Const O2_Filter_Constant As Single = 0.1 'At a time step of 0.25 has a 1.5 sec time constant and -3db frequency response at 0.2 hz
+
     Const CalUpwindow As Single = 3 ' number of microseconds we should be looking up.
     Const Caldnwindow As Single = 19 ' number of microseconds we should be looking down.
     Const Flow_Window_Max As Single = 10 'Number of microseconds we should be looking up.
