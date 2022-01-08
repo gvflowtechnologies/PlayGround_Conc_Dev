@@ -30,12 +30,14 @@ Public Class TimeOfFlightCalculator
     Private _Temperature As Single
     Private _Flow As Single
     Private _Concentration As Single
+    Private _Filtered_O2 As Single
     Private _TOF_AVG As Single ' Average time of flight used to calculate oxygen concnetration.
     Private _TOF_UP_Minus_Down
     Private _Measurement_Finished As Boolean
     Private _TimeRequired As Single
 
     Private Firsttemp As Boolean ' When starting seed the filter with the current temperature.
+    Private First_o2 As Boolean ' When starting seed the filter with curretn o2.
     Private DataFLagTD_7200 As TD_7200_Values
     Const ClockFrequency As Single = 10 * 10 ^ 6
     Const RTempCoef As Single = 3.85
@@ -596,9 +598,29 @@ Public Class TimeOfFlightCalculator
         Else
             _Concentration = Concentration_Trial
         End If
+        _Filtered_O2 = Filter_Oxygen(_Concentration)
 
     End Sub
+    Private Function Filter_Oxygen(ByVal CurrentO2 As Single) As Single
+        'Filters the curretn temperature
+        Static Filtered_o2 As Single
+        If Not First_o2 Then ' First time through set filtered temp as current temp.
+            Filtered_o2 = CurrentO2
+            First_o2 = True
+        End If
 
+        ' Test to throw out crazytown numbers.
+        If CurrentO2 - Filtered_o2 > 5 Then
+            CurrentO2 = Filtered_o2 + 5
+        End If
+        If CurrentO2 - Filtered_o2 < -5 Then
+            CurrentO2 = Filtered_o2 - 5
+        End If
+
+        Filtered_o2 = (CurrentO2 * O2_Filter_Constant) + (Filtered_o2 * (1 - O2_Filter_Constant))
+
+        Return Filtered_o2
+    End Function
     Private Function Calc_Avg(ByVal Timeup() As Single, TimeDn() As Single) As Single
         ' Select correct time up based on cal and temp.
         Dim AverageTime As Single
@@ -739,7 +761,7 @@ Public Class TimeOfFlightCalculator
 
     ReadOnly Property O2_Percent As Single
         Get
-            Return _Concentration
+            Return _Filtered_O2
         End Get
     End Property
 
