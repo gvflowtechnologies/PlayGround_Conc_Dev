@@ -159,7 +159,6 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Tmr_Oxygen_Sensor = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1453,10 +1452,6 @@ Partial Class Form1
         '
         Me.ErrorProvider2.ContainerControl = Me
         '
-        'Tmr_Oxygen_Sensor
-        '
-        Me.Tmr_Oxygen_Sensor.Interval = 500
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1622,7 +1617,6 @@ Partial Class Form1
     Friend WithEvents Label36 As Label
     Friend WithEvents Btn_Update_O2_Calibration As Button
     Friend WithEvents ErrorProvider2 As ErrorProvider
-    Friend WithEvents Tmr_Oxygen_Sensor As Timer
     Friend WithEvents Lbl_Sensed_O2 As Label
     Friend WithEvents Lbl_Sensed_Temp As Label
     Friend WithEvents Label31 As Label

@@ -1364,7 +1364,7 @@ Public Class Form1
             Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
             My_Oxygen_Sensor.PerformMeasurement()
 
-            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString(), My_Oxygen_Sensor.O2_Percent.ToString())
+            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString("F2"), My_Oxygen_Sensor.O2_Percent.ToString("F1"))
 
         End If
     End Sub
@@ -1436,11 +1436,6 @@ Public Class Form1
         Return True
 
     End Function
-
-
-
-
-
 
 
 #End Region
