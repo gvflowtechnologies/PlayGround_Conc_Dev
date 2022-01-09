@@ -161,7 +161,7 @@ Public Class Form1
                                 .WriteLine(DateTime.Now.ToShortDateString)
                                 .Write("File Start Time, ")
                                 .WriteLine(DateTime.Now.ToShortTimeString)
-                                .WriteLine("P1, P ProdTank, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4")
+                                .WriteLine("P1, P ProdTank, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4, Temp, O2 %")
 
                             End With
                         End Using
@@ -716,12 +716,12 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(9) As Single 'was 14
+            Dim datavalue(11) As Single 'was 9 Adding 2 to log temp and ox
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
                 i += 1
-                If i = 8 Then datavalue(i) += 1
+                If i > 7 Then datavalue(i) += 1
 
             Next
             If TP_Calibration.Visible = True Then
@@ -745,7 +745,8 @@ Public Class Form1
                     enteringcycle = False
 
                 Else ' In cycle
-
+                    datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text)
+                    datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
                     If datavalue(3) = 1 Then
                         State1decay.Detect(datavalue(1))
                         datavalue(7) = State1decay.PMvgAvgSlope
