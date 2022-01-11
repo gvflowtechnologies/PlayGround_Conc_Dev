@@ -745,7 +745,7 @@ Public Class Form1
                     enteringcycle = False
 
                 Else ' In cycle
-                    datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text)
+                    datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
                     datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
                     If datavalue(3) = 1 Then
                         State1decay.Detect(datavalue(1))

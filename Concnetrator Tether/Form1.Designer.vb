@@ -233,18 +233,18 @@ Partial Class Form1
         Me.Lbl_Sensed_O2.AutoSize = True
         Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1147, 590)
         Me.Lbl_Sensed_O2.Name = "Lbl_Sensed_O2"
-        Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(60, 13)
+        Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(13, 13)
         Me.Lbl_Sensed_O2.TabIndex = 33
-        Me.Lbl_Sensed_O2.Text = "Sensed O2"
+        Me.Lbl_Sensed_O2.Text = "0"
         '
         'Lbl_Sensed_Temp
         '
         Me.Lbl_Sensed_Temp.AutoSize = True
         Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1147, 562)
         Me.Lbl_Sensed_Temp.Name = "Lbl_Sensed_Temp"
-        Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(19, 13)
         Me.Lbl_Sensed_Temp.TabIndex = 32
-        Me.Lbl_Sensed_Temp.Text = "Label37"
+        Me.Lbl_Sensed_Temp.Text = "21"
         '
         'Label31
         '
