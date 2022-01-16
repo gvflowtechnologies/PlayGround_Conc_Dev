@@ -36,6 +36,8 @@ Public Class TimeOfFlightCalculator
     Private _Measurement_Finished As Boolean
     Private _TimeRequired As Single
 
+
+
     Private Firsttemp As Boolean ' When starting seed the filter with the current temperature.
     Private First_o2 As Boolean ' When starting seed the filter with curretn o2.
     Private DataFLagTD_7200 As TD_7200_Values
@@ -741,6 +743,12 @@ Public Class TimeOfFlightCalculator
         End Get
     End Property
 
+    ReadOnly Property Raw_Temp As Single
+        Get
+            Return _Temperature
+        End Get
+    End Property
+
     ReadOnly Property Temperature As Single
         Get
             Return _FilteredTemp
@@ -758,7 +766,11 @@ Public Class TimeOfFlightCalculator
             Return _TOF_UP_Minus_Down
         End Get
     End Property
-
+    ReadOnly Property Raw_O2Percent As Single
+        Get
+            Return _Concentration
+        End Get
+    End Property
     ReadOnly Property O2_Percent As Single
         Get
             Return _Filtered_O2

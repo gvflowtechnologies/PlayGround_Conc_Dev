@@ -93,7 +93,7 @@ Public Class Form1
     ReadOnly SW_Logging As StreamWriter
 
     Private Delegate Sub accessformMarshaldelegate(ByVal texttodisplay As String)
-    Private Delegate Sub accessformMarshaldelegate1(ByVal Sensed_Temp As String, ByVal Sensed_Concentration As String)
+    Private Delegate Sub accessformMarshaldelegate1(ByVal Sensed_Temp As String, ByVal Sensed_Concentration As String, ByVal RawTemp As String, ByVal RawO2 As String)
 
 
 
@@ -728,8 +728,8 @@ Public Class Form1
                 '   LBL_RawPT1.Text = datavalue(0)
 
             End If
-            datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
-            datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
+            datavalue(9) = Convert.ToSingle(Lbl_Raw_Temp.Text) ' tryparse 
+            datavalue(10) = Convert.ToSingle(Lbl_Raw_o2.Text)
 
             If datavalue(3) = 1 Or datavalue(3) = 4 Then
                 ' Using Datavalue(1) for slope detection
@@ -1029,12 +1029,6 @@ Public Class Form1
 
 
     End Sub
-
-
-
-
-
-
 
 
     Private Sub Btn_LogFiles_Click(sender As Object, e As EventArgs) Handles Btn_LogFiles.Click
@@ -1365,15 +1359,19 @@ Public Class Form1
             Dim frmDelegate As New accessformMarshaldelegate1(AddressOf O2Concentration_Update)
             My_Oxygen_Sensor.PerformMeasurement()
 
-            Me.BeginInvoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString("F2"), My_Oxygen_Sensor.O2_Percent.ToString("F1"))
+            Me.Invoke(frmDelegate, My_Oxygen_Sensor.Temperature.ToString("F2"), My_Oxygen_Sensor.O2_Percent.ToString("F1"), My_Oxygen_Sensor.Raw_Temp.ToString("F2"), My_Oxygen_Sensor.Raw_O2Percent.ToString("F2"))
 
         End If
     End Sub
 
 
-    Private Sub O2Concentration_Update(ByVal SensorTemp As String, ByVal Sensor_O2 As String)
+    Private Sub O2Concentration_Update(ByVal SensorTemp As String, ByVal Sensor_O2 As String, ByVal RawTemp As String, ByVal RawO2 As String)
+
         Lbl_Sensed_Temp.Text = SensorTemp
         Lbl_Sensed_O2.Text = Sensor_O2
+        Lbl_Raw_Temp.Text = RawTemp
+        Lbl_Raw_o2.Text = RawO2
+
     End Sub
 
     Private Sub TB_O2_Cal_TimeUP_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_O2_Cal_TimeUP.Validating
