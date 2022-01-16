@@ -728,7 +728,8 @@ Public Class Form1
                 '   LBL_RawPT1.Text = datavalue(0)
 
             End If
-
+            datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
+            datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
 
             If datavalue(3) = 1 Or datavalue(3) = 4 Then
                 ' Using Datavalue(1) for slope detection
@@ -745,12 +746,11 @@ Public Class Form1
                     enteringcycle = False
 
                 Else ' In cycle
-                    datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
-                    datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
+                    'datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
+                    'datavalue(10) = Convert.ToSingle(Lbl_Sensed_O2.Text)
                     If datavalue(3) = 1 Then
                         State1decay.Detect(datavalue(1))
                         datavalue(7) = State1decay.PMvgAvgSlope
-                        ' datavalue(14) = State1decay.PAvGslope
                         LB_DecayAvg1.Text = datavalue(7).ToString("F1")
                         Lb_Mi1Slope.Text = datavalue(5).ToString("F1")
                         Lb_DecayCurr1.Text = State1decay.PAvGslope.ToString("F1")
