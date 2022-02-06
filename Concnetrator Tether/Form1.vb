@@ -728,6 +728,7 @@ Public Class Form1
                 '   LBL_RawPT1.Text = datavalue(0)
 
             End If
+
             datavalue(9) = Convert.ToSingle(Lbl_Raw_Temp.Text) ' tryparse 
             datavalue(10) = Convert.ToSingle(Lbl_Raw_o2.Text)
 
@@ -737,10 +738,12 @@ Public Class Form1
 
                     If datavalue(3) = 1 Then
                         State1decay.Reset()
+                        Lbl_Stg_1_o2.Text = Lbl_Raw_o2.Text
                     End If
 
                     If datavalue(3) = 4 Then
                         State4decay.Reset()
+                        Lbl_Stg_4_02.Text = Lbl_Raw_o2.Text
                     End If
 
                     enteringcycle = False
