@@ -23,18 +23,22 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Lbl_Stg_4_02 = New System.Windows.Forms.Label()
+        Me.Lbl_Stg_1_o2 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.Lbl_Raw_o2 = New System.Windows.Forms.Label()
         Me.Lbl_Raw_Temp = New System.Windows.Forms.Label()
         Me.Lbl_Sensed_O2 = New System.Windows.Forms.Label()
@@ -161,10 +165,6 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Lbl_Stg_1_o2 = New System.Windows.Forms.Label()
-        Me.Lbl_Stg_4_02 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -240,10 +240,46 @@ Partial Class Form1
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Lbl_Stg_4_02
+        '
+        Me.Lbl_Stg_4_02.AutoSize = True
+        Me.Lbl_Stg_4_02.Location = New System.Drawing.Point(1176, 281)
+        Me.Lbl_Stg_4_02.Name = "Lbl_Stg_4_02"
+        Me.Lbl_Stg_4_02.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Stg_4_02.TabIndex = 39
+        Me.Lbl_Stg_4_02.Text = "Label40"
+        '
+        'Lbl_Stg_1_o2
+        '
+        Me.Lbl_Stg_1_o2.AutoSize = True
+        Me.Lbl_Stg_1_o2.Location = New System.Drawing.Point(1176, 248)
+        Me.Lbl_Stg_1_o2.Name = "Lbl_Stg_1_o2"
+        Me.Lbl_Stg_1_o2.Size = New System.Drawing.Size(45, 13)
+        Me.Lbl_Stg_1_o2.TabIndex = 38
+        Me.Lbl_Stg_1_o2.Text = "Label39"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(1049, 281)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(124, 13)
+        Me.Label38.TabIndex = 37
+        Me.Label38.Text = "Stage 4 O2% cycle end: "
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(1049, 248)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(124, 13)
+        Me.Label37.TabIndex = 36
+        Me.Label37.Text = "Statge1 O2%  cycle end:"
+        '
         'Lbl_Raw_o2
         '
         Me.Lbl_Raw_o2.AutoSize = True
-        Me.Lbl_Raw_o2.Location = New System.Drawing.Point(1160, 590)
+        Me.Lbl_Raw_o2.Location = New System.Drawing.Point(1175, 590)
         Me.Lbl_Raw_o2.Name = "Lbl_Raw_o2"
         Me.Lbl_Raw_o2.Size = New System.Drawing.Size(19, 13)
         Me.Lbl_Raw_o2.TabIndex = 35
@@ -253,7 +289,7 @@ Partial Class Form1
         'Lbl_Raw_Temp
         '
         Me.Lbl_Raw_Temp.AutoSize = True
-        Me.Lbl_Raw_Temp.Location = New System.Drawing.Point(1160, 561)
+        Me.Lbl_Raw_Temp.Location = New System.Drawing.Point(1175, 562)
         Me.Lbl_Raw_Temp.Name = "Lbl_Raw_Temp"
         Me.Lbl_Raw_Temp.Size = New System.Drawing.Size(19, 13)
         Me.Lbl_Raw_Temp.TabIndex = 34
@@ -263,7 +299,7 @@ Partial Class Form1
         'Lbl_Sensed_O2
         '
         Me.Lbl_Sensed_O2.AutoSize = True
-        Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1147, 590)
+        Me.Lbl_Sensed_O2.Location = New System.Drawing.Point(1143, 590)
         Me.Lbl_Sensed_O2.Name = "Lbl_Sensed_O2"
         Me.Lbl_Sensed_O2.Size = New System.Drawing.Size(13, 13)
         Me.Lbl_Sensed_O2.TabIndex = 33
@@ -272,7 +308,7 @@ Partial Class Form1
         'Lbl_Sensed_Temp
         '
         Me.Lbl_Sensed_Temp.AutoSize = True
-        Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1147, 562)
+        Me.Lbl_Sensed_Temp.Location = New System.Drawing.Point(1143, 562)
         Me.Lbl_Sensed_Temp.Name = "Lbl_Sensed_Temp"
         Me.Lbl_Sensed_Temp.Size = New System.Drawing.Size(19, 13)
         Me.Lbl_Sensed_Temp.TabIndex = 32
@@ -298,30 +334,30 @@ Partial Class Form1
         '
         'Chart2
         '
-        ChartArea3.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea3.AxisY.IsStartedFromZero = False
-        ChartArea3.AxisY.MajorGrid.Interval = 0R
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend3)
+        ChartArea1.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea1.AxisY.IsStartedFromZero = False
+        ChartArea1.AxisY.MajorGrid.Interval = 0R
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart2.Legends.Add(Legend1)
         Me.Chart2.Location = New System.Drawing.Point(13, 307)
         Me.Chart2.Name = "Chart2"
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series7.Legend = "Legend1"
-        Series7.Name = "PT1"
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series8.Legend = "Legend1"
-        Series8.Name = "PT2"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series9.Legend = "Legend1"
-        Series9.Name = "PT3"
-        Me.Chart2.Series.Add(Series7)
-        Me.Chart2.Series.Add(Series8)
-        Me.Chart2.Series.Add(Series9)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "PT1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "PT2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "PT3"
+        Me.Chart2.Series.Add(Series1)
+        Me.Chart2.Series.Add(Series2)
+        Me.Chart2.Series.Add(Series3)
         Me.Chart2.Size = New System.Drawing.Size(1215, 116)
         Me.Chart2.TabIndex = 29
         Me.Chart2.Text = "Chart2"
@@ -396,7 +432,7 @@ Partial Class Form1
         'Lb_Mic4slope
         '
         Me.Lb_Mic4slope.AutoSize = True
-        Me.Lb_Mic4slope.Location = New System.Drawing.Point(995, 493)
+        Me.Lb_Mic4slope.Location = New System.Drawing.Point(1096, 493)
         Me.Lb_Mic4slope.Name = "Lb_Mic4slope"
         Me.Lb_Mic4slope.Size = New System.Drawing.Size(45, 13)
         Me.Lb_Mic4slope.TabIndex = 25
@@ -405,7 +441,7 @@ Partial Class Form1
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(974, 442)
+        Me.Label26.Location = New System.Drawing.Point(1075, 442)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(70, 13)
         Me.Label26.TabIndex = 24
@@ -414,7 +450,7 @@ Partial Class Form1
         'Lb_Mi1Slope
         '
         Me.Lb_Mi1Slope.AutoSize = True
-        Me.Lb_Mi1Slope.Location = New System.Drawing.Point(992, 468)
+        Me.Lb_Mi1Slope.Location = New System.Drawing.Point(1093, 468)
         Me.Lb_Mi1Slope.Name = "Lb_Mi1Slope"
         Me.Lb_Mi1Slope.Size = New System.Drawing.Size(33, 13)
         Me.Lb_Mi1Slope.TabIndex = 23
@@ -459,7 +495,7 @@ Partial Class Form1
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(1074, 439)
+        Me.Label29.Location = New System.Drawing.Point(1154, 442)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(71, 13)
         Me.Label29.TabIndex = 18
@@ -468,7 +504,7 @@ Partial Class Form1
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(906, 442)
+        Me.Label28.Location = New System.Drawing.Point(1007, 442)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(71, 13)
         Me.Label28.TabIndex = 17
@@ -478,7 +514,7 @@ Partial Class Form1
         '
         Me.Lb_DecayCurr4.AutoSize = True
         Me.Lb_DecayCurr4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1089, 488)
+        Me.Lb_DecayCurr4.Location = New System.Drawing.Point(1169, 488)
         Me.Lb_DecayCurr4.Name = "Lb_DecayCurr4"
         Me.Lb_DecayCurr4.Size = New System.Drawing.Size(19, 15)
         Me.Lb_DecayCurr4.TabIndex = 16
@@ -488,7 +524,7 @@ Partial Class Form1
         '
         Me.Lb_DecayCurr1.AutoSize = True
         Me.Lb_DecayCurr1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1089, 465)
+        Me.Lb_DecayCurr1.Location = New System.Drawing.Point(1169, 465)
         Me.Lb_DecayCurr1.Name = "Lb_DecayCurr1"
         Me.Lb_DecayCurr1.Size = New System.Drawing.Size(19, 15)
         Me.Lb_DecayCurr1.TabIndex = 15
@@ -498,7 +534,7 @@ Partial Class Form1
         '
         Me.Lb_DecayAvg4.AutoSize = True
         Me.Lb_DecayAvg4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Lb_DecayAvg4.Location = New System.Drawing.Point(911, 490)
+        Me.Lb_DecayAvg4.Location = New System.Drawing.Point(1012, 490)
         Me.Lb_DecayAvg4.Name = "Lb_DecayAvg4"
         Me.Lb_DecayAvg4.Size = New System.Drawing.Size(19, 15)
         Me.Lb_DecayAvg4.TabIndex = 14
@@ -508,7 +544,7 @@ Partial Class Form1
         '
         Me.LB_DecayAvg1.AutoSize = True
         Me.LB_DecayAvg1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.LB_DecayAvg1.Location = New System.Drawing.Point(911, 467)
+        Me.LB_DecayAvg1.Location = New System.Drawing.Point(1012, 467)
         Me.LB_DecayAvg1.Name = "LB_DecayAvg1"
         Me.LB_DecayAvg1.Size = New System.Drawing.Size(19, 15)
         Me.LB_DecayAvg1.TabIndex = 13
@@ -517,7 +553,7 @@ Partial Class Form1
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(808, 493)
+        Me.Label23.Location = New System.Drawing.Point(909, 493)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(81, 13)
         Me.Label23.TabIndex = 12
@@ -526,7 +562,7 @@ Partial Class Form1
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(808, 468)
+        Me.Label22.Location = New System.Drawing.Point(909, 468)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(78, 13)
         Me.Label22.TabIndex = 11
@@ -868,30 +904,30 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea4.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea4.AxisY.IsStartedFromZero = False
-        ChartArea4.AxisY.MajorGrid.Interval = 0R
-        ChartArea4.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea4)
-        Legend4.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend4)
+        ChartArea2.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea2.AxisY.IsStartedFromZero = False
+        ChartArea2.AxisY.MajorGrid.Interval = 0R
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series10.ChartArea = "ChartArea1"
-        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series10.Legend = "Legend1"
-        Series10.Name = "PT1"
-        Series11.ChartArea = "ChartArea1"
-        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series11.Legend = "Legend1"
-        Series11.Name = "PT2"
-        Series12.ChartArea = "ChartArea1"
-        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series12.Legend = "Legend1"
-        Series12.Name = "PT3"
-        Me.Chart1.Series.Add(Series10)
-        Me.Chart1.Series.Add(Series11)
-        Me.Chart1.Series.Add(Series12)
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Legend = "Legend1"
+        Series4.Name = "PT1"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Legend = "Legend1"
+        Series5.Name = "PT2"
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Legend = "Legend1"
+        Series6.Name = "PT3"
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Series.Add(Series5)
+        Me.Chart1.Series.Add(Series6)
         Me.Chart1.Size = New System.Drawing.Size(1215, 290)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -1483,42 +1519,6 @@ Partial Class Form1
         'ErrorProvider2
         '
         Me.ErrorProvider2.ContainerControl = Me
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(1049, 248)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(124, 13)
-        Me.Label37.TabIndex = 36
-        Me.Label37.Text = "Statge1 O2%  cycle end:"
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(1049, 281)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(124, 13)
-        Me.Label38.TabIndex = 37
-        Me.Label38.Text = "Stage 4 O2% cycle end: "
-        '
-        'Lbl_Stg_1_o2
-        '
-        Me.Lbl_Stg_1_o2.AutoSize = True
-        Me.Lbl_Stg_1_o2.Location = New System.Drawing.Point(1176, 248)
-        Me.Lbl_Stg_1_o2.Name = "Lbl_Stg_1_o2"
-        Me.Lbl_Stg_1_o2.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_Stg_1_o2.TabIndex = 38
-        Me.Lbl_Stg_1_o2.Text = "Label39"
-        '
-        'Lbl_Stg_4_02
-        '
-        Me.Lbl_Stg_4_02.AutoSize = True
-        Me.Lbl_Stg_4_02.Location = New System.Drawing.Point(1176, 281)
-        Me.Lbl_Stg_4_02.Name = "Lbl_Stg_4_02"
-        Me.Lbl_Stg_4_02.Size = New System.Drawing.Size(45, 13)
-        Me.Lbl_Stg_4_02.TabIndex = 39
-        Me.Lbl_Stg_4_02.Text = "Label40"
         '
         'Form1
         '
