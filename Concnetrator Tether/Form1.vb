@@ -1100,6 +1100,13 @@ Public Class Form1
 
         End If
     End Sub
+
+
+    Private Sub RB_Timed_Adaptive_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Timed_Adaptive.CheckedChanged
+
+    End Sub
+
+
     Private Sub RB_SerialOn_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SerialOn.CheckedChanged
         If RB_SerialOn.Checked Then
             Dim receivedstatus As Boolean
@@ -1438,6 +1445,8 @@ Public Class Form1
         Return True
 
     End Function
+
+
 
 
 #End Region
