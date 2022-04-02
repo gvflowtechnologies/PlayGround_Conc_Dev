@@ -50,6 +50,14 @@ Public Class Form1
 
     End Enum
 
+    Dim Sng_cum_Adjustment As Single 'Overall time adjusment to cycle 4.
+    Dim Sng_Int_Adjustment As Single ' Time adjustment to cycle 4 single step.
+    Dim Sng_ScaleingO2 As Single ' Scaling factor for adjusting cycle time.
+    Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
+    Dim Sng_Cum_Adjustment_Old As Single
+
+    Dim o2_1 As Single
+    Dim o2_4 As Single
 
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
@@ -119,6 +127,10 @@ Public Class Form1
         Tmr_Scripting.Enabled = True
         Tmr_Scripting.Start()
 
+        Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
+        Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
+
+        O2AdaptiveTimeCycle = False
 
         Dim v As String
 
@@ -739,14 +751,23 @@ Public Class Form1
                     If datavalue(3) = 1 Then
                         State1decay.Reset()
                         Lbl_Stg_1_o2.Text = Lbl_Raw_o2.Text
+
+                        o2_1 = Convert.ToSingle(Lbl_Stg_1_o2.Text)
                     End If
 
                     If datavalue(3) = 4 Then
                         State4decay.Reset()
                         Lbl_Stg_4_02.Text = Lbl_Raw_o2.Text
-                    End If
+                        o2_4 = Convert.ToSingle(Lbl_Stg_4_02.Text)
 
-                    enteringcycle = False
+                        Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
+                        Sng_cum_Adjustment += Sng_Int_Adjustment
+                        If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
+                            Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update time we are looking at.
+
+                        End If
+
+                        enteringcycle = False
 
                 Else ' In cycle
                     'datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
@@ -833,6 +854,18 @@ Public Class Form1
 
 
     End Sub
+
+    Private Function CaclAdjustment(End_Of_Cycle_o2_1 As Single, End_of_cycle_o2_4 As Single) As Single
+
+        Dim step_Adjustment As Single
+
+        step_Adjustment = Sng_ScaleingO2 * (End_Of_Cycle_o2_1 - End_of_cycle_o2_4)
+
+        Return step_Adjustment
+    End Function
+
+
+
 
     Private Sub Sub_Update_Cycle_Times()
         Dim command As String
@@ -1060,12 +1093,15 @@ Public Class Form1
     Private Sub RB_PressBal_CheckedChanged(sender As Object, e As EventArgs) Handles RB_PressBal.CheckedChanged
         If RB_PressBal.Checked Then
 
+            O2AdaptiveTimeCycle = False
             Dim receivedstatus As Boolean
             Dim CommandArray(4) As Byte
             CommandArray(0) = FrameStart
             CommandArray(1) = SerialCommands.PressureMatchCycle
             CommandArray(2) = 24
             CommandArray(3) = 56
+
+            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
 
             receivedstatus = Send_Binary_Data(CommandArray)
 
@@ -1082,7 +1118,8 @@ Public Class Form1
     Private Sub RB_TimeCycle_CheckedChanged(sender As Object, e As EventArgs) Handles RB_TimeCycle.CheckedChanged
         If RB_TimeCycle.Checked Then
             Dim receivedstatus As Boolean
-
+            O2AdaptiveTimeCycle = False
+            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
 
             Dim CommandArray(4) As Byte
             CommandArray(0) = FrameStart
@@ -1104,6 +1141,26 @@ Public Class Form1
 
     Private Sub RB_Timed_Adaptive_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Timed_Adaptive.CheckedChanged
 
+        If RB_Timed_Adaptive.Checked Then
+            O2AdaptiveTimeCycle = True
+            Dim receivedstatus As Boolean
+            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
+
+            Dim CommandArray(4) As Byte
+            CommandArray(0) = FrameStart
+            CommandArray(1) = SerialCommands.TimeMatchCycle
+            CommandArray(2) = 24
+            CommandArray(3) = 56
+
+            receivedstatus = Send_Binary_Data(CommandArray)
+
+            If receivedstatus = False Then
+                RB_PressBal.ForeColor = Color.Red
+            Else
+                RB_PressBal.ForeColor = SystemColors.ControlText
+            End If
+
+        End If
     End Sub
 
 
@@ -1445,6 +1502,12 @@ Public Class Form1
         Return True
 
     End Function
+
+    Private Sub Tb_ScalingFactor_TextChanged(sender As Object, e As EventArgs) Handles Tb_ScalingFactor.TextChanged
+        Sng_ScaleingO2 = CSng(Tb_ScalingFactor.Text)
+    End Sub
+
+
 
 
 

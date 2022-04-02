@@ -50,6 +50,7 @@ Partial Class Form1
         Me.RB_SerialOff = New System.Windows.Forms.RadioButton()
         Me.RB_SerialOn = New System.Windows.Forms.RadioButton()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.RB_Timed_Adaptive = New System.Windows.Forms.RadioButton()
         Me.RB_TimeCycle = New System.Windows.Forms.RadioButton()
         Me.RB_PressBal = New System.Windows.Forms.RadioButton()
         Me.Lb_Mic4slope = New System.Windows.Forms.Label()
@@ -165,7 +166,12 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.RB_Timed_Adaptive = New System.Windows.Forms.RadioButton()
+        Me.Lbl_AdaptiveTime = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Tb_ScalingFactor = New System.Windows.Forms.TextBox()
+        Me.Label41 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,6 +190,7 @@ Partial Class Form1
         Me.GroupBox3.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox12.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -399,6 +406,8 @@ Partial Class Form1
         '
         'GroupBox8
         '
+        Me.GroupBox8.Controls.Add(Me.Label39)
+        Me.GroupBox8.Controls.Add(Me.Lbl_AdaptiveTime)
         Me.GroupBox8.Controls.Add(Me.RB_Timed_Adaptive)
         Me.GroupBox8.Controls.Add(Me.RB_TimeCycle)
         Me.GroupBox8.Controls.Add(Me.RB_PressBal)
@@ -409,10 +418,21 @@ Partial Class Form1
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Cycle Control"
         '
+        'RB_Timed_Adaptive
+        '
+        Me.RB_Timed_Adaptive.AutoSize = True
+        Me.RB_Timed_Adaptive.Location = New System.Drawing.Point(142, 23)
+        Me.RB_Timed_Adaptive.Name = "RB_Timed_Adaptive"
+        Me.RB_Timed_Adaptive.Size = New System.Drawing.Size(139, 17)
+        Me.RB_Timed_Adaptive.TabIndex = 2
+        Me.RB_Timed_Adaptive.TabStop = True
+        Me.RB_Timed_Adaptive.Text = "Time Cycle O2 Adaptive"
+        Me.RB_Timed_Adaptive.UseVisualStyleBackColor = True
+        '
         'RB_TimeCycle
         '
         Me.RB_TimeCycle.AutoSize = True
-        Me.RB_TimeCycle.Location = New System.Drawing.Point(9, 62)
+        Me.RB_TimeCycle.Location = New System.Drawing.Point(9, 23)
         Me.RB_TimeCycle.Name = "RB_TimeCycle"
         Me.RB_TimeCycle.Size = New System.Drawing.Size(83, 17)
         Me.RB_TimeCycle.TabIndex = 1
@@ -423,7 +443,7 @@ Partial Class Form1
         'RB_PressBal
         '
         Me.RB_PressBal.AutoSize = True
-        Me.RB_PressBal.Location = New System.Drawing.Point(9, 34)
+        Me.RB_PressBal.Location = New System.Drawing.Point(9, 65)
         Me.RB_PressBal.Name = "RB_PressBal"
         Me.RB_PressBal.Size = New System.Drawing.Size(108, 17)
         Me.RB_PressBal.TabIndex = 0
@@ -936,6 +956,7 @@ Partial Class Form1
         '
         'TP_Calibration
         '
+        Me.TP_Calibration.Controls.Add(Me.GroupBox12)
         Me.TP_Calibration.Controls.Add(Me.GroupBox11)
         Me.TP_Calibration.Controls.Add(Me.GroupBox9)
         Me.TP_Calibration.Controls.Add(Me.Label19)
@@ -1522,16 +1543,62 @@ Partial Class Form1
         '
         Me.ErrorProvider2.ContainerControl = Me
         '
-        'RB_Timed_Adaptive
+        'Lbl_AdaptiveTime
         '
-        Me.RB_Timed_Adaptive.AutoSize = True
-        Me.RB_Timed_Adaptive.Location = New System.Drawing.Point(139, 62)
-        Me.RB_Timed_Adaptive.Name = "RB_Timed_Adaptive"
-        Me.RB_Timed_Adaptive.Size = New System.Drawing.Size(139, 17)
-        Me.RB_Timed_Adaptive.TabIndex = 2
-        Me.RB_Timed_Adaptive.TabStop = True
-        Me.RB_Timed_Adaptive.Text = "Time Cycle O2 Adaptive"
-        Me.RB_Timed_Adaptive.UseVisualStyleBackColor = True
+        Me.Lbl_AdaptiveTime.AutoSize = True
+        Me.Lbl_AdaptiveTime.Location = New System.Drawing.Point(154, 53)
+        Me.Lbl_AdaptiveTime.Name = "Lbl_AdaptiveTime"
+        Me.Lbl_AdaptiveTime.Size = New System.Drawing.Size(31, 13)
+        Me.Lbl_AdaptiveTime.TabIndex = 3
+        Me.Lbl_AdaptiveTime.Text = "0000"
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(190, 53)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(89, 13)
+        Me.Label39.TabIndex = 4
+        Me.Label39.Text = "mSec Adjustment"
+        '
+        'GroupBox12
+        '
+        Me.GroupBox12.Controls.Add(Me.Label41)
+        Me.GroupBox12.Controls.Add(Me.Tb_ScalingFactor)
+        Me.GroupBox12.Controls.Add(Me.Label40)
+        Me.GroupBox12.Location = New System.Drawing.Point(494, 361)
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.Size = New System.Drawing.Size(303, 305)
+        Me.GroupBox12.TabIndex = 8
+        Me.GroupBox12.TabStop = False
+        Me.GroupBox12.Text = "Adaptive cycle time"
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(22, 37)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(108, 13)
+        Me.Label40.TabIndex = 0
+        Me.Label40.Text = "Scaling Factor mSec:"
+        '
+        'Tb_ScalingFactor
+        '
+        Me.Tb_ScalingFactor.Location = New System.Drawing.Point(146, 30)
+        Me.Tb_ScalingFactor.Name = "Tb_ScalingFactor"
+        Me.Tb_ScalingFactor.Size = New System.Drawing.Size(100, 20)
+        Me.Tb_ScalingFactor.TabIndex = 1
+        Me.Tb_ScalingFactor.Text = "100"
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(29, 62)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(253, 39)
+        Me.Label41.TabIndex = 2
+        Me.Label41.Text = "# of mSec per % difference in end cycle O2 reading." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Added or subtracted from ove" &
+    "rall adjustment added " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to Set time."
         '
         'Form1
         '
@@ -1572,6 +1639,8 @@ Partial Class Form1
         Me.GroupBox3.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox12.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1709,4 +1778,10 @@ Partial Class Form1
     Friend WithEvents Label38 As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents RB_Timed_Adaptive As RadioButton
+    Friend WithEvents Label39 As Label
+    Friend WithEvents Lbl_AdaptiveTime As Label
+    Friend WithEvents GroupBox12 As GroupBox
+    Friend WithEvents Label41 As Label
+    Friend WithEvents Tb_ScalingFactor As TextBox
+    Friend WithEvents Label40 As Label
 End Class
