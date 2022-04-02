@@ -880,7 +880,7 @@ Public Class Form1
         TextBox1.Text = " "
         lbl_Returned_Times.Text = ""
         If O2AdaptiveTimeCycle = True Then
-            cycles(3) = UInt16.Parse(TB_ProcTime4.Text) + CInt(Sng_cum_Adjustment) / timerperiod
+            cycles(3) = (UInt16.Parse(TB_ProcTime4.Text) + CInt(Sng_cum_Adjustment)) / timerperiod
         Else
             cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
         End If
