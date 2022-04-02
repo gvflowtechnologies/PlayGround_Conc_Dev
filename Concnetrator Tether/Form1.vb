@@ -763,11 +763,14 @@ Public Class Form1
                         Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
                         Sng_cum_Adjustment += Sng_Int_Adjustment
                         If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
-                            Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update time we are looking at.
+                            Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
+
+                            Sub_Update_Cycle_Times()
 
                         End If
+                    End If
 
-                        enteringcycle = False
+                    enteringcycle = False
 
                 Else ' In cycle
                     'datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
@@ -876,11 +879,16 @@ Public Class Form1
         receivedstatus = False
         TextBox1.Text = " "
         lbl_Returned_Times.Text = ""
+        If O2AdaptiveTimeCycle = True Then
+            cycles(3) = UInt16.Parse(TB_ProcTime4.Text) + CInt(Sng_cum_Adjustment) / timerperiod
+        Else
+            cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
+        End If
 
         cycles(0) = UInt16.Parse(TB_ProcTime1.Text) / timerperiod
         cycles(1) = UInt16.Parse(TB_ProcTIme2.Text) / timerperiod
         cycles(2) = UInt16.Parse(TB_ProcTime3.Text) / timerperiod
-        cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
+
         cycles(4) = UInt16.Parse(TB_ProcTime5.Text) / timerperiod
         cycles(5) = UInt16.Parse(TB_ProcTIme6.Text) / timerperiod
         cyclescount = 0
@@ -1101,8 +1109,8 @@ Public Class Form1
             CommandArray(2) = 24
             CommandArray(3) = 56
 
-            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
-
+            Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
+            Sng_Cum_Adjustment_Old = 0
             receivedstatus = Send_Binary_Data(CommandArray)
 
 
@@ -1119,8 +1127,8 @@ Public Class Form1
         If RB_TimeCycle.Checked Then
             Dim receivedstatus As Boolean
             O2AdaptiveTimeCycle = False
-            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
-
+            Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
+            Sng_Cum_Adjustment_Old = 0
             Dim CommandArray(4) As Byte
             CommandArray(0) = FrameStart
             CommandArray(1) = SerialCommands.TimeMatchCycle
@@ -1144,7 +1152,8 @@ Public Class Form1
         If RB_Timed_Adaptive.Checked Then
             O2AdaptiveTimeCycle = True
             Dim receivedstatus As Boolean
-            Sng_Ttl_Adjustment = 0 ' Set time scale adjustment to zero to start
+            Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
+            Sng_Cum_Adjustment_Old = 0
 
             Dim CommandArray(4) As Byte
             CommandArray(0) = FrameStart
