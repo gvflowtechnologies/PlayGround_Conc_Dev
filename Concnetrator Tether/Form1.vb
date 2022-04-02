@@ -762,6 +762,7 @@ Public Class Form1
 
                         Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
                         Sng_cum_Adjustment += Sng_Int_Adjustment
+                        Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
                         If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
                             Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
 
