@@ -54,6 +54,7 @@ Public Class Form1
     Dim Sng_Int_Adjustment As Single ' Time adjustment to cycle 4 single step.
     Dim Sng_ScaleingO2 As Single ' Scaling factor for adjusting cycle time.
     Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
+    Dim Flag_UpdateCycleTime As Boolean 'Flag to iniate adaptive time cycle update.
     Dim Sng_Cum_Adjustment_Old As Single
 
     Dim o2_1 As Single
@@ -64,7 +65,8 @@ Public Class Form1
     Dim RunScript As Boolean
     'Oxygen Sensor Variables
     Dim My_Oxygen_Sensor As TimeOfFlightCalculator
-    Public _TackTImer As Timers.Timer
+    Public _TackTImer As Timers.Timer ' Timer to request values from the oxygen sensor.
+    Public _CycleUpdateTImer As Timers.Timer 'Time used to update cycle times based on end cycle oxygen sensor values.
 
     ReadOnly FolderbeingSent As foldertype
 
@@ -130,6 +132,11 @@ Public Class Form1
         Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
         Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
 
+        Dim objlock As Object = New Object()
+        SyncLock objlock
+            Flag_UpdateCycleTime = False
+        End SyncLock
+
         O2AdaptiveTimeCycle = False
 
         Dim v As String
@@ -165,7 +172,7 @@ Public Class Form1
                     ' Open a file
                     ' Write Header for File
                     If Not File.Exists(F_Logging) Then
-                        Using SW_Logging As StreamWriter = New StreamWriter(F_Logging, False)
+                        Using SW_Logging As New StreamWriter(F_Logging, False)
 
                             With SW_Logging
                                 .WriteLine("Concentrator DataStream,")
@@ -763,10 +770,17 @@ Public Class Form1
                         Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
                         Sng_cum_Adjustment += Sng_Int_Adjustment
                         Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
+
                         If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
                             Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
 
-                            Sub_Update_Cycle_Times()
+                            Dim objlock As Object = New Object()
+                            SyncLock objlock
+                                Flag_UpdateCycleTime = False
+                            End SyncLock
+
+
+                            ' Sub_Update_Cycle_Times()
 
                         End If
                     End If
@@ -1152,6 +1166,11 @@ Public Class Form1
 
         If RB_Timed_Adaptive.Checked Then
             O2AdaptiveTimeCycle = True
+            Dim objlock As Object = New Object()
+            SyncLock objlock
+                Flag_UpdateCycleTime = False
+            End SyncLock
+
             Dim receivedstatus As Boolean
             Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
             Sng_Cum_Adjustment_Old = 0
@@ -1429,7 +1448,28 @@ Public Class Form1
             .Enabled = False
         }
         AddHandler _TackTImer.Elapsed, AddressOf Timer_Elapsed
+
+        _CycleUpdateTImer = New Timers.Timer(5000) With {
+            .Enabled = True}
+        AddHandler _CycleUpdateTImer.Elapsed, AddressOf Update_cycles
+
     End Sub
+
+    Private Sub Update_cycles(sender As Object, e As EventArgs)
+
+        If Not O2AdaptiveTimeCycle Then Exit Sub
+        If Not Flag_UpdateCycleTime Then Exit Sub
+
+        Dim objlock As Object = New Object()
+        SyncLock objlock
+            Flag_UpdateCycleTime = False
+        End SyncLock
+
+        Sub_Update_Cycle_Times()
+
+    End Sub
+
+
     Private Sub Timer_Elapsed(Sender As Object, e As EventArgs)
 
         If My_Oxygen_Sensor.Measurement_Complete Then
@@ -1518,9 +1558,7 @@ Public Class Form1
     End Sub
 
 
-
-
-
-
 #End Region
+
+
 End Class
