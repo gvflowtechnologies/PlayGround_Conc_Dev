@@ -136,7 +136,7 @@ Public Class Form1
         Flag_UpdateCycleTime = False
 
 
-            O2AdaptiveTimeCycle = False
+        O2AdaptiveTimeCycle = False
 
         Dim v As String
 
@@ -764,24 +764,27 @@ Public Class Form1
                     If datavalue(3) = 4 Then
                         State4decay.Reset()
                         Lbl_Stg_4_02.Text = Lbl_Raw_o2.Text
+
                         o2_4 = Convert.ToSingle(Lbl_Stg_4_02.Text)
 
-                        Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
-                        Sng_cum_Adjustment += Sng_Int_Adjustment
-                        Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
+                        If O2AdaptiveTimeCycle Then
+                            Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
+                            Sng_cum_Adjustment += Sng_Int_Adjustment
+                            Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
 
-                        If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
-                            Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
+                            If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > CSng(timerperiod) Then
+                                Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
 
-                            Flag_UpdateCycleTime = False
+                                Flag_UpdateCycleTime = True
 
 
-                            ' Sub_Update_Cycle_Times()
+                                ' Sub_Update_Cycle_Times()
 
+                            End If
                         End If
                     End If
 
-                    enteringcycle = False
+                        enteringcycle = False
 
                 Else ' In cycle
                     'datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
@@ -1443,7 +1446,7 @@ Public Class Form1
         }
         AddHandler _TackTImer.Elapsed, AddressOf Timer_Elapsed
 
-        _CycleUpdateTImer = New Timers.Timer(5000) With {
+        _CycleUpdateTImer = New Timers.Timer(2000) With {
             .Enabled = True}
         AddHandler _CycleUpdateTImer.Elapsed, AddressOf Update_cycles
 
