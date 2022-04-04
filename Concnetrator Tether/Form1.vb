@@ -132,12 +132,11 @@ Public Class Form1
         Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
         Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
 
-        Dim objlock As Object = New Object()
-        SyncLock objlock
-            Flag_UpdateCycleTime = False
-        End SyncLock
 
-        O2AdaptiveTimeCycle = False
+        Flag_UpdateCycleTime = False
+
+
+            O2AdaptiveTimeCycle = False
 
         Dim v As String
 
@@ -758,8 +757,8 @@ Public Class Form1
                     If datavalue(3) = 1 Then
                         State1decay.Reset()
                         Lbl_Stg_1_o2.Text = Lbl_Raw_o2.Text
-
                         o2_1 = Convert.ToSingle(Lbl_Stg_1_o2.Text)
+
                     End If
 
                     If datavalue(3) = 4 Then
@@ -774,10 +773,7 @@ Public Class Form1
                         If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > timerperiod Then
                             Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
 
-                            Dim objlock As Object = New Object()
-                            SyncLock objlock
-                                Flag_UpdateCycleTime = False
-                            End SyncLock
+                            Flag_UpdateCycleTime = False
 
 
                             ' Sub_Update_Cycle_Times()
@@ -1166,10 +1162,8 @@ Public Class Form1
 
         If RB_Timed_Adaptive.Checked Then
             O2AdaptiveTimeCycle = True
-            Dim objlock As Object = New Object()
-            SyncLock objlock
-                Flag_UpdateCycleTime = False
-            End SyncLock
+
+            Flag_UpdateCycleTime = False
 
             Dim receivedstatus As Boolean
             Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
@@ -1460,10 +1454,8 @@ Public Class Form1
         If Not O2AdaptiveTimeCycle Then Exit Sub
         If Not Flag_UpdateCycleTime Then Exit Sub
 
-        Dim objlock As Object = New Object()
-        SyncLock objlock
-            Flag_UpdateCycleTime = False
-        End SyncLock
+
+        Flag_UpdateCycleTime = False
 
         Sub_Update_Cycle_Times()
 
