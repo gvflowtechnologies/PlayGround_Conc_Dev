@@ -1548,7 +1548,29 @@ Public Class Form1
 
     End Function
 
-    Private Sub Tb_ScalingFactor_TextChanged(sender As Object, e As EventArgs) Handles Tb_ScalingFactor.TextChanged
+
+
+    Private Sub TB_ScalingFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Tb_ScalingFactor.Validating
+
+        Dim errormsg As String = ""
+
+        Dim Pass As Boolean
+        Dim ScalingFactor As Single
+        Pass = False
+
+        Pass = Single.TryParse(Tb_ScalingFactor.Text, ScalingFactor)
+
+        If Not Pass Then
+            errormsg = "Not a valid number"
+            e.Cancel = True
+            ErrorProvider1.SetError(Tb_ScalingFactor, errormsg)
+
+        End If
+
+    End Sub
+
+    Private Sub Tb_ScalingFactor_Validated(sender As Object, e As EventArgs) Handles Tb_ScalingFactor.Validated
+        ErrorProvider1.SetError(Tb_ScalingFactor, "")
         Sng_ScaleingO2 = CSng(Tb_ScalingFactor.Text)
     End Sub
 
