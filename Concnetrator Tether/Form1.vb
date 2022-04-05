@@ -893,6 +893,7 @@ Public Class Form1
         receivedstatus = False
         TextBox1.Text = " "
         lbl_Returned_Times.Text = ""
+        TextBox10.Text = " "
         If O2AdaptiveTimeCycle = True Then
             cycles(3) = (UInt16.Parse(TB_ProcTime4.Text) + CShort(Sng_cum_Adjustment)) / timerperiod
         Else
@@ -1456,7 +1457,6 @@ Public Class Form1
 
         If Not O2AdaptiveTimeCycle Then Exit Sub
         If Not Flag_UpdateCycleTime Then Exit Sub
-
 
         Flag_UpdateCycleTime = False
 
