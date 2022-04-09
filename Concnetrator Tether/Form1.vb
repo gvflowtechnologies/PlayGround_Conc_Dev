@@ -51,14 +51,16 @@ Public Class Form1
     End Enum
 
     Dim Sng_cum_Adjustment As Single 'Overall time adjusment to cycle 4.
-    Dim Sng_Int_Adjustment As Single ' Time adjustment to cycle 4 single step.
+    Dim Sng_Ind_Adjustment As Single ' Time adjustment to cycle 4 single step.
     Dim Sng_ScaleingO2 As Single ' Scaling factor for adjusting cycle time.
     Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
     Dim Flag_UpdateCycleTime As Boolean 'Flag to iniate adaptive time cycle update.
-    Dim Sng_Cum_Adjustment_Old As Single
+    Dim Sng_Cum_Adjustment_Old As Single 'cycleimte adjustment
+    Dim S_Cycle4Time As Single ' Cycle 4 time in single
+    Dim I_Cycle4Tmw As Short ' Cycle r time in short
 
-    Dim o2_1 As Single
-    Dim o2_4 As Single
+    Dim o2_1 As Single 'End stage 1 o2
+    Dim o2_4 As Single 'End stage2 o2
 
     Dim enteringcycle As Boolean
     Dim DataSent As commstatus
@@ -131,7 +133,7 @@ Public Class Form1
 
         Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
         Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
-
+        S_Cycle4Time = Convert.ToSingle(TB_ProcTime4.Text)
 
         Flag_UpdateCycleTime = False
 
@@ -179,7 +181,7 @@ Public Class Form1
                                 .WriteLine(DateTime.Now.ToShortDateString)
                                 .Write("File Start Time, ")
                                 .WriteLine(DateTime.Now.ToShortTimeString)
-                                .WriteLine("P1, P ProdTank, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4, Temp, O2 %")
+                                .WriteLine("P1, P ProdTank, P3, P4, Oxy, Temp1, Temp2, Flow, Stage#, Cycle count, MicroAvg1, MicroAvg 4, MVG Avg 1,  MVG AVG 4, Temp, O2 %, Time4")
 
                             End With
                         End Using
@@ -734,7 +736,7 @@ Public Class Form1
 
             ' Use For Each loop over words and display them
             Dim word As String
-            Dim datavalue(11) As Single 'was 9 Adding 2 to log temp and ox
+            Dim datavalue(12) As Single 'was 9 Adding 2 to log temp and ox added 1 to add time 4
             Dim i As Integer = 0
             For Each word In words
                 Dim sucessess As Boolean = Single.TryParse(word, datavalue(i))
@@ -749,6 +751,7 @@ Public Class Form1
 
             datavalue(9) = Convert.ToSingle(Lbl_Raw_Temp.Text) ' tryparse 
             datavalue(10) = Convert.ToSingle(Lbl_Raw_o2.Text)
+            datavalue(11) = S_Cycle4Time
 
             If datavalue(3) = 1 Or datavalue(3) = 4 Then
                 ' Using Datavalue(1) for slope detection
@@ -768,13 +771,13 @@ Public Class Form1
                         o2_4 = Convert.ToSingle(Lbl_Stg_4_02.Text)
 
                         If O2AdaptiveTimeCycle Then
-                            Sng_Int_Adjustment = CaclAdjustment(o2_1, o2_4)
-                            Sng_cum_Adjustment += Sng_Int_Adjustment
+                            Sng_Ind_Adjustment = CaclAdjustment(o2_1, o2_4)
+                            Sng_cum_Adjustment += Sng_Ind_Adjustment
                             Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
 
                             If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > CSng(timerperiod) Then
                                 Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
-
+                                S_Cycle4Time += Sng_cum_Adjustment
                                 Flag_UpdateCycleTime = True
 
 
@@ -895,7 +898,7 @@ Public Class Form1
         lbl_Returned_Times.Text = ""
         TextBox10.Text = " "
         If O2AdaptiveTimeCycle = True Then
-            cycles(3) = (UInt16.Parse(TB_ProcTime4.Text) + CShort(Sng_cum_Adjustment)) / timerperiod
+            cycles(3) = (UInt16.Parse(TB_ProcTime4.Text) + CShort(Sng_Cum_Adjustment_Old)) / timerperiod
         Else
             cycles(3) = UInt16.Parse(TB_ProcTime4.Text) / timerperiod
         End If
@@ -1548,7 +1551,7 @@ Public Class Form1
 
     End Function
 
-
+#End Region
 
     Private Sub TB_ScalingFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Tb_ScalingFactor.Validating
 
@@ -1575,7 +1578,7 @@ Public Class Form1
     End Sub
 
 
-#End Region
+
 
 
 End Class
