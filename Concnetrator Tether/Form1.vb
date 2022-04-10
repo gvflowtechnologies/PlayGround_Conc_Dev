@@ -864,7 +864,7 @@ Public Class Form1
             .BackColor = SystemColors.ButtonFace
             .Visible = False
         End With
-
+        S_Cycle4Time = Convert.ToSingle(TB_ProcTime4.Text)
         Sub_Update_Cycle_Times()
 
         With Btn_UpdateCycleTime
@@ -1391,6 +1391,7 @@ Public Class Form1
         TB_ProcTime4.Text = S_ScriptArray(ScriptStep, 3)
         TB_ProcTime5.Text = S_ScriptArray(ScriptStep, 4)
         TB_ProcTIme6.Text = S_ScriptArray(ScriptStep, 5)
+        S_Cycle4Time = Convert.ToSingle(TB_ProcTime4.Text)
 
     End Sub
 #Region "Oxygen Sensor"
