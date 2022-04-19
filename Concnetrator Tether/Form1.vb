@@ -795,7 +795,7 @@ Public Class Form1
                                 Flag_UpdateCycleTime = True
 
 
-                                ' Sub_Update_Cycle_Times()
+                                Sub_Update_Cycle_Times()
 
                             End If
                         End If
