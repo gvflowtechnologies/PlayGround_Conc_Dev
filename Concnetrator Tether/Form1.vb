@@ -787,9 +787,11 @@ Public Class Form1
                         o2_4 = Convert.ToSingle(Lbl_Stg_4_02.Text)
 
                         If O2AdaptiveTimeCycle Then
-                            Sng_Ind_Adjustment = CaclAdjustment(o2_1, o2_4)
-                            Sng_PropAdjustment = PropCaclAdjustment(o2_1, o2_4)
+                            Sng_Ind_Adjustment = IntegralGain.CalcAdjustment(o2_1, o2_4)
+                            Sng_PropAdjustment = ProportionalGains.CalcAdjustment(o2_1, o2_4)
+
                             Sng_cum_Adjustment += Sng_Ind_Adjustment
+
                             S_Current_Time_Signal = Sng_cum_Adjustment + Sng_PropAdjustment
                             Lbl_AdaptiveTime.Text = S_Current_Time_Signal
                             Lbl_Old_Adjust.Text = S_Last_Sent_Time_Signal
