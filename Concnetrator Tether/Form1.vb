@@ -72,6 +72,9 @@ Public Class Form1
     Dim RunScript As Boolean
     'Oxygen Sensor Variables
     Dim My_Oxygen_Sensor As TimeOfFlightCalculator
+    Dim ProportionalGains As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
+    Dim IntegralGain As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
+
     Public _TackTImer As Timers.Timer ' Timer to request values from the oxygen sensor.
     Public _CycleUpdateTImer As Timers.Timer 'Time used to update cycle times based on end cycle oxygen sensor values.
 
@@ -130,6 +133,8 @@ Public Class Form1
         State1decay = New PressureDecay
         State4decay = New PressureDecay
         RunScript = False
+        ProportionalGains = New AdaptiveO2_GainCalc(0.1) ' Gain calculator for adaptive control
+        IntegralGain = New AdaptiveO2_GainCalc(0.1)
 
         ScriptRunTime = New Stopwatch
         ScriptRunTime.Stop()
@@ -787,6 +792,8 @@ Public Class Form1
                             Sng_cum_Adjustment += Sng_Ind_Adjustment
                             S_Current_Time_Signal = Sng_cum_Adjustment + Sng_PropAdjustment
                             Lbl_AdaptiveTime.Text = S_Current_Time_Signal
+                            Lbl_Old_Adjust.Text = S_Last_Sent_Time_Signal
+
 
                             If Math.Abs(S_Current_Time_Signal - S_Last_Sent_Time_Signal) > CSng(timerperiod) Then
                                 S_Last_Sent_Time_Signal = S_Current_Time_Signal
@@ -795,7 +802,7 @@ Public Class Form1
                                 Flag_UpdateCycleTime = True
 
 
-                                Sub_Update_Cycle_Times()
+                                ' Sub_Update_Cycle_Times()
 
                             End If
                         End If
@@ -1601,6 +1608,7 @@ Public Class Form1
     Private Sub Tb_ScalingFactor_Validated(sender As Object, e As EventArgs) Handles Tb_ScalingFactor.Validated
         ErrorProvider1.SetError(Tb_ScalingFactor, "")
         Sng_ScaleingO2 = CSng(Tb_ScalingFactor.Text)
+        IntegralGain.Prop_GainFactor = CSng(Tb_ScalingFactor.Text)
     End Sub
 
     Private Sub TB_PropScaleFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_PropScaleFactor.Validating
@@ -1625,5 +1633,7 @@ Public Class Form1
     Private Sub TB_PropScaleFactor_Validated(sender As Object, e As EventArgs) Handles TB_PropScaleFactor.Validated
         ErrorProvider1.SetError(TB_PropScaleFactor, "")
         Sng_PropScalingO2 = CSng(TB_PropScaleFactor.Text)
+        ProportionalGains.Prop_GainFactor = CSng(TB_PropScaleFactor.Text)
+
     End Sub
 End Class
