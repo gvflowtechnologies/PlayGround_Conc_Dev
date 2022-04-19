@@ -23,16 +23,16 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series13 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series14 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series15 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend6 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series16 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series17 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series18 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Lbl_Stg_4_02 = New System.Windows.Forms.Label()
@@ -172,6 +172,9 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Tmr_Scripting = New System.Windows.Forms.Timer(Me.components)
         Me.ErrorProvider2 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.TB_PropScaleFactor = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -342,30 +345,30 @@ Partial Class Form1
         '
         'Chart2
         '
-        ChartArea3.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea3.AxisY.IsStartedFromZero = False
-        ChartArea3.AxisY.MajorGrid.Interval = 0R
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend3)
+        ChartArea5.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea5.AxisY.IsStartedFromZero = False
+        ChartArea5.AxisY.MajorGrid.Interval = 0R
+        ChartArea5.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea5)
+        Legend5.Name = "Legend1"
+        Me.Chart2.Legends.Add(Legend5)
         Me.Chart2.Location = New System.Drawing.Point(13, 307)
         Me.Chart2.Name = "Chart2"
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series7.Legend = "Legend1"
-        Series7.Name = "PT1"
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series8.Legend = "Legend1"
-        Series8.Name = "PT2"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series9.Legend = "Legend1"
-        Series9.Name = "PT3"
-        Me.Chart2.Series.Add(Series7)
-        Me.Chart2.Series.Add(Series8)
-        Me.Chart2.Series.Add(Series9)
+        Series13.ChartArea = "ChartArea1"
+        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series13.Legend = "Legend1"
+        Series13.Name = "PT1"
+        Series14.ChartArea = "ChartArea1"
+        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series14.Legend = "Legend1"
+        Series14.Name = "PT2"
+        Series15.ChartArea = "ChartArea1"
+        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series15.Legend = "Legend1"
+        Series15.Name = "PT3"
+        Me.Chart2.Series.Add(Series13)
+        Me.Chart2.Series.Add(Series14)
+        Me.Chart2.Series.Add(Series15)
         Me.Chart2.Size = New System.Drawing.Size(1215, 116)
         Me.Chart2.TabIndex = 29
         Me.Chart2.Text = "Chart2"
@@ -944,30 +947,30 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea4.AxisY.Crossing = -1.7976931348623157E+308R
-        ChartArea4.AxisY.IsStartedFromZero = False
-        ChartArea4.AxisY.MajorGrid.Interval = 0R
-        ChartArea4.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea4)
-        Legend4.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend4)
+        ChartArea6.AxisY.Crossing = -1.7976931348623157E+308R
+        ChartArea6.AxisY.IsStartedFromZero = False
+        ChartArea6.AxisY.MajorGrid.Interval = 0R
+        ChartArea6.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea6)
+        Legend6.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend6)
         Me.Chart1.Location = New System.Drawing.Point(6, 27)
         Me.Chart1.Name = "Chart1"
-        Series10.ChartArea = "ChartArea1"
-        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series10.Legend = "Legend1"
-        Series10.Name = "PT1"
-        Series11.ChartArea = "ChartArea1"
-        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series11.Legend = "Legend1"
-        Series11.Name = "PT2"
-        Series12.ChartArea = "ChartArea1"
-        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series12.Legend = "Legend1"
-        Series12.Name = "PT3"
-        Me.Chart1.Series.Add(Series10)
-        Me.Chart1.Series.Add(Series11)
-        Me.Chart1.Series.Add(Series12)
+        Series16.ChartArea = "ChartArea1"
+        Series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series16.Legend = "Legend1"
+        Series16.Name = "PT1"
+        Series17.ChartArea = "ChartArea1"
+        Series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series17.Legend = "Legend1"
+        Series17.Name = "PT2"
+        Series18.ChartArea = "ChartArea1"
+        Series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series18.Legend = "Legend1"
+        Series18.Name = "PT3"
+        Me.Chart1.Series.Add(Series16)
+        Me.Chart1.Series.Add(Series17)
+        Me.Chart1.Series.Add(Series18)
         Me.Chart1.Size = New System.Drawing.Size(1215, 290)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -991,6 +994,9 @@ Partial Class Form1
         '
         'GroupBox12
         '
+        Me.GroupBox12.Controls.Add(Me.TB_PropScaleFactor)
+        Me.GroupBox12.Controls.Add(Me.Label43)
+        Me.GroupBox12.Controls.Add(Me.Label42)
         Me.GroupBox12.Controls.Add(Me.Label41)
         Me.GroupBox12.Controls.Add(Me.Tb_ScalingFactor)
         Me.GroupBox12.Controls.Add(Me.Label40)
@@ -999,7 +1005,7 @@ Partial Class Form1
         Me.GroupBox12.Size = New System.Drawing.Size(303, 305)
         Me.GroupBox12.TabIndex = 8
         Me.GroupBox12.TabStop = False
-        Me.GroupBox12.Text = "Adaptive cycle time"
+        Me.GroupBox12.Text = "Adaptive Control Scaling"
         '
         'Label41
         '
@@ -1015,7 +1021,7 @@ Partial Class Form1
         '
         Me.Tb_ScalingFactor.Location = New System.Drawing.Point(146, 30)
         Me.Tb_ScalingFactor.Name = "Tb_ScalingFactor"
-        Me.Tb_ScalingFactor.Size = New System.Drawing.Size(100, 20)
+        Me.Tb_ScalingFactor.Size = New System.Drawing.Size(40, 20)
         Me.Tb_ScalingFactor.TabIndex = 1
         Me.Tb_ScalingFactor.Text = "1"
         '
@@ -1600,6 +1606,31 @@ Partial Class Form1
         '
         Me.ErrorProvider2.ContainerControl = Me
         '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(35, 147)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(104, 13)
+        Me.Label42.TabIndex = 3
+        Me.Label42.Text = "Proportional Scaling:"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(35, 173)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(120, 26)
+        Me.Label43.TabIndex = 4
+        Me.Label43.Text = "Proportional Component" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "mSec per % difference "
+        '
+        'TB_PropScaleFactor
+        '
+        Me.TB_PropScaleFactor.Location = New System.Drawing.Point(146, 143)
+        Me.TB_PropScaleFactor.Name = "TB_PropScaleFactor"
+        Me.TB_PropScaleFactor.Size = New System.Drawing.Size(50, 20)
+        Me.TB_PropScaleFactor.TabIndex = 5
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1784,4 +1815,7 @@ Partial Class Form1
     Friend WithEvents Label41 As Label
     Friend WithEvents Tb_ScalingFactor As TextBox
     Friend WithEvents Label40 As Label
+    Friend WithEvents TB_PropScaleFactor As TextBox
+    Friend WithEvents Label43 As Label
+    Friend WithEvents Label42 As Label
 End Class

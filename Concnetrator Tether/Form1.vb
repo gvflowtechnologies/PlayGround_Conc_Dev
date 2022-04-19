@@ -53,11 +53,16 @@ Public Class Form1
     Dim Sng_cum_Adjustment As Single 'Overall time adjusment to cycle 4.
     Dim Sng_Ind_Adjustment As Single ' Time adjustment to cycle 4 single step.
     Dim Sng_ScaleingO2 As Single ' Scaling factor for adjusting cycle time.
+    Dim Sng_PropScalingO2 As Single 'Proportioanal Scalign Factor for adjusting cycle time. 
     Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
     Dim Flag_UpdateCycleTime As Boolean 'Flag to iniate adaptive time cycle update.
     Dim Sng_Cum_Adjustment_Old As Single 'cycleimte adjustment
-    Dim S_Cycle4Time As Single ' Cycle 4 time in single
+    Dim Sng_PropAdjustment As Single 'Single proportional single is sent.
+    Dim S_Cycle4Time As Single ' Cycle 4 time in single Signal that is sent.
+    Dim S_StaticCycle4 As Single ' Static portion of cycle time
     Dim I_Cycle4Tmw As Short ' Cycle r time in short
+    Dim S_Current_Time_Signal As Single
+    Dim S_Last_Sent_Time_Signal As Single
 
     Dim o2_1 As Single 'End stage 1 o2
     Dim o2_4 As Single 'End stage2 o2
@@ -133,7 +138,13 @@ Public Class Form1
 
         Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
         Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
-        S_Cycle4Time = Convert.ToSingle(TB_ProcTime4.Text)
+        Sng_PropAdjustment = 0 'Seed for proportional signal
+        S_Current_Time_Signal = 0
+        S_Last_Sent_Time_Signal = 0
+
+
+        S_StaticCycle4 = Convert.ToSingle(TB_ProcTime4.Text)
+        S_Cycle4Time = S_StaticCycle4
 
         Flag_UpdateCycleTime = False
 
@@ -772,12 +783,15 @@ Public Class Form1
 
                         If O2AdaptiveTimeCycle Then
                             Sng_Ind_Adjustment = CaclAdjustment(o2_1, o2_4)
+                            Sng_PropAdjustment = PropCaclAdjustment(o2_1, o2_4)
                             Sng_cum_Adjustment += Sng_Ind_Adjustment
-                            Lbl_AdaptiveTime.Text = Sng_cum_Adjustment
+                            S_Current_Time_Signal = Sng_cum_Adjustment + Sng_PropAdjustment
+                            Lbl_AdaptiveTime.Text = S_Current_Time_Signal
 
-                            If Math.Abs(Sng_cum_Adjustment - Sng_Cum_Adjustment_Old) > CSng(timerperiod) Then
-                                Sng_Cum_Adjustment_Old = Sng_cum_Adjustment ' Update old time that we are comparring to.  Need to update times.
-                                S_Cycle4Time += Sng_cum_Adjustment
+                            If Math.Abs(S_Current_Time_Signal - S_Last_Sent_Time_Signal) > CSng(timerperiod) Then
+                                S_Last_Sent_Time_Signal = S_Current_Time_Signal
+
+                                S_Cycle4Time = S_StaticCycle4 + S_Last_Sent_Time_Signal
                                 Flag_UpdateCycleTime = True
 
 
@@ -864,7 +878,10 @@ Public Class Form1
             .BackColor = SystemColors.ButtonFace
             .Visible = False
         End With
-        S_Cycle4Time = Convert.ToSingle(TB_ProcTime4.Text)
+
+        S_StaticCycle4 = Convert.ToSingle(TB_ProcTime4.Text)
+        S_Cycle4Time = S_StaticCycle4
+
         Sub_Update_Cycle_Times()
 
         With Btn_UpdateCycleTime
@@ -884,6 +901,14 @@ Public Class Form1
         Return step_Adjustment
     End Function
 
+    Private Function PropCaclAdjustment(End_Of_Cycle_o2_1 As Single, End_of_cycle_o2_4 As Single) As Single
+
+        Dim step_Adjustment As Single
+
+        step_Adjustment = Sng_PropScalingO2 * (End_Of_Cycle_o2_1 - End_of_cycle_o2_4)
+
+        Return step_Adjustment
+    End Function
 
 
 
@@ -1578,8 +1603,27 @@ Public Class Form1
         Sng_ScaleingO2 = CSng(Tb_ScalingFactor.Text)
     End Sub
 
+    Private Sub TB_PropScaleFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_PropScaleFactor.Validating
 
+        Dim errormsg As String = ""
 
+        Dim Pass As Boolean
+        Dim ScalingFactor As Single
+        Pass = False
 
+        Pass = Single.TryParse(TB_PropScaleFactor.Text, ScalingFactor)
 
+        If Not Pass Then
+            errormsg = "Not a valid number"
+            e.Cancel = True
+            ErrorProvider1.SetError(TB_PropScaleFactor, errormsg)
+
+        End If
+
+    End Sub
+
+    Private Sub TB_PropScaleFactor_Validated(sender As Object, e As EventArgs) Handles TB_PropScaleFactor.Validated
+        ErrorProvider1.SetError(TB_PropScaleFactor, "")
+        Sng_PropScalingO2 = CSng(TB_PropScaleFactor.Text)
+    End Sub
 End Class
