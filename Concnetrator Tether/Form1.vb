@@ -57,7 +57,7 @@ Public Class Form1
     Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
     Dim Flag_UpdateCycleTime As Boolean 'Flag to iniate adaptive time cycle update.
     Dim Sng_Cum_Adjustment_Old As Single 'cycleimte adjustment
-    Dim Sng_PropAdjustment As Single 'Single proportional single is sent.
+
     Dim S_Cycle4Time As Single ' Cycle 4 time in single Signal that is sent.
     Dim S_StaticCycle4 As Single ' Static portion of cycle time
     Dim I_Cycle4Tmw As Short ' Cycle r time in short
@@ -71,7 +71,7 @@ Public Class Form1
     Dim DataSent As commstatus
     Dim RunScript As Boolean
     'Oxygen Sensor Variables
-    Dim My_Oxygen_Sensor As TimeOfFlightCalculator
+    Dim My_Oxygen_Sensor As TimeOfFlightCalculator 'Oxygen Sensor Commintiation
     Dim ProportionalGains As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
     Dim IntegralGain As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
 
@@ -143,7 +143,7 @@ Public Class Form1
 
         Sng_cum_Adjustment = 0 ' Set time scale adjustment to zero to start
         Sng_Cum_Adjustment_Old = 0 ' set time scale adjustmetn to zero to start
-        Sng_PropAdjustment = 0 'Seed for proportional signal
+
         S_Current_Time_Signal = 0
         S_Last_Sent_Time_Signal = 0
 
@@ -725,6 +725,8 @@ Public Class Form1
     Private Sub ParseIncoming(ByRef IncomingData As String)
 
         Dim length As Integer
+        Dim Sng_PropAdjustment As Single = 0 'Single proportional single is sent.
+
         CheckTime()
         length = IncomingData.Length
         If (IncomingData(0) = "#") Then
@@ -900,25 +902,6 @@ Public Class Form1
 
 
     End Sub
-
-    Private Function CaclAdjustment(End_Of_Cycle_o2_1 As Single, End_of_cycle_o2_4 As Single) As Single
-
-        Dim step_Adjustment As Single
-
-        step_Adjustment = Sng_ScaleingO2 * (End_Of_Cycle_o2_1 - End_of_cycle_o2_4)
-
-        Return step_Adjustment
-    End Function
-
-    Private Function PropCaclAdjustment(End_Of_Cycle_o2_1 As Single, End_of_cycle_o2_4 As Single) As Single
-
-        Dim step_Adjustment As Single
-
-        step_Adjustment = Sng_PropScalingO2 * (End_Of_Cycle_o2_1 - End_of_cycle_o2_4)
-
-        Return step_Adjustment
-    End Function
-
 
 
     Private Sub Sub_Update_Cycle_Times()
@@ -1398,12 +1381,10 @@ Public Class Form1
                     Exit Sub
                 End If
 
-
                 ' Else keep running
                 PopulateWindow(iCounter)
                 Sub_Update_Cycle_Times()
                 ScriptRunTime.Start()
-
 
             End If
         End If
@@ -1413,8 +1394,6 @@ Public Class Form1
     Private Sub Tmr_Scripting_Tick(sender As Object, e As EventArgs) Handles Tmr_Scripting.Tick
 
         CheckTime()
-
-
 
     End Sub
     Private Sub PopulateWindow(ByVal ScriptStep As Integer)
@@ -1587,7 +1566,7 @@ Public Class Form1
     End Function
 
 #End Region
-
+#Region "Adapative O2 Inptut"
     Private Sub TB_ScalingFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Tb_ScalingFactor.Validating
 
         Dim errormsg As String = ""
@@ -1638,4 +1617,6 @@ Public Class Form1
         ProportionalGains.Prop_GainFactor = CSng(TB_PropScaleFactor.Text)
 
     End Sub
+#End Region
+
 End Class
