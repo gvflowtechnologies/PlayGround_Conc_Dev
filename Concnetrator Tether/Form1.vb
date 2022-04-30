@@ -51,7 +51,7 @@ Public Class Form1
     End Enum
 
     Dim Sng_cum_Adjustment As Single 'Overall time adjusment to cycle 4.
-    Dim Sng_Ind_Adjustment As Single ' Time adjustment to cycle 4 single step.
+
     Dim Sng_ScaleingO2 As Single ' Scaling factor for adjusting cycle time.
     Dim Sng_PropScalingO2 As Single 'Proportioanal Scalign Factor for adjusting cycle time. 
     Dim O2AdaptiveTimeCycle As Boolean 'Flag to tell system we are in adaptive time cycle.
@@ -72,7 +72,7 @@ Public Class Form1
     Dim RunScript As Boolean
     'Oxygen Sensor Variables
     Dim My_Oxygen_Sensor As TimeOfFlightCalculator 'Oxygen Sensor Commintiation
-    Dim ProportionalGains As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
+
     Dim IntegralGain As AdaptiveO2_GainCalc ' Gain calculator for adaptive control
 
     Public _TackTImer As Timers.Timer ' Timer to request values from the oxygen sensor.
@@ -133,8 +133,8 @@ Public Class Form1
         State1decay = New PressureDecay
         State4decay = New PressureDecay
         RunScript = False
-        ProportionalGains = New AdaptiveO2_GainCalc(0.1) ' Gain calculator for adaptive control
-        IntegralGain = New AdaptiveO2_GainCalc(0.1)
+
+        IntegralGain = New AdaptiveO2_GainCalc(0.1, 0.1)
 
         ScriptRunTime = New Stopwatch
         ScriptRunTime.Stop()
@@ -726,6 +726,7 @@ Public Class Form1
 
         Dim length As Integer
         Dim Sng_PropAdjustment As Single = 0 'Single proportional single is sent.
+        Dim Sng_Ind_Adjustment As Single ' Time adjustment to cycle 4 single step.
 
         CheckTime()
         length = IncomingData.Length
@@ -789,10 +790,10 @@ Public Class Form1
                         o2_4 = Convert.ToSingle(Lbl_Stg_4_02.Text)
 
                         If O2AdaptiveTimeCycle Then
-                            Sng_Ind_Adjustment = IntegralGain.CalcAdjustment(o2_1, o2_4)
-                            Sng_PropAdjustment = ProportionalGains.CalcAdjustment(o2_1, o2_4)
+                            Sng_Ind_Adjustment = IntegralGain.ICalcAdjustment(o2_1, o2_4)
+                            Sng_PropAdjustment = IntegralGain.PCalcAdjustment(o2_1, o2_4)
 
-                            Sng_cum_Adjustment += Sng_Ind_Adjustment
+                            Sng_cum_Adjustment += Sng_Ind_Adjustment ' Integrate the integral gain adjustment
 
                             S_Current_Time_Signal = Sng_cum_Adjustment + Sng_PropAdjustment
                             Lbl_AdaptiveTime.Text = S_Current_Time_Signal
@@ -812,7 +813,7 @@ Public Class Form1
                         End If
                     End If
 
-                        enteringcycle = False
+                    enteringcycle = False
 
                 Else ' In cycle
                     'datavalue(9) = Convert.ToSingle(Lbl_Sensed_Temp.Text) ' tryparse 
@@ -1589,7 +1590,8 @@ Public Class Form1
     Private Sub Tb_ScalingFactor_Validated(sender As Object, e As EventArgs) Handles Tb_ScalingFactor.Validated
         ErrorProvider1.SetError(Tb_ScalingFactor, "")
         Sng_ScaleingO2 = CSng(Tb_ScalingFactor.Text)
-        IntegralGain.Prop_GainFactor = CSng(Tb_ScalingFactor.Text)
+
+        IntegralGain.Integral_GainFactor = CSng(Tb_ScalingFactor.Text)
     End Sub
 
     Private Sub TB_PropScaleFactor_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TB_PropScaleFactor.Validating
@@ -1614,8 +1616,8 @@ Public Class Form1
     Private Sub TB_PropScaleFactor_Validated(sender As Object, e As EventArgs) Handles TB_PropScaleFactor.Validated
         ErrorProvider1.SetError(TB_PropScaleFactor, "")
         Sng_PropScalingO2 = CSng(TB_PropScaleFactor.Text)
-        ProportionalGains.Prop_GainFactor = CSng(TB_PropScaleFactor.Text)
 
+        IntegralGain.Prop_GainFactor = CSng(TB_PropScaleFactor.Text)
     End Sub
 #End Region
 
